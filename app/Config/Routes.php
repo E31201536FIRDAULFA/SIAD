@@ -30,17 +30,20 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->match(['get','post'],'login','Auth::login');
-$routes->match(['get','post'],'register','Auth::register');
-$routes->match(['get','post'],'login/lupa-password','Auth::LupaPassword');
-$routes->match(['get','post'],'reset-password/(:any)','Auth::ResetPassword/$1');
+$routes->match(['GET','POST'],'login','Auth::login');
+$routes->match(['GET','POST'],'register','Auth::register');
+$routes->match(['GET','POST'],'login/lupa-password','Auth::LupaPassword');
+$routes->match(['GET','POST'],'reset-password/(:any)','Auth::ResetPassword/$1');
 $routes->get('logout', 'Auth::Logout');
 
 //Back end
 $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
     $routes->get('/', 'Dashboard::index');
     //contoh table
-    $routes->get('table', 'Dashboard::table');
+    $routes->match(['GET', 'POST'], 'users', 'Dashboard::users');
+    $routes->match(['GET', 'POST'], 'users/update/(:num)', 'Dashboard::usersUpdate/$1');
+    $routes->get('users/delete/(:num)', 'Dashboard::usersDelete/$1');
+    $routes->get('users/data', 'Dashboard::usersData');
 });
 
 

@@ -23,24 +23,37 @@ class Auth extends BaseController
     }
     public function login()
     {
-        if ($this->request->getPost()) {
-            $model = new UserModel();
-            $email = $this->request->getVar('email');
-            $password = $this->request->getVar('password');
-            $checkpointData = $model->where('email', $email)
-                                    ->orWhere('username', $email)
+        $model = new UserModel();
+        if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
+            $username = $this->request->getPost('username');
+            $password = $this->request->getPost('password');
+            $checkpointData = $model->where('email', $username)
+                                    ->orWhere('username', $username)
                                     ->first();
             if ($checkpointData) {
                 if (password_verify($password, $checkpointData['password'])) {
                     $this->setUserSession($checkpointData);
-                    return redirect()->to('dashboard');
+                    return $this->response->setJSON([
+                        'status' => true,
+                        'icon' => 'success',
+                        'title' => 'Login Berhasil!',
+                        'text' => 'Anda akan diarahkan dalam 3 detik.',
+                    ]);
                 } else {
-                    session()->setFlashdata('error', 'Password salah!');
-                    return redirect()->to('login');
+                    return $this->response->setJSON([
+                        'status' => false,
+                        'icon' => 'error',
+                        'title' => 'Oops....',
+                        'text' => 'Password salah!',
+                    ]);
                 }
             } else {
-                session()->setFlashdata('error', 'Email tidak ada di database!');
-                return redirect()->to('login');
+                return $this->response->setJSON([
+                    'status' => false,
+                    'icon' => 'error',
+                    'title' => 'Oops....',
+                    'text' => 'Invalid Username/Email!',
+                ]);
             }
         }
         return view('page/auth/SignIn');
@@ -48,44 +61,40 @@ class Auth extends BaseController
 
     public function register()
     {
-        if ($this->request->getPost()) {
-            if (!$this->validate([
-                'email' => [
-                    'rules' => 'required|min_length[4]|max_length[50]|is_unique[users.email]',
-                    'errors' => [
-                        'required' => 'Email harus diisi',
-                        'min_length' => 'Email minimal 4 Karakter',
-                        'max_length' => 'Email maksimal 50 Karakter',
-                        'is_unique' => 'Email sudah digunakan'
-                    ]
-                ],
-                'password' => [
-                    'rules' => 'required|min_length[4]|max_length[50]',
-                    'errors' => [
-                        'required' => 'Password harus diisi',
-                        'min_length' => 'Password minimal 4 Karakter',
-                        'max_length' => 'Password maksimal 50 Karakter',
-                    ]
-                ],
-                'password_conf' => [
-                    'rules' => 'matches[password]',
-                    'errors' => [
-                        'matches' => 'Konfirmasi password tidak sesuai dengan password di atas',
-                    ]
-                ],
-            ])) {
-                session()->setFlashdata('error', $this->validator->listErrors());
-                return redirect()->back()->withInput();
-            }
-            $model = new UserModel();
+        $model = new UserModel();
+        if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
             $data = [
-                'email' => $this->request->getVar('email'),
-                'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
-                'nama' => $this->request->getVar('nama'),
+                'nama'      => $this->request->getPost('nama'),
+                'username'  => $this->request->getPost('username'),
+                'password'  => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+                'email'     => $this->request->getPost('email'),
+                'role'      => 'penduduk',
             ];
-            $model->save($data);
-            session()->setFlashdata('success', 'Anda telah berhasil register.');
-            return redirect()->to('login');
+            $checkpointUsername = $model->where('username', $data['username'])->first();
+            $checkpointEmail    = $model->where('email', $data['email'])->first();
+            if ($checkpointUsername) {
+                return $this->response->setJSON([
+                    'status' => false,
+                    'icon' => 'error',
+                    'title' => 'Register gagal!',
+                    'text' => 'Username telah digunakan',
+                ]);
+            } else if ($checkpointEmail) {
+                return $this->response->setJSON([
+                    'status' => false,
+                    'icon' => 'error',
+                    'title' => 'Register gagal!',
+                    'text' => 'Email telah digunakan',
+                ]);
+            } else {
+                $model->save($data);
+                return $this->response->setJSON([
+                    'status' => true,
+                    'icon' => 'success',
+                    'title' => 'Register berhasil!',
+                    'text' => 'Anda akan diarahkan dalam 3 detik.',
+                ]); 
+            };
         }
         return view('page/auth/SignUp');
     }
@@ -93,7 +102,12 @@ class Auth extends BaseController
     public function Logout()
     {
         session()->destroy();
-        return redirect()->to('login');
+        return $this->response->setJSON([
+            'status' => true,
+            'icon' => 'success',
+            'title' => 'Logout Berhasil!',
+            'text' => 'Anda akan diarahkan dalam 3 detik.'
+        ]);
     }
 
     public function LupaPassword()
@@ -103,6 +117,6 @@ class Auth extends BaseController
 
     public function ResetPassword($token)
     {
-
+        
     }
 }
