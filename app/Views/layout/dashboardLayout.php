@@ -49,6 +49,17 @@
       }
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
+
+    $(document).ready(function() {
+        var currentUrl = window.location.href;
+        $("a").each(function() {
+            if ($(this).attr("href") === currentUrl) {
+                $(this).addClass("active bg-gradient-primary");
+            } else {
+                $(this).removeClass("active bg-gradient-primary");
+            }
+        });
+    });
   </script>
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>

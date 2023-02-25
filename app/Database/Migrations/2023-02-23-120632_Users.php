@@ -38,8 +38,8 @@ class Users extends Migration
                 'null' => true,
             ],
             'role' => [
-                'type' => 'ENUM("admin", "pegawai", "pengunjung")',
-                'default' => 'pengunjung',
+                'type' => 'ENUM("admin", "pegawai", "penduduk")',
+                'default' => 'penduduk',
                 'null' => false,
             ],
             'created_at' => [

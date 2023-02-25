@@ -37,7 +37,8 @@
                                 <label for="exampleFormControlSelect1" class="ms-0">Role</label>
                                   <select class="form-control" id="role" name="role">
                                     <option value="admin">Admin</option>
-                                    <option value="pengurus">Penduduk</option>
+                                    <option value="penduduk">Penduduk</option>
+                                    <option value="pegawai">Pegawai</option>
                                   </select>
                                 </div>
                                 <div id="pass" class="input-group input-group-outline mb-3">
