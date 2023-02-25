@@ -38,6 +38,9 @@ $routes->get('logout', 'Auth::Logout');
 
 //Back end
 $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
+    //Profile
+    $routes->match(['GET', 'POST'], 'profile/(:any)', 'Dashboard::profile/$1');
+    //Main
     $routes->get('/', 'Dashboard::index');
     //contoh table
     $routes->match(['GET', 'POST'], 'users', 'Dashboard::users');
