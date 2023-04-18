@@ -20,6 +20,19 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
   <link id="pagestyle" href="<?= base_url('assets/css/material-dashboard.css?v=3.0.4') ?>" rel="stylesheet" />
+<style>
+  .circle-container {
+  display: flex;
+}
+
+.circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #000000;
+  margin-right: 10px;
+}
+</style>
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -54,9 +67,9 @@
         var currentUrl = window.location.href;
         $("a").each(function() {
             if ($(this).attr("href") === currentUrl) {
-                $(this).addClass("active bg-gradient-primary");
+                $(this).addClass("active bg-gradient-info");
             } else {
-                $(this).removeClass("active bg-gradient-primary");
+                $(this).removeClass("active bg-gradient-info");
             }
         });
     });

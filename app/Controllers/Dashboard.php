@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\UserModel;
 
+
 class Dashboard extends BaseController
 {
     public function index()
@@ -12,6 +13,7 @@ class Dashboard extends BaseController
         return view('page/dashboard');
     }
 
+    //Add User
     public function users()
     {
         $model = new UserModel();
@@ -27,7 +29,7 @@ class Dashboard extends BaseController
             $checkpointEmail    = $model->where('email', $data['email'])->first();
             if ($checkpointUsername) {
                 return $this->response->setJSON([
-                    'status' => false,
+                    'status' => false, 
                     'icon' => 'error',
                     'title' => 'Tambah User gagal!',
                     'text' => 'Username telah digunakan',
@@ -93,4 +95,5 @@ class Dashboard extends BaseController
             'isConfirm' => true,
         ]);
     }
+
 }

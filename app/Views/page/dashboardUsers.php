@@ -36,9 +36,10 @@
                                 <div class="input-group input-group-static mb-3">
                                 <label for="exampleFormControlSelect1" class="ms-0">Role</label>
                                   <select class="form-control" id="role" name="role">
-                                    <option value="admin">Admin</option>
-                                    <option value="penduduk">Penduduk</option>
-                                    <option value="pegawai">Pegawai</option>
+                                    <option value="warga">Warga</option>
+                                    <option value="pelayanan">Pelayanan</option>
+                                    <option value="pemerintahan">Pemerintahan</option>
+                                    <option value="keuangan">Keuangan</option>
                                   </select>
                                 </div>
                                 <div id="pass" class="input-group input-group-outline mb-3">

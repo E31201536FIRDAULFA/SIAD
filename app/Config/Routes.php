@@ -31,23 +31,130 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->match(['GET','POST'],'login','Auth::login');
+$routes->match(['GET','POST'],'loginadm','Auth::loginadm');
 $routes->match(['GET','POST'],'register','Auth::register');
 $routes->match(['GET','POST'],'login/lupa-password','Auth::LupaPassword');
 $routes->match(['GET','POST'],'reset-password/(:any)','Auth::ResetPassword/$1');
 $routes->get('logout', 'Auth::Logout');
 
-//Back end
+//Back end user
 $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
     //Profile
     $routes->match(['GET', 'POST'], 'profile/(:any)', 'Dashboard::profile/$1');
     //Main
     $routes->get('/', 'Dashboard::index');
-    //contoh table
+    //tabel user
     $routes->match(['GET', 'POST'], 'users', 'Dashboard::users');
     $routes->match(['GET', 'POST'], 'users/update/(:num)', 'Dashboard::usersUpdate/$1');
     $routes->get('users/delete/(:num)', 'Dashboard::usersDelete/$1');
     $routes->get('users/data', 'Dashboard::usersData');
+
+     //tabel kehilangan
+     $routes->group('kehilangan', function ($routes) {
+        //Main
+        $routes->match(['GET', 'POST'],'/', 'Kehilangan::index');
+        $routes->match(['GET', 'POST'], 'update/(:num)', 'Kehilangan::editKehilangan/$1');
+        $routes->get('delete/(:num)', 'Kehilangan::hapusKehilangan/$1');
+        $routes->get('data', 'Kehilangan::dataKehilangan');
+    });
+
+      //tabel SKTM
+      $routes->group('SKTM', function ($routes) {
+        //Main
+        $routes->match(['GET', 'POST'],'/', 'SKTM::index');
+        $routes->match(['GET', 'POST'], 'update/(:num)', 'SKTM::editSKTM/$1');
+        $routes->get('delete/(:num)', 'SKTM::hapusSKTM/$1');
+        $routes->get('data', 'SKTM::dataSKTM');
+        
+    });
+
+     //tabel SPU
+     $routes->group('SPU', function ($routes) {
+        //Main
+        $routes->match(['GET', 'POST'],'/', 'SPU::index');
+        $routes->match(['GET', 'POST'], 'update/(:num)', 'SPU::editSPU/$1');
+        $routes->get('delete/(:num)', 'SPU::hapusSPU/$1');
+        $routes->get('data', 'SPU::dataSPU');
+
+    });
+
+      //tabel KK
+      $routes->group('KK', function ($routes) {
+        //Main
+        $routes->match(['GET', 'POST'],'/', 'KK::index');
+        $routes->match(['GET', 'POST'], 'update/(:num)', 'KK::editKK/$1');
+        $routes->get('delete/(:num)', 'KK::hapusKK/$1');
+        $routes->get('data', 'KK::dataKK');
+    });
+
+      //tabel KTP
+      $routes->group('KTP', function ($routes) {
+        //Main
+        $routes->match(['GET', 'POST'],'/', 'KTP::index');
+        $routes->match(['GET', 'POST'], 'update/(:num)', 'KTP::editKTP/$1');
+        $routes->get('delete/(:num)', 'KTP::hapusKTP/$1');
+        $routes->get('data', 'KTP::dataKTP');
+    });
+
+    //tabel APBD
+    $routes->group('apbd', function ($routes) {
+      //Main
+      $routes->match(['GET', 'POST'],'/', 'apbd::index');
+      $routes->match(['GET', 'POST'], 'update/(:num)', 'apbd::editapbd/$1');
+      $routes->get('delete/(:num)', 'apbd::hapusapbd/$1');
+      $routes->get('data', 'apbd::dataapbd');
+  });
+
+   //tabel Warga
+   $routes->group('warga', function ($routes) {
+    //Main
+    $routes->match(['GET', 'POST'],'/', 'warga::index');
+    $routes->match(['GET', 'POST'],'riwayat', 'warga::riwayat');
+    $routes->match(['GET', 'POST'], 'update/(:num)', 'warga::editwarga/$1');
+    $routes->get('delete/(:num)', 'warga::hapuswarga/$1');
+    $routes->get('data', 'warga::datawarga');
+   
 });
+
+  //tabel Gaji
+  $routes->group('gaji', function ($routes) {
+    //Main
+    $routes->match(['GET', 'POST'],'/', 'gaji::index');
+    $routes->match(['GET', 'POST'],'riwayat', 'gaji::riwayat');
+    $routes->match(['GET', 'POST'], 'update/(:num)', 'gaji::editgaji/$1');
+    $routes->get('delete/(:num)', 'gaji::hapusgaji/$1');
+    $routes->get('data', 'gaji::datagaji');
+  
+  });
+
+   //tabel riwayat
+   $routes->group('skck', function ($routes) {
+    //Main
+    $routes->match(['GET', 'POST'],'/', 'skck::index');
+    $routes->match(['GET', 'POST'],'riwayat', 'skck::riwayat');
+    $routes->match(['GET', 'POST'], 'update/(:num)', 'skck::editskck/$1');
+    $routes->get('delete/(:num)', 'skck::hapusskck/$1');
+    $routes->get('data', 'skck::dataskck');
+  
+  });
+
+  //tabel riwayat
+  $routes->group('riwayat', function ($routes) {
+    //Main
+    $routes->match(['GET', 'POST'],'rsktm', 'riwayat::riwayatsktm');
+    $routes->match(['GET', 'POST'],'rspu', 'riwayat::riwayatspu');
+    $routes->match(['GET', 'POST'],'rgaji', 'riwayat::riwayatgaji');
+    $routes->match(['GET', 'POST'],'rktp', 'riwayat::riwayatktp');
+    $routes->match(['GET', 'POST'],'rkk', 'riwayat::riwayatkk');
+    $routes->match(['GET', 'POST'],'rkehilangan', 'riwayat::riwayatkehilangan');
+    $routes->match(['GET', 'POST'],'rskck', 'riwayat::riwayatskck');
+  });
+
+});
+
+//Back end Pengantar
+
+
 
 
 /*

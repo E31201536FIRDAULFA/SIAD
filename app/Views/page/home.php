@@ -1,11 +1,7 @@
 <?= $this->extend('layout/homeLayout') ?>
 <?= $this->section('content') ?>
-    <?= $this->include('layout/partials/homeFeaturedService') ?>
+<br><br><br>
     <?= $this->include('layout/partials/homeAbout') ?>
+    <br>
     <?= $this->include('layout/partials/homeService') ?>
-    <?= $this->include('layout/partials/homeCTA') ?>
-    <?= $this->include('layout/partials/homeFeature') ?>
-    <?= $this->include('layout/partials/homePricing') ?>
-    <?= $this->include('layout/partials/homeTestimonial') ?>
-    <?= $this->include('layout/partials/homeFAQ') ?>
 <?= $this->endSection() ?>

@@ -59,6 +59,44 @@ class Auth extends BaseController
         return view('page/auth/SignIn');
     }
 
+    public function loginadm()
+    {
+        $model = new UserModel();
+        if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
+            $username = $this->request->getPost('username');
+            $password = $this->request->getPost('password');
+            $checkpointData = $model->where('email', $username)
+                                    ->orWhere('username', $username)
+                                    ->first();
+            if ($checkpointData) {
+                if (password_verify($password, $checkpointData['password'])) {
+                    $this->setUserSession($checkpointData);
+                    return $this->response->setJSON([
+                        'status' => true,
+                        'icon' => 'success',
+                        'title' => 'Login Berhasil!',
+                        'text' => 'Anda akan diarahkan dalam 3 detik.',
+                    ]);
+                } else {
+                    return $this->response->setJSON([
+                        'status' => false,
+                        'icon' => 'error',
+                        'title' => 'Oops....',
+                        'text' => 'Password salah!',
+                    ]);
+                }
+            } else {
+                return $this->response->setJSON([
+                    'status' => false,
+                    'icon' => 'error',
+                    'title' => 'Oops....',
+                    'text' => 'Invalid Username/Email!',
+                ]);
+            }
+        }
+        return view('page/auth/Signadm');
+    }
+
     public function register()
     {
         $model = new UserModel();
@@ -68,7 +106,7 @@ class Auth extends BaseController
                 'username'  => $this->request->getPost('username'),
                 'password'  => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
                 'email'     => $this->request->getPost('email'),
-                'role'      => 'penduduk',
+                'role'      => 'masterdata',
             ];
             $checkpointUsername = $model->where('username', $data['username'])->first();
             $checkpointEmail    = $model->where('email', $data['email'])->first();
