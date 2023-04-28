@@ -4,15 +4,20 @@ namespace App\Controllers;
 
 use CodeIgniter\API\ResponseTrait;
 use App\Models\riwayatModel;
-use App\Models\kehilanganModel;
+use App\Models\KehilanganModel;
 use App\Models\SKTMModel;
 use App\Models\SPUModel;
 use App\Models\UserModel;
+use App\Models\KKModel;
+use App\Models\KTPModel;
+use App\Models\gajiModel;
+use App\Models\skckModel;
 
 class riwayat extends BaseController
 {
 public function riwayatsktm()
 {
+   
     return view('page/partials/Riwayat/sktmriwayat');
 }
 

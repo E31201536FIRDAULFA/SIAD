@@ -13,8 +13,8 @@
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jenis</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No Surat</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">NIK</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jenis Kelamin</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pekerjaan</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Alamat</th>
@@ -39,6 +39,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script src="<?= base_url('js/SignOut.js') ?>"></script>
 <script src="<?= base_url('js/Modules.js') ?>"></script>
-<script src="<?= base_url('js/surat/kehilangan/getKehilangan.js') ?>"></script>
-<script src="<?= base_url('js/surat/kehilangan/saveKehilangan.js') ?>"></script>
+<script src="<?= base_url('js/riwayat/Kehilangan.js') ?>"></script>
 <?= $this->endSection() ?>

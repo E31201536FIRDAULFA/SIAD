@@ -1,107 +1,19 @@
-      <div class="row">
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">weekend</i>
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Surat Saya</p>
-                <h4 class="mb-0">Surat Pengantar</h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-            <button type="button" class="btn bg-gradient-dark mb-0">Ajukan</button>
-            </div>
+<div class="col-12">
+  <div class="card mb-4">
+     <div class="card-header pb-0">
+       <center><h2> SELAMAT DATANG DILAYANAN DIGITALISASI ADMINISTRASI BALAI DESA PANDUMAN KAB. JEMBER</h2></center>
+        <br>
+          <div style="color:#00b300; background:#ccffcc; border:0px dashed #006600;padding:5px;margin:10px;">
+                <b>Selamat Datang!</b> akses ini hanya diberikan kepada seluruh warga desa Panduman<b>. Digitalisasi Sistem </b> menyuguhkan beberapa layanan yang dapat dinikmati dalam genggaman jari saja tanpa harus berdesak-desakan antri dan menciptakan sebuah kerumunan.
           </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-            <div class="icon icon-lg icon-shape bg-gradient-warning shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">weekend</i>
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Surat Saya</p>
-                <h4 class="mb-0">Surat Kehilangan</h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-            <button type="button" class="btn bg-gradient-warning mb-0">Ajukan</button>
-            </div>
+
+          <div style="color:#00a3cc; background: #b3f0ff; border:0px dashed #006600;padding:5px;margin:10px;">
+                Berikut merupakan beberapa<b> Layanan</b> yang dapat diakses dan dinikmati :
+              <br>1. Layanan Digitalisasi Surat-menyurat
+              <br>2. Layanan Digitalisasi Fasilitas Informasi
+              <br>3. Layanan Digitalisasi Administrasi
           </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-            <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">weekend</i>
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Surat Saya</p>
-                <h4 class="mb-0">SKTM</h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-            <button type="button" class="btn bg-gradient-dark mb-0">Ajukan</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6">
-        <div class="card">
-            <div class="card-header p-3 pt-2">
-            <div class="icon icon-lg icon-shape bg-gradient-warning shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">weekend</i>
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Surat Saya</p>
-                <h4 class="mb-0">Surat Pengajuan Usaha</h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-            <button type="button" class="btn bg-gradient-warning mb-0">Ajukan</button>
-              </div>
-            </div>
-    </div>
-    </div>
-    <br>
-    <div class="col-xl-3 col-sm-6">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-            <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">weekend</i>
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Surat Saya</p>
-                <h4 class="mb-0">Surat Penghasilan/Gaji</h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-            <button type="button" class="btn bg-gradient-dark mb-0">Ajukan</button>
-          </div>
-        </div>
+
       </div>
-      
-      <div class="col-xl-3 col-sm-6">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-            <div class="icon icon-lg icon-shape bg-gradient-warning shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">weekend</i>
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Surat Saya</p>
-                <h4 class="mb-0">SKCK</h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-            <button type="button" class="btn bg-gradient-warning mb-0">Ajukan</button>
-   
-          </div>
-        </div>
-      </div>
+   </div>
+ </div>

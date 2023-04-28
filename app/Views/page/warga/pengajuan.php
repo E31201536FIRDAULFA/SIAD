@@ -119,7 +119,7 @@
             </div>
             <hr class="dark horizontal my-0">
             <div class="card-footer p-3">
-            <a class="btn bg-gradient-dark mb-0" href="<?= base_url('dashboard/riwayat/rkK') ?>">Cek Riwayat</a>
+            <a class="btn bg-gradient-dark mb-0" href="<?= base_url('dashboard/riwayat/rkk') ?>">Cek Riwayat</a>
             </div>
           </div>
         </div>

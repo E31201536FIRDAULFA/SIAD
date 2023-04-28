@@ -3,6 +3,9 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
+          <div style="color:#00b300; background:#ccffcc; border:0px dashed #006600;padding:5px;margin:10px;">
+                <b>Pengajuan Surat Pengajuan Usaha</b> merupakan surat yang dibuat untuk mempermudah masyarakat dalam menjelaskan bahwa perorangan memiliki<b> Suatu Usaha</b>. surat ini dapat menjadi syarat penting dalam pengajuan bantuan umkm dan lain sebagainya. inputkan data masyarakat yang hendak mengajukan surat pengajuan usaha dengan detail dan benar, lalu kirimkan file surat yang telah siap kepada masyarakat.
+          </div>
             <div class="card-header pb-0">
               <h6>List Pengajuan</h6>
               <button type="button" class="btn btn-lg btn-info btn-lg w-100 mt-4 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -135,6 +138,11 @@
 
         </div>
       </div>
+
+      <div class="card-footer p-3">
+                  <a class="btn bg-gradient-dark mb-0" href="<?= base_url('dashboard/pdf/pdfSPU') ?>">Cetak Pdf</a>
+      </div>
+
 <?= $this->endSection() ?>
 <?= $this->section('scripts') ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>

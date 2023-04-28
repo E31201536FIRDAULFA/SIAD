@@ -108,7 +108,7 @@ $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
    //tabel Warga
    $routes->group('warga', function ($routes) {
     //Main
-    $routes->match(['GET', 'POST'],'/', 'warga::index');
+    $routes->match(['GET', 'POST'],'surat', 'warga::surat');
     $routes->match(['GET', 'POST'],'riwayat', 'warga::riwayat');
     $routes->match(['GET', 'POST'], 'update/(:num)', 'warga::editwarga/$1');
     $routes->get('delete/(:num)', 'warga::hapuswarga/$1');
@@ -148,6 +148,19 @@ $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
     $routes->match(['GET', 'POST'],'rkk', 'riwayat::riwayatkk');
     $routes->match(['GET', 'POST'],'rkehilangan', 'riwayat::riwayatkehilangan');
     $routes->match(['GET', 'POST'],'rskck', 'riwayat::riwayatskck');
+  });
+
+  $routes->group('pdf', function ($routes) {
+    $routes->get('/', 'PdfController::index');
+    $routes->get('pdfktp', 'PdfController::generatektp');
+    $routes->get('pdfkk', 'PdfController::generatekk');
+    $routes->get('pdfAPBD', 'PdfController::generateAPBD');
+    $routes->get('pdfSPU', 'PdfController::generateSPU');
+    $routes->get('pdfSKTM', 'PdfController::generatekk');
+    $routes->get('pdfskck', 'PdfController::generateskck');
+    $routes->get('pdfgaji', 'PdfController::generategaji');
+    $routes->get('pdfKehilangan', 'PdfController::generateKehilangan');
+    
   });
 
 });

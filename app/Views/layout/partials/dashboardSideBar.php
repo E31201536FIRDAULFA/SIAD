@@ -8,13 +8,6 @@
     <hr class="horizontal light mt-0 mb-2">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a id="menu-item-1" class="nav-link text-white " href="<?= base_url('dashboard/warga') ?>">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            </div>
-            <span class="nav-link-text ms-1">Dashboard</span>
-          </a>
-        </li>
         <?php if(session()->get('role') === 'masterdata'): ?>
   
         <li class="nav-item">
@@ -210,11 +203,19 @@
        
         <?php elseif(session()->get('role') === 'warga'): ?>
 
+          <li class="nav-item">
+          <a id="menu-item-2" class="nav-link text-white " href="<?= base_url('dashboard/warga/surat') ?>">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            </div>
+            <span class="nav-link-text ms-1">Pengajuan Saya</span>
+          </a>
+        </li>
+
         <li class="nav-item">
           <a id="menu-item-2" class="nav-link text-white " href="<?= base_url('dashboard/warga/riwayat') ?>">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             </div>
-            <span class="nav-link-text ms-1">Pengajuan Saya</span>
+            <span class="nav-link-text ms-1">Riwayat Saya</span>
           </a>
         </li>
     <?php endif ?>

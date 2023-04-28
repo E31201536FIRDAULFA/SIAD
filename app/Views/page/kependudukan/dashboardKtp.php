@@ -3,6 +3,9 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
+          <div style="color:#00b300; background:#ccffcc; border:0px dashed #006600;padding:5px;margin:10px;">
+                <b>Pengajuan pengantar KTP</b> bertujuan untuk mempermudah masyarakat untuk proses<b> Pembuatan E-KTP Baru</b>. inputkan data masyarakat yang hendak membuat e-ktp baru dengan detail dan benar, lalu kirimkan file surat pengantar yang telah siap kepada masyarakat.
+            </div>
             <div class="card-header pb-0">
               <h6>List Pengajuan</h6>
               <button type="button" class="btn btn-info btn-lg w-100 mt-4 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -94,6 +97,10 @@
                 </table>
               </div>
             </div>
+                <div class="card-footer p-3">
+                  <a class="btn bg-gradient-dark mb-0" href="<?= base_url('dashboard/pdf/pdfktp') ?>">Cetak Pdf</a>
+                </div>
+
           </div>
         </div>
       </div>

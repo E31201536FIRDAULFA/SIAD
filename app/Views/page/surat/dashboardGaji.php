@@ -3,6 +3,9 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
+          <div style="color:#00b300; background:#ccffcc; border:0px dashed #006600;padding:5px;margin:10px;">
+                <b>Pengajuan Surat Keterangan Gaji/Penghasilan</b> merupakan surat yang dibuat untuk mempermudah masyarakat dalam menjelaskan bahwa perorangan tidak memiliki<b> SLIP GAJI</b>. inputkan data masyarakat yang hendak mengajukan surat keterangan penghasilan dengan detail dan benar, lalu kirimkan file surat yang telah siap kepada masyarakat.
+          </div>
             <div class="card-header pb-0">
               <h6>List Pengajuan</h6>
               <button type="button" class="btn btn-lg btn-info btn-lg w-100 mt-4 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -123,6 +126,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="card-footer p-3">
+                  <a class="btn bg-gradient-dark mb-0" href="<?= base_url('dashboard/pdf/pdfgaji') ?>">Cetak Pdf</a>
       </div>
 <?= $this->endSection() ?>
 <?= $this->section('scripts') ?>

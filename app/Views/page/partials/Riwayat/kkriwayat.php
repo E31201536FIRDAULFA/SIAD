@@ -33,6 +33,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script src="<?= base_url('js/SignOut.js') ?>"></script>
 <script src="<?= base_url('js/Modules.js') ?>"></script>
-<script src="<?= base_url('js/KEPENDUDUKAN/kk/getKK.js') ?>"></script>
-<script src="<?= base_url('js/KEPENDUDUKAN/kk/saveKK.js') ?>"></script>
+<script src="<?= base_url('js/riwayat/KK.js') ?>"></script>
 <?= $this->endSection() ?>

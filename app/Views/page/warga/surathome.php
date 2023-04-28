@@ -93,7 +93,7 @@
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Pengantar Saya</p>
-                <h4 class="mb-0">Pengajuan KTP</h4>
+                <h4 class="mb-0">Pengajuan KK</h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -133,7 +133,7 @@
 
                         
                                 <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">Scan KK</label>
+                                  <label class="form-label">Scan KTP</label>
                                   <input id="scankk" type="text" class="form-control" name="scankk">
                                 </div>
 

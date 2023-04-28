@@ -8,7 +8,7 @@ use App\Models\UserModel;
 
 class warga extends BaseController
 {
-    public function index()
+    public function surat()
     {
         return view('page/warga/dashboardwarga');
     }
