@@ -1,12 +1,10 @@
 function saveKK() {
-    const id = $("#id").val();
-    const tgl = $("#tgl1").val();
-    const nama = $("#nama").val();
-    const nik = $("#nik").val();
-    const scankk = $("#scankk").val();
-    const status = $("#status").val();
-    const keterangan = $("#keterangan").val();
-    console.log(tgl)
+    const tgl = $("#tglKK").val();
+    const nama = $("#namaKK").val();
+    const nik = $("#nikKK").val();
+    const scanktp = $("#scanktpKK").val();
+    const status = $("#statusKK").val();
+    const keterangan = $("#keteranganKK").val();
 
     url = base_url + 'dashboard/KK';
     if (tgl.length == "") {
@@ -19,17 +17,16 @@ function saveKK() {
             title: 'Oops...',
             text: 'Nama harus diisi!'
         });
-
+    } else if (scanktp.length == "") {
+        Swal.fire({
+            title: 'Oops...',
+            text: 'Scan KK harus diisi!'
+        });
     } else if (nik.length == "") {
         Swal.fire({
             title: 'Oops...',
             text: 'Nik harus diisi!'
 
-        });
-    } else if (scanktp.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Scan KK harus diisi!'
         });
     } else if (status.length == "") {
         Swal.fire({
@@ -45,7 +42,14 @@ function saveKK() {
         $.ajax({
             url: url,
             type: 'POST',
-            data: $('#form1').serialize(),
+            data: {
+                "tgl": tgl,
+                "nama": nama,
+                "nik": nik,
+                "scanktp": scanktp,
+                "status": status,
+                "keterangan": keterangan,
+            },
             dataType: "JSON",
             success: function (respond) {
                 if (respond.status == true) {
