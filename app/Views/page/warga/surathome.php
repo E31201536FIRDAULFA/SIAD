@@ -112,34 +112,31 @@
                         </div>
 
                      <!--POP UP TAMBAH PENGAJUAN-->
-                          <div class="modal-body">
-                            <form id="form1">
-                               <div class="input-group input-group-static mb-3">
+                            <div class="modal-body">
+                              <form id="formKK">
+                                <div class="input-group input-group-static mb-3">
                                   <label class="form-label">Tanggal</label>
-                                  <input id="tgl1" type="date" class="form-control" name="tgl1">
-                                  
+                                  <input id="tglKK" type="date" class="form-control">
                                 </div>
-
-                            
                                 <div class="input-group input-group-static mb-3">
                                   <label class="form-label">Nama</label>
-                                  <input id="nama" type="text" class="form-control" name="nama">
+                                  <input id="namaKK" type="text" class="form-control">
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
                                   <label class="form-label">NIK</label>
-                                  <input id="nik" type="text" class="form-control" name="nik">
+                                  <input id="nikKK" type="text" class="form-control">
                                 </div>
 
                         
                                 <div class="input-group input-group-static mb-3">
                                   <label class="form-label">Scan KTP</label>
-                                  <input id="scankk" type="text" class="form-control" name="scankk">
+                                  <input id="scanktpKK" type="text" class="form-control">
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
                                 <label for="exampleFormControlSelect1" class="ms-0">Status Surat</label>
-                                  <select class="form-control" id="status" name="status">
+                                  <select class="form-control" id="statusKK">
                                     <option value="diterima">Diterima</option>
                                     <option value="ditolak">Ditolak</option>
                                     <option value="pending">Pending</option>
@@ -148,19 +145,17 @@
 
                                 <div class="input-group input-group-static mb-3">
                                 <label for="exampleFormControlSelect1" class="ms-0">Keterangan</label>
-                                  <select class="form-control" id="keterangan" name="keterangan">
+                                  <select class="form-control" id="keteranganKK">
                                     <option value="Pengajuan Sedang Diproses">Pengajuan Sedang Diproses</option>
                                     <option value="Pengajuan Selesai">Pengajuan Selesai</option>
                                     <option value="Pengajuan Ditolak, Lengkapi Persyaratan Dengan Benar">Pengajuan Ditolak, Lengkapi Persyaratan Dengan Benar</option>
                                   </select>
                                 </div>
-
-
                                 <div class="mt-3">
-                                  <button type="button" class="btn bg-gradient-success btn-lg w-100 mt-4 mb-0" onclick="saveKK()">Simpan</button>
+                                  <button type="button" onclick="saveKK()" class="btn bg-gradient-success btn-lg w-100 mt-4 mb-0">Simpan</button>
                                 </div>
-                            </form>
-                          </div>
+                              </form>
+                            </div>
                         <div class="modal-footer">
                             <button type="button" class="btn bg-gradient-info btn-lg w-100 mt-4 mb-0" data-bs-dismiss="modal">Close</button>
                         </div>

@@ -34,7 +34,7 @@ function saveKtp() {
                 title: 'Oops...',
                 text: 'Nama harus diisi!'
             });
-        } else if (keterangan.length == "") {
+        } else if (ket.length == "") {
             Swal.fire({
                 title: 'Oops...',
                 text: 'surat harus diupload!'
