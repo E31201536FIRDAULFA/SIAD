@@ -14,7 +14,7 @@
 
 <table width="100%" cellspacing="1" border="1">
         
-                <?php foreach ($dataskck as $value) : ?>
+                
 
                   <tr>
                     <th>Tanggal</th>            
@@ -32,6 +32,7 @@
 
                   </tr>
 
+                  <?php foreach ($dataskck as $value) : ?>
                   <tr>
                     <td align="center"><?= $value['tgl']; ?></td> 
                     <td align="center"><?= $value['nsurat']; ?></td>                    

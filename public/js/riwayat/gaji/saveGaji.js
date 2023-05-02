@@ -1,35 +1,27 @@
-function saveKehilangan() {
+function saveGaji() {
     const id = $("#id").val();
-    const tgl = $("#tglkehilangan").val();
-    const jenis_surat = $("#jenis_suratkehilangan").val();
-    const nsurat = $("#nsuratkehilangan").val();
-    const nama = $("#namakehilangan").val();
-    const nik = $("#nikkehilangan").val();
-    const jk = $("#jkkehilangan").val();
-    const pekerjaan = $("#pekerjaankehilangan").val();
-    const alamat = $("#alamatkehilangan").val();
-    const keperluan = $("#keperluankehilangan").val();
-    const ket = $("#ketkehilangan").val();
-    const tgl_berlaku = $("#tgl_berlakukehilangan").val();
-    const status = $("#statuskehilangan").val();
-    const suratkehilangan = $("#suratkehilangan").val();
+    const tgl = $("#tglgaji").val();
+    const nsurat = $("#nsuratgaji").val();
+    const nama = $("#namagaji").val();
+    const nik = $("#nikgaji").val();
+    const ttl = $("#ttlgaji").val();
+    const pekerjaan = $("#pekerjaangaji").val();
+    const no_kip = $("#no_kipgaji").val();
+    const no_kis = $("#no_kisgaji").val();
+    const ket = $("#ketgaji").val();
+    const status = $("#statusgaji").val();
+    const Surat = $("#Suratgaji").val();
 
-    url = base_url + 'dashboard/kehilangan/';
-
+    url = base_url + 'dashboard/gaji/';
     if (tgl.length == "") {
         Swal.fire({
             title: 'Oops...',
-            text: 'Nama harus diisi!'
-        });
-    } else if (jenis_surat.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nama harus diisi!'
+            text: 'tgl harus diisi!'
         });
     } else if (nsurat.length == "") {
         Swal.fire({
             title: 'Oops...',
-            text: 'Nama harus diisi!'
+            text: 'Nomor harus diisi!'
         });
     } else if (nama.length == "") {
         Swal.fire({
@@ -39,66 +31,59 @@ function saveKehilangan() {
     } else if (nik.length == "") {
         Swal.fire({
             title: 'Oops...',
-            text: 'Nama harus diisi!'
+            text: 'Nik harus diisi!'
         });
-    } else if (jk.length == "") {
+    } else if (ttl.length == "") {
         Swal.fire({
             title: 'Oops...',
-            text: 'Nama harus diisi!'
+            text: 'Ttl harus diisi!'
         });
     } else if (pekerjaan.length == "") {
         Swal.fire({
             title: 'Oops...',
-            text: 'Nama harus diisi!'
+            text: 'pekerjaan harus diisi!'
         });
-    } else if (alamat.length == "") {
+    } else if (no_kip.length == "") {
         Swal.fire({
             title: 'Oops...',
-            text: 'Nama harus diisi!'
+            text: 'No KIP harus diisi!'
         });
-    } else if (keperluan.length == "") {
+    } else if (no_kis.length == "") {
         Swal.fire({
             title: 'Oops...',
-            text: 'Nama harus diisi!'
+            text: 'No KIS harus diisi!'
         });
     } else if (ket.length == "") {
         Swal.fire({
             title: 'Oops...',
-            text: 'Nama harus diisi!'
-        });
-    } else if (tgl_berlaku.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nama harus diisi!'
+            text: 'Keterangan usaha harus diisi!'
         });
     } else if (status.length == "") {
         Swal.fire({
             title: 'Oops...',
             text: 'Nama harus diisi!'
         });
-    } else if (suratkehilangan.length == "") {
+    } else if (Surat.length == "") {
         Swal.fire({
             title: 'Oops...',
-            text: 'Nama harus diisi!'
+            text: 'Surat harus diupload!'
         });
     } else {
-        $.ajax({
+        $.ajax({ //tembak data ke db
             url: url,
             type: 'POST',
             data: {
                 "tgl": tgl,
-                "jenis_surat": jenis_surat,
                 "nsurat": nsurat,
                 "nama": nama,
                 "nik": nik,
-                "jk": jk,
+                "ttl": ttl,
                 "pekerjaan": pekerjaan,
-                "alamat": alamat,
-                "keperluan": keperluan,
+                "no_kip": no_kip,
+                "no_kis": no_kis,
                 "ket": ket,
-                "tgl_berlaku": tgl_berlaku,
                 "status": status,
-                "suratkehilangan": suratkehilangan,
+                "Surat": Surat,
             },
             dataType: "JSON",
             success: function (respond) {

@@ -4,8 +4,8 @@ function saveKehilangan() {
     const jenis_surat = $("#jenis_suratkehilangan").val();
     const nsurat = $("#nsuratkehilangan").val();
     const nama = $("#namakehilangan").val();
-    const nik = $("#nikkehilangan").val();
     const jk = $("#jkkehilangan").val();
+    const nik = $("#nikkehilangan").val();
     const pekerjaan = $("#pekerjaankehilangan").val();
     const alamat = $("#alamatkehilangan").val();
     const keperluan = $("#keperluankehilangan").val();
@@ -14,13 +14,14 @@ function saveKehilangan() {
     const status = $("#statuskehilangan").val();
     const suratkehilangan = $("#suratkehilangan").val();
 
-    url = base_url + 'dashboard/kehilangan/';
 
+    url = base_url + 'dashboard/kehilangan/';
     if (tgl.length == "") {
         Swal.fire({
             title: 'Oops...',
             text: 'Nama harus diisi!'
         });
+
     } else if (jenis_surat.length == "") {
         Swal.fire({
             title: 'Oops...',
@@ -36,12 +37,12 @@ function saveKehilangan() {
             title: 'Oops...',
             text: 'Nama harus diisi!'
         });
-    } else if (nik.length == "") {
+    } else if (jk.length == "") {
         Swal.fire({
             title: 'Oops...',
             text: 'Nama harus diisi!'
         });
-    } else if (jk.length == "") {
+    } else if (nik.length == "") {
         Swal.fire({
             title: 'Oops...',
             text: 'Nama harus diisi!'
@@ -82,7 +83,7 @@ function saveKehilangan() {
             text: 'Nama harus diisi!'
         });
     } else {
-        $.ajax({
+        $.ajax({ //tembak data ke db
             url: url,
             type: 'POST',
             data: {
@@ -130,4 +131,4 @@ function saveKehilangan() {
             }
         });
     }
-}
+} 

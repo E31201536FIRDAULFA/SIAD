@@ -56,8 +56,8 @@
                                 <div class="input-group input-group-static mb-3">
                                 <label for="exampleFormControlSelect1" class="ms-0">Jenis Kelamin</label>
                                   <select class="form-control" id="jk" name="jk">
-                                    <option value="laki-laki">Laki-Laki</option>
-                                    <option value="perempuan">Perempuan</option>
+                                    <option value="Laki-laki">Laki-Laki</option>
+                                    <option value="Perempuan">Perempuan</option>
                                   </select>
                                 </div>
 

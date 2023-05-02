@@ -14,7 +14,7 @@
 
 <table width="100%" cellspacing="1" border="1">
         
-                <?php foreach ($dataAPBD as $value) : ?>
+               
 
                   <tr>
                     <th>Tanggal</th>
@@ -22,20 +22,17 @@
                     <th>Jenis</th>
                     <th>Anggaran</th>
                     <th>Sumber Dana</th>
-                    <th>Tgl Pembahasan</th>
-                    
-                    
+                    <th>Tgl Pembahasan</th>                                        
                   </tr>
 
+                  <?php foreach ($dataAPBD as $value) : ?>
                   <tr>
                     <td align="center"><?= $value['tgl']; ?></td>
                     <td align="center"><?= $value['penyelenggara']; ?></td>                      
                     <td align="center"><?= $value['jenis']; ?></td>
                     <td align="center"><?= $value['anggaran']; ?></td>                    
                     <td align="center"><?= $value['sumberdana']; ?></td> 
-                    <td align="center"><?= $value['tgl_pembahasan']; ?></td>                      
-                  
-
+                    <td align="center"><?= $value['tgl_pembahasan']; ?></td>                                        
                   </tr>
 
                 <?php endforeach ?>

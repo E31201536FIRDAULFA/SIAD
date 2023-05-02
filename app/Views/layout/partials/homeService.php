@@ -10,7 +10,7 @@
 
         <div class="row gy-4">
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="card">
               <div class="card-img">
                 <img src="<?= base_url('assets_fe/img/doc.jpg') ?>" alt="" class="img-fluid">
@@ -22,7 +22,7 @@
           </div><!-- End Card Item -->
 
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="card">
               <div class="card-img">
               <img src="<?= base_url('assets_fe/img/doc.jpg') ?>" alt="" class="img-fluid">

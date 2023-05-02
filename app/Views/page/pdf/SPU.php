@@ -14,7 +14,7 @@
 
 <table width="100%" cellspacing="1" border="1">
         
-                <?php foreach ($dataSPU as $value) : ?>
+               
 
                   <tr>
                     <th>Tanggal</th>                   
@@ -27,10 +27,10 @@
                     <th>Nama Usaha</th>
                     <th>Jenis Usaha</th>
                     <th>Alamat Usaha</th>
-                    <th>Status</th>
-                    
+                    <th>Status</th>                    
                   </tr>
 
+                  <?php foreach ($dataSPU as $value) : ?>
                   <tr>
                     <td align="center"><?= $value['tgl']; ?></td>  
                     <td align="center"><?= $value['nsurat']; ?></td>                  
@@ -43,7 +43,6 @@
                     <td align="center"><?= $value['alamat_usaha']; ?></td>
                     <td align="center"><?= $value['status']; ?></td>
                   </tr>
-
                 <?php endforeach ?>
                  
                  

@@ -34,7 +34,7 @@ class SPU extends BaseController
                 return $this->response->setJSON([
                     'status' => true,
                     'icon' => 'success',
-                    'title' => 'Tambah Pengajuan Surat SPU Berhasil!',
+                    'title' => 'Tambah Pengajuan Surat Pengajuan Usaha Berhasil!',
                     'text' => 'Pop up ini akan hilang dalam 3 detik.',
                 ]); 
             }

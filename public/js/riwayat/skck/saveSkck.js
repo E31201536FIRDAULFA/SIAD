@@ -1,35 +1,30 @@
-function saveKehilangan() {
+function saveSkck() {
     const id = $("#id").val();
-    const tgl = $("#tglkehilangan").val();
-    const jenis_surat = $("#jenis_suratkehilangan").val();
-    const nsurat = $("#nsuratkehilangan").val();
-    const nama = $("#namakehilangan").val();
-    const nik = $("#nikkehilangan").val();
-    const jk = $("#jkkehilangan").val();
-    const pekerjaan = $("#pekerjaankehilangan").val();
-    const alamat = $("#alamatkehilangan").val();
-    const keperluan = $("#keperluankehilangan").val();
-    const ket = $("#ketkehilangan").val();
-    const tgl_berlaku = $("#tgl_berlakukehilangan").val();
-    const status = $("#statuskehilangan").val();
-    const suratkehilangan = $("#suratkehilangan").val();
+    const tgl = $("#tglskck").val();
+    const nsurat = $("#nsuratskck").val();
+    const nama = $("#namaskck").val();
+    const nik = $("#nikskck").val();
+    const ttl = $("#ttlskck").val();
+    const jk = $("#jkskck").val();
+    const agama = $("#agamaskck").val();
+    const kewarganegaraan = $("#kewarganegaraanskck").val();
+    const perkawinan = $("#perkawinanskck").val();
+    const pekerjaan = $("#pekerjaanskck").val();
+    const alamat = $("#alamatskck").val();
+    const status = $("#statusskck").val();
+    const surat = $("#suratskck").val();
 
-    url = base_url + 'dashboard/kehilangan/';
 
+    url = base_url + 'dashboard/skck/';
     if (tgl.length == "") {
         Swal.fire({
             title: 'Oops...',
-            text: 'Nama harus diisi!'
-        });
-    } else if (jenis_surat.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nama harus diisi!'
+            text: 'tgl harus diisi!'
         });
     } else if (nsurat.length == "") {
         Swal.fire({
             title: 'Oops...',
-            text: 'Nama harus diisi!'
+            text: 'No Surat harus diisi!'
         });
     } else if (nama.length == "") {
         Swal.fire({
@@ -39,47 +34,52 @@ function saveKehilangan() {
     } else if (nik.length == "") {
         Swal.fire({
             title: 'Oops...',
-            text: 'Nama harus diisi!'
+            text: 'Nik harus diisi!'
+        });
+    } else if (ttl.length == "") {
+        Swal.fire({
+            title: 'Oops...',
+            text: 'ttl harus diisi!'
         });
     } else if (jk.length == "") {
         Swal.fire({
             title: 'Oops...',
-            text: 'Nama harus diisi!'
+            text: 'jk harus diisi!'
+        });
+    } else if (agama.length == "") {
+        Swal.fire({
+            title: 'Oops...',
+            text: 'agama harus diisi!'
+        });
+    } else if (kewarganegaraan.length == "") {
+        Swal.fire({
+            title: 'Oops...',
+            text: 'kewarganegaraan harus diisi!'
+        });
+    } else if (perkawinan.length == "") {
+        Swal.fire({
+            title: 'Oops...',
+            text: 'perkawinan harus diisi!'
         });
     } else if (pekerjaan.length == "") {
         Swal.fire({
             title: 'Oops...',
-            text: 'Nama harus diisi!'
+            text: 'pekerjaan harus diisi!'
         });
     } else if (alamat.length == "") {
         Swal.fire({
             title: 'Oops...',
-            text: 'Nama harus diisi!'
-        });
-    } else if (keperluan.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nama harus diisi!'
-        });
-    } else if (ket.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nama harus diisi!'
-        });
-    } else if (tgl_berlaku.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nama harus diisi!'
+            text: 'alamat harus diisi!'
         });
     } else if (status.length == "") {
         Swal.fire({
             title: 'Oops...',
             text: 'Nama harus diisi!'
         });
-    } else if (suratkehilangan.length == "") {
+    } else if (surat.length == "") {
         Swal.fire({
             title: 'Oops...',
-            text: 'Nama harus diisi!'
+            text: 'surat harus diupload!'
         });
     } else {
         $.ajax({
@@ -87,18 +87,18 @@ function saveKehilangan() {
             type: 'POST',
             data: {
                 "tgl": tgl,
-                "jenis_surat": jenis_surat,
                 "nsurat": nsurat,
                 "nama": nama,
                 "nik": nik,
+                "ttl": ttl,
                 "jk": jk,
+                "agama": agama,
+                "kewarganegaraan": kewarganegaraan,
+                "perkawinan": perkawinan,
                 "pekerjaan": pekerjaan,
                 "alamat": alamat,
-                "keperluan": keperluan,
-                "ket": ket,
-                "tgl_berlaku": tgl_berlaku,
                 "status": status,
-                "suratkehilangan": suratkehilangan,
+                "surat": surat,
             },
             dataType: "JSON",
             success: function (respond) {

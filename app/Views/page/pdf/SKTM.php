@@ -14,7 +14,7 @@
 
 <table width="100%" cellspacing="1" border="1">
         
-                <?php foreach ($dataSKTM as $value) : ?>
+               
 
                   <tr>
                     <th>Tanggal</th>
@@ -35,6 +35,7 @@
                     
                   </tr>
 
+                  <?php foreach ($dataSKTM as $value) : ?>
                   <tr>
                     <td align="center"><?= $value['tgl']; ?></td>  
                     <td align="center"><?= $value['nsurat']; ?></td>                                      
@@ -50,10 +51,8 @@
                     <td align="center"><?= $value['alamatayah']; ?></td>
                     <td align="center"><?= $value['gaji']; ?></td> 
                     <td align="center"><?= $value['keperluan']; ?></td>                                                                                                                                           
-                    <td align="center"><?= $value['status']; ?></td>                  
-               
+                    <td align="center"><?= $value['status']; ?></td>                                 
                   </tr>
-
                 <?php endforeach ?>
                  
                  

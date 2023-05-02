@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: base_url + "dashboard/SKTM/data",
+        url: base_url + "dashboard/SPU/data",
         type: "GET",
         dataType: "json",
         success: function (respond) {
@@ -11,26 +11,22 @@ $(document).ready(function () {
                 let no = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(number++);
                 let tgl = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].tgl);
                 let nsurat = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nsurat);
-                let nik = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nik);
                 let nama = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nama);
+                let nik = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nik);
                 let jk = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].jk);
                 let ttl = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].ttl);
-                let stswarga = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].stswarga);
-                let nama_ayah = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nama_ayah);
-                let ttlayah = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].ttlayah);
-                let agama = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].agama);
-                let pekerjaan = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].pekerjaan);
-                let alamatayah = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].alamatayah);
-                let gaji = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].gaji);
-                let keperluan = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].keperluan);
+                let alamat = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].alamat);
+                let nama_usaha = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nama_usaha);
+                let jenis_usaha = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].jenis_usaha);
+                let alamat_usaha = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].alamat_usaha);
                 let status = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].status);
-                let suratsktm = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].suratsktm);
+                let suratspu = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].suratspu);
                 let buttonEdit = $('<button type="button" class="btn bg-gradient-success mb-0"></button>').text('Edit').attr('id', respond[i].id);
                 buttonEdit.click(function () {
                     $('#form')[0].reset();
                     var id = $(this).attr('id');
                     $.ajax({
-                        url: base_url + 'dashboard/SKTM/update/' + id,
+                        url: base_url + 'dashboard/SPU/update/' + id,
                         type: 'GET',
                         dataType: 'JSON',
                         success: function (respond) {
@@ -39,20 +35,16 @@ $(document).ready(function () {
                             $('[name="id"]').val(respond.data.id);
                             $('[name="tgl"]').val(respond.data.tgl);
                             $('[name="nsurat"]').val(respond.data.nsurat);
-                            $('[name="nik"]').val(respond.data.nik);
                             $('[name="nama"]').val(respond.data.nama);
+                            $('[name="nik"]').val(respond.data.nik);
                             $('[name="jk"]').val(respond.data.jk);
                             $('[name="ttl"]').val(respond.data.ttl);
-                            $('[name="stswarga"]').val(respond.data.stswarga);
-                            $('[name="nama_ayah"]').val(respond.data.nama_ayah);
-                            $('[name="ttlayah"]').val(respond.data.ttlayah);
-                            $('[name="agama"]').val(respond.data.agama);
-                            $('[name="pekerjaan"]').val(respond.data.pekerjaan);
-                            $('[name="alamatayah"]').val(respond.data.alamatayah);
-                            $('[name="gaji"]').val(respond.data.gaji);
-                            $('[name="keperluan"]').val(respond.data.keperluan);
+                            $('[name="alamat"]').val(respond.data.alamat);
+                            $('[name="nama_usaha"]').val(respond.data.nama_usaha);
+                            $('[name="jenis_usaha"]').val(respond.data.jenis_usaha);
+                            $('[name="alamat_usaha"]').val(respond.data.alamat_usaha);
                             $('[name="status"]').val(respond.data.status);
-                            $('[name="suratsktm"]').val(respond.data.suratsktm);
+                            $('[name="suratspu"]').val(respond.data.suratspu);
 
                             $('#exampleModal').modal('show');
                             $('.modal-title').text('Edit');
@@ -84,7 +76,7 @@ $(document).ready(function () {
                         if (respond.value) {
                             var base_url = 'http://localhost:8080/';
                             $.ajax({
-                                url: base_url + 'dashboard/SKTM/delete/' + id,
+                                url: base_url + 'dashboard/SPU/delete/' + id,
                                 type: 'GET',
                                 dataType: 'JSON',
                                 success: function (respond) {
@@ -110,22 +102,19 @@ $(document).ready(function () {
                         location.reload();
                     })
                 });
-                row.append(no, tgl,
+                row.append(no,
+                    tgl,
                     nsurat,
-                    nik,
                     nama,
+                    nik,
                     jk,
                     ttl,
-                    stswarga,
-                    nama_ayah,
-                    ttlayah,
-                    agama,
-                    pekerjaan,
-                    alamatayah,
-                    gaji,
-                    keperluan,
+                    alamat,
+                    nama_usaha,
+                    jenis_usaha,
+                    alamat_usaha,
                     status,
-                    suratsktm, buttonEdit, buttonDelete);
+                    suratspu, buttonEdit, buttonDelete);
                 tableBody.append(row);
             }
         }

@@ -14,7 +14,7 @@
 
 <table width="100%" cellspacing="1" border="1">
         
-                <?php foreach ($datakk as $value) : ?>
+                
 
                   <tr>
                     <th>Tanggal</th>
@@ -25,6 +25,8 @@
                     <th>Keterangan</th>
                   </tr>
 
+
+                <?php foreach ($datakk as $value) : ?>
                   <tr>
                     <td align="center"><?= $value['tgl']; ?></td>                    
                     <td align="center"><?= $value['nama']; ?></td>
@@ -33,7 +35,6 @@
                     <td align="center"><?= $value['status']; ?></td>                  
                     <td align="center"><?= $value['keterangan']; ?></td>
                   </tr>
-
                 <?php endforeach ?>
                  
                  

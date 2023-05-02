@@ -105,7 +105,7 @@ class Kehilangan extends BaseController
   
   
        //Edit Surat Kehilangan
-       public function editKehilangan($userid)
+       public function editKehilangan($id)
        {
           $model = new KehilanganModel();
           if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {

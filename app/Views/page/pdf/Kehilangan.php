@@ -14,7 +14,7 @@
 
 <table width="100%" cellspacing="1" border="1">
         
-                <?php foreach ($dataKehilangan as $value) : ?>
+                
 
                   <tr>
                     <th>Tanggal</th>
@@ -32,6 +32,7 @@
                     <th>Surat Kehilangan</th>
                   </tr>
 
+                  <?php foreach ($dataKehilangan as $value) : ?>
                   <tr>
                     <td align="center"><?= $value['tgl']; ?></td> 
                     <td align="center"><?= $value['jenis_surat']; ?></td> 

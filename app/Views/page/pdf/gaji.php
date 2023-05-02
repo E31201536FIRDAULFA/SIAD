@@ -14,7 +14,7 @@
 
 <table width="100%" cellspacing="1" border="1">
         
-                <?php foreach ($datagaji as $value) : ?>
+                
 
                   <tr>
                     <th>Tanggal</th>
@@ -27,9 +27,9 @@
                     <th>No KIS</th>
                     <th>Keterangan</th>
                     <th>Status</th>
-                    
                   </tr>
 
+                  <?php foreach ($datagaji as $value) : ?>
                   <tr>
                     <td align="center"><?= $value['tgl']; ?></td>
                     <td align="center"><?= $value['nsurat']; ?></td>                       
@@ -41,7 +41,6 @@
                     <td align="center"><?= $value['no_kis']; ?></td> 
                     <td align="center"><?= $value['ket']; ?></td>        
                     <td align="center"><?= $value['status']; ?></td>                  
-
                   </tr>
 
                 <?php endforeach ?>

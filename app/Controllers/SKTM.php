@@ -37,7 +37,7 @@ class SKTM extends BaseController
                 return $this->response->setJSON([
                     'status' => true,
                     'icon' => 'success',
-                    'title' => 'Tambah Pengajuan Surat Kehilangan Berhasil!',
+                    'title' => 'Tambah Pengajuan Surat Keterangan Tidak Mampu Berhasil!',
                     'text' => 'Pop up ini akan hilang dalam 3 detik.',
                 ]); 
             }

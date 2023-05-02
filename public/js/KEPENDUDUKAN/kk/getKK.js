@@ -96,7 +96,7 @@ $(document).ready(function () {
                     nik,
                     scanktp,
                     status,
-                    keterangan, buttonEdit, buttonDelete);
+                    ket, buttonEdit, buttonDelete);
                 tableBody.append(row);
             }
         }
