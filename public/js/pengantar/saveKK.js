@@ -1,14 +1,14 @@
-function saveKtp() {
+function saveKK() {
     const id = $("#id").val();
     const tgl = $("#tgl").val();
     const nama = $("#nama").val();
     const nik = $("#nik").val();
     const scankk = $("#scankk").val();
     const status = $("#status").val();
-    const ket = $("#ket").val();
+    const keterangan = $("#keterangan").val();
 
     if (id) {
-        url = base_url + 'dashboard/KTP/update/' + id;
+        url = base_url + 'dashboard/KK/update/' + id;
         if (tgl.length == "") {
             Swal.fire({
                 title: 'Oops...',
@@ -19,25 +19,26 @@ function saveKtp() {
                 title: 'Oops...',
                 text: 'Nama harus diisi!'
             });
+
         } else if (nik.length == "") {
             Swal.fire({
                 title: 'Oops...',
                 text: 'Nik harus diisi!'
             });
-        } else if (scankk.length == "") {
+        } else if (scanktp.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'scankk harus diisi!'
+                text: 'Scan KK harus diisi!'
             });
         } else if (status.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Nama harus diisi!'
+                text: 'Status Surat harus diisi!'
             });
-        } else if (ket.length == "") {
+        } else if (keterangan.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'surat harus diupload!'
+                text: 'Keterangan harus diisi!'
             });
         } else {
             $.ajax({ //tembak data ke db
@@ -75,7 +76,7 @@ function saveKtp() {
             });
         }
     } else {
-        url = base_url + 'dashboard/KTP';
+        url = base_url + 'dashboard/KK';
         if (tgl.length == "") {
             Swal.fire({
                 title: 'Oops...',
@@ -86,25 +87,27 @@ function saveKtp() {
                 title: 'Oops...',
                 text: 'Nama harus diisi!'
             });
+
         } else if (nik.length == "") {
             Swal.fire({
                 title: 'Oops...',
                 text: 'Nik harus diisi!'
+
             });
-        } else if (scankk.length == "") {
+        } else if (scanktp.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'scankk harus diisi!'
+                text: 'Scan KK harus diisi!'
             });
         } else if (status.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Nama harus diisi!'
+                text: 'Status Surat harus diisi!'
             });
         } else if (keterangan.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'surat harus diupload!'
+                text: 'Keterangan harus diisi!'
             });
         } else {
             $.ajax({

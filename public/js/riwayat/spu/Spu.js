@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: base_url + "dashboard/SPU/data",
+        url: base_url + "dashboard/SPU/riwayatspu",
         type: "GET",
         dataType: "json",
         success: function (respond) {

@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: base_url + "dashboard/skck/riwayatskck",
+        url: base_url + "dashboard/SPU/data",
         type: "GET",
         dataType: "json",
         success: function (respond) {
@@ -13,16 +13,54 @@ $(document).ready(function () {
                 let nsurat = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nsurat);
                 let nama = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nama);
                 let nik = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nik);
-                let ttl = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].ttl);
                 let jk = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].jk);
-                let agama = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].agama);
-                let kewarganegaraan = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].kewarganegaraan);
-                let perkawinan = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].perkawinan);
-                let pekerjaan = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].pekerjaan);
+                let ttl = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].ttl);
                 let alamat = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].alamat);
+                let nama_usaha = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nama_usaha);
+                let jenis_usaha = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].jenis_usaha);
+                let alamat_usaha = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].alamat_usaha);
                 let status = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].status);
-                let surat = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].surat);
+                let suratspu = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].suratspu);
+                let buttonEdit = $('<button type="button" class="btn bg-gradient-success mb-0"></button>').text('Edit').attr('id', respond[i].id);
+                buttonEdit.click(function () {
+                    $('#form')[0].reset();
+                    var id = $(this).attr('id');
+                    $.ajax({
+                        url: base_url + 'dashboard/SPU/update/' + id,
+                        type: 'GET',
+                        dataType: 'JSON',
+                        success: function (respond) {
+                            console.log(respond.data);
 
+                            $('[name="id"]').val(respond.data.id);
+                            $('[name="tgl"]').val(respond.data.tgl);
+                            $('[name="nsurat"]').val(respond.data.nsurat);
+                            $('[name="nama"]').val(respond.data.nama);
+                            $('[name="nik"]').val(respond.data.nik);
+                            $('[name="jk"]').val(respond.data.jk);
+                            $('[name="ttl"]').val(respond.data.ttl);
+                            $('[name="alamat"]').val(respond.data.alamat);
+                            $('[name="nama_usaha"]').val(respond.data.nama_usaha);
+                            $('[name="jenis_usaha"]').val(respond.data.jenis_usaha);
+                            $('[name="alamat_usaha"]').val(respond.data.alamat_usaha);
+                            $('[name="status"]').val(respond.data.status);
+                            $('[name="suratspu"]').val(respond.data.suratspu);
+
+                            $('#exampleModal').modal('show');
+                            $('.modal-title').text('Edit');
+                            $('#pass').hide();
+                            $('#pass2').hide();
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(jqXHR);
+                            swal.fire({
+                                icon: 'error',
+                                title: errorThrown,
+                                text: 'Error get data from ajax.'
+                            })
+                        }
+                    });
+                });
                 let buttonDelete = $('<button type="button" class="btn bg-gradient-danger mb-0"></button>').text('Delete').attr('id', respond[i].id);
                 buttonDelete.click(function () {
                     var id = $(this).attr('id');
@@ -38,7 +76,7 @@ $(document).ready(function () {
                         if (respond.value) {
                             var base_url = 'http://localhost:8080/';
                             $.ajax({
-                                url: base_url + 'dashboard/skck/delete/' + userid,
+                                url: base_url + 'dashboard/SPU/delete/' + id,
                                 type: 'GET',
                                 dataType: 'JSON',
                                 success: function (respond) {
@@ -64,19 +102,19 @@ $(document).ready(function () {
                         location.reload();
                     })
                 });
-                row.append(no, tgl,
+                row.append(no,
+                    tgl,
                     nsurat,
                     nama,
                     nik,
-                    ttl,
                     jk,
-                    agama,
-                    kewarganegaraan,
-                    perkawinan,
-                    pekerjaan,
+                    ttl,
                     alamat,
+                    nama_usaha,
+                    jenis_usaha,
+                    alamat_usaha,
                     status,
-                    surat, buttonDelete);
+                    suratspu, buttonEdit, buttonDelete);
                 tableBody.append(row);
             }
         }

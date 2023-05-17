@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: base_url + "dashboard/gaji/data",
+        url: base_url + "dashboard/gaji/riwayatgaji",
         type: "GET",
         dataType: "json",
         success: function (respond) {

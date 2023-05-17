@@ -3,9 +3,6 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
-          <div style="color:#00b300; background:#ccffcc; border:0px dashed #006600;padding:5px;margin:10px;">
-                <b>Pengajuan pengantar KTP</b> bertujuan untuk mempermudah masyarakat untuk proses<b> Pembuatan E-KTP Baru</b>. inputkan data masyarakat yang hendak membuat e-ktp baru dengan detail dan benar, lalu kirimkan file surat pengantar yang telah siap kepada masyarakat.
-            </div>
             <div class="card-header pb-0">
               <h6>List Pengajuan</h6>
               <button type="button" class="btn btn-info btn-lg w-100 mt-4 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -28,7 +25,7 @@
                             <div class="input-group input-group-static mb-3">
                                   <label class="form-label">Tanggal</label>
                                   <input id="tgl" type="date" class="form-control" name="tgl">
-                                  <input id="id"  name="id" hidden>
+                                  <input id="id"  class="form-control" name="id" hidden>
                                 </div>
 
                             
@@ -67,7 +64,7 @@
                                 </div>
 
                                 <div class="mt-3">
-                                  <button type="button" class="btn bg-gradient-success btn-lg w-100 mt-4 mb-0" onclick="saveKtp()">Simpan</button>
+                                  <button type="button" class="btn bg-gradient-success btn-lg w-100 mt-4 mb-0" onclick="saveKTP()">Simpan</button>
                                 </div>
                             </form>
                         </div>
@@ -84,6 +81,7 @@
                     <tr>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nomor</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">NIK</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Scan KK</th>
@@ -97,10 +95,6 @@
                 </table>
               </div>
             </div>
-                <div class="card-footer p-3">
-                  <a class="btn bg-gradient-dark mb-0" href="<?= base_url('dashboard/pdf/pdfktp') ?>">Cetak Pdf</a>
-                </div>
-
           </div>
         </div>
       </div>
@@ -109,6 +103,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script src="<?= base_url('js/SignOut.js') ?>"></script>
 <script src="<?= base_url('js/Modules.js') ?>"></script>
-<script src="<?= base_url('js/KEPENDUDUKAN/ktp/getKtp.js') ?>"></script>
-<script src="<?= base_url('js/KEPENDUDUKAN/ktp/saveKtp.js') ?>"></script>
+<script src="<?= base_url('js/pengantar/getktp.js') ?>"></script>
+<script src="<?= base_url('js/pengantar/saveKTP.js') ?>"></script>
 <?= $this->endSection() ?>

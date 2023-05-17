@@ -56,6 +56,8 @@ $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
         $routes->match(['GET', 'POST'], 'update/(:num)', 'Kehilangan::editKehilangan/$1');
         $routes->get('delete/(:num)', 'Kehilangan::hapusKehilangan/$1');
         $routes->get('data', 'Kehilangan::dataKehilangan');
+        $routes->get('riwayatkehilangan', 'Kehilangan::datakehilanganriwayat');
+        $routes->match(['GET', 'POST'], 'download/(:num)', 'Kehilangan::download/$1');
     });
 
       //tabel SKTM
@@ -65,6 +67,8 @@ $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
         $routes->match(['GET', 'POST'], 'update/(:num)', 'SKTM::editSKTM/$1');
         $routes->get('delete/(:num)', 'SKTM::hapusSKTM/$1');
         $routes->get('data', 'SKTM::dataSKTM');
+        $routes->get('riwayatsktm', 'SKTM::datasktmriwayat');
+        $routes->match(['GET', 'POST'], 'download/(:num)', 'SKTM::download/$1');
         
     });
 
@@ -75,6 +79,8 @@ $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
         $routes->match(['GET', 'POST'], 'update/(:num)', 'SPU::editSPU/$1');
         $routes->get('delete/(:num)', 'SPU::hapusSPU/$1');
         $routes->get('data', 'SPU::dataSPU');
+        $routes->get('riwayatspu', 'SPU::dataspuriwayat');
+        $routes->match(['GET', 'POST'], 'download/(:num)', 'SPU::download/$1');
 
     });
 
@@ -85,6 +91,8 @@ $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
         $routes->match(['GET', 'POST'], 'update/(:num)', 'KK::editKK/$1');
         $routes->get('delete/(:num)', 'KK::hapusKK/$1');
         $routes->get('data', 'KK::dataKK');
+        $routes->get('datariwayatkk', 'KK::datakkriwayat');
+        $routes->match(['GET', 'POST'], 'download/(:num)', 'KK::download/$1');
     });
 
       //tabel KTP
@@ -94,6 +102,8 @@ $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
         $routes->match(['GET', 'POST'], 'update/(:num)', 'KTP::editKTP/$1');
         $routes->get('delete/(:num)', 'KTP::hapusKTP/$1');
         $routes->get('data', 'KTP::dataKTP');
+        $routes->get('riwayatktp', 'KTP::dataKTPriwayat');
+        $routes->match(['GET', 'POST'], 'download/(:num)', 'KTP::download/$1');
     });
 
     //tabel APBD
@@ -120,10 +130,11 @@ $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
   $routes->group('gaji', function ($routes) {
     //Main
     $routes->match(['GET', 'POST'],'/', 'gaji::index');
-    $routes->match(['GET', 'POST'],'riwayat', 'gaji::riwayat');
     $routes->match(['GET', 'POST'], 'update/(:num)', 'gaji::editgaji/$1');
     $routes->get('delete/(:num)', 'gaji::hapusgaji/$1');
     $routes->get('data', 'gaji::datagaji');
+    $routes->get('riwayatgaji', 'gaji::datagajiriwayat');
+    $routes->match(['GET', 'POST'], 'download/(:num)', 'gaji::download/$1');
   
   });
 
@@ -131,11 +142,11 @@ $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
    $routes->group('skck', function ($routes) {
     //Main
     $routes->match(['GET', 'POST'],'/', 'skck::index');
-    $routes->match(['GET', 'POST'],'riwayat', 'skck::riwayat');
     $routes->match(['GET', 'POST'], 'update/(:num)', 'skck::editskck/$1');
     $routes->get('delete/(:num)', 'skck::hapusskck/$1');
     $routes->get('data', 'skck::dataskck');
-  
+    $routes->get('riwayatskck', 'skck::dataskckriwayat');
+    $routes->match(['GET', 'POST'], 'download/(:num)', 'skck::download/$1');
   });
 
   //tabel riwayat

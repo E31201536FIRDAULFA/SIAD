@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: base_url + "dashboard/KK/data",
+        url: base_url + 'dashboard/KK/datariwayatkk',
         type: "GET",
         dataType: "json",
         success: function (respond) {
@@ -15,8 +15,9 @@ $(document).ready(function () {
                 let scanktp = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].scanktp);
                 let status = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].status);
                 let keterangan = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].keterangan);
-
                 let buttonDelete = $('<button type="button" class="btn bg-gradient-danger mb-0"></button>').text('Delete').attr('id', respond[i].id);
+                let buttonDownload = $('<button type="button" class="btn bg-gradient-primary mb-0"></button>').text('Download').attr('id', respond[i].id);
+
                 buttonDelete.click(function () {
                     var id = $(this).attr('id');
                     Swal.fire({
@@ -65,6 +66,7 @@ $(document).ready(function () {
                     keterangan, buttonDelete);
                 tableBody.append(row);
             }
+            console.log(respond);
         }
     });
 });

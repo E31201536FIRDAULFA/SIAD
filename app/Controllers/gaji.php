@@ -47,6 +47,13 @@ class gaji extends BaseController
         return $this->response->setJSON($model->findAll());
     }
 
+    public function datagajiriwayat()
+    {
+        $model = new gajiModel();
+        $id = session()->get('id');
+        return $this->response->setJSON($model->where('userid', $id)->findAll());
+    }
+
     // Terima Surat gaji (acc/tolak)
     public function terimagaji($id)
     {
@@ -88,6 +95,7 @@ class gaji extends BaseController
                 'status' => $this->request->getPost('status'),
                 'Surat' => $this->request->getPost('Surat'),
             ];
+            $data['userid']=session()->get('id');
             $model->update($id, $data);
             return $this->response->setJSON([
                 'status' => true,
@@ -101,5 +109,10 @@ class gaji extends BaseController
             ]);
         }
      }
+
+    public function download()
+    {
+        return view('page/partials/Riwayat/gajiriwayat');
+    }
 
      }

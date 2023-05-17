@@ -22,7 +22,7 @@ function saveGaji() {
         } else if (nsurat.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Nomor harus diisi!'
+                text: 'Nsurat harus diisi!'
             });
         } else if (nama.length == "") {
             Swal.fire({
@@ -37,7 +37,7 @@ function saveGaji() {
         } else if (ttl.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Ttl harus diisi!'
+                text: 'ttl harus diisi!'
             });
         } else if (pekerjaan.length == "") {
             Swal.fire({
@@ -47,17 +47,17 @@ function saveGaji() {
         } else if (no_kip.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'No KIP harus diisi!'
+                text: 'No kip harus diisi!'
             });
         } else if (no_kis.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'No KIS harus diisi!'
+                text: 'No kis harus diisi!'
             });
         } else if (ket.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Keterangan usaha harus diisi!'
+                text: 'Nama harus diisi!'
             });
         } else if (status.length == "") {
             Swal.fire({
@@ -67,7 +67,7 @@ function saveGaji() {
         } else if (Surat.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Surat harus diupload!'
+                text: 'Nama harus diisi!'
             });
         } else {
             $.ajax({ //tembak data ke db
@@ -114,7 +114,7 @@ function saveGaji() {
         } else if (nsurat.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Nomor harus diisi!'
+                text: 'Nsurat harus diisi!'
             });
         } else if (nama.length == "") {
             Swal.fire({
@@ -129,7 +129,7 @@ function saveGaji() {
         } else if (ttl.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Ttl harus diisi!'
+                text: 'ttl harus diisi!'
             });
         } else if (pekerjaan.length == "") {
             Swal.fire({
@@ -139,17 +139,17 @@ function saveGaji() {
         } else if (no_kip.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'No KIP harus diisi!'
+                text: 'No kip harus diisi!'
             });
         } else if (no_kis.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'No KIS harus diisi!'
+                text: 'No kis harus diisi!'
             });
         } else if (ket.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Keterangan usaha harus diisi!'
+                text: 'Nama harus diisi!'
             });
         } else if (status.length == "") {
             Swal.fire({
@@ -159,7 +159,7 @@ function saveGaji() {
         } else if (Surat.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Surat harus diupload!'
+                text: 'Nama harus diisi!'
             });
         } else {
             $.ajax({

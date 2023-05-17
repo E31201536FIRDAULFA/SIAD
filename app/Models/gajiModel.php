@@ -17,6 +17,7 @@ class gajiModel extends Model
     protected $allowedFields    = [
         'tgl',
         'nsurat',
+        'userid',
         'nama',
         'nik',
         'ttl',

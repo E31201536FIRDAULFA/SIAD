@@ -49,6 +49,13 @@ class Kehilangan extends BaseController
           return $this->response->setJSON($model->findAll());
   
       }
+
+      public function datakehilanganriwayat()
+    {
+        $model = new KehilanganModel();
+        $id = session()->get('id');
+        return $this->response->setJSON($model->where('userid', $id)->findAll());
+    }
   
       // Terima Surat Kehilangan (acc/tolak)
       public function terimaKehilangan($id)
@@ -139,4 +146,9 @@ class Kehilangan extends BaseController
               ]);
           }
        }
+
+       public function download()
+    {
+        return view('page/partials/Riwayat/gajiriwayat');
+    }
     }

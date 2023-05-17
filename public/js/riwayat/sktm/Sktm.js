@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: base_url + "dashboard/SKTM/data",
+        url: base_url + "dashboard/SKTM/riwayatsktm",
         type: "GET",
         dataType: "json",
         success: function (respond) {

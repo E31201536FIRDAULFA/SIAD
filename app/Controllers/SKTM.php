@@ -52,6 +52,13 @@ class SKTM extends BaseController
 
     }
 
+    public function datasktmriwayat()
+    {
+        $model = new SKTMModel();
+        $id = session()->get('id');
+        return $this->response->setJSON($model->where('userid', $id)->findAll());
+    }
+
     // Terima Surat SKTM (acc/tolak)
     public function terimaSKTM($id)
     {
@@ -148,5 +155,10 @@ class SKTM extends BaseController
             ]);
         }
      }
+
+     public function download()
+    {
+        return view('page/partials/Riwayat/gajiriwayat');
+    }
      }
     

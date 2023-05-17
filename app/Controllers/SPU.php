@@ -48,6 +48,13 @@ class SPU extends BaseController
         return $this->response->setJSON($model->findAll());
     }
 
+    public function dataspuriwayat()
+    {
+        $model = new SPUModel();
+        $id = session()->get('id');
+        return $this->response->setJSON($model->where('userid', $id)->findAll());
+    }
+
     // Terima Surat SPU (acc/tolak)
     public function terimaSPU($id)
     {
@@ -162,6 +169,11 @@ class SPU extends BaseController
                 ]); 
             }
         return view('page/partials/Riwayat/spuriwayat');
+    }
+
+    public function download()
+    {
+        return view('page/partials/Riwayat/gajiriwayat');
     }
      }
     

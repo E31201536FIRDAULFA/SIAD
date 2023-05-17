@@ -41,6 +41,13 @@ class KK extends BaseController
         return $this->response->setJSON($model->findAll());
     }
 
+    public function datakkriwayat()
+    {
+        $model = new KKModel();
+        $id = session()->get('id');
+        return $this->response->setJSON($model->where('userid', $id)->findAll());
+    }
+
 
     //Hapus Data Surat kk (delete)
     public function hapuskk($id)
@@ -77,7 +84,7 @@ class KK extends BaseController
     }
 
      //Edit Surat KK
-     public function editKK($userid)
+     public function editKK($id)
      {
         $model = new KKModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
@@ -106,4 +113,8 @@ class KK extends BaseController
         }
     }
     
+    public function download()
+    {
+        return view('page/partials/Riwayat/gajiriwayat');
+    }
 }

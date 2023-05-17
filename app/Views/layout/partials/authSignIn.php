@@ -34,10 +34,6 @@
                   </form>
                 </div>
                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                  <p class="mb-2 text-sm mx-auto">
-                    Belum Punya Akun?
-                    <a href="<?= base_url('register') ?>" class="text-info text-gradient font-weight-bold">Sign Up/Daftar</a>
-                  </p>
                   <h4 class="text-sm mx-auto text-center">Or</h4>
                   <p class="mb-2 text-sm mx-auto">
                     <a href="<?= base_url('/') ?>" class="text-info text-gradient font-weight-bold">Kembali ke Halaman Utama</a>

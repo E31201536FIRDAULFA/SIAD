@@ -49,6 +49,13 @@ class skck extends BaseController
         return $this->response->setJSON($model->findAll());
     }
 
+    public function dataskckriwayat()
+    {
+        $model = new skckModel();
+        $id = session()->get('id');
+        return $this->response->setJSON($model->where('userid', $id)->findAll());
+    }
+
     // Terima Surat skck (acc/tolak)
     public function terimaskck($id)
     {
@@ -106,6 +113,10 @@ class skck extends BaseController
         }
      }
 
+     public function download()
+     {
+         return view('page/partials/Riwayat/gajiriwayat');
+     } 
     
 
      }

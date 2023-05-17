@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: base_url + "dashboard/KTP/data",
+        url: base_url + "dashboard/KK/data",
         type: "GET",
         dataType: "json",
         success: function (respond) {
@@ -12,7 +12,7 @@ $(document).ready(function () {
                 let tgl = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].tgl);
                 let nama = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nama);
                 let nik = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nik);
-                let scankk = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].scankk);
+                let scanktp = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].scanktp);
                 let status = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].status);
                 let keterangan = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].keterangan);
                 let buttonEdit = $('<button type="button" class="btn bg-gradient-success mb-0"></button>').text('Edit').attr('id', respond[i].id);
@@ -20,7 +20,7 @@ $(document).ready(function () {
                     $('#form')[0].reset();
                     var id = $(this).attr('id');
                     $.ajax({
-                        url: base_url + 'dashboard/KTP/update/' + id,
+                        url: base_url + 'dashboard/KK/update/' + id,
                         type: 'GET',
                         dataType: 'JSON',
                         success: function (respond) {
@@ -30,9 +30,9 @@ $(document).ready(function () {
                             $('[name="tgl"]').val(respond.data.tgl);
                             $('[name="nama"]').val(respond.data.nama);
                             $('[name="nik"]').val(respond.data.nik);
-                            $('[name="scankk"]').val(respond.data.scankk);
+                            $('[name="scanktp"]').val(respond.data.scanktp);
                             $('[name="status"]').val(respond.data.status);
-                            $('[name="ket"]').val(respond.data.ket);
+                            $('[name="keterangan"]').val(respond.data.keterangan);
 
 
                             $('#exampleModal').modal('show');
@@ -65,7 +65,7 @@ $(document).ready(function () {
                         if (respond.value) {
                             var base_url = 'http://localhost:8080/';
                             $.ajax({
-                                url: base_url + 'dashboard/KTP/delete/' + id,
+                                url: base_url + 'dashboard/KK/delete/' + id,
                                 type: 'GET',
                                 dataType: 'JSON',
                                 success: function (respond) {
@@ -94,7 +94,7 @@ $(document).ready(function () {
                 row.append(no, tgl,
                     nama,
                     nik,
-                    scankk,
+                    scanktp,
                     status,
                     keterangan, buttonEdit, buttonDelete);
                 tableBody.append(row);

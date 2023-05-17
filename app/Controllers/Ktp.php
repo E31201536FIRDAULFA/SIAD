@@ -42,6 +42,12 @@ class KTP extends BaseController
         return $this->response->setJSON($model->findAll());
     }
 
+    public function dataKTPriwayat()
+    {
+        $model = new KTPModel();
+        $id = session()->get('id');
+        return $this->response->setJSON($model->where('userid', $id)->findAll());
+    }
 
     //Hapus Data Surat KTP (delete)
     public function hapusKTP($id)
@@ -69,6 +75,7 @@ class KTP extends BaseController
                     'keterangan' => $this->request->getPost('keterangan'),
                 
             ];
+            $data['userid']=session()->get('id');
             $model->update($id, $data);
             return $this->response->setJSON([
                 'status' => true,
@@ -81,6 +88,11 @@ class KTP extends BaseController
                 'data' => $model->where('id', $id)->first(),
             ]);
         }
+    }
+
+    public function download()
+    {
+        return view('page/partials/Riwayat/gajiriwayat');
     }
     
 }

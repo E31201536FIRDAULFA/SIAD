@@ -3,8 +3,8 @@
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10"></i>
+              <div class="icon icon-lg icon-shape bg-gradient-success shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">weekend</i>
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Pengantar Saya</p>
@@ -20,7 +20,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Tambah Pengajuan</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Tambah Pengajuan KTP</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -89,7 +89,7 @@
           <div class="card">
             <div class="card-header p-3 pt-2">
               <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10"></i>
+                <i class="material-icons opacity-10">weekend</i>
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Pengantar Saya</p>
@@ -98,14 +98,14 @@
             </div>
             <hr class="dark horizontal my-0">
            <div class="card-footer p-3">
-              <button type="button" class="btn btn-success btn-lg w-100 mt-4 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal5">Ajukan Sekarang!</button>
+              <button type="button" class="btn bg-gradient-dark btn-lg w-100 mt-4 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal5">Ajukan Sekarang!</button>
             </div>
           </div>
                   <div class="modal fade" id="exampleModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Tambah Pengajuan</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Tambah Pengajuan KK</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -169,8 +169,8 @@
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10"></i>
+              <div class="icon icon-lg icon-shape bg-gradient-success shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">weekend</i>
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Surat Saya</p>
@@ -186,7 +186,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Tambah Pengajuan</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Tambah Pengajuan Surat Kehilangan</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -283,7 +283,7 @@
           <div class="card">
             <div class="card-header p-3 pt-2">
               <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10"></i>
+                <i class="material-icons opacity-10">weekend</i>
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Pengantar Saya</p>
@@ -292,14 +292,14 @@
             </div>
             <hr class="dark horizontal my-0">
            <div class="card-footer p-3">
-              <button type="button" class="btn btn-success btn-lg w-100 mt-4 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal7">Ajukan Sekarang!</button>
+              <button type="button" class="btn bg-gradient-dark btn-lg w-100 mt-4 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal7">Ajukan Sekarang!</button>
             </div>
           </div>
                   <div class="modal fade" id="exampleModal7" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Tambah Pengajuan</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Tambah Pengajuan SKCK</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -402,11 +402,11 @@
           </div>
         </div>
 
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 mt-4">
           <div class="card">
             <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10"></i>
+              <div class="icon icon-lg icon-shape bg-gradient-success shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">weekend</i>
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Pengantar Saya</p>
@@ -422,7 +422,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Tambah Pengajuan</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Tambah Pengajuan SKTM</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -540,11 +540,11 @@
         
 
       
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 mt-4">
           <div class="card">
             <div class="card-header p-3 pt-2">
               <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10"></i>
+                <i class="material-icons opacity-10">weekend</i>
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Pengantar Saya</p>
@@ -553,14 +553,14 @@
             </div>
             <hr class="dark horizontal my-0">
            <div class="card-footer p-3">
-              <button type="button" class="btn btn-success btn-lg w-100 mt-4 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal10">Ajukan Sekarang!</button>
+              <button type="button" class="btn bg-gradient-dark btn-lg w-100 mt-4 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal10">Ajukan Sekarang!</button>
             </div>
           </div>
                   <div class="modal fade" id="exampleModal10" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Tambah Pengajuan</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Tambah Pengajuan Usaha</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -655,15 +655,15 @@
           </div>
         </div>
 
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 mt-4">
           <div class="card">
             <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10"></i>
+              <div class="icon icon-lg icon-shape bg-gradient-success shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">weekend</i>
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Pengantar Saya</p>
-                <h4 class="mb-0">Pengajuan Surat Ket Penghasilan</h4>
+                <h4 class="mb-0"> Surat Ket Penghasilan</h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -675,7 +675,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Tambah Pengajuan</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Tambah Pengajuan Ket Penghasilan</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>

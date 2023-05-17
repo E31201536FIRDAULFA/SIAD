@@ -1,85 +1,44 @@
-function saveKehilangan() {
+function saveKTP() {
     const id = $("#id").val();
     const tgl = $("#tgl").val();
-    const jenis_surat = $("#jenis_surat").val();
-    const nsurat = $("#nsurat").val();
     const nama = $("#nama").val();
-    const jk = $("#jk").val();
     const nik = $("#nik").val();
-    const pekerjaan = $("#pekerjaan").val();
-    const alamat = $("#alamat").val();
-    const keperluan = $("#keperluan").val();
-    const ket = $("#ket").val();
-    const tgl_berlaku = $("#tgl_berlaku").val();
+    const scankk = $("#scankk").val();
     const status = $("#status").val();
-    const suratkehilangan = $("#suratkehilangan").val();
+    const keterangan = $("#keterangan").val();
 
     if (id) {
-        url = base_url + 'dashboard/kehilangan/update/' + id;
-        if (nama.length == "") {
+        url = base_url + 'dashboard/KTP/update/' + id;
+        if (tgl.length == "") {
+            Swal.fire({
+                title: 'Oops...',
+                text: 'tgl harus diisi!'
+            });
+        } else if (nama.length == "") {
             Swal.fire({
                 title: 'Oops...',
                 text: 'Nama harus diisi!'
             });
-        } else if (tgl.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nama harus diisi!'
-            });
-        } else if (jenis_surat.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nama harus diisi!'
-            });
-        } else if (nsurat.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nama harus diisi!'
-            });
-        } else if (jk.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nama harus diisi!'
-            });
+
         } else if (nik.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Nama harus diisi!'
+                text: 'Nik harus diisi!'
             });
-        } else if (pekerjaan.length == "") {
+        } else if (scankk.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Nama harus diisi!'
-            });
-        } else if (alamat.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nama harus diisi!'
-            });
-        } else if (keperluan.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nama harus diisi!'
-            });
-        } else if (ket.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nama harus diisi!'
-            });
-        } else if (tgl_berlaku.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nama harus diisi!'
+                text: 'Scan KK harus diisi!'
             });
         } else if (status.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Nama harus diisi!'
+                text: 'Status Surat harus diisi!'
             });
-        } else if (suratkehilangan.length == "") {
+        } else if (keterangan.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Nama harus diisi!'
+                text: 'Keterangan harus diisi!'
             });
         } else {
             $.ajax({ //tembak data ke db
@@ -117,72 +76,38 @@ function saveKehilangan() {
             });
         }
     } else {
-        url = base_url + 'dashboard/kehilangan';
-        if (nama.length == "") {
+        url = base_url + 'dashboard/KTP';
+        if (tgl.length == "") {
+            Swal.fire({
+                title: 'Oops...',
+                text: 'tgl harus diisi!'
+            });
+        } else if (nama.length == "") {
             Swal.fire({
                 title: 'Oops...',
                 text: 'Nama harus diisi!'
             });
-        } else if (tgl.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Tanggal harus diisi!'
-            });
-        } else if (jenis_surat.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Jenis harus diisi!'
-            });
-        } else if (nsurat.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'No Surat harus diisi!'
-            });
 
-        } else if (jk.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Jenis Kelamin harus diisi!'
-            });
         } else if (nik.length == "") {
             Swal.fire({
                 title: 'Oops...',
                 text: 'Nik harus diisi!'
+
             });
-        } else if (pekerjaan.length == "") {
+        } else if (scankk.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Pekerjaan harus diisi!'
-            });
-        } else if (alamat.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Alamat harus diisi!'
-            });
-        } else if (keperluan.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Keperluan harus diisi!'
-            });
-        } else if (ket.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Keterangan harus diisi!'
-            });
-        } else if (tgl_berlaku.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Tanggal Berlaku harus diisi!'
+                text: 'Scan KK harus diisi!'
             });
         } else if (status.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Status harus diisi!'
+                text: 'Status Surat harus diisi!'
             });
-        } else if (suratkehilangan.length == "") {
+        } else if (keterangan.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Surat Kehilangan harus diisi!'
+                text: 'Keterangan harus diisi!'
             });
         } else {
             $.ajax({

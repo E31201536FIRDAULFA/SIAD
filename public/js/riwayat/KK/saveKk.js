@@ -1,4 +1,4 @@
-function saveKK() {
+function saveKk() {
     const tgl = $("#tglKK").val();
     const nama = $("#namaKK").val();
     const nik = $("#nikKK").val();

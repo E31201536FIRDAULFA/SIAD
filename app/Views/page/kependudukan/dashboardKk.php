@@ -4,9 +4,6 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
-          <div style="color:#00b300; background:#ccffcc; border:0px dashed #006600;padding:5px;margin:10px;">
-                <b>Pengajuan pengantar Kartu Keluarga (KK)</b> bertujuan untuk mempermudah masyarakat untuk proses<b> Pembuatan KK Baru</b>. inputkan data masyarakat yang hendak membuat kartu keluarga baru dengan detail dan benar, lalu kirimkan file surat pengantar yang telah siap kepada masyarakat.
-            </div>
             <div class="card-header pb-0">
               <h6>List Pengajuan</h6>
               <button type="button" class="btn btn-info btn-lg w-100 mt-4 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -27,30 +24,33 @@
 
                       <!--POP UP TAMBAH PENGAJUAN-->
                         <div class="modal-body">
-                              <form>
-                                <div class="input-group input-group-static mb-3">
+                            <form action="#" id="form">
+                            <div class="input-group input-group-static mb-3">
                                   <label class="form-label">Tanggal</label>
-                                  <input id="tglKK" type="date" class="form-control">
+                                  <input id="tgl" type="date" class="form-control" name="tgl">
+                                  <input id="id"  class="form-control" name="id" hidden>
                                 </div>
+
+                            
                                 <div class="input-group input-group-static mb-3">
                                   <label class="form-label">Nama</label>
-                                  <input id="namaKK" type="text" class="form-control">
+                                  <input id="nama" type="text" class="form-control" name="nama">
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
                                   <label class="form-label">NIK</label>
-                                  <input id="nikKK" type="text" class="form-control">
+                                  <input id="nik" type="text" class="form-control" name="nik">
                                 </div>
 
                         
                                 <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">Scan KTP</label>
-                                  <input id="scanktpKK" type="text" class="form-control">
+                                  <label class="form-label">Scan ktp</label>
+                                  <input id="scanktp" type="text" class="form-control" name="scanktp">
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
                                 <label for="exampleFormControlSelect1" class="ms-0">Status Surat</label>
-                                  <select class="form-control" id="statusKK">
+                                  <select class="form-control" id="status" name="status">
                                     <option value="diterima">Diterima</option>
                                     <option value="ditolak">Ditolak</option>
                                     <option value="pending">Pending</option>
@@ -59,16 +59,17 @@
 
                                 <div class="input-group input-group-static mb-3">
                                 <label for="exampleFormControlSelect1" class="ms-0">Keterangan</label>
-                                  <select class="form-control" id="keteranganKK">
+                                  <select class="form-control" id="keterangan" name="keterangan">
                                     <option value="Pengajuan Sedang Diproses">Pengajuan Sedang Diproses</option>
                                     <option value="Pengajuan Selesai">Pengajuan Selesai</option>
                                     <option value="Pengajuan Ditolak, Lengkapi Persyaratan Dengan Benar">Pengajuan Ditolak, Lengkapi Persyaratan Dengan Benar</option>
                                   </select>
                                 </div>
+
                                 <div class="mt-3">
-                                  <button type="button" onclick="saveKK()" class="btn bg-gradient-success btn-lg w-100 mt-4 mb-0">Simpan</button>
+                                  <button type="button" class="btn btn-success btn-lg w-100 mt-4 mb-0" onclick="saveKK()">Simpan</button>
                                 </div>
-                              </form>
+                            </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn bg-gradient-info btn-lg w-100 mt-4 mb-0" data-bs-dismiss="modal">Close</button>
@@ -97,9 +98,6 @@
                 </table>
               </div>
             </div>
-            <div class="card-footer p-3">
-                  <a class="btn bg-gradient-dark mb-0" href="<?= base_url('dashboard/pdf/pdfkk') ?>">Cetak Pdf</a>
-                </div>
           </div>
         </div>
       </div>
@@ -108,6 +106,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script src="<?= base_url('js/SignOut.js') ?>"></script>
 <script src="<?= base_url('js/Modules.js') ?>"></script>
-<script src="<?= base_url('js/KEPENDUDUKAN/kk/getKK.js') ?>"></script>
-<script src="<?= base_url('js/KEPENDUDUKAN/kk/saveKK.js') ?>"></script>
+<script src="<?= base_url('js/pengantar/getkk.js') ?>"></script>
+<script src="<?= base_url('js/pengantar/saveKK.js') ?>"></script>
 <?= $this->endSection() ?>

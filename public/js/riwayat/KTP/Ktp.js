@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: base_url + "dashboard/KTP/data",
+        url: base_url + "dashboard/KTP/riwayatktp",
         type: "GET",
         dataType: "json",
         success: function (respond) {
