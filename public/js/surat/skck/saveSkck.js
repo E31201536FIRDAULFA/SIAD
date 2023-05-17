@@ -1,7 +1,6 @@
 function saveSkck() {
     const id = $("#id").val();
     const tgl = $("#tgl").val();
-    const nsurat = $("#nsurat").val();
     const nama = $("#nama").val();
     const nik = $("#nik").val();
     const ttl = $("#ttl").val();
@@ -20,11 +19,6 @@ function saveSkck() {
             Swal.fire({
                 title: 'Oops...',
                 text: 'tgl harus diisi!'
-            });
-        } else if (nsurat.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'No Surat harus diisi!'
             });
         } else if (nama.length == "") {
             Swal.fire({
@@ -122,11 +116,6 @@ function saveSkck() {
             Swal.fire({
                 title: 'Oops...',
                 text: 'tgl harus diisi!'
-            });
-        } else if (nsurat.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'No Surat harus diisi!'
             });
         } else if (nama.length == "") {
             Swal.fire({

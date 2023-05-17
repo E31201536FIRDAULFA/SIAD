@@ -16,7 +16,6 @@ class gaji extends BaseController
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
             $data = [
                 'tgl' => $this->request->getPost('tgl'),
-                'nsurat' => $this->request->getPost('nsurat'),
                 'nama' => $this->request->getPost('nama'),
                 'nik' => $this->request->getPost('nik'),
                 'ttl' => $this->request->getPost('ttl'),
@@ -84,7 +83,6 @@ class gaji extends BaseController
             $id = $this->request->getPost('id');
             $data = [
                 'tgl' => $this->request->getPost('tgl'),
-                'nsurat' => $this->request->getPost('nsurat'),
                 'nama' => $this->request->getPost('nama'),
                 'nik' => $this->request->getPost('nik'),
                 'ttl' => $this->request->getPost('ttl'),

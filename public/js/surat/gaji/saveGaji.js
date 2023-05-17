@@ -1,7 +1,6 @@
 function saveGaji() {
     const id = $("#id").val();
     const tgl = $("#tgl").val();
-    const nsurat = $("#nsurat").val();
     const nama = $("#nama").val();
     const nik = $("#nik").val();
     const ttl = $("#ttl").val();
@@ -18,11 +17,6 @@ function saveGaji() {
             Swal.fire({
                 title: 'Oops...',
                 text: 'tgl harus diisi!'
-            });
-        } else if (nsurat.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nsurat harus diisi!'
             });
         } else if (nama.length == "") {
             Swal.fire({
@@ -110,11 +104,6 @@ function saveGaji() {
             Swal.fire({
                 title: 'Oops...',
                 text: 'tgl harus diisi!'
-            });
-        } else if (nsurat.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nsurat harus diisi!'
             });
         } else if (nama.length == "") {
             Swal.fire({

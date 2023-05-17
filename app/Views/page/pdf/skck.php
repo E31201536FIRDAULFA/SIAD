@@ -18,7 +18,6 @@
 
                   <tr>
                     <th>Tanggal</th>            
-                    <th>No Surat</th>
                     <th>Nama</th>
                     <th>NIK</th>
                     <th>TTL</th>
@@ -34,8 +33,7 @@
 
                   <?php foreach ($dataskck as $value) : ?>
                   <tr>
-                    <td align="center"><?= $value['tgl']; ?></td> 
-                    <td align="center"><?= $value['nsurat']; ?></td>                    
+                    <td align="center"><?= $value['tgl']; ?></td>                 
                     <td align="center"><?= $value['nama']; ?></td>
                     <td align="center"><?= $value['nik']; ?></td>                    
                     <td align="center"><?= $value['ttl']; ?></td>                    

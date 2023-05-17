@@ -16,8 +16,6 @@ class Kehilangan extends BaseController
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
             $data = [
                 'tgl' => $this->request->getPost('tgl'),
-                'jenis_surat' => $this->request->getPost('jenis_surat'),
-                'nsurat' => $this->request->getPost('nsurat'),
                 'nama' => $this->request->getPost('nama'),
                 'nik' => $this->request->getPost('nik'),
                 'jk' => $this->request->getPost('jk'),
@@ -86,7 +84,6 @@ class Kehilangan extends BaseController
           if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
               $data = [
                   'tgl' => $this->request->getPost('tgl'),
-                  'n_surat' => $this->request->getPost('n_surat'),
                   'nama' => $this->request->getPost('nama'),
                   'nik' => $this->request->getPost('nik'),
                   'jk' => $this->request->getPost('jk'),
@@ -119,8 +116,6 @@ class Kehilangan extends BaseController
               $id = $this->request->getPost('id');
               $data = [
                   'tgl' => $this->request->getPost('tgl'),
-                  'jenis_surat' => $this->request->getPost('jenis_surat'),
-                  'nsurat' => $this->request->getPost('nsurat'),
                   'nama' => $this->request->getPost('nama'),
                   'nik' => $this->request->getPost('nik'),
                   'jk' => $this->request->getPost('jk'),

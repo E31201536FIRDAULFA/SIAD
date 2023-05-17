@@ -10,7 +10,6 @@ $(document).ready(function () {
                 let row = $('<tr></tr>');
                 let no = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(number++);
                 let tgl = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].tgl);
-                let nsurat = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nsurat);
                 let nama = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nama);
                 let nik = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nik);
                 let ttl = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].ttl);
@@ -35,7 +34,6 @@ $(document).ready(function () {
 
                             $('[name="id"]').val(respond.data.id);
                             $('[name="tgl"]').val(respond.data.tgl);
-                            $('[name="nsurat"]').val(respond.data.nsurat);
                             $('[name="nama"]').val(respond.data.nama);
                             $('[name="nik"]').val(respond.data.nik);
                             $('[name="ttl"]').val(respond.data.ttl);
@@ -106,7 +104,6 @@ $(document).ready(function () {
                     })
                 });
                 row.append(no, tgl,
-                    nsurat,
                     nama,
                     nik,
                     ttl,

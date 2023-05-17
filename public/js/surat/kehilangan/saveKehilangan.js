@@ -1,8 +1,6 @@
 function saveKehilangan() {
     const id = $("#id").val();
     const tgl = $("#tgl").val();
-    const jenis_surat = $("#jenis_surat").val();
-    const nsurat = $("#nsurat").val();
     const nama = $("#nama").val();
     const jk = $("#jk").val();
     const nik = $("#nik").val();
@@ -22,16 +20,6 @@ function saveKehilangan() {
                 text: 'Nama harus diisi!'
             });
         } else if (tgl.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nama harus diisi!'
-            });
-        } else if (jenis_surat.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nama harus diisi!'
-            });
-        } else if (nsurat.length == "") {
             Swal.fire({
                 title: 'Oops...',
                 text: 'Nama harus diisi!'
@@ -127,16 +115,6 @@ function saveKehilangan() {
             Swal.fire({
                 title: 'Oops...',
                 text: 'Tanggal harus diisi!'
-            });
-        } else if (jenis_surat.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Jenis harus diisi!'
-            });
-        } else if (nsurat.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'No Surat harus diisi!'
             });
 
         } else if (jk.length == "") {

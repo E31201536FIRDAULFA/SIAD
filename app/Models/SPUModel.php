@@ -16,7 +16,6 @@ class SPUModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'tgl',
-        'nsurat',
         'userid',
         'nama',
         'nik',

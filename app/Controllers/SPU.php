@@ -16,7 +16,6 @@ class SPU extends BaseController
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
             $data = [
                 'tgl' => $this->request->getPost('tgl'),
-                'nsurat' => $this->request->getPost('nsurat'),
                 'nama' => $this->request->getPost('nama'),
                 'nik' => $this->request->getPost('nik'),
                 'jk' => $this->request->getPost('jk'),
@@ -115,7 +114,6 @@ class SPU extends BaseController
             $id = $this->request->getPost('id');
             $data = [
                 'tgl' => $this->request->getPost('tgl'),
-                'nsurat' => $this->request->getPost('nsurat'),
                 'nama' => $this->request->getPost('nama'),
                 'nik' => $this->request->getPost('nik'),
                 'jk' => $this->request->getPost('jk'),
@@ -147,7 +145,6 @@ class SPU extends BaseController
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
             $data = [
                 'tgl' => $this->request->getPost('tgl'),
-                'nsurat' => $this->request->getPost('nsurat'),
                 'nama' => $this->request->getPost('nama'),
                 'nik' => $this->request->getPost('nik'),
                 'jk' => $this->request->getPost('jk'),

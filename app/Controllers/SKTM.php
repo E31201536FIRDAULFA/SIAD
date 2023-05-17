@@ -16,7 +16,6 @@ class SKTM extends BaseController
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
             $data = [
                 'tgl' => $this->request->getPost('tgl'),
-                'nsurat' => $this->request->getPost('nsurat'),
                 'nik' => $this->request->getPost('nik'),
                 'nama' => $this->request->getPost('nama'),
                 'jk' => $this->request->getPost('jk'),
@@ -125,7 +124,6 @@ class SKTM extends BaseController
             $id = $this->request->getPost('id');
                 $data = [
                     'tgl' => $this->request->getPost('tgl'),
-                    'nsurat' => $this->request->getPost('nsurat'),
                     'nik' => $this->request->getPost('nik'),
                     'nama' => $this->request->getPost('nama'),
                     'jk' => $this->request->getPost('jk'),

@@ -18,7 +18,6 @@
 
                   <tr>
                     <th>Tanggal</th>
-                    <th>No Surat</th>
                     <th>NIK</th>
                     <th>Nama</th>                    
                     <th>Jenis Kelamin</th>
@@ -37,8 +36,7 @@
 
                   <?php foreach ($dataSKTM as $value) : ?>
                   <tr>
-                    <td align="center"><?= $value['tgl']; ?></td>  
-                    <td align="center"><?= $value['nsurat']; ?></td>                                      
+                    <td align="center"><?= $value['tgl']; ?></td>                                       
                     <td align="center"><?= $value['nik']; ?></td>     
                     <td align="center"><?= $value['nama']; ?></td>                                   
                     <td align="center"><?= $value['jk']; ?></td>     

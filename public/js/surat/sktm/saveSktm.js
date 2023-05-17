@@ -24,11 +24,6 @@ function saveSktm() {
                 title: 'Oops...',
                 text: 'tgl harus diisi!'
             });
-        } else if (nsurat.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nomor harus diisi!'
-            });
         } else if (nik.length == "") {
             Swal.fire({
                 title: 'Oops...',
@@ -141,11 +136,6 @@ function saveSktm() {
             Swal.fire({
                 title: 'Oops...',
                 text: 'tgl harus diisi!'
-            });
-        } else if (nsurat.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nomor harus diisi!'
             });
         } else if (nik.length == "") {
             Swal.fire({

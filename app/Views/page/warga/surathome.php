@@ -205,12 +205,7 @@
                                   <input id="jenis_suratkehilangan" type="text" class="form-control">
                                 </div>
 
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="ms-0">No Surat</label>
-                                  <input id="nsuratkehilangan" type="text" class="form-control">
-                                </div>
-
-                
+                           
                                 <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">Nama</label>
                                   <input id="namakehilangan" type="text" class="form-control">
@@ -315,10 +310,7 @@
                                   <input id="id"  name="id" hidden>
                                 </div>
 
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="ms-0">No Surat</label>
-                                  <input id="nsuratskck" type="text" class="form-control">
-                                </div>
+                           
 
                 
                                 <div class="input-group input-group-static mb-3">
@@ -436,12 +428,7 @@
                                   <input id="tglsktm" type="date" class="form-control" name="tglsktm">
                                 </div>
 
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">No Surat</label>
-                                  <input type="text" class="form-control" id="id" name="id" hidden>
-                                  <input id="nsuratsktm" type="text" class="form-control" name="nsuratsktm">
-                                </div>
-
+                            
                                 <div class="input-group input-group-static mb-3">
                                   <label class="form-label">NIK</label>
                                   <input id="niksktm" type="text" class="form-control" name="niksktm">
@@ -574,12 +561,7 @@
                                   <input id="tglspu" type="date" class="form-control">
                                 </div>
 
-                                <div class="input-group input-group-outline mb-3">
-                                  <label class="form-label">No Surat</label>
-                                  <input type="text" class="form-control" id="id" name="id" hidden>
-                                  <input id="nsuratspu" type="text" class="form-control">
-                                </div>
-
+                              
                                 <div class="input-group input-group-outline mb-3">
                                   <label class="form-label">Nama</label>
                                   <input id="namaspu" type="text" class="form-control">
@@ -691,10 +673,7 @@
                                   <input id="id"  name="id" hidden>
                                 </div>
 
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="ms-0">No Surat</label>
-                                  <input id="nsuratgaji" type="text" class="form-control">
-                                </div>
+                        
 
                 
                                 <div class="input-group input-group-static mb-3">

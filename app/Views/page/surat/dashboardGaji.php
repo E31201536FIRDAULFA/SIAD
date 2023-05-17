@@ -32,11 +32,7 @@
                                   <input id="id"  name="id" hidden>
                                 </div>
 
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="ms-0">No Surat</label>
-                                  <input id="nsurat" type="text" class="form-control" name="nsurat">
-                                </div>
-
+                            
                 
                                 <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">Nama</label>
@@ -106,7 +102,6 @@
                     <tr>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No Surat</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">NIK</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">TTL</th>

@@ -18,8 +18,6 @@
 
                   <tr>
                     <th>Tanggal</th>
-                    <th>Jenis</th>
-                    <th>No Surat</th>
                     <th>Nama</th>
                     <th>NIK</th>
                     <th>Jenis Kelamin</th>
@@ -35,8 +33,6 @@
                   <?php foreach ($dataKehilangan as $value) : ?>
                   <tr>
                     <td align="center"><?= $value['tgl']; ?></td> 
-                    <td align="center"><?= $value['jenis_surat']; ?></td> 
-                    <td align="center"><?= $value['nsurat']; ?></td> 
                     <td align="center"><?= $value['userid']; ?></td> 
                     <td align="center"><?= $value['nama']; ?></td>
                     <td align="center"><?= $value['jk']; ?></td> 

@@ -17,7 +17,6 @@ class KehilanganModel extends Model
     protected $allowedFields    = [
         'tgl',
         'jenis_surat',
-        'nsurat', 
         'userid',
         'nama', 
         'nik', 

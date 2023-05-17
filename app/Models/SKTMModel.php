@@ -16,7 +16,6 @@ class SKTMModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'tgl',
-        'nsurat',
         'userid',
         'nik',
         'nama',

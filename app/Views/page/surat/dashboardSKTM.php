@@ -30,12 +30,7 @@
                                   <input id="tgl" type="date" class="form-control" name="tgl">
                                 </div>
 
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">No Surat</label>
-                                  <input type="text" class="form-control" id="id" name="id" hidden>
-                                  <input id="nsurat" type="text" class="form-control" name="nsurat">
-                                </div>
-
+                        
                                 <div class="input-group input-group-static mb-3">
                                   <label class="form-label">NIK</label>
                                   <input id="nik" type="text" class="form-control" name="nik">
@@ -135,7 +130,6 @@
                     <tr>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nomor</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">NIK</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jenis Kelamin</th>
