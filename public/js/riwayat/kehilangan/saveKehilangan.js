@@ -1,8 +1,6 @@
 function saveKehilangan() {
     const id = $("#id").val();
     const tgl = $("#tglkehilangan").val();
-    const jenis_surat = $("#jenis_suratkehilangan").val();
-    const nsurat = $("#nsuratkehilangan").val();
     const nama = $("#namakehilangan").val();
     const jk = $("#jkkehilangan").val();
     const nik = $("#nikkehilangan").val();
@@ -10,7 +8,6 @@ function saveKehilangan() {
     const alamat = $("#alamatkehilangan").val();
     const keperluan = $("#keperluankehilangan").val();
     const ket = $("#ketkehilangan").val();
-    const tgl_berlaku = $("#tgl_berlakukehilangan").val();
     const status = $("#statuskehilangan").val();
     const suratkehilangan = $("#suratkehilangan").val();
 
@@ -22,16 +19,7 @@ function saveKehilangan() {
             text: 'Nama harus diisi!'
         });
 
-    } else if (jenis_surat.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nama harus diisi!'
-        });
-    } else if (nsurat.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nama harus diisi!'
-        });
+
     } else if (nama.length == "") {
         Swal.fire({
             title: 'Oops...',
@@ -67,29 +55,13 @@ function saveKehilangan() {
             title: 'Oops...',
             text: 'Nama harus diisi!'
         });
-    } else if (tgl_berlaku.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nama harus diisi!'
-        });
-    } else if (status.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nama harus diisi!'
-        });
-    } else if (suratkehilangan.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nama harus diisi!'
-        });
+
     } else {
         $.ajax({ //tembak data ke db
             url: url,
             type: 'POST',
             data: {
                 "tgl": tgl,
-                "jenis_surat": jenis_surat,
-                "nsurat": nsurat,
                 "nama": nama,
                 "nik": nik,
                 "jk": jk,
@@ -97,7 +69,6 @@ function saveKehilangan() {
                 "alamat": alamat,
                 "keperluan": keperluan,
                 "ket": ket,
-                "tgl_berlaku": tgl_berlaku,
                 "status": status,
                 "suratkehilangan": suratkehilangan,
             },

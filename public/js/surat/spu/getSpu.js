@@ -31,23 +31,22 @@ $(document).ready(function () {
                         success: function (respond) {
                             console.log(respond.data);
 
-                            $('[name="id"]').val(respond.data.id);
-                            $('[name="tgl"]').val(respond.data.tgl);
-                            $('[name="nama"]').val(respond.data.nama);
-                            $('[name="nik"]').val(respond.data.nik);
-                            $('[name="jk"]').val(respond.data.jk);
-                            $('[name="ttl"]').val(respond.data.ttl);
-                            $('[name="alamat"]').val(respond.data.alamat);
-                            $('[name="nama_usaha"]').val(respond.data.nama_usaha);
-                            $('[name="jenis_usaha"]').val(respond.data.jenis_usaha);
-                            $('[name="alamat_usaha"]').val(respond.data.alamat_usaha);
-                            $('[name="status"]').val(respond.data.status);
-                            $('[name="suratspu"]').val(respond.data.suratspu);
+                            $('#id').val(respond.data.id);
+                            $('#tgl').val(respond.data.tgl);
+                            $('#nama').val(respond.data.nama);
+                            $('#nik').val(respond.data.nik);
+                            $('#jk').val(respond.data.jk);
+                            $('#ttl').val(respond.data.ttl);
+                            $('#alamat').val(respond.data.alamat);
+                            $('#nama_usaha').val(respond.data.nama_usaha);
+                            $('#jenis_usaha').val(respond.data.jenis_usaha);
+                            $('#alamat_usaha').val(respond.data.alamat_usaha);
+                            $('#status').val(respond.data.status);
+                            // $('[name="suratspu"]').val(respond.data.suratspu);
 
                             $('#exampleModal').modal('show');
                             $('.modal-title').text('Edit');
-                            $('#pass').hide();
-                            $('#pass2').hide();
+                            $('#fileupload').removeAttr('hidden');
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
                             console.log(jqXHR);
@@ -59,6 +58,44 @@ $(document).ready(function () {
                         }
                     });
                 });
+
+                let buttonUnduh = $('<button type="button" class="btn bg-gradient-success mb-0"></button>').text('Unduh').attr('id', respond[i].id);
+                buttonUnduh.click(function () {
+
+                    var id = $(this).attr('id');
+                    $.ajax({
+                        url: base_url + 'dashboard/SPU/update/' + id,
+                        type: 'GET',
+                        dataType: 'JSON',
+                        success: function (respond) {
+                            console.log(respond.data);
+
+                            // Set the values of other input fields as needed
+
+                            var fileName = respond.data.suratspu; // Desired name for the downloaded file
+                            var fileUrl = base_url + 'uploads/' + fileName; // URL of the file to be downloaded
+
+                            var downloadLink = document.createElement('a');
+                            downloadLink.setAttribute('href', fileUrl);
+                            downloadLink.setAttribute('download', fileName);
+                            downloadLink.style.display = 'none';
+                            document.body.appendChild(downloadLink);
+                            downloadLink.click();
+                            document.body.removeChild(downloadLink);
+
+                            // Additional code for showing the modal, etc.
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(jqXHR);
+                            swal.fire({
+                                icon: 'error',
+                                title: errorThrown,
+                                text: 'Error getting data from AJAX.'
+                            });
+                        }
+                    });
+                });
+
                 let buttonDelete = $('<button type="button" class="btn bg-gradient-danger mb-0"></button>').text('Delete').attr('id', respond[i].id);
                 buttonDelete.click(function () {
                     var id = $(this).attr('id');
@@ -111,7 +148,7 @@ $(document).ready(function () {
                     jenis_usaha,
                     alamat_usaha,
                     status,
-                    suratspu, buttonEdit, buttonDelete);
+                    suratspu, buttonEdit, buttonUnduh, buttonDelete);
                 tableBody.append(row);
             }
         }

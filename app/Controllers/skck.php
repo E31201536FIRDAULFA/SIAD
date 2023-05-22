@@ -14,21 +14,23 @@ class skck extends BaseController
     {
         $model = new skckModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
-            $data = [
-                'tgl' => $this->request->getPost('tgl'),
-                'nama' => $this->request->getPost('nama'),
-                'nik' => $this->request->getPost('nik'),
-                'ttl' => $this->request->getPost('ttl'),
-                'jk' => $this->request->getPost('jk'),
-                'agama' => $this->request->getPost('agama'),
-                'kewarganegaraan' => $this->request->getPost('kewarganegaraan'),
-                'perkawinan' => $this->request->getPost('perkawinan'),
-                'pekerjaan' => $this->request->getPost('pekerjaan'),
-                'alamat' => $this->request->getPost('alamat'),
-                'status' => $this->request->getPost('status'),
-                'surat' => $this->request->getPost('surat'),
-                
-            ];
+          
+                $data = [
+                    'tgl' => $this->request->getPost('tgl'),
+                    'nama' => $this->request->getPost('nama'),
+                    'nik' => $this->request->getPost('nik'),
+                    'ttl' => $this->request->getPost('ttl'),
+                    'jk' => $this->request->getPost('jk'),
+                    'agama' => $this->request->getPost('agama'),
+                    'kewarganegaraan' => $this->request->getPost('kewarganegaraan'),
+                    'perkawinan' => $this->request->getPost('perkawinan'),
+                    'pekerjaan' => $this->request->getPost('pekerjaan'),
+                    'alamat' => $this->request->getPost('alamat'),
+                    'status' => null,
+                    'surat' => null,
+                ];
+            
+
             $data['userid']=session()->get('id');
                 $model->save($data);
                 return $this->response->setJSON([
@@ -37,15 +39,20 @@ class skck extends BaseController
                     'title' => 'Tambah Pengajuan Surat SKCK Berhasil!',
                     'text' => 'Pop up ini akan hilang dalam 3 detik.',
                 ]); 
+               
             }
         return view('page/surat/dashboardSkck');
     }
+
+
+
+   
 
         // Data Surat skck (read)
     public function dataskck()
     {
         $model = new skckModel();
-        return $this->response->setJSON($model->findAll());
+        return $this->response->setJSON($model->findAll());   
     }
 
     public function dataskckriwayat()
@@ -77,27 +84,38 @@ class skck extends BaseController
         ]);
     }
 
+
+
      //Edit Surat skck
      public function editskck($id)
      {
+
         $model = new skckModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
-            $id = $this->request->getPost('id');
-            $data = [
-                'tgl' => $this->request->getPost('tgl'),
-                'nama' => $this->request->getPost('nama'),
-                'nik' => $this->request->getPost('nik'),
-                'ttl' => $this->request->getPost('ttl'),
-                'jk' => $this->request->getPost('jk'),
-                'agama' => $this->request->getPost('agama'),
-                'kewarganegaraan' => $this->request->getPost('kewarganegaraan'),
-                'perkawinan' => $this->request->getPost('perkawinan'),
-                'pekerjaan' => $this->request->getPost('pekerjaan'),
-                'alamat' => $this->request->getPost('alamat'),
-                'status' => $this->request->getPost('status'),
-                'surat' => $this->request->getPost('surat'),
-            ];
+            $pdf = $this->request->getFile('surat');
+            $randName = $pdf->getRandomName();
+
+            if ($pdf->isValid() && ! $pdf->hasMoved()) {
+                $pdf->move('./uploads',$randName);
+                $data = [
+                    'tgl' => $this->request->getPost('tgl'),
+                    'nama' => $this->request->getPost('nama'),
+                    'nik' => $this->request->getPost('nik'),
+                    'ttl' => $this->request->getPost('ttl'),
+                    'jk' => $this->request->getPost('jk'),
+                    'agama' => $this->request->getPost('agama'),
+                    'kewarganegaraan' => $this->request->getPost('kewarganegaraan'),
+                    'perkawinan' => $this->request->getPost('perkawinan'),
+                    'pekerjaan' => $this->request->getPost('pekerjaan'),
+                    'alamat' => $this->request->getPost('alamat'),
+                    'status' => $this->request->getPost('status'),
+                    'surat' => $randName,
+                ];
+                } else {
+                    echo "eror";
+                }
             $model->update($id, $data);
+
             return $this->response->setJSON([
                 'status' => true,
                 'icon' => 'success',

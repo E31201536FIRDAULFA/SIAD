@@ -28,6 +28,7 @@
                             <div class="input-group input-group-static mb-3">
                                   <label class="form-label">Tanggal</label>
                                   <input id="tgl" type="date" class="form-control" name="tgl">
+                                  <input hidden id="id" name="id">
                                 </div>
 
                         
@@ -51,7 +52,7 @@
 
                                 <div class="input-group input-group-static mb-3">
                                   <label class="form-label">TTL</label>
-                                  <input id="ttl" type="text" class="form-control" name="ttl">
+                                  <input id="ttl" type="date" class="form-control" name="ttl">
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
@@ -107,9 +108,9 @@
                                   </select>
                                 </div>
 
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">Surat SKTM</label>
-                                  <input id="suratsktm" type="text" class="form-control" name="suratsktm">
+                                <div class="input-group input-group-static mb-3" id="fileupload" hidden>
+                                <label for="surat" class="custom-file-label"></label>
+                                  <input class="custom-file-input" type="file" multiple id="suratsktm" name="suratsktm">
                                 </div>
 
                                 <div class="mt-3">

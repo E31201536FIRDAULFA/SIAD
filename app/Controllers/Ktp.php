@@ -18,9 +18,9 @@ class KTP extends BaseController
                 'tgl' => $this->request->getPost('tgl'),
                 'nama' => $this->request->getPost('nama'),
                 'nik' => $this->request->getPost('nik'),
-                'scankk' => $this->request->getPost('scankk'),
-                'status' => $this->request->getPost('status'),
-                'keterangan' => $this->request->getPost('keterangan'),
+                'keperluan' => $this->request->getPost('keperluan'),
+                'keterangan' => null,
+                'surat' => null,
             
             ];
             $data['userid']=session()->get('id');
@@ -65,17 +65,23 @@ class KTP extends BaseController
      {
         $model = new KTPModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
-            $id = $this->request->getPost('id');
+            $pdf = $this->request->getFile('surat');
+            $randName = $pdf->getRandomName();
+
+            if ($pdf->isValid() && ! $pdf->hasMoved()) {
+                $pdf->move('./uploads',$randName);
                 $data = [
                     'tgl' => $this->request->getPost('tgl'),
                     'nama' => $this->request->getPost('nama'),
                     'nik' => $this->request->getPost('nik'),
-                    'scankk' => $this->request->getPost('scankk'),
-                    'status' => $this->request->getPost('status'),
+                    'keperluan' => $this->request->getPost('keperluan'),
                     'keterangan' => $this->request->getPost('keterangan'),
-                
+                    'surat' => $randName,
             ];
-            $data['userid']=session()->get('id');
+        } else {
+            echo "eror";
+        }
+         
             $model->update($id, $data);
             return $this->response->setJSON([
                 'status' => true,

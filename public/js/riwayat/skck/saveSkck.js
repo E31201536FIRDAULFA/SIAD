@@ -1,7 +1,6 @@
 function saveSkck() {
     const id = $("#id").val();
     const tgl = $("#tglskck").val();
-    const nsurat = $("#nsuratskck").val();
     const nama = $("#namaskck").val();
     const nik = $("#nikskck").val();
     const ttl = $("#ttlskck").val();
@@ -11,8 +10,7 @@ function saveSkck() {
     const perkawinan = $("#perkawinanskck").val();
     const pekerjaan = $("#pekerjaanskck").val();
     const alamat = $("#alamatskck").val();
-    const status = $("#statusskck").val();
-    const surat = $("#suratskck").val();
+
 
 
     url = base_url + 'dashboard/skck/';
@@ -21,11 +19,7 @@ function saveSkck() {
             title: 'Oops...',
             text: 'tgl harus diisi!'
         });
-    } else if (nsurat.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'No Surat harus diisi!'
-        });
+
     } else if (nama.length == "") {
         Swal.fire({
             title: 'Oops...',
@@ -71,23 +65,12 @@ function saveSkck() {
             title: 'Oops...',
             text: 'alamat harus diisi!'
         });
-    } else if (status.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nama harus diisi!'
-        });
-    } else if (surat.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'surat harus diupload!'
-        });
     } else {
         $.ajax({
             url: url,
             type: 'POST',
             data: {
                 "tgl": tgl,
-                "nsurat": nsurat,
                 "nama": nama,
                 "nik": nik,
                 "ttl": ttl,
@@ -97,8 +80,7 @@ function saveSkck() {
                 "perkawinan": perkawinan,
                 "pekerjaan": pekerjaan,
                 "alamat": alamat,
-                "status": status,
-                "surat": surat,
+
             },
             dataType: "JSON",
             success: function (respond) {

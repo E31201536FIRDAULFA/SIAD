@@ -96,10 +96,12 @@ function saveSktm() {
                 text: 'surat harus diupload!'
             });
         } else {
-            $.ajax({ //tembak data ke db
+            $.ajax({
                 url: url,
                 type: 'POST',
-                data: $('#form').serialize(),
+                data: new FormData($('#form')[0]), // Use FormData to include file
+                processData: false, // Prevent jQuery from automatically processing the data
+                contentType: false, // Prevent jQuery from automatically setting the content type
                 dataType: "JSON",
                 success: function (respond) {
                     if (respond.status == true) {
@@ -122,11 +124,11 @@ function saveSktm() {
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    swal.fire({
+                    Swal.fire({
                         icon: 'error',
                         title: 'Terjadi error!',
                         text: 'Silahkan coba lagi.'
-                    })
+                    });
                 }
             });
         }
@@ -203,16 +205,14 @@ function saveSktm() {
                 title: 'Oops...',
                 text: 'Nama harus diisi!'
             });
-        } else if (suratsktm.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'surat harus diupload!'
-            });
+
         } else {
             $.ajax({
                 url: url,
                 type: 'POST',
-                data: $('#form').serialize(),
+                data: new FormData($('#form')[0]), // Use FormData to include file
+                processData: false, // Prevent jQuery from automatically processing the data
+                contentType: false, // Prevent jQuery from automatically setting the content type
                 dataType: "JSON",
                 success: function (respond) {
                     if (respond.status == true) {
@@ -235,11 +235,11 @@ function saveSktm() {
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    swal.fire({
+                    Swal.fire({
                         icon: 'error',
                         title: 'Terjadi error!',
                         text: 'Silahkan coba lagi.'
-                    })
+                    });
                 }
             });
         }

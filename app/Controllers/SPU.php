@@ -25,7 +25,7 @@ class SPU extends BaseController
                 'jenis_usaha' => $this->request->getPost('jenis_usaha'),
                 'alamat_usaha' => $this->request->getPost('alamat_usaha'),
                 'status' => $this->request->getPost('status'),
-                'suratspu' => $this->request->getPost('suratspu'),
+                'suratspu' => null,
                 
             ];
             $data['userid']=session()->get('id');
@@ -111,7 +111,11 @@ class SPU extends BaseController
      {
         $model = new SPUModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
-            $id = $this->request->getPost('id');
+            $pdf = $this->request->getFile('suratspu');
+            $randName = $pdf->getRandomName();
+
+            if ($pdf->isValid() && ! $pdf->hasMoved()) {
+                $pdf->move('./uploads',$randName);
             $data = [
                 'tgl' => $this->request->getPost('tgl'),
                 'nama' => $this->request->getPost('nama'),
@@ -123,8 +127,12 @@ class SPU extends BaseController
                 'jenis_usaha' => $this->request->getPost('jenis_usaha'),
                 'alamat_usaha' => $this->request->getPost('alamat_usaha'),
                 'status' => $this->request->getPost('status'),
-                'suratspu' => $this->request->getPost('suratspu'),
+                'suratspu' => $randName,
             ];
+        } else {
+            echo "eror";
+        }
+ 
             $model->update($id, $data);
             return $this->response->setJSON([
                 'status' => true,

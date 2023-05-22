@@ -3,9 +3,9 @@ function saveKTP() {
     const tgl = $("#tgl").val();
     const nama = $("#nama").val();
     const nik = $("#nik").val();
-    const scankk = $("#scankk").val();
-    const status = $("#status").val();
+    const keperluan = $("#keperluan").val();
     const keterangan = $("#keterangan").val();
+    const surat = $("#surat").val();
 
     if (id) {
         url = base_url + 'dashboard/KTP/update/' + id;
@@ -25,26 +25,29 @@ function saveKTP() {
                 title: 'Oops...',
                 text: 'Nik harus diisi!'
             });
-        } else if (scankk.length == "") {
+        } else if (keperluan.length == "") {
             Swal.fire({
                 title: 'Oops...',
                 text: 'Scan KK harus diisi!'
             });
-        } else if (status.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Status Surat harus diisi!'
-            });
+
         } else if (keterangan.length == "") {
             Swal.fire({
                 title: 'Oops...',
                 text: 'Keterangan harus diisi!'
             });
+        } else if (surat.length == "") {
+            Swal.fire({
+                title: 'Oops...',
+                text: 'surat harus diisi!'
+            });
         } else {
-            $.ajax({ //tembak data ke db
+            $.ajax({
                 url: url,
                 type: 'POST',
-                data: $('#form').serialize(),
+                data: new FormData($('#form')[0]), // Use FormData to include file
+                processData: false, // Prevent jQuery from automatically processing the data
+                contentType: false, // Prevent jQuery from automatically setting the content type
                 dataType: "JSON",
                 success: function (respond) {
                     if (respond.status == true) {
@@ -67,11 +70,11 @@ function saveKTP() {
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    swal.fire({
+                    Swal.fire({
                         icon: 'error',
                         title: 'Terjadi error!',
                         text: 'Silahkan coba lagi.'
-                    })
+                    });
                 }
             });
         }
@@ -94,26 +97,20 @@ function saveKTP() {
                 text: 'Nik harus diisi!'
 
             });
-        } else if (scankk.length == "") {
+        } else if (keperluan.length == "") {
             Swal.fire({
                 title: 'Oops...',
                 text: 'Scan KK harus diisi!'
             });
-        } else if (status.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Status Surat harus diisi!'
-            });
-        } else if (keterangan.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Keterangan harus diisi!'
-            });
+
+
         } else {
             $.ajax({
                 url: url,
                 type: 'POST',
-                data: $('#form').serialize(),
+                data: new FormData($('#form')[0]), // Use FormData to include file
+                processData: false, // Prevent jQuery from automatically processing the data
+                contentType: false, // Prevent jQuery from automatically setting the content type
                 dataType: "JSON",
                 success: function (respond) {
                     if (respond.status == true) {
@@ -136,11 +133,11 @@ function saveKTP() {
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    swal.fire({
+                    Swal.fire({
                         icon: 'error',
                         title: 'Terjadi error!',
                         text: 'Silahkan coba lagi.'
-                    })
+                    });
                 }
             });
         }

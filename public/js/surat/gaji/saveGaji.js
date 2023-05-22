@@ -64,10 +64,12 @@ function saveGaji() {
                 text: 'Nama harus diisi!'
             });
         } else {
-            $.ajax({ //tembak data ke db
+            $.ajax({
                 url: url,
                 type: 'POST',
-                data: $('#form').serialize(),
+                data: new FormData($('#form')[0]), // Use FormData to include file
+                processData: false, // Prevent jQuery from automatically processing the data
+                contentType: false, // Prevent jQuery from automatically setting the content type
                 dataType: "JSON",
                 success: function (respond) {
                     if (respond.status == true) {
@@ -90,11 +92,11 @@ function saveGaji() {
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    swal.fire({
+                    Swal.fire({
                         icon: 'error',
                         title: 'Terjadi error!',
                         text: 'Silahkan coba lagi.'
-                    })
+                    });
                 }
             });
         }
@@ -145,16 +147,14 @@ function saveGaji() {
                 title: 'Oops...',
                 text: 'Nama harus diisi!'
             });
-        } else if (Surat.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nama harus diisi!'
-            });
+
         } else {
             $.ajax({
                 url: url,
                 type: 'POST',
-                data: $('#form').serialize(),
+                data: new FormData($('#form')[0]), // Use FormData to include file
+                processData: false, // Prevent jQuery from automatically processing the data
+                contentType: false, // Prevent jQuery from automatically setting the content type
                 dataType: "JSON",
                 success: function (respond) {
                     if (respond.status == true) {
@@ -177,13 +177,14 @@ function saveGaji() {
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    swal.fire({
+                    Swal.fire({
                         icon: 'error',
                         title: 'Terjadi error!',
                         text: 'Silahkan coba lagi.'
-                    })
+                    });
                 }
             });
+
         }
     }
 }

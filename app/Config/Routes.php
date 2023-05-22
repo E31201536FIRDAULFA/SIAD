@@ -147,6 +147,7 @@ $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
     $routes->get('data', 'skck::dataskck');
     $routes->get('riwayatskck', 'skck::dataskckriwayat');
     $routes->match(['GET', 'POST'], 'download/(:num)', 'skck::download/$1');
+    
   });
 
   //tabel riwayat

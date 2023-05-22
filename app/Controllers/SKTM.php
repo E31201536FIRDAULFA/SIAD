@@ -28,8 +28,8 @@ class SKTM extends BaseController
                 'alamatayah' => $this->request->getPost('alamatayah'),
                 'gaji' => $this->request->getPost('gaji'),
                 'keperluan' => $this->request->getPost('keperluan'),
-                'status' => $this->request->getPost('status'),
-                'suratsktm' => $this->request->getPost('suratsktm'),
+                'status' => null,
+                'suratsktm' => null,
             ];
             $data['userid']=session()->get('id');
                 $model->save($data);
@@ -80,40 +80,7 @@ class SKTM extends BaseController
         ]);
     }
 
-   
-    //Tambah Surat SKTM
-    public function tambahSKTM()
-    {
-        $model = new SKTMModel();
-        if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
-            $data = [
-                'tgl' => $this->request->getPost('tgl'),
-                'nsurat' => $this->request->getPost('nsurat'),
-                'nik' => $this->request->getPost('nik'),
-                'nama' => $this->request->getPost('nama'),
-                'jk' => $this->request->getPost('jk'),
-                'ttl' => $this->request->getPost('ttl'),
-                'stswarga' => $this->request->getPost('stswarga'),
-                'nama_ayah' => $this->request->getPost('nama_ayah'),
-                'ttlayah' => $this->request->getPost('ttlayah'),
-                'agama' => $this->request->getPost('agama'),
-                'pekerjaan' => $this->request->getPost('pekerjaan'),
-                'alamatayah' => $this->request->getPost('alamatayah'),
-                'gaji' => $this->request->getPost('gaji'),
-                'keperluan' => $this->request->getPost('keperluan'),
-                'status' => $this->request->getPost('status'),
-                'status' => 1
-            ];
-                $model->save($data);
-                return $this->response->setJSON([
-                    'status' => true,
-                    'icon' => 'success',
-                    'title' => 'Tambah Pengajuan Surat Kehilangan Berhasil!',
-                    'text' => 'Pop up ini akan hilang dalam 3 detik.',
-                ]); 
-            return view('page/sktm');
-        }
-    }
+
           
 
      //Edit Surat SKTM
@@ -121,7 +88,12 @@ class SKTM extends BaseController
      {
         $model = new SKTMModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
-            $id = $this->request->getPost('id');
+            $pdf = $this->request->getFile('suratsktm');
+            $randName = $pdf->getRandomName();
+
+            if ($pdf->isValid() && ! $pdf->hasMoved()) {
+                $pdf->move('./uploads',$randName);
+          
                 $data = [
                     'tgl' => $this->request->getPost('tgl'),
                     'nik' => $this->request->getPost('nik'),
@@ -137,9 +109,13 @@ class SKTM extends BaseController
                     'gaji' => $this->request->getPost('gaji'),
                     'keperluan' => $this->request->getPost('keperluan'),
                     'status' => $this->request->getPost('status'),
-                    'status' => 1
+                    'suratsktm' => $randName,
                 
             ];
+        } else {
+            echo "eror";
+        }
+ 
             $model->update($id, $data);
             return $this->response->setJSON([
                 'status' => true,

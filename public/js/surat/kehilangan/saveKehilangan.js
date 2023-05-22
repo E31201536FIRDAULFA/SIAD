@@ -8,7 +8,6 @@ function saveKehilangan() {
     const alamat = $("#alamat").val();
     const keperluan = $("#keperluan").val();
     const ket = $("#ket").val();
-    const tgl_berlaku = $("#tgl_berlaku").val();
     const status = $("#status").val();
     const suratkehilangan = $("#suratkehilangan").val();
 
@@ -54,11 +53,6 @@ function saveKehilangan() {
                 title: 'Oops...',
                 text: 'Nama harus diisi!'
             });
-        } else if (tgl_berlaku.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nama harus diisi!'
-            });
         } else if (status.length == "") {
             Swal.fire({
                 title: 'Oops...',
@@ -70,10 +64,12 @@ function saveKehilangan() {
                 text: 'Nama harus diisi!'
             });
         } else {
-            $.ajax({ //tembak data ke db
+            $.ajax({
                 url: url,
                 type: 'POST',
-                data: $('#form').serialize(),
+                data: new FormData($('#form')[0]), // Use FormData to include file
+                processData: false, // Prevent jQuery from automatically processing the data
+                contentType: false, // Prevent jQuery from automatically setting the content type
                 dataType: "JSON",
                 success: function (respond) {
                     if (respond.status == true) {
@@ -96,11 +92,11 @@ function saveKehilangan() {
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    swal.fire({
+                    Swal.fire({
                         icon: 'error',
                         title: 'Terjadi error!',
                         text: 'Silahkan coba lagi.'
-                    })
+                    });
                 }
             });
         }
@@ -147,26 +143,19 @@ function saveKehilangan() {
                 title: 'Oops...',
                 text: 'Keterangan harus diisi!'
             });
-        } else if (tgl_berlaku.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Tanggal Berlaku harus diisi!'
-            });
         } else if (status.length == "") {
             Swal.fire({
                 title: 'Oops...',
                 text: 'Status harus diisi!'
             });
-        } else if (suratkehilangan.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Surat Kehilangan harus diisi!'
-            });
+
         } else {
             $.ajax({
                 url: url,
                 type: 'POST',
-                data: $('#form').serialize(),
+                data: new FormData($('#form')[0]), // Use FormData to include file
+                processData: false, // Prevent jQuery from automatically processing the data
+                contentType: false, // Prevent jQuery from automatically setting the content type
                 dataType: "JSON",
                 success: function (respond) {
                     if (respond.status == true) {
@@ -189,11 +178,11 @@ function saveKehilangan() {
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    swal.fire({
+                    Swal.fire({
                         icon: 'error',
                         title: 'Terjadi error!',
                         text: 'Silahkan coba lagi.'
-                    })
+                    });
                 }
             });
         }

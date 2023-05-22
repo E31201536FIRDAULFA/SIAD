@@ -28,6 +28,7 @@
                             <div class="input-group input-group-outline mb-3">
                                   <label class="form-label">Tanggal</label>
                                   <input id="tgl" type="date" class="form-control" name="tgl">
+                                  <input id="id" name="id" hidden>
                                 </div>
 
                              
@@ -88,9 +89,9 @@
                                   </select>
                                 </div>
                               
-                                <div class="input-group input-group-outline mb-3">
-                                  <label class="form-label">Surat</label>
-                                  <input id="suratspu" type="text" class="form-control" name="suratspu">
+                                <div class="input-group input-group-outline mb-3" id="fileupload" hidden>
+                                  <label class="form-label">Usaha</label>
+                                  <input id="suratspu" type="file" class="form-control" name="suratspu">
                                 </div>
 
                                 <div class="mt-3">

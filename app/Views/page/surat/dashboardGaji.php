@@ -25,7 +25,6 @@
                       <!--POP UP TAMBAH PENGAJUAN-->
                         <div class="modal-body">
                             <form action="#" id="form">
-                            <input hidden id="id" name="id">
                             <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">Tanggal</label>
                                   <input id="tgl" type="date" class="form-control" name="tgl">
@@ -79,9 +78,9 @@
                                   </select>
                                 </div>
 
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="ms-0">Surat Upload</label>
-                                  <input id="Surat" type="text" class="form-control" name="Surat">
+                                <div class="input-group input-group-static mb-3" id="fileuploadgaji" hidden>
+                                <label for="Surat" class="custom-file-label"></label>
+                                  <input class="custom-file-input" type="file" multiple id="Surat" name="Surat">
                                 </div>
 
                                 <div class="mt-3">

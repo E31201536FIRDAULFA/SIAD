@@ -48,27 +48,14 @@
 
                         
                                 <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">Scan KK</label>
-                                  <input id="scankk" type="text" class="form-control">
-                                </div>
-
-                                <div class="input-group input-group-static mb-3">
-                                <label for="exampleFormControlSelect1" class="ms-0">Status Surat</label>
-                                  <select class="form-control" id="statusktp">
-                                    <option value="diterima">Diterima</option>
-                                    <option value="ditolak">Ditolak</option>
-                                    <option value="pending">Pending</option>
+                                <label for="exampleFormControlSelect1" class="ms-0">Kewarganegaraan</label>
+                                  <select class="form-control" id="keperluan" name="keperluan">
+                                    <option value="Hilang">Hilang</option>
+                                    <option value="Belum Pernah Mengajukan">Belum Pernah Mengajukan</option>
                                   </select>
                                 </div>
 
-                                <div class="input-group input-group-static mb-3">
-                                <label for="exampleFormControlSelect1" class="ms-0">Keterangan</label>
-                                  <select class="form-control" id="keteranganktp">
-                                    <option value="Pengajuan Sedang Diproses">Pengajuan Sedang Diproses</option>
-                                    <option value="Pengajuan Selesai">Pengajuan Selesai</option>
-                                    <option value="Pengajuan Ditolak, Lengkapi Persyaratan Dengan Benar">Pengajuan Ditolak, Lengkapi Persyaratan Dengan Benar</option>
-                                  </select>
-                                </div>
+                              
 
 
                                 <div class="mt-3">
@@ -130,31 +117,18 @@
 
                         
                                 <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">Scan KTP</label>
-                                  <input id="scanktpKK" type="text" class="form-control">
-                                </div>
-                                <div class="input-group input-group-static mb-3">
-                                <label for="exampleFormControlSelect1" class="ms-0">Status Surat</label>
-                                  <select class="form-control" id="statusKK">
-                                    <option value="diterima">Diterima</option>
-                                    <option value="ditolak">Ditolak</option>
-                                    <option value="pending">Pending</option>
+                                <label for="exampleFormControlSelect1" class="ms-0">Keperluan</label>
+                                  <select class="form-control" id="keperluanKK" name="keperluanKK">
+                                    <option value="Hilang">Hilang</option>
+                                    <option value="Belum Pernah Mengajukan">Belum Pernah Mengajukan</option>
                                   </select>
                                 </div>
-
-                                <div class="input-group input-group-static mb-3">
-                                <label for="exampleFormControlSelect1" class="ms-0">Keterangan</label>
-                                  <select class="form-control" id="keteranganKK">
-                                    <option value="Pengajuan Sedang Diproses">Pengajuan Sedang Diproses</option>
-                                    <option value="Pengajuan Selesai">Pengajuan Selesai</option>
-                                    <option value="Pengajuan Ditolak, Lengkapi Persyaratan Dengan Benar">Pengajuan Ditolak, Lengkapi Persyaratan Dengan Benar</option>
-                                  </select>
-                                </div>
+                                
 
                             
                                
                                 <div class="mt-3">
-                                  <button type="button" onclick="saveKK()" class="btn bg-gradient-success btn-lg w-100 mt-4 mb-0">Simpan</button>
+                                  <button type="button" onclick="saveKk()" class="btn bg-gradient-success btn-lg w-100 mt-4 mb-0">Simpan</button>
                                 </div>
                               </form>
                             </div>
@@ -200,12 +174,7 @@
                                   <input id="tglkehilangan" type="date" class="form-control" >
                                 </div>
 
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="ms-0">Jenis</label>
-                                  <input id="jenis_suratkehilangan" type="text" class="form-control">
-                                </div>
-
-                           
+                              
                                 <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">Nama</label>
                                   <input id="namakehilangan" type="text" class="form-control">
@@ -245,20 +214,7 @@
                                   <input id="ketkehilangan" type="text" class="form-control">
                                 </div>
 
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="ms-0">Tanggal Berlaku</label>
-                                  <input id="tgl_berlakukehilangan" type="date" class="form-control">
-                                </div>
-
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="ms-0">Status</label>
-                                  <input id="statuskehilangan" type="text" class="form-control">
-                                </div>
-
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="ms-0">Surat Kehilangan</label>
-                                  <input id="suratkehilangan" type="text" class="form-control">
-                                </div>
+                               
 
                                 <div class="mt-3">
                                 <button type="button" onclick="saveKehilangan()" class="btn bg-gradient-success btn-lg w-100 mt-4 mb-0">Simpan</button>
@@ -342,8 +298,11 @@
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
-                                  <label class="ms-0">Kewarganegaraan</label>
-                                  <input id="kewarganegaraanskck" type="text" class="form-control">
+                                <label for="exampleFormControlSelect1" class="ms-0">Kewarganegaraan</label>
+                                  <select class="form-control" id="kewarganegaraanskck" name="kewarganegaraanskck">
+                                    <option value="WNI">WNI</option>
+                                    <option value="WNA">WNA</option>
+                                  </select>
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
@@ -363,21 +322,6 @@
                                 <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">Alamat</label>
                                   <input id="alamatskck" type="text" class="form-control">
-                                </div>
-
-
-                                <div class="input-group input-group-static mb-3">
-                                <label for="exampleFormControlSelect1" class="ms-0">Status Surat</label>
-                                  <select class="form-control" id="statusskck">
-                                    <option value="Pengajuan Sedang Diproses">Pengajuan Sedang Diproses</option>
-                                    <option value="Pengajuan Selesai">Pengajuan Selesai</option>
-                                    <option value="Pengajuan Ditolak, Lengkapi Persyaratan Dengan Benar">Pengajuan Ditolak, Lengkapi Persyaratan Dengan Benar</option>
-                                  </select>
-                                </div>
-
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="ms-0">Surat Upload</label>
-                                  <input id="suratskck" type="text" class="form-control">
                                 </div>
                             
                                
@@ -449,7 +393,7 @@
 
                                 <div class="input-group input-group-static mb-3">
                                   <label class="form-label">TTL</label>
-                                  <input id="ttlsktm" type="text" class="form-control" name="ttlsktm">
+                                  <input id="ttlsktm" type="date" class="form-control" name="ttlsktm">
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
@@ -496,19 +440,7 @@
                                   <input id="keperluansktm" type="text" class="form-control" name="keperluansktm">
                                 </div>
 
-                                <div class="input-group input-group-static mb-3">
-                                <label for="exampleFormControlSelect1" class="ms-0">Status Surat</label>
-                                  <select class="form-control" id="statussktm" name="statussktm">
-                                    <option value="diterima">Diterima</option>
-                                    <option value="ditolak">Ditolak</option>
-                                    <option value="diproses">Diproses</option>
-                                  </select>
-                                </div>
-
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">Surat SKTM</label>
-                                  <input id="suratsktm" type="text" class="form-control" name="suratsktm">
-                                </div>
+                               
 
                             
                                
@@ -609,20 +541,7 @@
                                   <input id="alamat_usahaspu" type="text" class="form-control">
                                 </div>
 
-                                <div class="input-group input-group-static mb-3">
-                                <label for="exampleFormControlSelect1" class="ms-0">Status Surat</label>
-                                  <select class="form-control" id="statusspu">
-                                    <option value="diproses">Diproses</option>
-                                    <option value="diterima">Diterima</option>
-                                    <option value="ditolak">Ditolak</option>
-                                  </select>
-                                </div>
                               
-                                <div class="input-group input-group-outline mb-3">
-                                  <label class="form-label">Surat</label>
-                                  <input id="suratspu" type="text" class="form-control">
-                                </div>
-                            
                                
                                 <div class="mt-3">
                                   <button type="button" onclick="saveSpu()" class="btn bg-gradient-success btn-lg w-100 mt-4 mb-0">Simpan</button>
@@ -712,22 +631,6 @@
                                 </div>
 
 
-                                <div class="input-group input-group-static mb-3">
-                                <label for="exampleFormControlSelect1" class="ms-0">Status Surat</label>
-                                  <select class="form-control" id="statusgaji">
-                                    <option value="Pengajuan Sedang Diproses">Pengajuan Sedang Diproses</option>
-                                    <option value="Pengajuan Selesai">Pengajuan Selesai</option>
-                                    <option value="Pengajuan Ditolak, Lengkapi Persyaratan Dengan Benar">Pengajuan Ditolak, Lengkapi Persyaratan Dengan Benar</option>
-                                  </select>
-                                </div>
-
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="ms-0">Surat Upload</label>
-                                  <input id="Suratgaji" type="text" class="form-control">
-                                </div>
-
-                            
-                               
                                 <div class="mt-3">
                                   <button type="button" onclick="saveGaji()" class="btn bg-gradient-success btn-lg w-100 mt-4 mb-0">Simpan</button>
                                 </div>
@@ -760,6 +663,6 @@
 <script src="<?= base_url('js/riwayat/KTP/Ktp.js') ?>"></script>
 <script src="<?= base_url('js/riwayat/KTP/Ktpsubmit.js') ?>"></script>
 <script src="<?= base_url('js/riwayat/KK/KK.js') ?>"></script>
-<script src="<?= base_url('js/riwayat/KK/saveKK.js') ?>"></script>
+<script src="<?= base_url('js/riwayat/KK/saveKk.js') ?>"></script>
 <?= $this->endSection() ?>
 

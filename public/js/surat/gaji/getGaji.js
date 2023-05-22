@@ -44,8 +44,8 @@ $(document).ready(function () {
 
                             $('#exampleModal').modal('show');
                             $('.modal-title').text('Edit');
-                            $('#pass').hide();
-                            $('#pass2').hide();
+                            $('#fileuploadgaji').removeAttr('hidden');
+
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
                             console.log(jqXHR);
@@ -57,6 +57,44 @@ $(document).ready(function () {
                         }
                     });
                 });
+
+                let buttonUnduh = $('<button type="button" class="btn bg-gradient-success mb-0"></button>').text('Unduh').attr('id', respond[i].id);
+                buttonUnduh.click(function () {
+
+                    var id = $(this).attr('id');
+                    $.ajax({
+                        url: base_url + 'dashboard/gaji/update/' + id,
+                        type: 'GET',
+                        dataType: 'JSON',
+                        success: function (respond) {
+                            console.log(respond.data);
+
+                            // Set the values of other input fields as needed
+
+                            var fileName = respond.data.Surat; // Desired name for the downloaded file
+                            var fileUrl = base_url + 'uploads/' + fileName; // URL of the file to be downloaded
+
+                            var downloadLink = document.createElement('a');
+                            downloadLink.setAttribute('href', fileUrl);
+                            downloadLink.setAttribute('download', fileName);
+                            downloadLink.style.display = 'none';
+                            document.body.appendChild(downloadLink);
+                            downloadLink.click();
+                            document.body.removeChild(downloadLink);
+
+                            // Additional code for showing the modal, etc.
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(jqXHR);
+                            swal.fire({
+                                icon: 'error',
+                                title: errorThrown,
+                                text: 'Error getting data from AJAX.'
+                            });
+                        }
+                    });
+                });
+
                 let buttonDelete = $('<button type="button" class="btn bg-gradient-danger mb-0"></button>').text('Delete').attr('id', respond[i].id);
                 buttonDelete.click(function () {
                     var id = $(this).attr('id');
@@ -108,7 +146,7 @@ $(document).ready(function () {
                     no_kis,
                     ket,
                     status,
-                    Surat, buttonEdit, buttonDelete);
+                    Surat, buttonEdit, buttonUnduh, buttonDelete);
                 tableBody.append(row);
             }
         }

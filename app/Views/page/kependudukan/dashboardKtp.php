@@ -34,34 +34,35 @@
                                   <input id="nama" type="text" class="form-control" name="nama">
                                 </div>
 
+
                                 <div class="input-group input-group-static mb-3">
                                   <label class="form-label">NIK</label>
                                   <input id="nik" type="text" class="form-control" name="nik">
                                 </div>
 
-                        
                                 <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">Scan KK</label>
-                                  <input id="scankk" type="text" class="form-control" name="scankk">
-                                </div>
-
-                                <div class="input-group input-group-static mb-3">
-                                <label for="exampleFormControlSelect1" class="ms-0">Status Surat</label>
-                                  <select class="form-control" id="status" name="status">
-                                    <option value="diterima">Diterima</option>
-                                    <option value="ditolak">Ditolak</option>
-                                    <option value="pending">Pending</option>
+                                <label for="exampleFormControlSelect1" class="ms-0">Keperluan</label>
+                                  <select class="form-control" id="keperluan" name="keperluan">
+                                    <option value="Hilang">Hilang</option>
+                                    <option value="Belum Pernah Mengajukan">Belum Pernah Mengajukan</option>
                                   </select>
                                 </div>
+                                
 
-                                <div class="input-group input-group-static mb-3">
-                                <label for="exampleFormControlSelect1" class="ms-0">Keterangan</label>
+                              
+                                <div class="input-group input-group-static mb-3" >
+                                <label for="exampleFormControlSelect1" class="ms-0">Status</label>
                                   <select class="form-control" id="keterangan" name="keterangan">
                                     <option value="Pengajuan Sedang Diproses">Pengajuan Sedang Diproses</option>
                                     <option value="Pengajuan Selesai">Pengajuan Selesai</option>
                                     <option value="Pengajuan Ditolak, Lengkapi Persyaratan Dengan Benar">Pengajuan Ditolak, Lengkapi Persyaratan Dengan Benar</option>
                                   </select>
                                 </div>
+
+                                <div class="input-group input-group-static mb-3" id="fileuploadktp" hidden>
+                                <label for="surat" class="custom-file-label"></label>
+                                  <input class="custom-file-input" type="file" multiple id="surat" name="surat">
+                                </div>                  
 
                                 <div class="mt-3">
                                   <button type="button" class="btn bg-gradient-success btn-lg w-100 mt-4 mb-0" onclick="saveKTP()">Simpan</button>
@@ -81,12 +82,11 @@
                     <tr>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nomor</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">NIK</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Scan KK</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Keperluan</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Keterangan</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Surat</th>
                         <th class="text-secondary opacity-7"></th>
                     </tr>
                   </thead>

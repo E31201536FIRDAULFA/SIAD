@@ -23,8 +23,9 @@ class gaji extends BaseController
                 'no_kip' => $this->request->getPost('no_kip'),
                 'no_kis' => $this->request->getPost('no_kis'),
                 'ket' => $this->request->getPost('ket'),
-                'status' => $this->request->getPost('status'),
-                'Surat' => $this->request->getPost('Surat'),
+                'status' => null,
+                'Surat' => null,
+                
                 
             ];
             $data['userid']=session()->get('id');
@@ -80,7 +81,11 @@ class gaji extends BaseController
      {
         $model = new gajiModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
-            $id = $this->request->getPost('id');
+            $pdf = $this->request->getFile('Surat');
+            $randName = $pdf->getRandomName();
+
+            if ($pdf->isValid() && ! $pdf->hasMoved()) {
+                $pdf->move('./uploads',$randName);
             $data = [
                 'tgl' => $this->request->getPost('tgl'),
                 'nama' => $this->request->getPost('nama'),
@@ -91,9 +96,12 @@ class gaji extends BaseController
                 'no_kis' => $this->request->getPost('no_kis'),
                 'ket' => $this->request->getPost('ket'),
                 'status' => $this->request->getPost('status'),
-                'Surat' => $this->request->getPost('Surat'),
+                'Surat' => $randName,
             ];
-            $data['userid']=session()->get('id');
+        } else {
+            echo "eror";
+        }
+          
             $model->update($id, $data);
             return $this->response->setJSON([
                 'status' => true,

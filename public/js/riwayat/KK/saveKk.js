@@ -2,9 +2,9 @@ function saveKk() {
     const tgl = $("#tglKK").val();
     const nama = $("#namaKK").val();
     const nik = $("#nikKK").val();
-    const scanktp = $("#scanktpKK").val();
-    const status = $("#statusKK").val();
-    const keterangan = $("#keteranganKK").val();
+    const keperluan = $("#keperluanKK").val();
+
+
 
     url = base_url + 'dashboard/KK';
     if (tgl.length == "") {
@@ -17,7 +17,7 @@ function saveKk() {
             title: 'Oops...',
             text: 'Nama harus diisi!'
         });
-    } else if (scanktp.length == "") {
+    } else if (keperluan.length == "") {
         Swal.fire({
             title: 'Oops...',
             text: 'Scan KK harus diisi!'
@@ -28,16 +28,8 @@ function saveKk() {
             text: 'Nik harus diisi!'
 
         });
-    } else if (status.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Status Surat harus diisi!'
-        });
-    } else if (keterangan.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Keterangan harus diisi!'
-        });
+
+
     } else {
         $.ajax({
             url: url,
@@ -46,9 +38,9 @@ function saveKk() {
                 "tgl": tgl,
                 "nama": nama,
                 "nik": nik,
-                "scanktp": scanktp,
-                "status": status,
-                "keterangan": keterangan,
+                "keperluan": keperluan,
+
+
             },
             dataType: "JSON",
             success: function (respond) {

@@ -19,9 +19,9 @@ class KKModel extends Model
         'userid',
         'nama',
         'nik',
-        'scanktp',
-        'status',
+        'keperluan',
         'keterangan',
+        'surat',
     ];
 
     // Dates

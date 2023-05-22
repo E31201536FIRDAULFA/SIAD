@@ -23,9 +23,8 @@ class Kehilangan extends BaseController
                 'alamat' => $this->request->getPost('alamat'),
                 'keperluan' => $this->request->getPost('keperluan'),
                 'ket' => $this->request->getPost('ket'),
-                'tgl_berlaku' => $this->request->getPost('tgl_berlaku'),
-                'status' => $this->request->getPost('status'),
-                'suratkehilangan' => $this->request->getPost('suratkehilangan'), 
+                'status' => null,
+                'suratkehilangan' => null,
                 
             ];
             $data['userid']=session()->get('id');
@@ -77,35 +76,6 @@ class Kehilangan extends BaseController
           ]);
       }
   
-      //Tambah Surat Kehilangan
-      public function tambahKehilangan()
-      {
-          $model = new KehilanganModel();
-          if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
-              $data = [
-                  'tgl' => $this->request->getPost('tgl'),
-                  'nama' => $this->request->getPost('nama'),
-                  'nik' => $this->request->getPost('nik'),
-                  'jk' => $this->request->getPost('jk'),
-                  'pekerjaan' => $this->request->getPost('pekerjaan'),
-                  'alamat' => $this->request->getPost('alamat'),
-                  'keperluan' => $this->request->getPost('keperluan'),
-                  'ket' => $this->request->getPost('ket'),
-                  'tgl_berlaku' => $this->request->getPost('tgl_berlaku'),
-                  'status' => $this->request->getPost('status'),
-                  'suratkehilangan' => $this->request->getPost('suratkehilangan'), 
-                 
-              ];
-                  $model->save($data);
-                  return $this->response->setJSON([
-                      'status' => true,
-                      'icon' => 'success',
-                      'title' => 'Tambah Pengajuan Surat Kehilangan Berhasil!',
-                      'text' => 'Pop up ini akan hilang dalam 3 detik.',
-                  ]); 
-              return view('page/kehilangan');
-          }
-      }
   
   
        //Edit Surat Kehilangan
@@ -113,7 +83,11 @@ class Kehilangan extends BaseController
        {
           $model = new KehilanganModel();
           if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
-              $id = $this->request->getPost('id');
+            $pdf = $this->request->getFile('suratkehilangan');
+            $randName = $pdf->getRandomName();
+
+            if ($pdf->isValid() && ! $pdf->hasMoved()) {
+                $pdf->move('./uploads',$randName);
               $data = [
                   'tgl' => $this->request->getPost('tgl'),
                   'nama' => $this->request->getPost('nama'),
@@ -123,11 +97,14 @@ class Kehilangan extends BaseController
                   'alamat' => $this->request->getPost('alamat'),
                   'keperluan' => $this->request->getPost('keperluan'),
                   'ket' => $this->request->getPost('ket'),
-                  'tgl_berlaku' => $this->request->getPost('tgl_berlaku'),
                   'status' => $this->request->getPost('status'),
-                  'suratkehilangan' => $this->request->getPost('suratkehilangan'), 
+                  'suratkehilangan' => $randName, 
               ];
-              $data['userid']=session()->get('id');
+            } else {
+                echo "eror";
+            }
+              
+  
               $model->update($id, $data);
               return $this->response->setJSON([
                   'status' => true,

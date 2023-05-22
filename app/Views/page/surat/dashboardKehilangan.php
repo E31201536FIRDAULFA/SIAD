@@ -67,19 +67,20 @@
                                   <input id="ket" type="text" class="form-control" name="ket">
                                 </div>
 
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="ms-0">Tanggal Berlaku</label>
-                                  <input id="tgl_berlaku" type="date" class="form-control" name="tgl_berlaku">
-                                </div>
+                               
 
                                 <div class="input-group input-group-static mb-3">
-                                  <label class="ms-0">Status</label>
-                                  <input id="status" type="text" class="form-control" name="status">
+                                <label for="exampleFormControlSelect1" class="ms-0">Status Surat</label>
+                                  <select class="form-control" id="status" name="status">
+                                    <option value="diterima">Diterima</option>
+                                    <option value="ditolak">Ditolak</option>
+                                    <option value="diproses">Diproses</option>
+                                  </select>
                                 </div>
 
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="ms-0">Surat Kehilangan</label>
-                                  <input id="suratkehilangan" type="text" class="form-control" name="suratkehilangan">
+                                <div class="input-group input-group-static mb-3" id="fileupload" hidden>
+                                <label for="surat" class="custom-file-label"></label>
+                                  <input class="custom-file-input" type="file" multiple id="suratkehilangan" name="suratkehilangan">
                                 </div>
 
                                 <div class="mt-3">

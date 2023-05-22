@@ -24,7 +24,7 @@
 
                       <!--POP UP TAMBAH PENGAJUAN-->
                         <div class="modal-body">
-                            <form action="#" id="form">
+                            <form action="#" id="form" enctype="multipart/form-data">
                             <input hidden id="id" name="id">
                             <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">Tanggal</label>
@@ -61,8 +61,11 @@
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
-                                  <label class="ms-0">Kewarganegaraan</label>
-                                  <input id="kewarganegaraan" type="text" class="form-control" name="kewarganegaraan">
+                                <label for="exampleFormControlSelect1" class="ms-0">Kewarganegaraan</label>
+                                  <select class="form-control" id="kewarganegaraan" name="kewarganegaraan">
+                                    <option value="WNI">WNI</option>
+                                    <option value="WNA">WNA</option>
+                                  </select>
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
@@ -94,11 +97,12 @@
                                   </select>
                                 </div>
 
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="ms-0">Surat Upload</label>
-                                  <input id="surat" type="text" class="form-control" name="surat">
+                 
+                                <div class="input-group input-group-static mb-3" id="fileupload" hidden>
+                                <label for="surat" class="custom-file-label"></label>
+                                  <input class="custom-file-input" type="file" multiple id="surat" name="surat">
                                 </div>
-
+                               
                                 <div class="mt-3">
                                   <button type="button" class="btn bg-gradient-success btn-lg w-100 mt-4 mb-0" onclick="saveSkck()">Simpan</button>
                                 </div>

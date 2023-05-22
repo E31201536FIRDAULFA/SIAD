@@ -1,7 +1,7 @@
 function saveSktm() {
     const id = $("#id").val();
     const tgl = $("#tglsktm").val();
-    const nsurat = $("#nsuratsktm").val();
+
     const nik = $("#niksktm").val();
     const nama = $("#namasktm").val();
     const jk = $("#jksktm").val();
@@ -14,7 +14,6 @@ function saveSktm() {
     const alamatayah = $("#alamatayahsktm").val();
     const gaji = $("#gajisktm").val();
     const keperluan = $("#keperluansktm").val();
-    const status = $("#statussktm").val();
     const suratsktm = $("#suratsktm").val();
 
 
@@ -24,11 +23,7 @@ function saveSktm() {
             title: 'Oops...',
             text: 'tgl harus diisi!'
         });
-    } else if (nsurat.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nomor harus diisi!'
-        });
+
     } else if (nik.length == "") {
         Swal.fire({
             title: 'Oops...',
@@ -90,23 +85,14 @@ function saveSktm() {
             title: 'Oops...',
             text: 'keperluan harus diisi!'
         });
-    } else if (status.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nama harus diisi!'
-        });
-    } else if (suratsktm.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'surat harus diupload!'
-        });
+
     } else {
         $.ajax({
             url: url,
             type: 'POST',
             data: {
                 "tgl": tgl,
-                "nsurat": nsurat,
+
                 "nik": nik,
                 "nama": nama,
                 "jk": jk,
@@ -119,8 +105,7 @@ function saveSktm() {
                 "alamatayah": alamatayah,
                 "gaji": gaji,
                 "keperluan": keperluan,
-                "status": status,
-                "suratsktm": suratsktm,
+
             },
             dataType: "JSON",
             success: function (respond) {

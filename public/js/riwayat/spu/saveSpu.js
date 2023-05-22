@@ -1,7 +1,7 @@
 function saveSpu() {
     const id = $("#id").val();
     const tgl = $("#tglspu").val();
-    const nsurat = $("#nsuratspu").val();
+
     const nama = $("#namaspu").val();
     const nik = $("#nikspu").val();
     const jk = $("#jkspu").val();
@@ -10,8 +10,8 @@ function saveSpu() {
     const nama_usaha = $("#nama_usahaspu").val();
     const jenis_usaha = $("#jenis_usahaspu").val();
     const alamat_usaha = $("#alamat_usahaspu").val();
-    const status = $("#statusspu").val();
-    const suratspu = $("#suratspu").val();
+
+
 
 
     url = base_url + 'dashboard/SPU/';
@@ -19,11 +19,6 @@ function saveSpu() {
         Swal.fire({
             title: 'Oops...',
             text: 'tgl harus diisi!'
-        });
-    } else if (nsurat.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nomor harus diisi!'
         });
     } else if (nama.length == "") {
         Swal.fire({
@@ -65,23 +60,14 @@ function saveSpu() {
             title: 'Oops...',
             text: 'alamat usaha harus diisi!'
         });
-    } else if (status.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nama harus diisi!'
-        });
-    } else if (suratspu.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'surat harus diupload!'
-        });
+
+
     } else {
         $.ajax({ //tembak data ke db
             url: url,
             type: 'POST',
             data: {
                 "tgl": tgl,
-                "nsurat": nsurat,
                 "nama": nama,
                 "nik": nik,
                 "jk": jk,
@@ -90,8 +76,8 @@ function saveSpu() {
                 "nama_usaha": nama_usaha,
                 "jenis_usaha": jenis_usaha,
                 "alamat_usaha": alamat_usaha,
-                "status": status,
-                "suratspu": suratspu,
+
+
             },
             dataType: "JSON",
             success: function (respond) {

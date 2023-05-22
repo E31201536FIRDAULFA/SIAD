@@ -19,9 +19,9 @@ class KTPModel extends Model
         'userid',
         'nama',
         'nik',
-        'scankk',
-        'status',
+        'keperluan',
         'keterangan',
+        'surat',
     ];
 
     // Dates

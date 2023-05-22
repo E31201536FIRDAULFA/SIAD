@@ -18,9 +18,9 @@ class KK extends BaseController
                 'tgl' => $this->request->getPost('tgl'),
                 'nama' => $this->request->getPost('nama'),
                 'nik' => $this->request->getPost('nik'),
-                'scanktp' => $this->request->getPost('scanktp'),
-                'status' => $this->request->getPost('status'),
-                'keterangan' => $this->request->getPost('keterangan'),
+                'keperluan' => $this->request->getPost('keperluan'),
+                'keterangan' => null,
+                'surat' => null,
             ];
             $data['userid']=session()->get('id');
                 $model->save($data);
@@ -59,46 +59,30 @@ class KK extends BaseController
         ]);
     }
 
-    //Tambah Pengajuan KK
-    public function tambahKK()
-    {
-        $model = new KKModel();
-        if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
-            $data = [
-                'tgl' => $this->request->getPost('tgl'),
-                'nama' => $this->request->getPost('nama'),
-                'nik' => $this->request->getPost('nik'),
-                'scanktp' => $this->request->getPost('scanktp'),
-                'status' => $this->request->getPost('status'),
-                'keterangan' => $this->request->getPost('keterangan'),
-            ];
-                $model->save($data);
-                return $this->response->setJSON([
-                    'status' => true,
-                    'icon' => 'success',
-                    'title' => 'Tambah Pengajuan Surat KARTU KELUARGA Berhasil!',
-                    'text' => 'Pop up ini akan hilang dalam 3 detik.',
-                ]); 
-            return view('page/kk');
-        }
-    }
-
+    
      //Edit Surat KK
      public function editKK($id)
      {
         $model = new KKModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
-            $id = $this->request->getPost('id');
+            $pdf = $this->request->getFile('surat');
+            $randName = $pdf->getRandomName();
+
+            if ($pdf->isValid() && ! $pdf->hasMoved()) {
+                $pdf->move('./uploads',$randName);
                 $data = [
                     'tgl' => $this->request->getPost('tgl'),
                     'nama' => $this->request->getPost('nama'),
                     'nik' => $this->request->getPost('nik'),
-                    'scanktp' => $this->request->getPost('scanktp'),
-                    'status' => $this->request->getPost('status'),
+                    'keperluan' => $this->request->getPost('keperluan'),
                     'keterangan' => $this->request->getPost('keterangan'),
+                    'surat' => $randName,
                 
             ];
-            $data['userid']=session()->get('id');
+        } else {
+            echo "eror";
+        }
+           
             $model->update($id, $data);
             return $this->response->setJSON([
                 'status' => true,

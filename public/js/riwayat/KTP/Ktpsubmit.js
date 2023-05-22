@@ -3,9 +3,9 @@ function Ktpsubmit() {
     const tgl = $("#tglktp").val();
     const nama = $("#namaktp").val();
     const nik = $("#nikktp").val();
-    const scankk = $("#scankk").val();
-    const status = $("#statusktp").val();
-    const keterangan = $("#keteranganktp").val();
+    const keperluan = $("#keperluan").val();
+
+
 
 
     url = base_url + 'dashboard/KTP/';
@@ -24,21 +24,13 @@ function Ktpsubmit() {
             title: 'Oops...',
             text: 'Nik harus diisi!'
         });
-    } else if (scankk.length == "") {
+    } else if (keperluan.length == "") {
         Swal.fire({
             title: 'Oops...',
-            text: 'scankk harus diisi!'
+            text: 'keperluan harus diisi!'
         });
-    } else if (status.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nama harus diisi!'
-        });
-    } else if (keterangan.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'surat harus diupload!'
-        });
+
+
     } else {
         $.ajax({ //tembak data ke db
             url: url,
@@ -47,9 +39,9 @@ function Ktpsubmit() {
                 "tgl": tgl,
                 "nama": nama,
                 "nik": nik,
-                "scankk": scankk,
-                "status": status,
-                "keterangan": keterangan,
+                "keperluan": keperluan,
+
+
             },
             dataType: "JSON",
             success: function (respond) {
@@ -82,3 +74,4 @@ function Ktpsubmit() {
         });
     }
 }
+

@@ -12,9 +12,9 @@ $(document).ready(function () {
                 let tgl = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].tgl);
                 let nama = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nama);
                 let nik = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nik);
-                let scanktp = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].scanktp);
-                let status = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].status);
+                let keperluan = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].keperluan);
                 let keterangan = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].keterangan);
+                let surat = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].surat);
                 let buttonEdit = $('<button type="button" class="btn bg-gradient-success mb-0"></button>').text('Edit').attr('id', respond[i].id);
                 buttonEdit.click(function () {
                     $('#form')[0].reset();
@@ -26,19 +26,20 @@ $(document).ready(function () {
                         success: function (respond) {
                             console.log(respond.data);
 
-                            $('[name="id"]').val(respond.data.id);
-                            $('[name="tgl"]').val(respond.data.tgl);
-                            $('[name="nama"]').val(respond.data.nama);
-                            $('[name="nik"]').val(respond.data.nik);
-                            $('[name="scanktp"]').val(respond.data.scanktp);
-                            $('[name="status"]').val(respond.data.status);
-                            $('[name="keterangan"]').val(respond.data.keterangan);
+                            $('#id').val(respond.data.id);
+                            $('#tgl').val(respond.data.tgl);
+                            $('#nama').val(respond.data.nama);
+                            $('#nik').val(respond.data.nik);
+                            $('#keperluan').val(respond.data.keperluan);
+                            $('#keterangan').val(respond.data.keterangan);
+                            // $('#surat').val(respond.data.surat);
 
 
                             $('#exampleModal').modal('show');
                             $('.modal-title').text('Edit');
-                            $('#pass').hide();
-                            $('#pass2').hide();
+                            $('#fileuploadkk').removeAttr('hidden');
+
+
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
                             console.log(jqXHR);
@@ -50,6 +51,45 @@ $(document).ready(function () {
                         }
                     });
                 });
+
+                let buttonUnduh = $('<button type="button" class="btn bg-gradient-success mb-0"></button>').text('Unduh').attr('id', respond[i].id);
+                buttonUnduh.click(function () {
+
+                    var id = $(this).attr('id');
+                    $.ajax({
+                        url: base_url + 'dashboard/KK/update/' + id,
+                        type: 'GET',
+                        dataType: 'JSON',
+                        success: function (respond) {
+                            console.log(respond.data);
+
+                            // Set the values of other input fields as needed
+
+                            var fileName = respond.data.surat; // Desired name for the downloaded file
+                            var fileUrl = base_url + 'uploads/' + fileName; // URL of the file to be downloaded
+
+                            var downloadLink = document.createElement('a');
+                            downloadLink.setAttribute('href', fileUrl);
+                            downloadLink.setAttribute('download', fileName);
+                            downloadLink.style.display = 'none';
+                            document.body.appendChild(downloadLink);
+                            downloadLink.click();
+                            document.body.removeChild(downloadLink);
+
+                            // Additional code for showing the modal, etc.
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(jqXHR);
+                            swal.fire({
+                                icon: 'error',
+                                title: errorThrown,
+                                text: 'Error getting data from AJAX.'
+                            });
+                        }
+                    });
+                });
+
+
                 let buttonDelete = $('<button type="button" class="btn bg-gradient-danger mb-0"></button>').text('Delete').attr('id', respond[i].id);
                 buttonDelete.click(function () {
                     var id = $(this).attr('id');
@@ -94,9 +134,8 @@ $(document).ready(function () {
                 row.append(no, tgl,
                     nama,
                     nik,
-                    scanktp,
-                    status,
-                    keterangan, buttonEdit, buttonDelete);
+                    keperluan,
+                    keterangan, surat, buttonEdit, buttonUnduh, buttonDelete);
                 tableBody.append(row);
             }
         }
