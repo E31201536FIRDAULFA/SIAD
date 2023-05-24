@@ -1,5 +1,8 @@
 <?= $this->extend('layout/dashboardLayout') ?>
 <?= $this->section('content') ?>
+<div class="card-footer p-3">
+        <a class="btn bg-gradient-warning mb-0" href="<?= base_url('dashboard/warga/riwayat') ?>">Kembali</a>
+      </div>
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
@@ -21,7 +24,7 @@
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Keperluan</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Keterangan</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Surat Kehiangan</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Surat Kehilangan</th>
                         <th class="text-secondary opacity-7"></th>
                     </tr>
                   </thead>
@@ -33,6 +36,7 @@
           </div>
         </div>
       </div>
+     
 <?= $this->endSection() ?>
 <?= $this->section('scripts') ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>

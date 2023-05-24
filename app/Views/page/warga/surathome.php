@@ -20,7 +20,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Tambah Pengajuan KTP</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Tambah Pengajuan Pengantar KTP</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -48,7 +48,7 @@
 
                         
                                 <div class="input-group input-group-static mb-3">
-                                <label for="exampleFormControlSelect1" class="ms-0">Kewarganegaraan</label>
+                                <label for="exampleFormControlSelect1" class="ms-0">Keperluan</label>
                                   <select class="form-control" id="keperluan" name="keperluan">
                                     <option value="Hilang">Hilang</option>
                                     <option value="Belum Pernah Mengajukan">Belum Pernah Mengajukan</option>
@@ -92,7 +92,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Tambah Pengajuan KK</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Tambah Pengajuan Pengantar KK</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
