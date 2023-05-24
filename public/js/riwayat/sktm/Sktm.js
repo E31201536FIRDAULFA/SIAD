@@ -115,7 +115,7 @@ $(document).ready(function () {
                     gaji,
                     keperluan,
                     status,
-                    suratsktm, buttonDelete, buttonUnduh);
+                    suratsktm, buttonUnduh);
                 tableBody.append(row);
             }
         }

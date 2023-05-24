@@ -15,7 +15,36 @@ $(document).ready(function () {
                 let keperluan = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].keperluan);
                 let keterangan = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].keterangan);
                 let surat = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].surat);
-                let buttonEdit = $('<button type="button" class="btn bg-gradient-success mb-0"></button>').text('Edit').attr('id', respond[i].id);
+                let buttonUpload = $('<button type="button" class="btn bg-gradient-info mb-0"></button>').text('Upload Surat').attr('id', respond[i].id);
+                buttonUpload.click(function () {
+                    $('#formuploadktp')[0].reset();
+                    var id = $(this).attr('id');
+                    $.ajax({
+                        url: base_url + 'dashboard/KTP/upload/' + id,
+                        type: 'GET',
+                        dataType: 'JSON',
+                        success: function (respond) {
+                            console.log(respond.data);
+
+
+
+                            $('#id').val(respond.data.id);
+                            $('#uploadktp').modal('show');
+                            $('.modal-title').text('Upload');
+
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(jqXHR);
+                            swal.fire({
+                                icon: 'error',
+                                title: errorThrown,
+                                text: 'Error get data from ajax.'
+                            })
+                        }
+                    });
+                });
+
+                let buttonEdit = $('<button type="button" class="btn bg-gradient-warning mb-0"></button>').text('Edit').attr('id', respond[i].id);
                 buttonEdit.click(function () {
                     $('#form')[0].reset();
                     var id = $(this).attr('id');
@@ -36,7 +65,7 @@ $(document).ready(function () {
 
                             $('#exampleModal').modal('show');
                             $('.modal-title').text('Edit');
-                            $('#fileuploadktp').removeAttr('hidden');
+                            $('#statusktp').removeAttr('hidden');
 
 
                         },
@@ -134,7 +163,7 @@ $(document).ready(function () {
                     nama,
                     nik,
                     keperluan,
-                    keterangan, surat, buttonEdit, buttonUnduh, buttonDelete);
+                    keterangan, surat, buttonUpload, buttonEdit, buttonUnduh, buttonDelete);
                 tableBody.append(row);
             }
         }

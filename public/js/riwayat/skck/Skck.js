@@ -109,7 +109,7 @@ $(document).ready(function () {
                     pekerjaan,
                     alamat,
                     status,
-                    surat, buttonDelete, buttonUnduh);
+                    surat, buttonUnduh);
                 tableBody.append(row);
             }
         }

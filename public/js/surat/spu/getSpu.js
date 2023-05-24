@@ -20,7 +20,35 @@ $(document).ready(function () {
                 let alamat_usaha = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].alamat_usaha);
                 let status = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].status);
                 let suratspu = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].suratspu);
-                let buttonEdit = $('<button type="button" class="btn bg-gradient-success mb-0"></button>').text('Edit').attr('id', respond[i].id);
+                let buttonUpload = $('<button type="button" class="btn bg-gradient-info mb-0"></button>').text('Upload Surat').attr('id', respond[i].id);
+                buttonUpload.click(function () {
+                    $('#formupload')[0].reset();
+                    var id = $(this).attr('id');
+                    $.ajax({
+                        url: base_url + 'dashboard/SPU/upload/' + id,
+                        type: 'GET',
+                        dataType: 'JSON',
+                        success: function (respond) {
+                            console.log(respond.data);
+
+
+
+                            $('#id').val(respond.data.id);
+                            $('#uploadspu').modal('show');
+                            $('.modal-title').text('Upload');
+
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(jqXHR);
+                            swal.fire({
+                                icon: 'error',
+                                title: errorThrown,
+                                text: 'Error get data from ajax.'
+                            })
+                        }
+                    });
+                });
+                let buttonEdit = $('<button type="button" class="btn bg-gradient-warning mb-0"></button>').text('Edit').attr('id', respond[i].id);
                 buttonEdit.click(function () {
                     $('#form')[0].reset();
                     var id = $(this).attr('id');
@@ -46,7 +74,7 @@ $(document).ready(function () {
 
                             $('#exampleModal').modal('show');
                             $('.modal-title').text('Edit');
-                            $('#fileupload').removeAttr('hidden');
+                            $('#statusspu').removeAttr('hidden');
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
                             console.log(jqXHR);
@@ -148,7 +176,7 @@ $(document).ready(function () {
                     jenis_usaha,
                     alamat_usaha,
                     status,
-                    suratspu, buttonEdit, buttonUnduh, buttonDelete);
+                    suratspu, buttonUpload, buttonEdit, buttonUnduh, buttonDelete);
                 tableBody.append(row);
             }
         }

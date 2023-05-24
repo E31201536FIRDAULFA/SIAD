@@ -97,7 +97,7 @@ $(document).ready(function () {
                     nama,
                     nik,
                     keperluan,
-                    keterangan, surat, buttonDelete, buttonUnduh);
+                    keterangan, surat, buttonUnduh);
                 tableBody.append(row);
             }
         }

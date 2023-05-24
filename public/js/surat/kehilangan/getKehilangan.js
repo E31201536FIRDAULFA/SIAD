@@ -19,7 +19,35 @@ $(document).ready(function () {
                 let ket = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].ket);
                 let status = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].status);
                 let suratkehilangan = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].suratkehilangan);
-                let buttonEdit = $('<button type="button" class="btn bg-gradient-success mb-0"></button>').text('Edit').attr('id', respond[i].id);
+                let buttonUpload = $('<button type="button" class="btn bg-gradient-info mb-0"></button>').text('Upload Surat').attr('id', respond[i].id);
+                buttonUpload.click(function () {
+                    $('#formupload')[0].reset();
+                    var id = $(this).attr('id');
+                    $.ajax({
+                        url: base_url + 'dashboard/kehilangan/upload/' + id,
+                        type: 'GET',
+                        dataType: 'JSON',
+                        success: function (respond) {
+                            console.log(respond.data);
+
+
+
+                            $('#id').val(respond.data.id);
+                            $('#uploadkehilangan').modal('show');
+                            $('.modal-title').text('Upload');
+
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(jqXHR);
+                            swal.fire({
+                                icon: 'error',
+                                title: errorThrown,
+                                text: 'Error get data from ajax.'
+                            })
+                        }
+                    });
+                });
+                let buttonEdit = $('<button type="button" class="btn bg-gradient-warning mb-0"></button>').text('Edit').attr('id', respond[i].id);
                 buttonEdit.click(function () {
                     $('#form')[0].reset();
                     var id = $(this).attr('id');
@@ -44,7 +72,7 @@ $(document).ready(function () {
 
                             $('#exampleModal').modal('show');
                             $('.modal-title').text('Edit');
-                            $('#fileupload').removeAttr('hidden');
+                            $('#statushilang').removeAttr('hidden');
 
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
@@ -145,7 +173,7 @@ $(document).ready(function () {
                     keperluan,
                     ket,
                     status,
-                    suratkehilangan, buttonEdit, buttonUnduh, buttonDelete);
+                    suratkehilangan, buttonUpload, buttonUnduh, buttonEdit, buttonDelete);
                 tableBody.append(row);
             }
         }

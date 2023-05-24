@@ -41,11 +41,12 @@ class gaji extends BaseController
     }
 
         // Data Surat gaji (read)
-    public function datagaji()
-    {
-        $model = new gajiModel();
-        return $this->response->setJSON($model->findAll());
-    }
+        public function datagaji()
+        {
+            $model = new gajiModel();
+            $data = $model->orderBy('created_at', 'desc')->findAll();
+            return $this->response->setJSON($data);
+        }
 
     public function datagajiriwayat()
     {
@@ -81,11 +82,6 @@ class gaji extends BaseController
      {
         $model = new gajiModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
-            $pdf = $this->request->getFile('Surat');
-            $randName = $pdf->getRandomName();
-
-            if ($pdf->isValid() && ! $pdf->hasMoved()) {
-                $pdf->move('./uploads',$randName);
             $data = [
                 'tgl' => $this->request->getPost('tgl'),
                 'nama' => $this->request->getPost('nama'),
@@ -96,11 +92,8 @@ class gaji extends BaseController
                 'no_kis' => $this->request->getPost('no_kis'),
                 'ket' => $this->request->getPost('ket'),
                 'status' => $this->request->getPost('status'),
-                'Surat' => $randName,
+              
             ];
-        } else {
-            echo "eror";
-        }
           
             $model->update($id, $data);
             return $this->response->setJSON([
@@ -115,6 +108,38 @@ class gaji extends BaseController
             ]);
         }
      }
+
+      //Upload Surat 
+      public function upload($id)
+      {
+         $model = new gajiModel();
+         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
+             $pdf = $this->request->getFile('Surat');
+             $randName = $pdf->getRandomName();
+ 
+             if ($pdf->isValid() && ! $pdf->hasMoved()) {
+                 $pdf->move('./uploads',$randName);
+             $data = [
+                 
+                 'Surat' => $randName,
+             ];
+         } else {
+             echo "eror";
+         }
+           
+             $model->update($id, $data);
+             return $this->response->setJSON([
+                 'status' => true,
+                 'icon' => 'success',
+                 'title' => 'Upload Surat Berhasil!',
+                 'text' => 'Pop up ini akan hilang dalam 3 detik.',
+             ]);
+         } else {
+             return $this->response->setJSON([
+                 'data' => $model->where('id', $id)->first(),
+             ]);
+         }
+      }
 
     public function download()
     {

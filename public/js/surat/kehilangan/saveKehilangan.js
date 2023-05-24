@@ -9,7 +9,7 @@ function saveKehilangan() {
     const keperluan = $("#keperluan").val();
     const ket = $("#ket").val();
     const status = $("#status").val();
-    const suratkehilangan = $("#suratkehilangan").val();
+
 
     if (id) {
         url = base_url + 'dashboard/kehilangan/update/' + id;
@@ -58,11 +58,7 @@ function saveKehilangan() {
                 title: 'Oops...',
                 text: 'Nama harus diisi!'
             });
-        } else if (suratkehilangan.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nama harus diisi!'
-            });
+
         } else {
             $.ajax({
                 url: url,
@@ -187,4 +183,43 @@ function saveKehilangan() {
             });
         }
     }
+}
+
+function upload() {
+    const id = $("#id").val();
+    $.ajax({
+        url: base_url + 'dashboard/kehilangan/upload/' + id,
+        type: 'POST',
+        data: new FormData($('#formupload')[0]), // Use FormData to include file
+        processData: false, // Prevent jQuery from automatically processing the data
+        contentType: false, // Prevent jQuery from automatically setting the content type
+        dataType: "JSON",
+        success: function (respond) {
+            if (respond.status == true) {
+                Swal.fire({
+                    icon: respond.icon,
+                    title: respond.title,
+                    text: respond.text,
+                    timer: 3000,
+                    showCancelButton: false,
+                    showConfirmButton: false
+                }).then(function () {
+                    location.reload();
+                });
+            } else if (respond.status == false) {
+                Swal.fire({
+                    icon: respond.icon,
+                    title: respond.title,
+                    text: respond.text,
+                });
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Terjadi error!',
+                text: 'Silahkan coba lagi.'
+            });
+        }
+    });
 }

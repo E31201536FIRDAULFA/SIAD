@@ -19,7 +19,36 @@ $(document).ready(function () {
                 let ket = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].ket);
                 let status = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].status);
                 let Surat = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].Surat);
-                let buttonEdit = $('<button type="button" class="btn bg-gradient-success mb-0"></button>').text('Edit').attr('id', respond[i].id);
+                let buttonUpload = $('<button type="button" class="btn bg-gradient-info mb-0"></button>').text('Upload Surat').attr('id', respond[i].id);
+                buttonUpload.click(function () {
+                    $('#formupload')[0].reset();
+                    var id = $(this).attr('id');
+                    $.ajax({
+                        url: base_url + 'dashboard/gaji/upload/' + id,
+                        type: 'GET',
+                        dataType: 'JSON',
+                        success: function (respond) {
+                            console.log(respond.data);
+
+
+
+                            $('#id').val(respond.data.id);
+                            $('#upload').modal('show');
+                            $('.modal-title').text('Upload');
+
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(jqXHR);
+                            swal.fire({
+                                icon: 'error',
+                                title: errorThrown,
+                                text: 'Error get data from ajax.'
+                            })
+                        }
+                    });
+                });
+
+                let buttonEdit = $('<button type="button" class="btn bg-gradient-warning mb-0"></button>').text('Edit').attr('id', respond[i].id);
                 buttonEdit.click(function () {
                     $('#form')[0].reset();
                     var id = $(this).attr('id');
@@ -30,21 +59,21 @@ $(document).ready(function () {
                         success: function (respond) {
                             console.log(respond.data);
 
-                            $('[name="id"]').val(respond.data.id);
-                            $('[name="tgl"]').val(respond.data.tgl);
-                            $('[name="nama"]').val(respond.data.nama);
-                            $('[name="nik"]').val(respond.data.nik);
-                            $('[name="ttl"]').val(respond.data.ttl);
-                            $('[name="pekerjaan"]').val(respond.data.pekerjaan);
-                            $('[name="no_kip"]').val(respond.data.no_kip);
-                            $('[name="no_kis"]').val(respond.data.no_kis);
-                            $('[name="ket"]').val(respond.data.ket);
-                            $('[name="status"]').val(respond.data.status);
-                            $('[name="Surat"]').val(respond.data.Surat);
+                            $('#id').val(respond.data.id);
+                            $('#tgl').val(respond.data.tgl);
+                            $('#nama').val(respond.data.nama);
+                            $('#nik').val(respond.data.nik);
+                            $('#ttl').val(respond.data.ttl);
+                            $('#pekerjaan').val(respond.data.pekerjaan);
+                            $('#no_kip').val(respond.data.no_kip);
+                            $('#no_kis').val(respond.data.no_kis);
+                            $('#ket').val(respond.data.ket);
+                            $('#status').val(respond.data.status);
+
 
                             $('#exampleModal').modal('show');
                             $('.modal-title').text('Edit');
-                            $('#fileuploadgaji').removeAttr('hidden');
+                            $('#statusgaji').removeAttr('hidden');
 
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
@@ -146,7 +175,7 @@ $(document).ready(function () {
                     no_kis,
                     ket,
                     status,
-                    Surat, buttonEdit, buttonUnduh, buttonDelete);
+                    Surat, buttonUpload, buttonUnduh, buttonEdit, buttonDelete);
                 tableBody.append(row);
             }
         }

@@ -106,7 +106,7 @@ $(document).ready(function () {
                     no_kis,
                     ket,
                     status,
-                    Surat, buttonDelete, buttonUnduh);
+                    Surat, buttonUnduh);
                 tableBody.append(row);
             }
         }

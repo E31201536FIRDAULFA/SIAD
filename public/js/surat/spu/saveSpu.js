@@ -10,7 +10,7 @@ function saveSpu() {
     const jenis_usaha = $("#jenis_usaha").val();
     const alamat_usaha = $("#alamat_usaha").val();
     const status = $("#status").val();
-    const suratspu = $("#suratspu").val();
+
 
     if (id) {
         url = base_url + 'dashboard/SPU/update/' + id;
@@ -64,11 +64,7 @@ function saveSpu() {
                 title: 'Oops...',
                 text: 'Nama harus diisi!'
             });
-        } else if (suratspu.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'surat harus diupload!'
-            });
+
         } else {
             $.ajax({
                 url: url,
@@ -199,3 +195,41 @@ function saveSpu() {
     }
 }
 
+function upload() {
+    const id = $("#id").val();
+    $.ajax({
+        url: base_url + 'dashboard/SPU/upload/' + id,
+        type: 'POST',
+        data: new FormData($('#formupload')[0]), // Use FormData to include file
+        processData: false, // Prevent jQuery from automatically processing the data
+        contentType: false, // Prevent jQuery from automatically setting the content type
+        dataType: "JSON",
+        success: function (respond) {
+            if (respond.status == true) {
+                Swal.fire({
+                    icon: respond.icon,
+                    title: respond.title,
+                    text: respond.text,
+                    timer: 3000,
+                    showCancelButton: false,
+                    showConfirmButton: false
+                }).then(function () {
+                    location.reload();
+                });
+            } else if (respond.status == false) {
+                Swal.fire({
+                    icon: respond.icon,
+                    title: respond.title,
+                    text: respond.text,
+                });
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Terjadi error!',
+                text: 'Silahkan coba lagi.'
+            });
+        }
+    });
+}

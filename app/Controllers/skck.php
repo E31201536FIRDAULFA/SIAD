@@ -52,7 +52,8 @@ class skck extends BaseController
     public function dataskck()
     {
         $model = new skckModel();
-        return $this->response->setJSON($model->findAll());   
+        $data = $model->orderBy('created_at', 'desc')->findAll();
+        return $this->response->setJSON($data);   
     }
 
     public function dataskckriwayat()
@@ -89,33 +90,24 @@ class skck extends BaseController
      //Edit Surat skck
      public function editskck($id)
      {
-
         $model = new skckModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
-            $pdf = $this->request->getFile('surat');
-            $randName = $pdf->getRandomName();
-
-            if ($pdf->isValid() && ! $pdf->hasMoved()) {
-                $pdf->move('./uploads',$randName);
-                $data = [
-                    'tgl' => $this->request->getPost('tgl'),
-                    'nama' => $this->request->getPost('nama'),
-                    'nik' => $this->request->getPost('nik'),
-                    'ttl' => $this->request->getPost('ttl'),
-                    'jk' => $this->request->getPost('jk'),
-                    'agama' => $this->request->getPost('agama'),
-                    'kewarganegaraan' => $this->request->getPost('kewarganegaraan'),
-                    'perkawinan' => $this->request->getPost('perkawinan'),
-                    'pekerjaan' => $this->request->getPost('pekerjaan'),
-                    'alamat' => $this->request->getPost('alamat'),
-                    'status' => $this->request->getPost('status'),
-                    'surat' => $randName,
-                ];
-                } else {
-                    echo "eror";
-                }
+            $data = [
+                'tgl' => $this->request->getPost('tgl'),
+                'nama' => $this->request->getPost('nama'),
+                'nik' => $this->request->getPost('nik'),
+                'ttl' => $this->request->getPost('ttl'),
+                'jk' => $this->request->getPost('jk'),
+                'agama' => $this->request->getPost('agama'),
+                'kewarganegaraan' => $this->request->getPost('kewarganegaraan'),
+                'perkawinan' => $this->request->getPost('perkawinan'),
+                'pekerjaan' => $this->request->getPost('pekerjaan'),
+                'alamat' => $this->request->getPost('alamat'),
+                'status' =>  $this->request->getPost('status'),
+              
+            ];
+          
             $model->update($id, $data);
-
             return $this->response->setJSON([
                 'status' => true,
                 'icon' => 'success',
@@ -128,6 +120,40 @@ class skck extends BaseController
             ]);
         }
      }
+
+
+
+ //Upload
+ public function upload($id)
+ {
+    $model = new skckModel();
+    if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
+        $pdf = $this->request->getFile('surat');
+        $randName = $pdf->getRandomName();
+
+        if ($pdf->isValid() && ! $pdf->hasMoved()) {
+            $pdf->move('./uploads',$randName);
+        $data = [
+            
+            'surat' => $randName,
+        ];
+    } else {
+        echo "eror";
+    }
+      
+        $model->update($id, $data);
+        return $this->response->setJSON([
+            'status' => true,
+            'icon' => 'success',
+            'title' => 'Upload Surat Berhasil!',
+            'text' => 'Pop up ini akan hilang dalam 3 detik.',
+        ]);
+    } else {
+        return $this->response->setJSON([
+            'data' => $model->where('id', $id)->first(),
+        ]);
+    }
+ }
 
      public function download()
      {

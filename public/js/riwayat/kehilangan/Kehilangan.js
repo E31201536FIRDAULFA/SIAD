@@ -105,7 +105,7 @@ $(document).ready(function () {
                     keperluan,
                     ket,
                     status,
-                    suratkehilangan, buttonDelete, buttonUnduh);
+                    suratkehilangan, buttonUnduh);
                 tableBody.append(row);
             }
         }

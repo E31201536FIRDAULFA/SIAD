@@ -24,7 +24,35 @@ $(document).ready(function () {
                 let keperluan = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].keperluan);
                 let status = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].status);
                 let suratsktm = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].suratsktm);
-                let buttonEdit = $('<button type="button" class="btn bg-gradient-success mb-0"></button>').text('Edit').attr('id', respond[i].id);
+                let buttonUpload = $('<button type="button" class="btn bg-gradient-info mb-0"></button>').text('Upload Surat').attr('id', respond[i].id);
+                buttonUpload.click(function () {
+                    $('#formupload')[0].reset();
+                    var id = $(this).attr('id');
+                    $.ajax({
+                        url: base_url + 'dashboard/SKTM/upload/' + id,
+                        type: 'GET',
+                        dataType: 'JSON',
+                        success: function (respond) {
+                            console.log(respond.data);
+
+
+
+                            $('#id').val(respond.data.id);
+                            $('#uploadsktm').modal('show');
+                            $('.modal-title').text('Upload');
+
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(jqXHR);
+                            swal.fire({
+                                icon: 'error',
+                                title: errorThrown,
+                                text: 'Error get data from ajax.'
+                            })
+                        }
+                    });
+                });
+                let buttonEdit = $('<button type="button" class="btn bg-gradient-warning mb-0"></button>').text('Edit').attr('id', respond[i].id);
                 buttonEdit.click(function () {
                     $('#form')[0].reset();
                     var id = $(this).attr('id');
@@ -54,7 +82,7 @@ $(document).ready(function () {
 
                             $('#exampleModal').modal('show');
                             $('.modal-title').text('Edit');
-                            $('#fileupload').removeAttr('hidden');
+                            $('#statussktm').removeAttr('hidden');
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
                             console.log(jqXHR);
@@ -159,7 +187,7 @@ $(document).ready(function () {
                     gaji,
                     keperluan,
                     status,
-                    suratsktm, buttonEdit, buttonUnduh, buttonDelete);
+                    suratsktm, buttonUpload, buttonEdit, buttonUnduh, buttonDelete);
                 tableBody.append(row);
             }
         }

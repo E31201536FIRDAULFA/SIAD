@@ -108,7 +108,7 @@ $(document).ready(function () {
                     jenis_usaha,
                     alamat_usaha,
                     status,
-                    suratspu, buttonDelete, buttonUnduh);
+                    suratspu, buttonUnduh);
                 tableBody.append(row);
             }
         }

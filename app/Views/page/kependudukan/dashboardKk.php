@@ -52,7 +52,7 @@
                                   </select>
                                 </div>
 
-                                <div class="input-group input-group-static mb-3" >
+                                <div class="input-group input-group-static mb-3" id="statuskk" hidden>
                                 <label for="exampleFormControlSelect1" class="ms-0">Status</label>
                                   <select class="form-control" id="keterangan" name="keterangan">
                                     <option value="Pengajuan Sedang Diproses">Pengajuan Sedang Diproses</option>
@@ -61,11 +61,7 @@
                                   </select>
                                 </div>
 
-                                <div class="input-group input-group-static mb-3" id="fileuploadkk" hidden>
-                                <label for="surat" class="custom-file-label"></label>
-                                  <input class="custom-file-input" type="file" multiple id="surat" name="surat">
-                                </div>
-
+                              
                                 <div class="mt-3">
                                   <button type="button" class="btn btn-success btn-lg w-100 mt-4 mb-0" onclick="saveKK()">Simpan</button>
                                 </div>
@@ -77,6 +73,40 @@
                       </div>
                   </div>
                 </div>
+
+                <div class="modal fade" id="uploadkk" tabindex="-1" role="dialog" aria-labelledby="upload5" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="upload5">Upload</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="#" id="formuploadkk">
+                                    <div class="input-group input-group-static mb-3" id="fileuploadkk">
+                                        <label for="Surat" class="custom-file-label"></label>
+                                        <input class="custom-file-input" type="file" id="surat" name="surat">
+                                        <input type="id" name="id" hidden>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="modal-footer">
+                                  <button type="button" class="btn bg-gradient-success btn-lg w-100 mt-4 mb-0" onclick="upload()">Simpan</button>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn bg-gradient-info btn-lg w-100 mt-4 mb-0" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0" id="table">

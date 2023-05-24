@@ -58,6 +58,7 @@ $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
         $routes->get('data', 'Kehilangan::dataKehilangan');
         $routes->get('riwayatkehilangan', 'Kehilangan::datakehilanganriwayat');
         $routes->match(['GET', 'POST'], 'download/(:num)', 'Kehilangan::download/$1');
+        $routes->match(['GET', 'POST'], 'upload/(:num)', 'Kehilangan::upload/$1');
     });
 
       //tabel SKTM
@@ -69,6 +70,7 @@ $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
         $routes->get('data', 'SKTM::dataSKTM');
         $routes->get('riwayatsktm', 'SKTM::datasktmriwayat');
         $routes->match(['GET', 'POST'], 'download/(:num)', 'SKTM::download/$1');
+        $routes->match(['GET', 'POST'], 'upload/(:num)', 'SKTM::upload/$1');
         
     });
 
@@ -81,7 +83,7 @@ $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
         $routes->get('data', 'SPU::dataSPU');
         $routes->get('riwayatspu', 'SPU::dataspuriwayat');
         $routes->match(['GET', 'POST'], 'download/(:num)', 'SPU::download/$1');
-
+        $routes->match(['GET', 'POST'], 'upload/(:num)', 'SPU::upload/$1');
     });
 
       //tabel KK
@@ -93,6 +95,7 @@ $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
         $routes->get('data', 'KK::dataKK');
         $routes->get('datariwayatkk', 'KK::datakkriwayat');
         $routes->match(['GET', 'POST'], 'download/(:num)', 'KK::download/$1');
+        $routes->match(['GET', 'POST'], 'upload/(:num)', 'KK::upload/$1');
     });
 
       //tabel KTP
@@ -104,6 +107,7 @@ $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
         $routes->get('data', 'KTP::dataKTP');
         $routes->get('riwayatktp', 'KTP::dataKTPriwayat');
         $routes->match(['GET', 'POST'], 'download/(:num)', 'KTP::download/$1');
+        $routes->match(['GET', 'POST'], 'upload/(:num)', 'KTP::upload/$1');
     });
 
     //tabel APBD
@@ -135,6 +139,7 @@ $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
     $routes->get('data', 'gaji::datagaji');
     $routes->get('riwayatgaji', 'gaji::datagajiriwayat');
     $routes->match(['GET', 'POST'], 'download/(:num)', 'gaji::download/$1');
+    $routes->match(['GET', 'POST'], 'upload/(:num)', 'gaji::upload/$1');
   
   });
 
@@ -147,6 +152,7 @@ $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
     $routes->get('data', 'skck::dataskck');
     $routes->get('riwayatskck', 'skck::dataskckriwayat');
     $routes->match(['GET', 'POST'], 'download/(:num)', 'skck::download/$1');
+    $routes->match(['GET', 'POST'], 'upload/(:num)', 'skck::upload/$1');
     
   });
 
