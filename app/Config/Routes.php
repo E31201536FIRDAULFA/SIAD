@@ -36,6 +36,7 @@ $routes->match(['GET','POST'],'register','Auth::register');
 $routes->match(['GET','POST'],'login/lupa-password','Auth::LupaPassword');
 $routes->match(['GET','POST'],'reset-password/(:any)','Auth::ResetPassword/$1');
 $routes->get('logout', 'Auth::Logout');
+$routes->get('chat', 'Auth::chat');
 
 //Back end user
 $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {

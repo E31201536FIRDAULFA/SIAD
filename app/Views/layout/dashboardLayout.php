@@ -21,6 +21,42 @@
   <!-- CSS Files -->
   <link id="pagestyle" href="<?= base_url('assets/css/material-dashboard.css?v=3.0.4') ?>" rel="stylesheet" />
 <style>
+  .chatbot-container {
+  width: 300px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+.chatbot-header h1 {
+  margin: 0;
+  font-size: 18px;
+  text-align: center;
+}
+
+.chatbot-options {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.option-btn {
+  padding: 10px 20px;
+  background-color: #f4f4f4;
+  border: none;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.option-btn:hover {
+  background-color: #ccc;
+}
+
+.chatbot-footer p {
+  margin: 0;
+  font-size: 14px;
+  text-align: center;
+}
+
   .circle-container {
   display: flex;
 }
@@ -45,6 +81,7 @@
     </div>
   </main>
   <?= $this->include('layout/partials/dashboardPlugin') ?>
+ 
   <!--   Core JS Files   -->
   <?= $this->renderSection('scripts') ?>
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
@@ -73,6 +110,8 @@
             }
         });
     });
+
+    
   </script>
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>

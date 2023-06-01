@@ -169,9 +169,7 @@
         </div>
       </div>
 
-      <div class="card-footer p-3">
-                  <a class="btn bg-gradient-dark mb-0" href="<?= base_url('dashboard/pdf/pdfSPU') ?>">Cetak Pdf</a>
-      </div>
+     
 
 <?= $this->endSection() ?>
 <?= $this->section('scripts') ?>

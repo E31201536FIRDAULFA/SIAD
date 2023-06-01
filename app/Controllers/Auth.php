@@ -15,7 +15,6 @@ class Auth extends BaseController
             'nama'      => $data['nama'],
             'username'  => $data['username'],
             'email'     => $data['email'],
-            'picture'   => $data['picture'],
             'role'      => $data['role'],
             'created_at'=> $data['created_at'],
         ]);
@@ -156,5 +155,10 @@ class Auth extends BaseController
     public function ResetPassword($token)
     {
         
+    }
+
+    public function chat()
+    {
+        return view('page/partials/chatbot');
     }
 }

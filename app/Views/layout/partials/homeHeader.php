@@ -12,10 +12,8 @@
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="<?= base_url('homeAbout') ?>">Tentang Kami</a></li>
-          <li><a href="services.html">Berita Hangat</a></li>
-          <li><a href="contact.html">Kontak Kami</a></li>
+        
+          <li><a class="get-a-quote" href="<?= base_url('login') ?>">Ajukan Layanan</a></li>
 
         </ul>
       </nav><!-- .navbar -->

@@ -215,10 +215,16 @@ class PdfController extends Controller
 
     public function generateAPBD()
     {
+        helper('number');
         $APBDModel = new APBDModel;
-        $dataAPBD = $APBDModel->get()->getResultArray();
+        $startDate = $this->request->getVar('start_date'); // Replace with your start date
+        $endDate = $this->request->getVar('end_date');   // Replace with your end date
+        
+        $results = $APBDModel->where('tgl >=', $startDate)
+                             ->where('tgl <=', $endDate)
+                             ->findAll();
         $data = [
-            'dataAPBD' => $dataAPBD,
+            'dataAPBD' => $results,
         ];
         $filename = date('y-m-d-H-i-s'). '-qadr-labs-report';
 

@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     $.ajax({
         url: base_url + "dashboard/KTP/riwayatktp",
@@ -13,8 +14,7 @@ $(document).ready(function () {
                 let nama = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nama);
                 let nik = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nik);
                 let keperluan = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].keperluan);
-
-                let keterangan = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].keterangan);
+                let keterangan = $('<td class="align-middle text-center"> <span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].keterangan);
                 let surat = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].surat);
                 let buttonUnduh = $('<button type="button" class="btn bg-gradient-success mb-0"></button>').text('Unduh').attr('id', respond[i].id);
                 buttonUnduh.click(function () {

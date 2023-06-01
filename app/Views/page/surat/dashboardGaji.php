@@ -149,9 +149,7 @@
           </div>
         </div>
       </div>
-      <div class="card-footer p-3">
-                  <a class="btn bg-gradient-dark mb-0" href="<?= base_url('dashboard/pdf/pdfgaji') ?>">Cetak Pdf</a>
-      </div>
+     
 <?= $this->endSection() ?>
 <?= $this->section('scripts') ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>

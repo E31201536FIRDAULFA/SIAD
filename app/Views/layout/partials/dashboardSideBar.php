@@ -10,7 +10,7 @@
       <ul class="navbar-nav">
         <?php if(session()->get('role') === 'masterdata'): ?>
   
-        <li class="nav-item">
+          <li class="nav-item">
           <a id="menu-item-2" class="nav-link text-white " href="<?= base_url('dashboard/users') ?>">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             </div>
@@ -23,7 +23,7 @@
         </li>
 
         <li class="nav-item">
-          <a id="menu-item-2" class="nav-link text-white " href="<?= base_url('dashboard/pengantar') ?>">
+          <a id="menu-item-2" class="nav-link text-white " href="<?= base_url('dashboard/skck') ?>">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             </div>
             <span class="nav-link-text ms-1">Pengajuan SKCK</span>
@@ -62,6 +62,7 @@
           </a>
         </li>
 
+
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Data Kependudukan</h6>
         </li>
@@ -95,28 +96,9 @@
         </li>
 
         
-
-        <li class="nav-item mt-3">
-          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
-        </li>
-        <li id="menu-item-3" class="nav-item">
-          <a class="nav-link text-white " href="<?= base_url('') ?>">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">person</i>
-            </div>
-            <span class="nav-link-text ms-1">Profile</span>
-          </a>
-        </li>
     <?php elseif(session()->get('role') === 'pelayanan'): ?>
   
-        <li class="nav-item">
-          <a id="menu-item-2" class="nav-link text-white " href="<?= base_url('dashboard/users') ?>">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            </div>
-            <span class="nav-link-text ms-1">Data User</span>
-          </a>
-        </li>
-
+        
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Data Surat-Menyurat</h6>
         </li>
@@ -184,11 +166,13 @@
           </a>
         </li>
 
-        <li class="nav-item mt-3">
-          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">KEUANGAN DESA</h6>
-        </li>
+      
         <?php elseif(session()->get('role') === 'keuangan'): ?>
   
+          <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Keuangan</h6>
+        </li>
+
         <li class="nav-item">
           <a id="menu-item-2" class="nav-link text-white " href="<?= base_url('dashboard/apbd') ?>">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -197,9 +181,7 @@
           </a>
         </li>
 
-        <li class="nav-item mt-3">
-          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
-        </li>
+       
        
         <?php elseif(session()->get('role') === 'warga'): ?>
 

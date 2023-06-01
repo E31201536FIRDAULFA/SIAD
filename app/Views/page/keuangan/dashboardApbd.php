@@ -50,7 +50,7 @@
 
                                 <div class="input-group input-group-static mb-3">
                                   <label class="form-label">Anggaran</label>
-                                  <input id="anggaran" type="text" class="form-control" name="anggaran">
+                                  <input id="anggaran" type="number" class="form-control" name="anggaran">
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
@@ -69,6 +69,41 @@
                       </div>
                   </div>
                 </div>
+
+                <div class="modal fade" id="eksporpdf" tabindex="-1" role="dialog" aria-labelledby="upload14" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="upload14">Upload</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="<?= base_url('dashboard/pdf/pdfAPBD') ?>">
+                                    <div class="input-group input-group-static mb-3" id="fileuploadgaji">
+                                        <label for="Surat" class="custom-file-label">Tanggal Mulai</label>
+                                        <input class="custom-file-input" type="date" id="start_date" name="start_date">
+                                    </div>
+
+                                    <div class="input-group input-group-static mb-3" id="fileuploadgaji">
+                                        <label for="Surat" class="custom-file-label">Tanggal Selesai</label>
+                                        <input class="custom-file-input" type="date" id="end_date" name="end_date">
+                                    </div>
+
+                                  <button type="submit" class="btn bg-gradient-success btn-lg w-100 mt-4 mb-0">Ekspor PDF</button>
+                         
+                                </form>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn bg-gradient-info btn-lg w-100 mt-4 mb-0" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0" id="table">
@@ -94,7 +129,9 @@
       </div>
 
       <div class="card-footer p-3">
-                  <a class="btn bg-gradient-dark mb-0" href="<?= base_url('dashboard/pdf/pdfAPBD') ?>">Cetak Pdf</a>
+      <button type="button" class="btn btn-info btn-lg w-100 mt-4 mb-0" data-bs-toggle="modal" data-bs-target="#eksporpdf">
+                Ekspor
+              </button>
       </div>
 
 <?= $this->endSection() ?>
