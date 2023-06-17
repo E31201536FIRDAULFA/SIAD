@@ -3,8 +3,14 @@
 namespace App\Controllers;
 
 use CodeIgniter\API\ResponseTrait;
+use App\Models\KehilanganModel;
+use App\Models\gajiModel;
+use App\Models\KKModel;
+use App\Models\KTPModel;
 use App\Models\skckModel;
-use App\Models\UserModel;
+use App\Models\SKTMModel;
+use App\Models\SPUModel;
+
 
 class skck extends BaseController
 {
@@ -13,6 +19,12 @@ class skck extends BaseController
     public function index()
     {
         $model = new skckModel();
+        $modelKehilangan = new KehilanganModel();
+        $modelGaji = new gajiModel();
+        $modelKK = new KKModel();
+        $modelKTP = new KTPModel();
+        $modelSKTM = new SKTMModel();
+        $modelSPU = new SPUModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
           
                 $data = [
@@ -26,7 +38,7 @@ class skck extends BaseController
                     'perkawinan' => $this->request->getPost('perkawinan'),
                     'pekerjaan' => $this->request->getPost('pekerjaan'),
                     'alamat' => $this->request->getPost('alamat'),
-                    'status' => null,
+                    'status' => 'new',
                     'surat' => null,
                 ];
             
@@ -41,14 +53,19 @@ class skck extends BaseController
                 ]); 
                
             }
-        return view('page/surat/dashboardSkck');
+        $model->where('status', 'new')->set(['status' => 'Pengajuan Sedang Diproses'])->update();
+        return view('page/surat/dashboardSkck',[
+            'isGajiNew' => $modelGaji->where('status', 'new')->first(),
+            'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
+            'isKKNew' => $modelKK->where('keterangan', 'new')->first(),
+            'isKTPNew' => $modelKTP->where('keterangan', 'new')->first(),
+            'isSKCKNew' => $model->where('status', 'new')->first(),
+            'isSKTMNew' => $modelSKTM->where('status', 'new')->first(),
+            'isSPUNew' => $modelSPU->where('status', 'new')->first(),
+        ]);
     }
 
-
-
-   
-
-        // Data Surat skck (read)
+    // Data Surat skck (read)
     public function dataskck()
     {
         $model = new skckModel();
@@ -66,12 +83,11 @@ class skck extends BaseController
     // Terima Surat skck (acc/tolak)
     public function terimaskck($id)
     {
-        $userModel = new UserModel();
-        $skckmodel = new skckModel();
+        $skckModel = new skckModel();
         $data = [
             'status' => 1
         ];
-        $sktmModel->update($id, $data);
+        $skckModel->update($id, $data);
         return redirect()->to(base_url('Admin/dataPeserta'));
     }
 

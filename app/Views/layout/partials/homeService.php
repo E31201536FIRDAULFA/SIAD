@@ -13,14 +13,7 @@
         
 
 
-          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="card">
-              <div class="card-img">
-              <img src="<?= base_url('assets_fe/img/doc.jpg') ?>" alt="" class="img-fluid">
-              </div>
-             <center> <h3><a href="<?= base_url('chat') ?>" class="stretched-link">CHAT BERSAMA KAMI</a></h3></center>
-              <center><p>Untuk mengajukan berbagai keperluan</p></center>
-         </div>
+        
           </div><!-- End Card Item -->
 
         </div>

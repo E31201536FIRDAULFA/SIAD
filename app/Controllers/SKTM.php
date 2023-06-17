@@ -3,8 +3,17 @@
 namespace App\Controllers;
 
 use CodeIgniter\API\ResponseTrait;
+use App\Models\KehilanganModel;
+use App\Models\gajiModel;
+use App\Models\KKModel;
+use App\Models\KTPModel;
+use App\Models\skckModel;
 use App\Models\SKTMModel;
+use App\Models\SPUModel;
 use App\Models\UserModel;
+use Dompdf\Dompdf;
+use Config\Services;
+use Dompdf\Options;
 
 class SKTM extends BaseController
 {
@@ -13,6 +22,13 @@ class SKTM extends BaseController
     public function index()
     {
         $model = new SKTMModel();
+        $user = new UserModel();
+        $modelKehilangan = new KehilanganModel();
+        $modelGaji = new gajiModel();
+        $modelKK = new KKModel();
+        $modelKTP = new KTPModel();
+        $modelSKCK = new skckModel();
+        $modelSPU = new SPUModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
             $data = [
                 'tgl' => $this->request->getPost('tgl'),
@@ -28,7 +44,7 @@ class SKTM extends BaseController
                 'alamatayah' => $this->request->getPost('alamatayah'),
                 'gaji' => $this->request->getPost('gaji'),
                 'keperluan' => $this->request->getPost('keperluan'),
-                'status' => null,
+                'status' => 'new',
                 'suratsktm' => null,
             ];
             $data['userid']=session()->get('id');
@@ -40,10 +56,21 @@ class SKTM extends BaseController
                     'text' => 'Pop up ini akan hilang dalam 3 detik.',
                 ]); 
             }
-        return view('page/surat/dashboardSKTM');
+        $model->where('status', 'new')->set(['status' => 'diproses'])->update();
+        return view('page/surat/dashboardSKTM',[
+            'content' => $model->findAll(),
+            'user' => $user->where('role', 'warga')->findAll(),
+            'isGajiNew' => $modelGaji->where('status', 'new')->first(),
+            'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
+            'isKKNew' => $modelKK->where('keterangan', 'new')->first(),
+            'isKTPNew' => $modelKTP->where('keterangan', 'new')->first(),
+            'isSKCKNew' => $modelSKCK->where('status', 'new')->first(),
+            'isSKTMNew' => $model->where('status', 'new')->first(),
+            'isSPUNew' => $modelSPU->where('status', 'new')->first(),
+        ]);
     }
     
-// Data Surat SKTM (read)
+    // Data Surat SKTM (read)
     public function dataSKTM()
     {
         $model = new SKTMModel();
@@ -61,8 +88,7 @@ class SKTM extends BaseController
     // Terima Surat SKTM (acc/tolak)
     public function terimaSKTM($id)
     {
-        $userModel = new UserModel();
-        $sktmmodel = new SKTMModel();
+        $sktmModel = new SKTMModel();
         $data = [
             'status' => 1
         ];
@@ -150,10 +176,20 @@ class SKTM extends BaseController
         ]);
     }
  }
+ 
 
      public function download()
     {
         return view('page/partials/Riwayat/gajiriwayat');
     }
-     }
+
+    public function cetak($id)
+    {
+        $model = new SKTMModel();
+        $data = [
+            'content' => $model->find($id),
+        ];
+        return view('page/pdf/SKTM', $data);
+    }
+}
     

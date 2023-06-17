@@ -25,6 +25,7 @@
   <link href="<?= base_url('assets_fe/vendors/glightbox/css/glightbox.min.css') ?>" rel="stylesheet">
   <link href="<?= base_url('assets_fe/vendors/swiper/swiper-bundle.min.css') ?>" rel="stylesheet">
   <link href="<?= base_url('assets_fe/vendors/aos/aos.css') ?>" rel="stylesheet">
+  
 
   <!-- Template Main CSS File -->
   <link href="<?= base_url('assets_fe/css/main.css') ?>" rel="stylesheet">

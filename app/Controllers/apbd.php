@@ -4,7 +4,13 @@ namespace App\Controllers;
 
 use CodeIgniter\API\ResponseTrait;
 use App\Models\APBDModel;
-use App\Models\UserModel;
+use App\Models\KehilanganModel;
+use App\Models\gajiModel;
+use App\Models\KKModel;
+use App\Models\KTPModel;
+use App\Models\skckModel;
+use App\Models\SKTMModel;
+use App\Models\SPUModel;
 
 class apbd extends BaseController
 {
@@ -13,6 +19,13 @@ class apbd extends BaseController
     public function index()
     {
         $model = new APBDModel();
+        $modelKehilangan = new KehilanganModel();
+        $modelGaji = new gajiModel();
+        $modelKK = new KKModel();
+        $modelKTP = new KTPModel();
+        $modelSKCK = new skckModel();
+        $modelSKTM = new SKTMModel();
+        $modelSPU = new SPUModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
             $data = [
                 'tgl' => $this->request->getPost('tgl'),
@@ -30,7 +43,15 @@ class apbd extends BaseController
                     'text' => 'Pop up ini akan hilang dalam 3 detik.',
                 ]); 
             }
-        return view('page/keuangan/dashboardApbd');
+        return view('page/keuangan/dashboardApbd',[
+            'isGajiNew' => $modelGaji->where('status', 'new')->first(),
+            'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
+            'isKKNew' => $modelKK->where('keterangan', 'new')->first(),
+            'isKTPNew' => $modelKTP->where('keterangan', 'new')->first(),
+            'isSKCKNew' => $modelSKCK->where('status', 'new')->first(),
+            'isSKTMNew' => $modelSKTM->where('status', 'new')->first(),
+            'isSPUNew' => $modelSPU->where('status', 'new')->first(),
+        ]);
     }
 
 // Data Pengajuan apbd (read)

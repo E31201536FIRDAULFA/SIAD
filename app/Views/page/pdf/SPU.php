@@ -1,52 +1,164 @@
 
-<html lang="en">  
+<div>
+  <header>
+    <style>
+  h1,
+h3,
+h5,
+h6 {
+    text-align: center;
+    padding-right: 200px;
+}
 
-<head>  
-    <meta charset="UTF-8">  
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Cetak Pdf</title>  
+.row {
+    margin-top: 20px;
+}
 
-</head>  
+.keclogo {
+    font-size: 24px;
+    font-size: 3vw;
+}
 
-<body>  
-<h2 align="center">Data Pengajuan </h2>   
+.kablogo {
+    font-size: 2vw;
+}
 
-<table width="100%" cellspacing="1" border="1">
-        
-               
+.alamatlogo {
+    font-size: 1.5vw;
+}
 
-                  <tr>
-                    <th>Tanggal</th>                   
-                    <th>Nama</th>
-                    <th>NIK</th>
-                    <th>Jenis Kelamin</th>
-                    <th>TTL</th>
-                    <th>Alamat</th>
-                    <th>Nama Usaha</th>
-                    <th>Jenis Usaha</th>
-                    <th>Alamat Usaha</th>
-                    <th>Status</th>                    
-                  </tr>
+.kodeposlogo {
+    font-size: 1.7vw;
+}
 
-                  <?php foreach ($dataSPU as $value) : ?>
-                  <tr>
-                    <td align="center"><?= $value['tgl']; ?></td>               
-                    <td align="center"><?= $value['nama']; ?></td>
-                    <td align="center"><?= $value['nik']; ?></td>                    
-                    <td align="center"><?= $value['jk']; ?></td>                    
-                    <td align="center"><?= $value['alamat']; ?></td>                  
-                    <td align="center"><?= $value['nama_usaha']; ?></td>
-                    <td align="center"><?= $value['jenis_usaha']; ?></td>
-                    <td align="center"><?= $value['alamat_usaha']; ?></td>
-                    <td align="center"><?= $value['status']; ?></td>
-                  </tr>
-                <?php endforeach ?>
-                 
-                 
-                </table>
-            
-</body>  
+#tls {
+    text-align: right;
+}
 
-</html>
+.alamat-tujuan {
+    margin-left: 50%;
+}
 
+.garis1 {
+    border-top: 3px solid black;
+    height: 2px;
+    border-bottom: 1px solid black;
+}
+
+#logo {
+    margin: auto;
+    margin-left: 0%;
+    margin-right: auto;
+}
+
+#tempat-tgl {
+    margin-left: 120px;
+}
+
+#camat {
+    text-align: center;
+}
+
+#nama-camat {
+    margin-top: 100px;
+    text-align: center;
+}
+</style>
+    <div class="row">
+      <div id="img" class="col-md-3">
+        <img id="logo" src="<?= base_url('assets/img/illustrations/logo-jbr.jpg')?>" width="140" height="160" />
+      </div>
+      <div id="text-header" class="col-md-9">
+        <h3 class="kablogo">PEMERINTAH KABUPATEN JEMBER</h3>
+        <h1 class="keclogo"><strong>KECAMATAN JELBUK</strong></h1>
+        <h1 class="keclogo"><strong>DESA PANDUMAN</strong></h1>
+        <h6 class="alamatlogo">WP9X+98J, Krajan Panduman, Panduman, Kec. Jelbuk, Kabupaten Jember, Jawa Timur 68192</h6>
+      </div>
+    </div>
+
+  </header>
+
+  <div class="container">
+    <hr class="garis1"/>
+    
+    <div id="pembuka" class="row">&emsp; &emsp; &emsp; Yang bertanda tangan dibawah ini :</div>
+    <div id="tempat-tgl">
+      <table>
+        <tr>
+          <td>Nama</td>
+          <td>:</td>
+          <td>WINARKO SETYAWAN</td>
+        </tr>
+        <tr>
+          <td>Jabatan</td>
+          <td>:</td>
+          <td>Kepala Desa Panduman Kecamatan Jelbuk Kabupaten Jember</td>
+        </tr>
+      </table>
+    </div>
+
+    <div id="tempat-tgl" class="row">&emsp; &emsp; &emsp; Yang bertanda tangan dibawah ini :</div>
+      <table>
+        <tr>
+          <td>Nama</td>
+          <td>:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>NIK</td>
+          <td>:</td>
+          <td>Kepala Desa Panduman Kecamatan Jelbuk Kabupaten Jember</td>
+        </tr>
+        <tr>
+          <td>Jenis Kelamin</td>
+          <td>:</td>
+          <td>Kepala Desa Panduman Kecamatan Jelbuk Kabupaten Jember</td>
+        </tr>
+        <tr>
+          <td>Tempat Tgl Lahir</td>
+          <td>:</td>
+          <td>Kepala Desa Panduman Kecamatan Jelbuk Kabupaten Jember</td>
+        </tr>
+        <tr>
+          <td>Alamat</td>
+          <td>:</td>
+          <td>Kepala Desa Panduman Kecamatan Jelbuk Kabupaten Jember</td>
+        </tr>
+        <tr>
+          <td>Usaha</td>
+          <td>:</td>
+          <td>Kepala Desa Panduman Kecamatan Jelbuk Kabupaten Jember</td>
+        </tr>
+        <tr>
+          <td>Jenis Usaha</td>
+          <td>:</td>
+          <td>Kepala Desa Panduman Kecamatan Jelbuk Kabupaten Jember</td>
+        </tr>
+        <tr>
+          <td>Alamat Usaha</td>
+          <td>:</td>
+          <td>Kepala Desa Panduman Kecamatan Jelbuk Kabupaten Jember</td>
+        </tr>
+
+      </table>
+    </div>
+
+    <div id="penutup">Bahwa data tersebut diatas menyatakan benar-benar warga desa panduman kecamatan jelbuk kabupaten jember yang sampai dikeluarkannya surat keterangan ini, usaha tersebut berjalan dengan baik dan lancar.
+      Demikian surat keterangan ini dibuat dengan sebenarnya untuk dipergunakan sebagaimana mestinya..</div>
+    <div id="ttd" class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <p id="camat"><strong>AN. KEPALA DESA PANDUMAN</strong></p>
+        <p id="camat"><strong>Sekretaris Desa</strong></p>
+        <div id="nama-camat"><strong><u>AHMAD SUPRIYADI</u></strong><br />
+  
+    </div>
+      </div>
+</div>
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script src="<?= base_url('css/kop.css') ?>"></script>

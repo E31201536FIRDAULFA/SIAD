@@ -175,7 +175,7 @@ $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
     $routes->get('pdfkk', 'PdfController::generatekk');
     $routes->get('pdfAPBD', 'PdfController::generateAPBD');
     $routes->get('pdfSPU', 'PdfController::generateSPU');
-    $routes->get('pdfSKTM', 'PdfController::generatekk');
+    $routes->get('pdfSKTM/(:num)', 'SKTM::cetak/$1');
     $routes->get('pdfskck', 'PdfController::generateskck');
     $routes->get('pdfgaji', 'PdfController::generategaji');
     $routes->get('pdfKehilangan', 'PdfController::generateKehilangan');

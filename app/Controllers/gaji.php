@@ -3,8 +3,13 @@
 namespace App\Controllers;
 
 use CodeIgniter\API\ResponseTrait;
+use App\Models\KehilanganModel;
 use App\Models\gajiModel;
-use App\Models\UserModel;
+use App\Models\KKModel;
+use App\Models\KTPModel;
+use App\Models\skckModel;
+use App\Models\SKTMModel;
+use App\Models\SPUModel;
 
 class gaji extends BaseController
 {
@@ -13,6 +18,12 @@ class gaji extends BaseController
     public function index()
     {
         $model = new gajiModel();
+        $modelKK = new KKModel();
+        $modelKTP = new KTPModel();
+        $modelSKCK = new skckModel();
+        $modelSKTM = new SKTMModel();
+        $modelSPU = new SPUModel();
+        $modelKehilangan = new KehilanganModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
             $data = [
                 'tgl' => $this->request->getPost('tgl'),
@@ -23,30 +34,37 @@ class gaji extends BaseController
                 'no_kip' => $this->request->getPost('no_kip'),
                 'no_kis' => $this->request->getPost('no_kis'),
                 'ket' => $this->request->getPost('ket'),
-                'status' => null,
+                'status' => 'new',
                 'Surat' => null,
-                
-                
             ];
             $data['userid']=session()->get('id');
-                $model->save($data);
-                return $this->response->setJSON([
-                    'status' => true,
-                    'icon' => 'success',
-                    'title' => 'Tambah Pengajuan Surat Ket Penghasilan Berhasil!',
-                    'text' => 'Pop up ini akan hilang dalam 3 detik.',
-                ]); 
-            }
-        return view('page/surat/dashboardGaji');
+            $model->save($data);
+            return $this->response->setJSON([
+                'status' => true,
+                'icon' => 'success',
+                'title' => 'Tambah Pengajuan Surat Ket Penghasilan Berhasil!',
+                'text' => 'Pop up ini akan hilang dalam 3 detik.',
+            ]); 
+        }
+        $model->where('status', 'new')->set(['status' => 'Pengajuan Sedang Diproses'])->update();
+        return view('page/surat/dashboardGaji',[
+            'isGajiNew' => $model->where('status', 'new')->first(),
+            'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
+            'isKKNew' => $modelKK->where('keterangan', 'new')->first(),
+            'isKTPNew' => $modelKTP->where('keterangan', 'new')->first(),
+            'isSKCKNew' => $modelSKCK->where('status', 'new')->first(),
+            'isSKTMNew' => $modelSKTM->where('status', 'new')->first(),
+            'isSPUNew' => $modelSPU->where('status', 'new')->first(),
+        ]);
     }
 
-        // Data Surat gaji (read)
-        public function datagaji()
-        {
-            $model = new gajiModel();
-            $data = $model->orderBy('created_at', 'desc')->findAll();
-            return $this->response->setJSON($data);
-        }
+    // Data Surat gaji (read)
+    public function datagaji()
+    {
+        $model = new gajiModel();
+        $data = $model->orderBy('created_at', 'desc')->findAll();
+        return $this->response->setJSON($data);
+    }
 
     public function datagajiriwayat()
     {
@@ -58,12 +76,11 @@ class gaji extends BaseController
     // Terima Surat gaji (acc/tolak)
     public function terimagaji($id)
     {
-        $userModel = new UserModel();
-        $gajimodel = new gajiModel();
+        $gajiModel = new gajiModel();
         $data = [
             'status' => 1
         ];
-        $sktmModel->update($id, $data);
+        $gajiModel->update($id, $data);
         return redirect()->to(base_url('Admin/dataPeserta'));
     }
 
@@ -145,5 +162,4 @@ class gaji extends BaseController
     {
         return view('page/partials/Riwayat/gajiriwayat');
     }
-
-     }
+}

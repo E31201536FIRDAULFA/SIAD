@@ -4,7 +4,7 @@ $(document).ready(function () {
         type: "GET",
         dataType: "json",
         success: function (respond) {
-            let tableBody = $('#table tbody');
+            let tableBody = $('#myTable tbody');
             let number = 1;
             for (let i = 0; i < respond.length; i++) {
                 let row = $('<tr></tr>');
@@ -95,42 +95,20 @@ $(document).ready(function () {
                     });
                 });
 
-                let buttonUnduh = $('<button type="button" class="btn bg-gradient-success mb-0"></button>').text('Unduh').attr('id', respond[i].id);
-                buttonUnduh.click(function () {
-
+                let buttonCetak = $('<button>').attr({
+                    'type': 'button',
+                    'class': 'btn bg-gradient-success mb-0',
+                    'id': respond[i].id
+                }).text('Cetak');
+                
+                buttonCetak.on('click', function () {
                     var id = $(this).attr('id');
-                    $.ajax({
-                        url: base_url + 'dashboard/SKTM/update/' + id,
-                        type: 'GET',
-                        dataType: 'JSON',
-                        success: function (respond) {
-                            console.log(respond.data);
-
-                            // Set the values of other input fields as needed
-
-                            var fileName = respond.data.suratsktm; // Desired name for the downloaded file
-                            var fileUrl = base_url + 'uploads/' + fileName; // URL of the file to be downloaded
-
-                            var downloadLink = document.createElement('a');
-                            downloadLink.setAttribute('href', fileUrl);
-                            downloadLink.setAttribute('download', fileName);
-                            downloadLink.style.display = 'none';
-                            document.body.appendChild(downloadLink);
-                            downloadLink.click();
-                            document.body.removeChild(downloadLink);
-
-                            // Additional code for showing the modal, etc.
-                        },
-                        error: function (jqXHR, textStatus, errorThrown) {
-                            console.log(jqXHR);
-                            swal.fire({
-                                icon: 'error',
-                                title: errorThrown,
-                                text: 'Error getting data from AJAX.'
-                            });
-                        }
-                    });
+                    var redirectUrl = base_url + 'dashboard/pdf/pdfSKTM/' + id; // Change the URL to the desired destination
+                
+                    window.location.href = redirectUrl; // Redirect to the desired link
                 });
+                
+
 
                 let buttonDelete = $('<button type="button" class="btn bg-gradient-danger mb-0"></button>').text('Delete').attr('id', respond[i].id);
                 buttonDelete.click(function () {
@@ -187,7 +165,7 @@ $(document).ready(function () {
                     gaji,
                     keperluan,
                     status,
-                    suratsktm, buttonUpload, buttonEdit, buttonUnduh, buttonDelete);
+                    suratsktm, buttonCetak, buttonUpload, buttonEdit, buttonDelete);
                 tableBody.append(row);
             }
         }

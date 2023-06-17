@@ -5,6 +5,12 @@ namespace App\Controllers;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\SPUModel;
 use App\Models\UserModel;
+use App\Models\KehilanganModel;
+use App\Models\gajiModel;
+use App\Models\KKModel;
+use App\Models\KTPModel;
+use App\Models\skckModel;
+use App\Models\SKTMModel;
 
 class SPU extends BaseController
 {
@@ -13,6 +19,12 @@ class SPU extends BaseController
     public function index()
     {
         $model = new SPUModel();
+        $modelKehilangan = new KehilanganModel();
+        $modelGaji = new gajiModel();
+        $modelKK = new KKModel();
+        $modelKTP = new KTPModel();
+        $modelSKCK = new skckModel();
+        $modelSKTM = new SKTMModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
             $data = [
                 'tgl' => $this->request->getPost('tgl'),
@@ -24,7 +36,7 @@ class SPU extends BaseController
                 'nama_usaha' => $this->request->getPost('nama_usaha'),
                 'jenis_usaha' => $this->request->getPost('jenis_usaha'),
                 'alamat_usaha' => $this->request->getPost('alamat_usaha'),
-                'status' => $this->request->getPost('status'),
+                'status' => 'new',
                 'suratspu' => null,
                 
             ];
@@ -37,7 +49,16 @@ class SPU extends BaseController
                     'text' => 'Pop up ini akan hilang dalam 3 detik.',
                 ]); 
             }
-        return view('page/surat/dashboardSPU');
+        $model->where('status', 'new')->set(['status' => 'diproses'])->update();
+        return view('page/surat/dashboardSPU',[
+            'isGajiNew' => $modelGaji->where('status', 'new')->first(),
+            'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
+            'isKKNew' => $modelKK->where('keterangan', 'new')->first(),
+            'isKTPNew' => $modelKTP->where('keterangan', 'new')->first(),
+            'isSKCKNew' => $modelSKCK->where('status', 'new')->first(),
+            'isSKTMNew' => $modelSKTM->where('status', 'new')->first(),
+            'isSPUNew' => $model->where('status', 'new')->first(),
+        ]);
     }
 
         // Data Surat SPU (read)
@@ -59,11 +80,11 @@ class SPU extends BaseController
     public function terimaSPU($id)
     {
         $userModel = new UserModel();
-        $spumodel = new SPUModel();
+        $spuModel = new SPUModel();
         $data = [
             'status' => 1
         ];
-        $sktmModel->update($id, $data);
+        $spuModel->update($id, $data);
         return redirect()->to(base_url('Admin/dataPeserta'));
     }
 

@@ -8,12 +8,7 @@
             <span>SIAD</span>
           </a>
           <p>Dapatkan seputar informasi terbaru dan penyedia pelayanan terbaik hanya dengan klik dirumah saja. Beralih kepada digitalisasi pelayanan informasi dan administrasi sekarang juga!</p>
-          <div class="social-links d-flex mt-4">
-            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-          </div>
+       
         </div>
 
         

@@ -3,8 +3,13 @@
 namespace App\Controllers;
 
 use CodeIgniter\API\ResponseTrait;
+use App\Models\KehilanganModel;
+use App\Models\gajiModel;
 use App\Models\KKModel;
-use App\Models\UserModel;
+use App\Models\KTPModel;
+use App\Models\skckModel;
+use App\Models\SKTMModel;
+use App\Models\SPUModel;
 
 class KK extends BaseController
 {
@@ -13,14 +18,19 @@ class KK extends BaseController
     public function index()
     {
         $model = new KKModel();
+        $modelKehilangan = new KehilanganModel();
+        $modelGaji = new gajiModel();
+        $modelKTP = new KTPModel();
+        $modelSKCK = new skckModel();
+        $modelSKTM = new SKTMModel();
+        $modelSPU = new SPUModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
             $data = [
                 'tgl' => $this->request->getPost('tgl'),
                 'nama' => $this->request->getPost('nama'),
                 'nik' => $this->request->getPost('nik'),
                 'keperluan' => $this->request->getPost('keperluan'),
-                'keterangan' => null,
-                'surat' => null,
+                'keterangan' => 'new',
             ];
             $data['userid']=session()->get('id');
                 $model->save($data);
@@ -31,7 +41,16 @@ class KK extends BaseController
                     'text' => 'Pop up ini akan hilang dalam 3 detik.',
                 ]); 
             }
-        return view('page/kependudukan/dashboardKk');
+        $model->where('keterangan', 'new')->set(['keterangan' => 'Pengajuan Sedang Diproses'])->update();
+        return view('page/kependudukan/dashboardKk',[
+            'isGajiNew' => $modelGaji->where('status', 'new')->first(),
+            'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
+            'isKKNew' => $model->where('keterangan', 'new')->first(),
+            'isKTPNew' => $modelKTP->where('keterangan', 'new')->first(),
+            'isSKCKNew' => $modelSKCK->where('status', 'new')->first(),
+            'isSKTMNew' => $modelSKTM->where('status', 'new')->first(),
+            'isSPUNew' => $modelSPU->where('status', 'new')->first(),
+        ]);
     }
 
 // Data Pengajuan KK (read)

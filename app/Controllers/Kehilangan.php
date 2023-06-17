@@ -4,7 +4,12 @@ namespace App\Controllers;
 
 use CodeIgniter\API\ResponseTrait;
 use App\Models\KehilanganModel;
-use App\Models\UserModel;
+use App\Models\gajiModel;
+use App\Models\KKModel;
+use App\Models\KTPModel;
+use App\Models\skckModel;
+use App\Models\SKTMModel;
+use App\Models\SPUModel;
 
 class Kehilangan extends BaseController
 {
@@ -13,6 +18,12 @@ class Kehilangan extends BaseController
     public function index()
     {
         $model = new KehilanganModel();
+        $modelGaji = new gajiModel();
+        $modelKK = new KKModel();
+        $modelKTP = new KTPModel();
+        $modelSKCK = new skckModel();
+        $modelSKTM = new SKTMModel();
+        $modelSPU = new SPUModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
             $data = [
                 'tgl' => $this->request->getPost('tgl'),
@@ -23,9 +34,8 @@ class Kehilangan extends BaseController
                 'alamat' => $this->request->getPost('alamat'),
                 'keperluan' => $this->request->getPost('keperluan'),
                 'ket' => $this->request->getPost('ket'),
-                'status' => null,
+                'status' => 'new',
                 'suratkehilangan' => null,
-                
             ];
             $data['userid']=session()->get('id');
                 $model->save($data);
@@ -34,9 +44,19 @@ class Kehilangan extends BaseController
                     'icon' => 'success',
                     'title' => 'Tambah Pengajuan Surat Kehilangan Berhasil!',
                     'text' => 'Pop up ini akan hilang dalam 3 detik.',
-                ]); 
+                ]);
         }
-        return view('page/surat/dashboardKehilangan');
+
+        $model->where('status', 'new')->set(['status' => 'diproses'])->update();
+        return view('page/surat/dashboardKehilangan',[
+            'isGajiNew' => $modelGaji->where('status', 'new')->first(),
+            'isKehilanganNew' => $model->where('status', 'new')->first(),
+            'isKKNew' => $modelKK->where('keterangan', 'new')->first(),
+            'isKTPNew' => $modelKTP->where('keterangan', 'new')->first(),
+            'isSKCKNew' => $modelSKCK->where('status', 'new')->first(),
+            'isSKTMNew' => $modelSKTM->where('status', 'new')->first(),
+            'isSPUNew' => $modelSPU->where('status', 'new')->first(),
+        ]);
     }
 
       // Data Surat Kehilangan (read)
@@ -58,12 +78,11 @@ class Kehilangan extends BaseController
       // Terima Surat Kehilangan (acc/tolak)
       public function terimaKehilangan($id)
       {
-          $userModel = new UserModel();
-          $kehilanganmodel = new KehilanganModel();
+          $kehilanganModel = new KehilanganModel();
           $data = [
               'status' => 'diterima'
           ];
-          $userModel->update($id, $data);
+          $kehilanganModel->update($id, $data);
           return redirect()->to(base_url('Admin/dataPeserta'));
       }
   
