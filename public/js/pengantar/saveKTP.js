@@ -1,3 +1,4 @@
+
 function saveKTP() {
     const id = $("#id").val();
     const tgl = $("#tgl").val();
@@ -30,6 +31,7 @@ function saveKTP() {
                 title: 'Oops...',
                 text: 'Scan KK harus diisi!'
             });
+
 
         } else if (keterangan.length == "") {
             Swal.fire({

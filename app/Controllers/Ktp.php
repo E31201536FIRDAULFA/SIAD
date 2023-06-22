@@ -10,6 +10,11 @@ use App\Models\KTPModel;
 use App\Models\skckModel;
 use App\Models\SKTMModel;
 use App\Models\SPUModel;
+use App\Models\UserModel;
+use Dompdf\Dompdf;
+use Config\Services;
+use Dompdf\Options;
+
 
 class KTP extends BaseController
 {
@@ -18,6 +23,7 @@ class KTP extends BaseController
     public function index()
     {
         $model = new KTPModel();
+        $user = new UserModel();
         $modelKehilangan = new KehilanganModel();
         $modelGaji = new gajiModel();
         $modelKK = new KKModel();
@@ -25,13 +31,21 @@ class KTP extends BaseController
         $modelSKTM = new SKTMModel();
         $modelSPU = new SPUModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
+            $pdf = $this->request->getFile('kk');
+            $randName = $pdf->getRandomName();
+
+            if ($pdf->isValid() && ! $pdf->hasMoved()) {
+            $pdf->move('./uploads',$randName);
             $data = [
                 'tgl' => $this->request->getPost('tgl'),
                 'nama' => $this->request->getPost('nama'),
                 'nik' => $this->request->getPost('nik'),
                 'keperluan' => $this->request->getPost('keperluan'),
+                'kk' => $randName,
                 'keterangan' => 'new',
+                'surat' => null,
             ];
+        }
             $data['userid']=session()->get('id');
                 $model->save($data);
                 return $this->response->setJSON([
@@ -43,6 +57,8 @@ class KTP extends BaseController
             }
         $model->where('keterangan', 'new')->set(['keterangan' => 'Pengajuan Sedang Diproses'])->update();
         return view('page/kependudukan/dashboardKtp',[
+            'content' => $model->findAll(),
+            'user' => $user->where('role', 'warga')->findAll(),
             'isGajiNew' => $modelGaji->where('status', 'new')->first(),
             'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
             'isKKNew' => $modelKK->where('keterangan', 'new')->first(),
@@ -84,14 +100,20 @@ class KTP extends BaseController
    {
       $model = new KTPModel();
       if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
-          $data = [
+        $pdf = $this->request->getFile('kk');
+        $randName = $pdf->getRandomName();
+
+        if ($pdf->isValid() && ! $pdf->hasMoved()) {
+        $pdf->move('./uploads',$randName);
+        $data = [
             'tgl' => $this->request->getPost('tgl'),
             'nama' => $this->request->getPost('nama'),
             'nik' => $this->request->getPost('nik'),
             'keperluan' => $this->request->getPost('keperluan'),
-            'keterangan' =>$this->request->getPost('keterangan'),
-          
-          ];
+            'kk' => $randName,
+            'keterangan' => $this->request->getPost('keterangan'),
+        ];
+    }
         
           $model->update($id, $data);
           return $this->response->setJSON([
@@ -146,4 +168,12 @@ public function upload($id)
         return view('page/partials/Riwayat/gajiriwayat');
     }
     
+    public function cetak($id)
+    {
+        $model = new KTPModel();
+        $data = [
+            'content' => $model->find($id),
+        ];
+        return view('page/pdf/ktp', $data);
+    }
 }

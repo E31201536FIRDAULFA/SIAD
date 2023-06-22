@@ -20,6 +20,7 @@ class KTPModel extends Model
         'nama',
         'nik',
         'keperluan',
+        'kk',
         'keterangan',
         'surat',
     ];

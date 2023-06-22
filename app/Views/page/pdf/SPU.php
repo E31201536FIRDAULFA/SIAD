@@ -1,164 +1,206 @@
-
-<div>
-  <header>
-    <style>
-  h1,
-h3,
-h5,
-h6 {
+<style>
+  h1, h3, h5, h6 {
     text-align: center;
-    padding-right: 200px;
-}
+  }
 
-.row {
+  .container {
+    width: 750px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+  }
+
+  
+  .row {
     margin-top: 20px;
-}
+  }
 
-.keclogo {
-    font-size: 24px;
-    font-size: 3vw;
-}
+  .my-row {
+    display: flex;
+    justify-content: flex-end;
+  }
 
-.kablogo {
+  .my-column {
+    flex-grow: 1;
+  }
+
+  .my-column-end {
+    margin-left: auto;
+  }
+
+  .rowkanan {
+    justify-content: flex-end;
+  }
+
+
+  .kablogo {
     font-size: 2vw;
-}
+  }
 
-.alamatlogo {
+  .alamatlogo {
     font-size: 1.5vw;
-}
+  }
 
-.kodeposlogo {
+  .kodeposlogo {
     font-size: 1.7vw;
-}
+  }
 
-#tls {
-    text-align: right;
-}
-
-.alamat-tujuan {
+  .alamat-tujuan {
     margin-left: 50%;
-}
+  }
 
-.garis1 {
+  .garis1 {
     border-top: 3px solid black;
     height: 2px;
     border-bottom: 1px solid black;
-}
+  }
 
-#logo {
+  #logo {
     margin: auto;
     margin-left: 0%;
     margin-right: auto;
-}
+  }
 
-#tempat-tgl {
+  #tempat-tgl {
     margin-left: 120px;
-}
+  }
 
-#camat {
+  #camat {
     text-align: center;
-}
+  }
 
-#nama-camat {
+  #nama-camat {
     margin-top: 100px;
     text-align: center;
-}
+  }
+
+  #jenis {
+    margin: auto;
+    line-height: 10px;
+  }
+
+  #print-button {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .print-button-container {
+    text-align: right;
+    margin-top: 20px;
+  }
 </style>
+
+<div class="container">
+  <header>
     <div class="row">
-      <div id="img" class="col-md-3">
-        <img id="logo" src="<?= base_url('assets/img/illustrations/logo-jbr.jpg')?>" width="140" height="160" />
+      <div class="my-row">
+        <div class="my-column">
+          <img src="<?= base_url('foto/logo.jpg') ?>" width="100px" height="100px" alt="Remote Image">
+        </div>
+        <div class="my-column print-button-container" id="print">
+          <button type="button" class="btn btn-primary" onclick="printDocument()">Print</button>
+        </div>
       </div>
-      <div id="text-header" class="col-md-9">
-        <h3 class="kablogo">PEMERINTAH KABUPATEN JEMBER</h3>
-        <h1 class="keclogo"><strong>KECAMATAN JELBUK</strong></h1>
-        <h1 class="keclogo"><strong>DESA PANDUMAN</strong></h1>
-        <h6 class="alamatlogo">WP9X+98J, Krajan Panduman, Panduman, Kec. Jelbuk, Kabupaten Jember, Jawa Timur 68192</h6>
       </div>
-    </div>
-
   </header>
-
-  <div class="container">
-    <hr class="garis1"/>
-    
-    <div id="pembuka" class="row">&emsp; &emsp; &emsp; Yang bertanda tangan dibawah ini :</div>
-    <div id="tempat-tgl">
-      <table>
-        <tr>
-          <td>Nama</td>
-          <td>:</td>
-          <td>WINARKO SETYAWAN</td>
-        </tr>
-        <tr>
-          <td>Jabatan</td>
-          <td>:</td>
-          <td>Kepala Desa Panduman Kecamatan Jelbuk Kabupaten Jember</td>
-        </tr>
-      </table>
-    </div>
-
-    <div id="tempat-tgl" class="row">&emsp; &emsp; &emsp; Yang bertanda tangan dibawah ini :</div>
-      <table>
-        <tr>
-          <td>Nama</td>
-          <td>:</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>NIK</td>
-          <td>:</td>
-          <td>Kepala Desa Panduman Kecamatan Jelbuk Kabupaten Jember</td>
-        </tr>
-        <tr>
-          <td>Jenis Kelamin</td>
-          <td>:</td>
-          <td>Kepala Desa Panduman Kecamatan Jelbuk Kabupaten Jember</td>
-        </tr>
-        <tr>
-          <td>Tempat Tgl Lahir</td>
-          <td>:</td>
-          <td>Kepala Desa Panduman Kecamatan Jelbuk Kabupaten Jember</td>
-        </tr>
-        <tr>
-          <td>Alamat</td>
-          <td>:</td>
-          <td>Kepala Desa Panduman Kecamatan Jelbuk Kabupaten Jember</td>
-        </tr>
-        <tr>
-          <td>Usaha</td>
-          <td>:</td>
-          <td>Kepala Desa Panduman Kecamatan Jelbuk Kabupaten Jember</td>
-        </tr>
-        <tr>
-          <td>Jenis Usaha</td>
-          <td>:</td>
-          <td>Kepala Desa Panduman Kecamatan Jelbuk Kabupaten Jember</td>
-        </tr>
-        <tr>
-          <td>Alamat Usaha</td>
-          <td>:</td>
-          <td>Kepala Desa Panduman Kecamatan Jelbuk Kabupaten Jember</td>
-        </tr>
-
-      </table>
-    </div>
-
-    <div id="penutup">Bahwa data tersebut diatas menyatakan benar-benar warga desa panduman kecamatan jelbuk kabupaten jember yang sampai dikeluarkannya surat keterangan ini, usaha tersebut berjalan dengan baik dan lancar.
-      Demikian surat keterangan ini dibuat dengan sebenarnya untuk dipergunakan sebagaimana mestinya..</div>
-    <div id="ttd" class="row">
-      <div class="col-md-4"></div>
-      <div class="col-md-4"></div>
-      <div class="col-md-4">
-        <p id="camat"><strong>AN. KEPALA DESA PANDUMAN</strong></p>
-        <p id="camat"><strong>Sekretaris Desa</strong></p>
-        <div id="nama-camat"><strong><u>AHMAD SUPRIYADI</u></strong><br />
+  <div id="jenis" style="text-align: center;">
+        <h2><strong> PEMERINTAH KABUPATEN JEMBER</strong></h2>
+        <h2><strong>KECAMATAN JELBUK</strong></h2>
+        <h2><strong>DESA PANDUMAN</strong></h2>
+        <h6>WP9X+98J, Krajan Panduman, Panduman, Kec. Jelbuk, Kabupaten Jember, Jawa Timur 68192</h6>
+      </div>      
   
-    </div>
-      </div>
+
+  <hr class="garis1">
+  <div id="jenis">
+    <h3><u>SURAT PENGAJUAN USAHA</u></h3>
+    <p style="text-align: center;">NOMOR :&emsp; &emsp; &emsp; &emsp; &emsp; &emsp;/25.2002/2003</p>
+  </div>
+<br>
+
+<div id="pembuka"> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;Yang bertanda tangan dibawah ini :
+  <div id="tempat-tgl">
+    <table>
+      <tr>
+        <td>Nama</td>
+        <td>:</td>
+        <td>WINARKO SETIAWAN</td>
+      </tr>
+      <tr>
+        <td>Jabatan</td>
+        <td>:</td>
+        <td>Kepala Desa Panduman Kecamatan Jelbuk Kabupaten Jember</td>
+      </tr>
+</div> 
 </div>
 </div>
 
+<br><br>
+  
+  <div id="tempat-tgl">
+  
+    <table>
+      <tr> <p> Dengan ini menerangkan dengan sebenarnya bahwa :</p>
+        <td>NIK</td>
+        <td>:</td>
+        <td><?= $content['nik'] ?></td>
+      </tr>
+      <tr>
+        <td>Nama</td>
+        <td>:</td>
+        <td><?= $content['nama'] ?></td>
+      </tr>
+      <tr>
+        <td>Jenis Kelamin</td>
+        <td>:</td>
+        <td><?= $content['jk'] ?></td>
+      </tr>
+      <tr>
+        <td>Tempat Tgl Lahir</td>
+        <td>:</td>
+        <td><?= $content['ttl'] ?></td>
+      </tr>
+      <tr>
+        <td>Alamat</td>
+        <td>:</td>
+        <td><?= $content['alamat'] ?></td>
+      </tr>
+      <tr>
+        <td>Nama Usaha</td>
+        <td>:</td>
+        <td><?= $content['nama_usaha'] ?></td>
+      </tr>
+      <tr>
+        <td>Jenis Usaha</td>
+        <td>:</td>
+        <td><?= $content['jenis_usaha'] ?></td>
+      </tr>
+      
+    </table>
+  </div>
+  <br><br>
+  <div id="penutup">Bahwa data tersebut diatas benar-benar penduduk desa panduman kecamatan jelbuk kabupaten jember yang sampai deikeluarkannya surat keterangan ini, usaha tersebut benar-benar berjalan dengan baik dan lancar.
 
+  Demikian surat keterangan ini dibuat dengan sebenarnya untuk dipergunakan sebagaimana mestinya.
+  </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<script src="<?= base_url('css/kop.css') ?>"></script>
+  <div id="ttd" class="rowkanan">
+    <div class="col-md-4"></div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4" style="float: right;">
+      <p id="camat"><strong>AN. KEPALA DESA PANDUMAN</strong></p>
+      <p id="camat"><strong>Sekretaris Desa</strong></p>
+      <div id="nama-camat"><strong><u>AHMAD SUPRIYADI</u></strong><br /></div>
+    </div>    
+  </div>
+</div>
+
+<script>
+  function printDocument() {
+    var printElement = document.getElementById("print");
+    printElement.style.display = "none";
+    window.print();
+    printElement.style.display = "";
+  }
+</script>

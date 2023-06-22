@@ -11,6 +11,9 @@ use App\Models\KKModel;
 use App\Models\KTPModel;
 use App\Models\skckModel;
 use App\Models\SKTMModel;
+use Dompdf\Dompdf;
+use Config\Services;
+use Dompdf\Options;
 
 class SPU extends BaseController
 {
@@ -19,6 +22,7 @@ class SPU extends BaseController
     public function index()
     {
         $model = new SPUModel();
+        $user = new UserModel();
         $modelKehilangan = new KehilanganModel();
         $modelGaji = new gajiModel();
         $modelKK = new KKModel();
@@ -51,6 +55,8 @@ class SPU extends BaseController
             }
         $model->where('status', 'new')->set(['status' => 'diproses'])->update();
         return view('page/surat/dashboardSPU',[
+            'content' => $model->findAll(),
+            'user' => $user->where('role', 'warga')->findAll(),
             'isGajiNew' => $modelGaji->where('status', 'new')->first(),
             'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
             'isKKNew' => $modelKK->where('keterangan', 'new')->first(),
@@ -199,6 +205,15 @@ class SPU extends BaseController
     public function download()
     {
         return view('page/partials/Riwayat/gajiriwayat');
+    }
+
+    public function cetak($id)
+    {
+        $model = new SPUModel();
+        $data = [
+            'content' => $model->find($id),
+        ];
+        return view('page/pdf/SPU', $data);
     }
      }
     

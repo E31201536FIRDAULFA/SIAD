@@ -85,6 +85,7 @@
   <?= $this->include('layout/partials/dashboardPlugin') ?>
  
   <!--   Core JS Files   -->
+  <script src="<?= base_url('js/Modules.js') ?>"></script>
   <?= $this->renderSection('scripts') ?>
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.15/dist/sweetalert2.all.min.js"></script>

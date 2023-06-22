@@ -11,6 +11,11 @@ $(document).ready(function () {
                 title: 'Oops...',
                 text: 'Password anda tidak sama!'
             });
+        } else if (nik.length == "") {
+            Swal.fire({
+                title: 'Oops...',
+                text: 'nik harus diisi!'
+            });
         } else if (nama.length == "") {
             Swal.fire({
                 title: 'Oops...',
@@ -36,6 +41,7 @@ $(document).ready(function () {
                 url: base_url + 'register',
                 type: "POST",
                 data: {
+                    "nik": nik,
                     "nama": nama,
                     "username": username,
                     "password": password,

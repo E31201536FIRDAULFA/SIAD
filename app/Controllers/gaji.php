@@ -10,6 +10,12 @@ use App\Models\KTPModel;
 use App\Models\skckModel;
 use App\Models\SKTMModel;
 use App\Models\SPUModel;
+use App\Models\UserModel;
+use App\Models\AnggotaModel;
+use Dompdf\Dompdf;
+use Config\Services;
+use Dompdf\Options;
+
 
 class gaji extends BaseController
 {
@@ -18,6 +24,7 @@ class gaji extends BaseController
     public function index()
     {
         $model = new gajiModel();
+        $user = new AnggotaModel();
         $modelKK = new KKModel();
         $modelKTP = new KTPModel();
         $modelSKCK = new skckModel();
@@ -25,12 +32,14 @@ class gaji extends BaseController
         $modelSPU = new SPUModel();
         $modelKehilangan = new KehilanganModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
+            $nik = $this->request->getVar('nama');
+            $dataUser = $user->where('nik', $nik)->first();
             $data = [
                 'tgl' => $this->request->getPost('tgl'),
-                'nama' => $this->request->getPost('nama'),
-                'nik' => $this->request->getPost('nik'),
-                'ttl' => $this->request->getPost('ttl'),
-                'pekerjaan' => $this->request->getPost('pekerjaan'),
+                'nama' => $dataUser['nama'],
+                'nik' => $nik,
+                'ttl' => $dataUser['ttl'],
+                'pekerjaan' => $dataUser['pekerjaan'],
                 'no_kip' => $this->request->getPost('no_kip'),
                 'no_kis' => $this->request->getPost('no_kis'),
                 'ket' => $this->request->getPost('ket'),
@@ -48,6 +57,8 @@ class gaji extends BaseController
         }
         $model->where('status', 'new')->set(['status' => 'Pengajuan Sedang Diproses'])->update();
         return view('page/surat/dashboardGaji',[
+            'content' => $model->findAll(),
+            'user' => $user->where('userid', session()->get('id'))->findAll(),
             'isGajiNew' => $model->where('status', 'new')->first(),
             'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
             'isKKNew' => $modelKK->where('keterangan', 'new')->first(),
@@ -161,5 +172,14 @@ class gaji extends BaseController
     public function download()
     {
         return view('page/partials/Riwayat/gajiriwayat');
+    }
+
+    public function cetak($id)
+    {
+        $model = new gajiModel();
+        $data = [
+            'content' => $model->find($id),
+        ];
+        return view('page/pdf/gaji', $data);
     }
 }

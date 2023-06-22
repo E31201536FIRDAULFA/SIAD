@@ -10,7 +10,6 @@ function saveKehilangan() {
     const ket = $("#ket").val();
     const status = $("#status").val();
 
-
     if (id) {
         url = base_url + 'dashboard/kehilangan/update/' + id;
         if (nama.length == "") {

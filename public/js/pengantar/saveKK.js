@@ -30,6 +30,11 @@ function saveKK() {
                 title: 'Oops...',
                 text: 'Scan KK harus diisi!'
             });
+        } else if (kk.length == "") {
+            Swal.fire({
+                title: 'Oops...',
+                text: 'Scan KK harus diisi!'
+            });
 
         } else if (keterangan.length == "") {
             Swal.fire({
@@ -94,6 +99,11 @@ function saveKK() {
 
             });
         } else if (keperluan.length == "") {
+            Swal.fire({
+                title: 'Oops...',
+                text: 'Scan KK harus diisi!'
+            });
+        } else if (kk.length == "") {
             Swal.fire({
                 title: 'Oops...',
                 text: 'Scan KK harus diisi!'

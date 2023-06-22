@@ -4,7 +4,7 @@ $(document).ready(function () {
         type: "GET",
         dataType: "json",
         success: function (respond) {
-            let tableBody = $('#myTable tbody');
+            let tableBody = $('#table tbody');
             let number = 1;
             for (let i = 0; i < respond.length; i++) {
                 let row = $('<tr></tr>');
@@ -100,14 +100,13 @@ $(document).ready(function () {
                     'class': 'btn bg-gradient-success mb-0',
                     'id': respond[i].id
                 }).text('Cetak');
-                
+
                 buttonCetak.on('click', function () {
                     var id = $(this).attr('id');
                     var redirectUrl = base_url + 'dashboard/pdf/pdfSKTM/' + id; // Change the URL to the desired destination
-                
+
                     window.location.href = redirectUrl; // Redirect to the desired link
                 });
-                
 
 
                 let buttonDelete = $('<button type="button" class="btn bg-gradient-danger mb-0"></button>').text('Delete').attr('id', respond[i].id);

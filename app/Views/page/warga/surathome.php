@@ -31,31 +31,43 @@
                             <form id="form">
                                <div class="input-group input-group-static mb-3">
                                   <label class="form-label">Tanggal</label>
-                                  <input id="tglktp" type="date" class="form-control">
+                                  <input id="tgl" type="date" class="form-control" name="tgl">
                                   <input id="id"  name="id" hidden>
                                 </div>
 
                             
                                 <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">Nama</label>
-                                  <input id="namaktp" type="text" class="form-control">
+                                  <label class="ms-0">Nama</label>
+                                  <select class="form-control" id="nama" name="nama">
+                                    <option>Pilih warga</option>
+                                    <?php foreach($user as $data): ?>
+                                    <option value="<?= $data['nama'] ?>"><?= $data['nama'] ?></option>
+                                    <?php endforeach ?>
+                                  </select>
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">NIK</label>
-                                  <input id="nikktp" type="text" class="form-control">
+                                  <label class="ms-0">NIK</label>
+                                  <select id="nik" type="text" class="form-control" name="nik">
+                                  <option>Pilih NIK</option>
+                                    <?php foreach($user as $data): ?>
+                                    <option value="<?= $data['nik'] ?>"><?= $data['nik'] ?></option>
+                                    <?php endforeach ?>
+                                    </select>
                                 </div>
 
                         
                                 <div class="input-group input-group-static mb-3">
                                 <label for="exampleFormControlSelect1" class="ms-0">Keperluan</label>
                                   <select class="form-control" id="keperluan" name="keperluan">
-                                    <option value="Hilang">Hilang</option>
                                     <option value="Belum Pernah Mengajukan">Belum Pernah Mengajukan</option>
                                   </select>
                                 </div>
 
-                              
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Upload Scan KK</label>
+                                  <input id="kk" type="file" class="form-control" name="kk">
+                                </div>
 
 
                                 <div class="mt-3">
@@ -72,73 +84,7 @@
         </div>
 
 
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">weekend</i>
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Pengantar Saya</p>
-                <h4 class="mb-0">Pengajuan KK</h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-           <div class="card-footer p-3">
-              <button type="button" class="btn bg-gradient-dark btn-lg w-100 mt-4 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal5">Ajukan Sekarang!</button>
-            </div>
-          </div>
-                  <div class="modal fade" id="exampleModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Tambah Pengajuan Pengantar KK</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-
-                     <!--POP UP TAMBAH PENGAJUAN-->
-                            <div class="modal-body">
-                              <form id="formKK">
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">Tanggal</label>
-                                  <input id="tglKK" type="date" class="form-control">
-                                </div>
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">Nama</label>
-                                  <input id="namaKK" type="text" class="form-control">
-                                </div>
-
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">NIK</label>
-                                  <input id="nikKK" type="text" class="form-control">
-                                </div>
-
-                        
-                                <div class="input-group input-group-static mb-3">
-                                <label for="exampleFormControlSelect1" class="ms-0">Keperluan</label>
-                                  <select class="form-control" id="keperluanKK" name="keperluanKK">
-                                    <option value="Hilang">Hilang</option>
-                                    <option value="Belum Pernah Mengajukan">Belum Pernah Mengajukan</option>
-                                  </select>
-                                </div>
-                                
-
-                            
-                               
-                                <div class="mt-3">
-                                  <button type="button" onclick="saveKk()" class="btn bg-gradient-success btn-lg w-100 mt-4 mb-0">Simpan</button>
-                                </div>
-                              </form>
-                            </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn bg-gradient-info btn-lg w-100 mt-4 mb-0" data-bs-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                  </div>
-          </div>
-        </div>
+       
 
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
@@ -177,12 +123,22 @@
                               
                                 <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">Nama</label>
-                                  <input id="namakehilangan" type="text" class="form-control">
+                                  <select class="form-control" id="namakehilangan" name="namakehilangan">
+                                    <option>Pilih warga</option>
+                                    <?php foreach($user as $data): ?>
+                                    <option value="<?= $data['nama'] ?>"><?= $data['nama'] ?></option>
+                                    <?php endforeach ?>
+                                  </select>
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">NIK</label>
-                                  <input id="nikkehilangan" type="text" class="form-control">
+                                  <select id="nikkehilangan" type="text" class="form-control" name="nikkehilangan">
+                                  <option>Pilih NIK</option>
+                                    <?php foreach($user as $data): ?>
+                                    <option value="<?= $data['nik'] ?>"><?= $data['nik'] ?></option>
+                                    <?php endforeach ?>
+                                    </select>
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
@@ -271,12 +227,22 @@
                 
                                 <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">Nama</label>
-                                  <input id="namaskck" type="text" class="form-control">
+                                  <select class="form-control" id="namaskck" name="namaskck">
+                                    <option>Pilih warga</option>
+                                    <?php foreach($user as $data): ?>
+                                    <option value="<?= $data['nama'] ?>"><?= $data['nama'] ?></option>
+                                    <?php endforeach ?>
+                                  </select>
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">NIK</label>
-                                  <input id="nikskck" type="text" class="form-control">
+                                  <select id="nikskck" type="text" class="form-control" name="nikskck">
+                                  <option>Pilih NIK</option>
+                                    <?php foreach($user as $data): ?>
+                                    <option value="<?= $data['nik'] ?>"><?= $data['nik'] ?></option>
+                                    <?php endforeach ?>
+                                    </select>
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
@@ -374,13 +340,23 @@
 
                             
                                 <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">NIK</label>
-                                  <input id="niksktm" type="text" class="form-control" name="niksktm">
+                                  <label class="ms-0">NIK</label>
+                                  <select id="niksktm" type="text" class="form-control" name="niksktm">
+                                  <option>Pilih NIK</option>
+                                    <?php foreach($user as $data): ?>
+                                    <option value="<?= $data['nik'] ?>"><?= $data['nik'] ?></option>
+                                    <?php endforeach ?>
+                                    </select>
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">Nama</label>
-                                  <input id="namasktm" type="text" class="form-control" name="namasktm">
+                                  <label class="ms-0">Nama</label>
+                                  <select class="form-control" id="namasktm" name="namasktm">
+                                    <option>Pilih warga</option>
+                                    <?php foreach($user as $data): ?>
+                                    <option value="<?= $data['nama'] ?>"><?= $data['nama'] ?></option>
+                                    <?php endforeach ?>
+                                  </select>
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
@@ -403,6 +379,7 @@
                                     <option value="belum menikah">belum menikah</option>
                                   </select>
                                 </div>
+                                
                                 
                                 <div class="input-group input-group-static mb-3">
                                   <label class="form-label">Nama Ayah</label>
@@ -494,14 +471,24 @@
                                 </div>
 
                               
-                                <div class="input-group input-group-outline mb-3">
-                                  <label class="form-label">Nama</label>
-                                  <input id="namaspu" type="text" class="form-control">
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Nama</label>
+                                  <select class="form-control" id="namaspu" name="namaspu">
+                                    <option>Pilih warga</option>
+                                    <?php foreach($user as $data): ?>
+                                    <option value="<?= $data['nama'] ?>"><?= $data['nama'] ?></option>
+                                    <?php endforeach ?>
+                                  </select>
                                 </div>
 
-                                <div class="input-group input-group-outline mb-3">
-                                  <label class="form-label">NIK</label>
-                                  <input id="nikspu" type="text" class="form-control">
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">NIK</label>
+                                  <select id="nikspu" type="text" class="form-control" name="nikspu">
+                                  <option>Pilih NIK</option>
+                                    <?php foreach($user as $data): ?>
+                                    <option value="<?= $data['nik'] ?>"><?= $data['nik'] ?></option>
+                                    <?php endforeach ?>
+                                    </select>
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
@@ -592,17 +579,25 @@
                                   <input id="id"  name="id" hidden>
                                 </div>
 
-                        
-
                 
                                 <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">Nama</label>
-                                  <input id="namagaji" type="text" class="form-control">
+                                  <select class="form-control" id="namagaji" name="namagaji">
+                                    <option>Pilih warga</option>
+                                    <?php foreach($user as $data): ?>
+                                    <option value="<?= $data['nama'] ?>"><?= $data['nama'] ?></option>
+                                    <?php endforeach ?>
+                                  </select>
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">NIK</label>
-                                  <input id="nikgaji" type="text" class="form-control">
+                                  <select id="nikgaji" type="text" class="form-control" name="nikgaji">
+                                  <option>Pilih NIK</option>
+                                    <?php foreach($user as $data): ?>
+                                    <option value="<?= $data['nik'] ?>"><?= $data['nik'] ?></option>
+                                    <?php endforeach ?>
+                                    </select>
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
@@ -662,7 +657,6 @@
 <script src="<?= base_url('js/riwayat/gaji/saveGaji.js') ?>"></script>
 <script src="<?= base_url('js/riwayat/KTP/Ktp.js') ?>"></script>
 <script src="<?= base_url('js/riwayat/KTP/Ktpsubmit.js') ?>"></script>
-<script src="<?= base_url('js/riwayat/KK/KK.js') ?>"></script>
-<script src="<?= base_url('js/riwayat/KK/saveKk.js') ?>"></script>
+
 <?= $this->endSection() ?>
 

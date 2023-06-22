@@ -10,6 +10,11 @@ use App\Models\KTPModel;
 use App\Models\skckModel;
 use App\Models\SKTMModel;
 use App\Models\SPUModel;
+use App\Models\UserModel;
+use Dompdf\Dompdf;
+use Config\Services;
+use Dompdf\Options;
+
 
 class Kehilangan extends BaseController
 {
@@ -18,6 +23,7 @@ class Kehilangan extends BaseController
     public function index()
     {
         $model = new KehilanganModel();
+        $user = new UserModel();
         $modelGaji = new gajiModel();
         $modelKK = new KKModel();
         $modelKTP = new KTPModel();
@@ -49,6 +55,8 @@ class Kehilangan extends BaseController
 
         $model->where('status', 'new')->set(['status' => 'diproses'])->update();
         return view('page/surat/dashboardKehilangan',[
+            'content' => $model->findAll(),
+            'user' => $user->where('role', 'warga')->findAll(),
             'isGajiNew' => $modelGaji->where('status', 'new')->first(),
             'isKehilanganNew' => $model->where('status', 'new')->first(),
             'isKKNew' => $modelKK->where('keterangan', 'new')->first(),
@@ -112,8 +120,6 @@ class Kehilangan extends BaseController
                 'keperluan' => $this->request->getPost('keperluan'),
                 'ket' => $this->request->getPost('ket'),
                 'status' => $this->request->getPost('status'),
-                
-              
             ];
           
             $model->update($id, $data);
@@ -167,5 +173,14 @@ class Kehilangan extends BaseController
        public function download()
     {
         return view('page/partials/Riwayat/gajiriwayat');
+    }
+
+    public function cetak($id)
+    {
+        $model = new KehilanganModel();
+        $data = [
+            'content' => $model->find($id),
+        ];
+        return view('page/pdf/Kehilangan', $data);
     }
     }

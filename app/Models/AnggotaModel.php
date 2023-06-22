@@ -4,23 +4,26 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class  rkapndpModel extends Model
+class AnggotaModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'rkapndp';
+    protected $table            = 'anggota_keluarga';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'no',
-        'penyelenggara',
-        'jenis',
-        'lokasi',
-        'jml',
-        'tgl_pembahasan'
+        'userid',
+        'nik',
+        'nama',
+        'ttl',
+        'jk',
+        'pekerjaan',
+        'alamat',
+        'kawin',
+        'agama',
+        'kewarganegaraan'
     ];
 
     // Dates

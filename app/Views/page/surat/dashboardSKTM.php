@@ -23,74 +23,25 @@
                             </button>
                         </div>
 
+
                       <!--POP UP TAMBAH PENGAJUAN-->
                         <div class="modal-body">
                             <form action="#" id="form">
                             <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">Tanggal</label>
+                                  <label class="ms-0">Tanggal</label>
                                   <input id="tgl" type="date" class="form-control" name="tgl">
                                   <input hidden id="id" name="id">
                                 </div>
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">NIK</label>
-                                  <input id="nik" type="text" class="form-control" name="nik">
-                                </div>
-
+                                
                                 <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">Nama</label>
                                   <select class="form-control" id="nama" name="nama">
                                     <option>Pilih warga</option>
+                                    <option value="<?= session()->get('nik') ?>">Saya</option>
                                     <?php foreach($user as $data): ?>
-                                    <option value="<?= $data['nama'] ?>"><?= $data['nama'] ?></option>
+                                    <option value="<?= $data['nik'] ?>"><?= $data['nama'] ?></option>
                                     <?php endforeach ?>
                                   </select>
-                                </div>
-
-                                <div class="input-group input-group-static mb-3">
-                                 <label for="exampleFormControlSelect1" class="ms-0">Jenis Kelamin</label>
-                                  <select class="form-control" id="jk" name="jk">
-                                    <option value="laki-laki">Laki-Laki</option>
-                                    <option value="perempuan">Perempuan</option>
-                                  </select>
-                                </div>
-
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">TTL</label>
-                                  <input id="ttl" type="date" class="form-control" name="ttl">
-                                </div>
-
-                                <div class="input-group input-group-static mb-3">
-                                <label for="exampleFormControlSelect1" class="ms-0">Status Warga</label>
-                                  <select class="form-control" id="stswarga" name="stswarga">
-                                    <option value="menikah">menikah</option>
-                                    <option value="belum menikah">belum menikah</option>
-                                  </select>
-                                </div>
-                                
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">Nama Ayah</label>
-                                  <input id="nama_ayah" type="text" class="form-control" name="nama_ayah">
-                                </div>
-
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">Ttl Ayah</label>
-                                  <input id="ttlayah" type="date" class="form-control" name="ttlayah">
-                                </div>
-
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">Agama</label>
-                                  <input id="agama" type="text" class="form-control" name="agama">
-                                </div>
-                                
-
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">Pekerjaan</label>
-                                  <input id="pekerjaan" type="text" class="form-control" name="pekerjaan">
-                                </div>
-
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">Alamat Ayah</label>
-                                  <input id="alamatayah" type="text" class="form-control" name="alamatayah">
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
@@ -111,8 +62,6 @@
                                     <option value="diproses">Diproses</option>
                                   </select>
                                 </div>
-
-                             
 
                                 <div class="mt-3">
                                   <button type="button" class="btn bg-gradient-success btn-lg w-100 mt-4 mb-0" onclick="saveSktm()">Simpan</button>
@@ -209,6 +158,9 @@
                       <button onclick="buttonUpload(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-info mb-0">
                         Upload Surat
                       </button>
+                      <button onclick="buttonUnduh(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-warning mb-0">
+                        Download Surat
+                      </button>
                       <button onclick="buttonEdit(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-warning mb-0">
                         Edit
                       </button>
@@ -234,6 +186,41 @@
 <script src="<?= base_url('js/Modules.js') ?>"></script>
 <script src="<?= base_url('js/surat/sktm/saveSktm.js') ?>"></script>
 <script>
+   function buttonUnduh(id) {
+    
+    $.ajax({
+        url: base_url + 'dashboard/SKTM/update/' + id,
+        type: 'GET',
+        dataType: 'JSON',
+        success: function (respond) {
+            console.log(respond.data);
+
+            // Set the values of other input fields as needed
+
+            var fileName = respond.data.suratsktm; // Desired name for the downloaded file
+            var fileUrl = base_url + 'uploads/' + fileName; // URL of the file to be downloaded
+
+            var downloadLink = document.createElement('a');
+            downloadLink.setAttribute('href', fileUrl);
+            downloadLink.setAttribute('download', fileName);
+            downloadLink.style.display = 'none';
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+
+            // Additional code for showing the modal, etc.
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR);
+            swal.fire({
+                icon: 'error',
+                title: errorThrown,
+                text: 'Error getting data from AJAX.'
+            });
+        }
+    });
+}
+
 function buttonUpload(id) {
   $.ajax({
     url: base_url + "dashboard/SKTM/upload/" + id,

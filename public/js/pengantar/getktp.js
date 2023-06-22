@@ -13,6 +13,7 @@ $(document).ready(function () {
                 let nama = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nama);
                 let nik = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nik);
                 let keperluan = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].keperluan);
+                let kk = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].kk);
                 let keterangan = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].keterangan);
                 let surat = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].surat);
                 let buttonUpload = $('<button type="button" class="btn bg-gradient-info mb-0"></button>').text('Upload Surat').attr('id', respond[i].id);
@@ -60,6 +61,7 @@ $(document).ready(function () {
                             $('#nama').val(respond.data.nama);
                             $('#nik').val(respond.data.nik);
                             $('#keperluan').val(respond.data.keperluan);
+                            // $('#kk').val(respond.data.kk);
                             $('#keterangan').val(respond.data.keterangan);
                             // $('[name="surat"]').val(respond.data.surat);
 
@@ -117,6 +119,56 @@ $(document).ready(function () {
                     });
                 });
 
+                let buttonLihat = $('<button type="button" class="btn bg-gradient-success mb-0"></button>').text('Lihat').attr('id', respond[i].id);
+                buttonLihat.click(function () {
+
+                    var id = $(this).attr('id');
+                    $.ajax({
+                        url: base_url + 'dashboard/KTP/update/' + id,
+                        type: 'GET',
+                        dataType: 'JSON',
+                        success: function (respond) {
+                            console.log(respond.data);
+
+                            // Set the values of other input fields as needed
+
+                            var fileName = respond.data.kk; // Desired name for the downloaded file
+                            var fileUrl = base_url + 'uploads/' + fileName; // URL of the file to be downloaded
+
+                            var downloadLink = document.createElement('a');
+                            downloadLink.setAttribute('href', fileUrl);
+                            downloadLink.setAttribute('download', fileName);
+                            downloadLink.style.display = 'none';
+                            document.body.appendChild(downloadLink);
+                            downloadLink.click();
+                            document.body.removeChild(downloadLink);
+
+                            // Additional code for showing the modal, etc.
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(jqXHR);
+                            swal.fire({
+                                icon: 'error',
+                                title: errorThrown,
+                                text: 'Error getting data from AJAX.'
+                            });
+                        }
+                    });
+                });
+
+                let buttonCetak = $('<button>').attr({
+                    'type': 'button',
+                    'class': 'btn bg-gradient-success mb-0',
+                    'id': respond[i].id
+                }).text('Cetak');
+
+                buttonCetak.on('click', function () {
+                    var id = $(this).attr('id');
+                    var redirectUrl = base_url + 'dashboard/pdf/pdfktp/' + id; // Change the URL to the desired destination
+
+                    window.location.href = redirectUrl; // Redirect to the desired link
+                });
+
 
                 let buttonDelete = $('<button type="button" class="btn bg-gradient-danger mb-0"></button>').text('Delete').attr('id', respond[i].id);
                 buttonDelete.click(function () {
@@ -163,7 +215,8 @@ $(document).ready(function () {
                     nama,
                     nik,
                     keperluan,
-                    keterangan, surat, buttonUpload, buttonEdit, buttonUnduh, buttonDelete);
+                    kk,
+                    keterangan, surat, buttonLihat, buttonCetak, buttonUpload, buttonEdit, buttonUnduh, buttonDelete);
                 tableBody.append(row);
             }
         }

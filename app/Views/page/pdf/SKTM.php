@@ -77,6 +77,7 @@
 
   #jenis {
     margin: auto;
+    line-height: 10px;
   }
 
   #print-button {
@@ -95,27 +96,28 @@
     <div class="row">
       <div class="my-row">
         <div class="my-column">
-          <img src="<?= base_url('foto/logo.jpg') ?>" width="50px" height="50px" alt="Remote Image">
+          <img src="<?= base_url('foto/logo.jpg') ?>" width="100px" height="100px" alt="Remote Image">
         </div>
         <div class="my-column print-button-container" id="print">
           <button type="button" class="btn btn-primary" onclick="printDocument()">Print</button>
         </div>
       </div>
-      <div id="text-header" class="col-md-9" style="text-align: center;">
-        <h6>PEMERINTAH KABUPATEN JEMBER</h6>
+      </div>
+  </header>
+  <div id="jenis" style="text-align: center;">
+        <h2><strong> PEMERINTAH KABUPATEN JEMBER</strong></h2>
         <h2><strong>KECAMATAN JELBUK</strong></h2>
         <h2><strong>DESA PANDUMAN</strong></h2>
         <h6>WP9X+98J, Krajan Panduman, Panduman, Kec. Jelbuk, Kabupaten Jember, Jawa Timur 68192</h6>
       </div>      
-    </div>
-  </header>
+  
 
   <hr class="garis1">
-  
   <div id="jenis">
     <h3><u>SURAT KETERANGAN TIDAK MAMPU</u></h3>
+    <p style="text-align: center;">NOMOR :&emsp; &emsp; &emsp; &emsp; &emsp; &emsp;/25.2002/2003</p>
   </div>
-
+<br>
   <div id="pembuka">&emsp; &emsp; &emsp; Kami PJ Kepala Desa Panduman Kecamatan Jelbuk Jember, menerangkan dengan sebenarnya bahwa :</div>
   <div id="tempat-tgl">
     <table>
@@ -127,42 +129,57 @@
       <tr>
         <td>Nama</td>
         <td>:</td>
-        <td></td>
+        <td><?= $content['nama'] ?></td>
       </tr>
       <tr>
         <td>Jenis Kelamin</td>
         <td>:</td>
-        <td>08.00 WIB</td>
+        <td><?= $content['jk'] ?></td>
       </tr>
       <tr>
         <td>Tempat Tgl Lahir</td>
         <td>:</td>
-        <td>Aula PP PAUD dan Dikmas Jawa Tengah Jl. Diponegoro No 250 Ungaran</td>
+        <td><?= $content['ttl'] ?></td>
       </tr>
       <tr>
         <td>Status Perkawinan</td>
         <td>:</td>
-        <td>-</td>
+        <td><?= $content['stswarga'] ?></td>
       </tr>
       <tr>
         <td>Nama Ayah</td>
         <td>:</td>
-        <td>-</td>
+        <td><?= $content['nama_ayah'] ?></td>
+      </tr>
+      <tr>
+        <td>TTL Ayah</td>
+        <td>:</td>
+        <td><?= $content['ttlayah'] ?></td>
+      </tr>
+      <tr>
+        <td>Agama</td>
+        <td>:</td>
+        <td><?= $content['agama'] ?></td>
       </tr>
       <tr>
         <td>Pekerjaan</td>
         <td>:</td>
-        <td>-</td>
+        <td><?= $content['pekerjaan'] ?></td>
       </tr>
       <tr>
         <td>Alamat</td>
         <td>:</td>
-        <td>-</td>
+        <td><?= $content['alamatayah'] ?></td>
+      </tr>
+      <tr>
+        <td>Gaji</td>
+        <td>:</td>
+        <td><?= $content['gaji'] ?></td>
       </tr>
       <tr>
         <td>Keperluan</td>
         <td>:</td>
-        <td>-</td>
+        <td><?= $content['keperluan'] ?></td>
       </tr>
     </table>
   </div>

@@ -10,6 +10,11 @@ use App\Models\KTPModel;
 use App\Models\skckModel;
 use App\Models\SKTMModel;
 use App\Models\SPUModel;
+use App\Models\UserModel;
+use Dompdf\Dompdf;
+use Config\Services;
+use Dompdf\Options;
+
 
 
 class skck extends BaseController
@@ -19,6 +24,7 @@ class skck extends BaseController
     public function index()
     {
         $model = new skckModel();
+        $user = new UserModel();
         $modelKehilangan = new KehilanganModel();
         $modelGaji = new gajiModel();
         $modelKK = new KKModel();
@@ -55,6 +61,8 @@ class skck extends BaseController
             }
         $model->where('status', 'new')->set(['status' => 'Pengajuan Sedang Diproses'])->update();
         return view('page/surat/dashboardSkck',[
+            'content' => $model->findAll(),
+            'user' => $user->where('role', 'warga')->findAll(),
             'isGajiNew' => $modelGaji->where('status', 'new')->first(),
             'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
             'isKKNew' => $modelKK->where('keterangan', 'new')->first(),
@@ -176,5 +184,13 @@ class skck extends BaseController
          return view('page/partials/Riwayat/gajiriwayat');
      } 
     
+     public function cetak($id)
+     {
+         $model = new skckModel();
+         $data = [
+             'content' => $model->find($id),
+         ];
+         return view('page/pdf/skck', $data);
+     }
 
      }

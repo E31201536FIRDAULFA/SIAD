@@ -42,6 +42,13 @@ $routes->get('chat', 'Auth::chat');
 $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
     //Profile
     $routes->match(['GET', 'POST'], 'profile/(:any)', 'Dashboard::profile/$1');
+    //Anggota
+    $routes->group('anggota-keluarga', function($routes) {
+      $routes->match(['GET', 'POST'], '/', 'Dashboard::anggota');
+      $routes->match(['GET', 'POST'], 'update/(:num)', 'Dashboard::perbaruiAnggota/$1');
+      $routes->get('delete/(:num)', 'Dashboard::hapusAnggota/$1');
+    });
+
     //Main
     $routes->get('/', 'Dashboard::index');
     //tabel user
@@ -49,6 +56,7 @@ $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
     $routes->match(['GET', 'POST'], 'users/update/(:num)', 'Dashboard::usersUpdate/$1');
     $routes->get('users/delete/(:num)', 'Dashboard::usersDelete/$1');
     $routes->get('users/data', 'Dashboard::usersData');
+
 
      //tabel kehilangan
      $routes->group('kehilangan', function ($routes) {
@@ -109,6 +117,7 @@ $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
         $routes->get('riwayatktp', 'KTP::dataKTPriwayat');
         $routes->match(['GET', 'POST'], 'download/(:num)', 'KTP::download/$1');
         $routes->match(['GET', 'POST'], 'upload/(:num)', 'KTP::upload/$1');
+        $routes->match(['GET', 'POST'], 'lihat/(:num)', 'KTP::lihat/$1');
     });
 
     //tabel APBD
@@ -171,14 +180,13 @@ $routes->group('dashboard', ['filter' => 'authRole'], function ($routes) {
 
   $routes->group('pdf', function ($routes) {
     $routes->get('/', 'PdfController::index');
-    $routes->get('pdfktp', 'PdfController::generatektp');
-    $routes->get('pdfkk', 'PdfController::generatekk');
+    $routes->get('pdfktp/(:num)', 'KTP::cetak/$1');
     $routes->get('pdfAPBD', 'PdfController::generateAPBD');
-    $routes->get('pdfSPU', 'PdfController::generateSPU');
+    $routes->get('pdfSPU/(:num)', 'SPU::cetak/$1');
     $routes->get('pdfSKTM/(:num)', 'SKTM::cetak/$1');
-    $routes->get('pdfskck', 'PdfController::generateskck');
-    $routes->get('pdfgaji', 'PdfController::generategaji');
-    $routes->get('pdfKehilangan', 'PdfController::generateKehilangan');
+    $routes->get('pdfskck/(:num)', 'skck::cetak/$1');
+    $routes->get('pdfgaji/(:num)', 'gaji::cetak/$1');
+    $routes->get('pdfKehilangan/(:num)', 'Kehilangan::cetak/$1');
     
   });
 

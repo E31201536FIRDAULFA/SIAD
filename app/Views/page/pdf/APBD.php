@@ -1,3 +1,4 @@
+
 <html lang="en">
 
 <head>
@@ -5,11 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cetak Pdf</title>
+ 
+
 
 </head>
 
 <body>
-    <h2 align="center">Data Pengajuan</h2>
+<div class="container">
+  <header>
+    <div class="row">
+      <div class="my-row">
+        
+        
+      </div>
+      </div>
+  </header>
+  <div id="jenis" style="text-align: center;">
+        <h2><strong> PEMERINTAH KABUPATEN JEMBER</strong></h2>
+        <h2><strong>KECAMATAN JELBUK</strong></h2>
+        <h2><strong>DESA PANDUMAN</strong></h2>
+        <h6>WP9X+98J, Krajan Panduman, Panduman, Kec. Jelbuk, Kabupaten Jember, Jawa Timur 68192</h6>
+      </div>      
+  
+
+  <hr class="garis1">
+  <div id="jenis"style="text-align: center;">
+    <h3><u><b>LAPORAN PEMASUKAN APBD (TRIWULAN)</b></u></h3>
+
 
     <table width="100%" cellspacing="1" border="1">
         <tr>
