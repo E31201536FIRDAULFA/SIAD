@@ -15,9 +15,6 @@
                       <h6 class="mb-0">Informasi Akun</h6>
                     </div>
                     <div class="col-md-4 text-end">
-                        <button onclick="anggotaKeluarga()" type="button" class="btn btn-lg btn-primary btn-lg mt-4 mb-0">
-                            Anggota Keluarga
-                        </button>
                         <button onclick="enableEditProfile()" type="button" class="btn btn-lg btn-info btn-lg mt-4 mb-0">
                             Edit Profile
                         </button>
@@ -109,10 +106,6 @@
 <?= $this->endSection() ?>
 <?= $this->section('scripts') ?>
 <script>
-function anggotaKeluarga() {
-    window.location.href = `${base_url}dashboard/anggota-keluarga`;
-}
-
 function enableEditProfile() {
   var inputFields = document.getElementById('form').getElementsByTagName('input');
   var textareaField = document.getElementById('form').getElementsByTagName('textarea')[0];

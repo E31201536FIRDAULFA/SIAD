@@ -37,11 +37,25 @@
                                   <label class="ms-0">Nama</label>
                                   <select class="form-control" id="nama" name="nama">
                                     <option>Pilih warga</option>
-                                    <option value="<?= session()->get('nik') ?>">Saya</option>
                                     <?php foreach($user as $data): ?>
-                                    <option value="<?= $data['nik'] ?>"><?= $data['nama'] ?></option>
+                                    <option value="<?= $data['id'] ?>"><?= $data['nama'] ?></option>
                                     <?php endforeach ?>
                                   </select>
+                                </div>
+
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="form-label">Nama Ayah</label>
+                                  <input id="nama_ayah" type="text" class="form-control" name="nama_ayah">
+                                </div>
+
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="form-label">Ttl Ayah</label>
+                                  <input id="ttlayah" type="date" class="form-control" name="ttlayah">
+                                </div>
+
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="form-label">Alamat Ayah</label>
+                                  <input id="alamatayah" type="text" class="form-control" name="alamatayah">
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">

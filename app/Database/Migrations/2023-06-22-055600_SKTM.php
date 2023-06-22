@@ -32,6 +32,10 @@ class SKTM extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => '150',
             ],
+            'jk' => [
+                'type' => 'VARCHAR',
+                'constraint' => '150',
+            ],
             'ttl' => [
                 'type' => 'VARCHAR',
                 'constraint' => '150',

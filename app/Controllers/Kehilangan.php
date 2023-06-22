@@ -31,19 +31,21 @@ class Kehilangan extends BaseController
         $modelSKTM = new SKTMModel();
         $modelSPU = new SPUModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
+            $isAdmin = $this->request->getVar('nama');
+            $dataUser = $user->find($isAdmin ? $isAdmin : session()->get('id'));
             $data = [
+                'userid' => $dataUser['id'],
                 'tgl' => $this->request->getPost('tgl'),
-                'nama' => $this->request->getPost('nama'),
-                'nik' => $this->request->getPost('nik'),
-                'jk' => $this->request->getPost('jk'),
-                'pekerjaan' => $this->request->getPost('pekerjaan'),
-                'alamat' => $this->request->getPost('alamat'),
+                'nama' => $dataUser['nama'],
+                'nik' => $dataUser['nik'],
+                'jk' => $dataUser['jk'],
+                'pekerjaan' => $dataUser['pekerjaan'],
+                'alamat' => $dataUser['alamat'],
                 'keperluan' => $this->request->getPost('keperluan'),
                 'ket' => $this->request->getPost('ket'),
                 'status' => 'new',
                 'suratkehilangan' => null,
             ];
-            $data['userid']=session()->get('id');
                 $model->save($data);
                 return $this->response->setJSON([
                     'status' => true,
@@ -103,8 +105,6 @@ class Kehilangan extends BaseController
               'isConfirm' => true,
           ]);
       }
-  
-
   
       public function editkehilangan($id)
      {

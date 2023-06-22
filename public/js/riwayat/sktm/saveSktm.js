@@ -1,54 +1,16 @@
 function saveSktm() {
-    const id = $("#id").val();
     const tgl = $("#tglsktm").val();
-
-    const nik = $("#niksktm").val();
-    const nama = $("#namasktm").val();
-    const jk = $("#jksktm").val();
-    const ttl = $("#ttlsktm").val();
-    const stswarga = $("#stswargasktm").val();
     const nama_ayah = $("#nama_ayahsktm").val();
     const ttlayah = $("#ttlayahsktm").val();
-    const agama = $("#agamasktm").val();
-    const pekerjaan = $("#pekerjaansktm").val();
     const alamatayah = $("#alamatayahsktm").val();
     const gaji = $("#gajisktm").val();
     const keperluan = $("#keperluansktm").val();
-    const suratsktm = $("#suratsktm").val();
-
 
     url = base_url + 'dashboard/SKTM/';
     if (tgl.length == "") {
         Swal.fire({
             title: 'Oops...',
             text: 'tgl harus diisi!'
-        });
-
-    } else if (nik.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nik harus diisi!'
-        });
-    } else if (nama.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nama harus diisi!'
-        });
-    } else if (jk.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'jk harus diisi!'
-        });
-
-    } else if (ttl.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Ttl harus diisi!'
-        });
-    } else if (stswarga.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'status warga harus diisi!'
         });
     } else if (nama_ayah.length == "") {
         Swal.fire({
@@ -59,16 +21,6 @@ function saveSktm() {
         Swal.fire({
             title: 'Oops...',
             text: 'ttl ayah harus diisi!'
-        });
-    } else if (agama.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'agama harus diisi!'
-        });
-    } else if (pekerjaan.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nama harus diisi!'
         });
     } else if (alamatayah.length == "") {
         Swal.fire({
@@ -92,16 +44,8 @@ function saveSktm() {
             type: 'POST',
             data: {
                 "tgl": tgl,
-
-                "nik": nik,
-                "nama": nama,
-                "jk": jk,
-                "ttl": ttl,
-                "stswarga": stswarga,
                 "nama_ayah": nama_ayah,
                 "ttlayah": ttlayah,
-                "agama": agama,
-                "pekerjaan": pekerjaan,
                 "alamatayah": alamatayah,
                 "gaji": gaji,
                 "keperluan": keperluan,

@@ -109,31 +109,6 @@ function saveSpu() {
                 title: 'Oops...',
                 text: 'tgl harus diisi!'
             });
-        } else if (nama.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nama harus diisi!'
-            });
-        } else if (nik.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nik harus diisi!'
-            });
-        } else if (jk.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'jk harus diisi!'
-            });
-        } else if (ttl.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Ttl harus diisi!'
-            });
-        } else if (alamat.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'alamat harus diisi!'
-            });
         } else if (nama_usaha.length == "") {
             Swal.fire({
                 title: 'Oops...',

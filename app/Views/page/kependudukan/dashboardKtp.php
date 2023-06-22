@@ -36,19 +36,9 @@
                                   <select class="form-control" id="nama" name="nama">
                                     <option>Pilih warga</option>
                                     <?php foreach($user as $data): ?>
-                                    <option value="<?= $data['nama'] ?>"><?= $data['nama'] ?></option>
+                                    <option value="<?= $data['id'] ?>"><?= $data['nama'] ?></option>
                                     <?php endforeach ?>
                                   </select>
-                                </div>
-
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="ms-0">NIK</label>
-                                  <select id="nik" type="text" class="form-control" name="nik">
-                                  <option>Pilih NIK</option>
-                                    <?php foreach($user as $data): ?>
-                                    <option value="<?= $data['nik'] ?>"><?= $data['nik'] ?></option>
-                                    <?php endforeach ?>
-                                    </select>
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
@@ -204,7 +194,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script src="<?= base_url('js/SignOut.js') ?>"></script>
 <script src="<?= base_url('js/Modules.js') ?>"></script>
-<script src="<?= base_url('js/surat/KTP/saveKTP.js') ?>"></script>
+<script src="<?= base_url('js/pengantar/saveKTP.js') ?>"></script>
 <script>
 
 function buttonPreviewkk(id) {

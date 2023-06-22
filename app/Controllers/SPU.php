@@ -30,13 +30,16 @@ class SPU extends BaseController
         $modelSKCK = new skckModel();
         $modelSKTM = new SKTMModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
+            $isAdmin = $this->request->getVar('nama');
+            $dataUser = $user->find($isAdmin ? $isAdmin : session()->get('id'));
             $data = [
+                'userid' => $dataUser['id'],
                 'tgl' => $this->request->getPost('tgl'),
-                'nama' => $this->request->getPost('nama'),
-                'nik' => $this->request->getPost('nik'),
-                'jk' => $this->request->getPost('jk'),
-                'ttl' => $this->request->getPost('ttl'),
-                'alamat' => $this->request->getPost('alamat'),
+                'nama' => $dataUser['nama'],
+                'nik' => $dataUser['nik'],
+                'jk' => $dataUser['jk'],
+                'ttl' => $dataUser['ttl'],
+                'alamat' => $dataUser['alamat'],
                 'nama_usaha' => $this->request->getPost('nama_usaha'),
                 'jenis_usaha' => $this->request->getPost('jenis_usaha'),
                 'alamat_usaha' => $this->request->getPost('alamat_usaha'),
@@ -44,7 +47,6 @@ class SPU extends BaseController
                 'suratspu' => null,
                 
             ];
-            $data['userid']=session()->get('id');
                 $model->save($data);
                 return $this->response->setJSON([
                     'status' => true,

@@ -30,24 +30,26 @@ class SKTM extends BaseController
         $modelSKCK = new skckModel();
         $modelSPU = new SPUModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
+            $isAdmin = $this->request->getVar('nama');
+            $dataUser = $user->find($isAdmin ? $isAdmin : session()->get('id'));
             $data = [
+                'userid' => $dataUser['id'],
                 'tgl' => $this->request->getPost('tgl'),
-                'nik' => $this->request->getPost('nik'),
-                'nama' => $this->request->getPost('nama'),
-                'jk' => $this->request->getPost('jk'),
-                'ttl' => $this->request->getPost('ttl'),
-                'stswarga' => $this->request->getPost('stswarga'),
+                'nik' => $dataUser['nik'],
+                'nama' => $dataUser['nama'],
+                'jk' => $dataUser['jk'],
+                'ttl' => $dataUser['ttl'],
+                'stswarga' => $dataUser['kawin'],
                 'nama_ayah' => $this->request->getPost('nama_ayah'),
                 'ttlayah' => $this->request->getPost('ttlayah'),
-                'agama' => $this->request->getPost('agama'),
-                'pekerjaan' => $this->request->getPost('pekerjaan'),
+                'agama' => $dataUser['agama'],
+                'pekerjaan' => $dataUser['pekerjaan'],
                 'alamatayah' => $this->request->getPost('alamatayah'),
                 'gaji' => $this->request->getPost('gaji'),
                 'keperluan' => $this->request->getPost('keperluan'),
                 'status' => 'new',
                 'suratsktm' => null,
             ];
-            $data['userid']=session()->get('id');
                 $model->save($data);
                 return $this->response->setJSON([
                     'status' => true,

@@ -1,49 +1,14 @@
 function saveSpu() {
-    const id = $("#id").val();
     const tgl = $("#tglspu").val();
-
-    const nama = $("#namaspu").val();
-    const nik = $("#nikspu").val();
-    const jk = $("#jkspu").val();
-    const ttl = $("#ttlspu").val();
-    const alamat = $("#alamatspu").val();
     const nama_usaha = $("#nama_usahaspu").val();
     const jenis_usaha = $("#jenis_usahaspu").val();
     const alamat_usaha = $("#alamat_usahaspu").val();
-
-
-
 
     url = base_url + 'dashboard/SPU/';
     if (tgl.length == "") {
         Swal.fire({
             title: 'Oops...',
             text: 'tgl harus diisi!'
-        });
-    } else if (nama.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nama harus diisi!'
-        });
-    } else if (nik.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nik harus diisi!'
-        });
-    } else if (jk.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'jk harus diisi!'
-        });
-    } else if (ttl.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Ttl harus diisi!'
-        });
-    } else if (alamat.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'alamat harus diisi!'
         });
     } else if (nama_usaha.length == "") {
         Swal.fire({
@@ -68,11 +33,6 @@ function saveSpu() {
             type: 'POST',
             data: {
                 "tgl": tgl,
-                "nama": nama,
-                "nik": nik,
-                "jk": jk,
-                "ttl": ttl,
-                "alamat": alamat,
                 "nama_usaha": nama_usaha,
                 "jenis_usaha": jenis_usaha,
                 "alamat_usaha": alamat_usaha,

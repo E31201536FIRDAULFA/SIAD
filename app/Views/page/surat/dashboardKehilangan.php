@@ -30,14 +30,12 @@
                                   <input id="tgl" type="date" class="form-control" name="tgl">
                                 </div>
 
-                              
                                 <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">Nama</label>
                                   <select class="form-control" id="nama" name="nama">
                                     <option>Pilih warga</option>
-                                    <option value="<?= session()->get('nik') ?>">Saya</option>
                                     <?php foreach($user as $data): ?>
-                                    <option value="<?= $data['nama'] ?>"><?= $data['nama'] ?></option>
+                                    <option value="<?= $data['id'] ?>"><?= $data['nama'] ?></option>
                                     <?php endforeach ?>
                                   </select>
                                 </div>

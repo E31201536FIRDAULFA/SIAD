@@ -37,9 +37,8 @@
                                   <label class="ms-0">Nama</label>
                                   <select class="form-control" id="nama" name="nama">
                                     <option>Pilih warga</option>
-                                    <option value="<?= session()->get('nik') ?>">Saya</option>
                                     <?php foreach($user as $data): ?>
-                                    <option value="<?= $data['nik'] ?>"><?= $data['nama'] ?></option>
+                                    <option value="<?= $data['id'] ?>"><?= $data['nama'] ?></option>
                                     <?php endforeach ?>
                                   </select>
                                 </div>

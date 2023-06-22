@@ -1,42 +1,14 @@
 function saveGaji() {
-    const id = $("#id").val();
     const tgl = $("#tglgaji").val();
-
-    const nama = $("#namagaji").val();
-    const nik = $("#nikgaji").val();
-    const ttl = $("#ttlgaji").val();
-    const pekerjaan = $("#pekerjaangaji").val();
     const no_kip = $("#no_kipgaji").val();
     const no_kis = $("#no_kisgaji").val();
     const ket = $("#ketgaji").val();
-
 
     url = base_url + 'dashboard/gaji/';
     if (tgl.length == "") {
         Swal.fire({
             title: 'Oops...',
             text: 'tgl harus diisi!'
-        });
-
-    } else if (nama.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nama harus diisi!'
-        });
-    } else if (nik.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nik harus diisi!'
-        });
-    } else if (ttl.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Ttl harus diisi!'
-        });
-    } else if (pekerjaan.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'pekerjaan harus diisi!'
         });
     } else if (no_kip.length == "") {
         Swal.fire({
@@ -60,11 +32,6 @@ function saveGaji() {
             type: 'POST',
             data: {
                 "tgl": tgl,
-
-                "nama": nama,
-                "nik": nik,
-                "ttl": ttl,
-                "pekerjaan": pekerjaan,
                 "no_kip": no_kip,
                 "no_kis": no_kis,
                 "ket": ket,

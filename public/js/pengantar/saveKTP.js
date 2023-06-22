@@ -7,7 +7,6 @@ function saveKTP() {
     const keperluan = $("#keperluan").val();
     const keterangan = $("#keterangan").val();
 
-
     if (id) {
         url = base_url + 'dashboard/KTP/update/' + id;
         if (tgl.length == "") {
@@ -20,7 +19,6 @@ function saveKTP() {
                 title: 'Oops...',
                 text: 'Nama harus diisi!'
             });
-
         } else if (nik.length == "") {
             Swal.fire({
                 title: 'Oops...',
@@ -31,8 +29,6 @@ function saveKTP() {
                 title: 'Oops...',
                 text: 'Scan KK harus diisi!'
             });
-
-
         } else if (keterangan.length == "") {
             Swal.fire({
                 title: 'Oops...',
@@ -83,25 +79,11 @@ function saveKTP() {
                 title: 'Oops...',
                 text: 'tgl harus diisi!'
             });
-        } else if (nama.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nama harus diisi!'
-            });
-
-        } else if (nik.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nik harus diisi!'
-
-            });
         } else if (keperluan.length == "") {
             Swal.fire({
                 title: 'Oops...',
                 text: 'Scan KK harus diisi!'
             });
-
-
         } else {
             $.ajax({
                 url: url,

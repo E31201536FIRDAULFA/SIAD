@@ -11,7 +11,6 @@ use App\Models\skckModel;
 use App\Models\SKTMModel;
 use App\Models\SPUModel;
 use App\Models\UserModel;
-use App\Models\AnggotaModel;
 use Dompdf\Dompdf;
 use Config\Services;
 use Dompdf\Options;
@@ -24,20 +23,21 @@ class gaji extends BaseController
     public function index()
     {
         $model = new gajiModel();
-        $user = new AnggotaModel();
         $modelKK = new KKModel();
         $modelKTP = new KTPModel();
         $modelSKCK = new skckModel();
         $modelSKTM = new SKTMModel();
         $modelSPU = new SPUModel();
         $modelKehilangan = new KehilanganModel();
+        $modelUser = new UserModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
-            $nik = $this->request->getVar('nama');
-            $dataUser = $user->where('nik', $nik)->first();
+            $isAdmin = $this->request->getVar('nama');
+            $dataUser = $modelUser->find($isAdmin ? $isAdmin : session()->get('id'));
             $data = [
+                'userid' => $dataUser['id'],
                 'tgl' => $this->request->getPost('tgl'),
                 'nama' => $dataUser['nama'],
-                'nik' => $nik,
+                'nik' => $dataUser['nik'],
                 'ttl' => $dataUser['ttl'],
                 'pekerjaan' => $dataUser['pekerjaan'],
                 'no_kip' => $this->request->getPost('no_kip'),
@@ -46,7 +46,6 @@ class gaji extends BaseController
                 'status' => 'new',
                 'Surat' => null,
             ];
-            $data['userid']=session()->get('id');
             $model->save($data);
             return $this->response->setJSON([
                 'status' => true,
@@ -58,7 +57,7 @@ class gaji extends BaseController
         $model->where('status', 'new')->set(['status' => 'Pengajuan Sedang Diproses'])->update();
         return view('page/surat/dashboardGaji',[
             'content' => $model->findAll(),
-            'user' => $user->where('userid', session()->get('id'))->findAll(),
+            'user' => $modelUser->where('role', 'warga')->findAll(),
             'isGajiNew' => $model->where('status', 'new')->first(),
             'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
             'isKKNew' => $modelKK->where('keterangan', 'new')->first(),

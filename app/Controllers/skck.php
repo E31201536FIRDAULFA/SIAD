@@ -32,24 +32,23 @@ class skck extends BaseController
         $modelSKTM = new SKTMModel();
         $modelSPU = new SPUModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
-          
+            $isAdmin = $this->request->getVar('nama');
+            $dataUser = $user->find($isAdmin ? $isAdmin : session()->get('id'));
                 $data = [
-                    'tgl' => $this->request->getPost('tgl'),
-                    'nama' => $this->request->getPost('nama'),
-                    'nik' => $this->request->getPost('nik'),
-                    'ttl' => $this->request->getPost('ttl'),
-                    'jk' => $this->request->getPost('jk'),
-                    'agama' => $this->request->getPost('agama'),
-                    'kewarganegaraan' => $this->request->getPost('kewarganegaraan'),
-                    'perkawinan' => $this->request->getPost('perkawinan'),
-                    'pekerjaan' => $this->request->getPost('pekerjaan'),
-                    'alamat' => $this->request->getPost('alamat'),
+                    'userid' => $dataUser['id'],
+                    'tgl' => date('Y-m-d'),
+                    'nama' => $dataUser['nama'],
+                    'nik' => $dataUser['nik'],
+                    'ttl' => $dataUser['ttl'],
+                    'jk' => $dataUser['jk'],
+                    'agama' => $dataUser['agama'],
+                    'kewarganegaraan' => $dataUser['kewarganegaraan'],
+                    'perkawinan' => $dataUser['kawin'],
+                    'pekerjaan' => $dataUser['pekerjaan'],
+                    'alamat' => $dataUser['alamat'],
                     'status' => 'new',
                     'surat' => null,
                 ];
-            
-
-            $data['userid']=session()->get('id');
                 $model->save($data);
                 return $this->response->setJSON([
                     'status' => true,

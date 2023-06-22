@@ -1,8 +1,5 @@
 function Ktpsubmit() {
-    const id = $("#id").val();
     const tgl = $("#tgl").val();
-    const nama = $("#nama").val();
-    const nik = $("#nik").val();
     const keperluan = $("#keperluan").val();
     const kk = $("#kk").val();
 
@@ -12,16 +9,6 @@ function Ktpsubmit() {
         Swal.fire({
             title: 'Oops...',
             text: 'tgl harus diisi!'
-        });
-    } else if (nama.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nama harus diisi!'
-        });
-    } else if (nik.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nik harus diisi!'
         });
     } else if (keperluan.length == "") {
         Swal.fire({

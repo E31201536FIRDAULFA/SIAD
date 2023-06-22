@@ -12,7 +12,6 @@ function saveSkck() {
     const alamat = $("#alamat").val();
     const status = $("#status").val();
 
-
     if (id) {
         url = base_url + 'dashboard/skck/update/' + id;
         if (tgl.length == "") {
@@ -115,57 +114,6 @@ function saveSkck() {
                 title: 'Oops...',
                 text: 'tgl harus diisi!'
             });
-        } else if (nama.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nama harus diisi!'
-            });
-        } else if (nik.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nik harus diisi!'
-            });
-        } else if (ttl.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'ttl harus diisi!'
-            });
-        } else if (jk.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'jk harus diisi!'
-            });
-        } else if (agama.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'agama harus diisi!'
-            });
-        } else if (kewarganegaraan.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'kewarganegaraan harus diisi!'
-            });
-        } else if (perkawinan.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'perkawinan harus diisi!'
-            });
-        } else if (pekerjaan.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'pekerjaan harus diisi!'
-            });
-        } else if (alamat.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'alamat harus diisi!'
-            });
-        } else if (status.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nama harus diisi!'
-            });
-
         } else {
             $.ajax({
                 url: url,

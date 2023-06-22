@@ -36,17 +36,19 @@ class KTP extends BaseController
 
             if ($pdf->isValid() && ! $pdf->hasMoved()) {
             $pdf->move('./uploads',$randName);
+            $isAdmin = $this->request->getVar('nama');
+            $dataUser = $user->find($isAdmin ? $isAdmin : session()->get('id'));
             $data = [
+                'userid' => $dataUser['id'],
                 'tgl' => $this->request->getPost('tgl'),
-                'nama' => $this->request->getPost('nama'),
-                'nik' => $this->request->getPost('nik'),
+                'nama' => $dataUser['nama'],
+                'nik' => $dataUser['nik'],
                 'keperluan' => $this->request->getPost('keperluan'),
                 'kk' => $randName,
                 'keterangan' => 'new',
                 'surat' => null,
             ];
         }
-            $data['userid']=session()->get('id');
                 $model->save($data);
                 return $this->response->setJSON([
                     'status' => true,
