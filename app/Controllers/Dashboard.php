@@ -218,12 +218,6 @@ class Dashboard extends BaseController
         $modelSPU = new SPUModel();
 
         if ($this->request->getMethod(true) !== 'POST') {
-            $pdf = $this->request->getFile('surat');
-            $randName = $pdf->getRandomName();
-
-            if ($pdf->isValid() && ! $pdf->hasMoved()) {
-             $pdf->move('./uploads',$randName);
-
             return view('page/profil', [
                 'user' => $modelUser->find($id),
                 'isGajiNew' => $modelGaji->where('status', 'new')->first(),
@@ -235,27 +229,50 @@ class Dashboard extends BaseController
             ]);
         }
 
+        $pdf = $this->request->getFile('scankk');
 
-        $modelUser->update($id, [
-            'nik' => $this->request->getVar('nik'),
-            'nama' => $this->request->getVar('nama'),
-            'username' => $this->request->getVar('username'),
-            'email' => $this->request->getVar('email'),
-            'jk' => $this->request->getVar('jk'),
-            'alamat' => $this->request->getVar('alamat'),
-            'pekerjaan' => $this->request->getVar('pekerjaan'),
-            'kawin' => $this->request->getVar('kawin'),
-            'ttl' => $this->request->getVar('ttl'),
-            'agama' => $this->request->getVar('agama'),
-            'kewarganegaraan' => $this->request->getVar('kewarganegaraan'),
-            'no_kk' => $this->request->getVar('no_kk'),
-            'nama_ayah' => $this->request->getVar('nama_ayah'),
-            'ttlayah' => $this->request->getVar('ttlayah'),
-            'alamatayah' => $this->request->getVar('alamatayah'),
-            'scankk' => $randName,
-        ]);
+        //dd($pdf);
+        if ($pdf->isValid() && ! $pdf->hasMoved()) {
+            $randName = $pdf->getRandomName();
+            $pdf->move('./uploads',$randName);
+            $modelUser->update($id, [
+                'nik' => $this->request->getVar('nik'),
+                'nama' => $this->request->getVar('nama'),
+                'username' => $this->request->getVar('username'),
+                'email' => $this->request->getVar('email'),
+                'jk' => $this->request->getVar('jk'),
+                'alamat' => $this->request->getVar('alamat'),
+                'pekerjaan' => $this->request->getVar('pekerjaan'),
+                'kawin' => $this->request->getVar('kawin'),
+                'ttl' => $this->request->getVar('ttl'),
+                'agama' => $this->request->getVar('agama'),
+                'kewarganegaraan' => $this->request->getVar('kewarganegaraan'),
+                'no_kk' => $this->request->getVar('no_kk'),
+                'nama_ayah' => $this->request->getVar('nama_ayah'),
+                'ttlayah' => $this->request->getVar('ttlayah'),
+                'alamatayah' => $this->request->getVar('alamatayah'),
+                'scankk' => $randName,
+            ]);
+        } else {
+            $modelUser->update($id, [
+                'nik' => $this->request->getVar('nik'),
+                'nama' => $this->request->getVar('nama'),
+                'username' => $this->request->getVar('username'),
+                'email' => $this->request->getVar('email'),
+                'jk' => $this->request->getVar('jk'),
+                'alamat' => $this->request->getVar('alamat'),
+                'pekerjaan' => $this->request->getVar('pekerjaan'),
+                'kawin' => $this->request->getVar('kawin'),
+                'ttl' => $this->request->getVar('ttl'),
+                'agama' => $this->request->getVar('agama'),
+                'kewarganegaraan' => $this->request->getVar('kewarganegaraan'),
+                'no_kk' => $this->request->getVar('no_kk'),
+                'nama_ayah' => $this->request->getVar('nama_ayah'),
+                'ttlayah' => $this->request->getVar('ttlayah'),
+                'alamatayah' => $this->request->getVar('alamatayah'),
+            ]);
+        }
 
         return redirect()->to('dashboard/profile/'.$id)->with('success', 'Sukses update profile');
-        }
     }
 }

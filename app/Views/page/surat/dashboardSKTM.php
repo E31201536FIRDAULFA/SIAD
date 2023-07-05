@@ -168,7 +168,7 @@
                                 
                                 <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">Nama</label>
-                                  <select class="form-control" id="namasktm" name="namasktm">
+                                  <select class="form-control" id="idusersktm" name="idusersktm">
                                     <option>Pilih warga</option>
                                     <?php foreach($user as $data): ?>
                                     <option value="<?= $data['id'] ?>"><?= $data['nama'] ?></option>

@@ -29,9 +29,9 @@ class SKTM extends BaseController
         $modelSKCK = new skckModel();
         $modelSPU = new SPUModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
-            if(session()->get('role') == 'warga'){
+            if (session()->get('role') === 'warga') {
                 $data = [
-                    'userid' => $this->request->getPost('id'),
+                    'userid' => session()->get('id'),
                     'tgl' => $this->request->getPost('tgl'),
                     'nik' => $this->request->getPost('nik'),
                     'no_kk' => $this->request->getPost('no_kk'),
@@ -49,47 +49,48 @@ class SKTM extends BaseController
                     'keperluan' => $this->request->getPost('keperluan'),
                     'status' => 'new',
                     'suratsktm' => null,
-                
                 ];
-                } else {
-                    $isAdmin = $this->request->getVar('nama');
-                    $dataUser = $user->find($isAdmin);
-                    $data =[
-                        'userid' => $isAdmin,
-                        'tgl' => $this->request->getPost('tgl'),
-                        'nik' => $dataUser['nik'],
-                        'no_kk' => $dataUser['no_kk'],
-                        'nama' => $dataUser['nama'],
-                        'jk' => $dataUser['jk'],
-                        'ttl' => $dataUser['ttl'],
-                        'stswarga' => $dataUser['kawin'],
-                        'alamat' => $dataUser['alamat'],
-                        'nama_ayah' => $dataUser['nama_ayah'],
-                        'ttlayah' => $dataUser['ttlayah'],
-                        'agama' => $dataUser['agama'],
-                        'pekerjaan' => $dataUser['pekerjaan'],
-                        'alamatayah' => $dataUser['alamatayah'],
-                        'gaji' => $this->request->getPost('gaji'),
-                        'keperluan' => $this->request->getPost('keperluan'),
-                        'status' => 'new',
-                        'suratsktm' => null,
-                    ];
-                }
-                $model->save($data);
-                return $this->response->setJSON([
-                    'status' => true,
-                    'icon' => 'success',
-                    'title' => 'Tambah Pengajuan Surat Keterangan Tidak Mampu Berhasil!',
-                    'text' => 'Pop up ini akan hilang dalam 3 detik.',
-                ]); 
+            } else {
+                $isAdmin = $this->request->getPost('idusersktm');
+                $dataUser = $user->find($isAdmin);
+                dd($dataUser);
+                $data =[
+                    'userid' => $isAdmin,
+                    'tgl' => $this->request->getPost('tgl'),
+                    'nik' => $dataUser['nik'],
+                    'no_kk' => $dataUser['no_kk'],
+                    'nama' => $dataUser['nama'],
+                    'jk' => $dataUser['jk'],
+                    'ttl' => $dataUser['ttl'],
+                    'stswarga' => $dataUser['kawin'],
+                    'alamat' => $dataUser['alamat'],
+                    'nama_ayah' => $dataUser['nama_ayah'],
+                    'ttlayah' => $dataUser['ttlayah'],
+                    'agama' => $dataUser['agama'],
+                    'pekerjaan' => $dataUser['pekerjaan'],
+                    'alamatayah' => $dataUser['alamatayah'],
+                    'gaji' => $this->request->getPost('gaji'),
+                    'keperluan' => $this->request->getPost('keperluan'),
+                    'status' => 'new',
+                    'suratsktm' => null,
+                ];
             }
+            $model->save($data);
+            return $this->response->setJSON([
+                'status' => true,
+                'icon' => 'success',
+                'title' => 'Tambah Pengajuan Surat Keterangan Tidak Mampu Berhasil!',
+                'text' => 'Pop up ini akan hilang dalam 3 detik.',
+            ]); 
+        }
+
         $model->where('status', 'new')->set(['status' => 'diproses'])->update();
         return view('page/surat/dashboardSKTM',[
-            'content' => $model->findAll(),
+            //urut dari yang terbaru berdasarkan field created_at
+            'content' => $model->orderBy('created_at', 'DESC')->findAll(),
             'user' => $user->where('role', 'warga')->findAll(),
             'isGajiNew' => $modelGaji->where('status', 'new')->first(),
             'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
-           
             'isKTPNew' => $modelKTP->where('keterangan', 'new')->first(),
             'isSKCKNew' => $modelSKCK->where('status', 'new')->first(),
             'isSKTMNew' => $model->where('status', 'new')->first(),
@@ -156,26 +157,29 @@ class SKTM extends BaseController
         $modelSKCK = new skckModel();
         $modelSPU = new SPUModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
-            $isAdmin = $this->request->getVar('nama');
-            $dataUser = $user->find($isAdmin ? $isAdmin : session()->get('id'));
+            //hayya kau ini nyontoh jangan mentah mentah lah, secara logika script sebelumnya ga masuk akal satttt
+            $isAdmin = $this->request->getPost('userid');
+            $dataUser = $user->where('id', $isAdmin)->first();
+            //print_r($dataUser);
             $data = [
-                        'tgl' => $this->request->getPost('tgl'),
-                        'nik' => $dataUser['nik'],
-                        'no_kk' => $dataUser['no_kk'],
-                        'nama' => $dataUser['nama'],
-                        'jk' => $dataUser['jk'],
-                        'ttl' => $dataUser['ttl'],
-                        'stswarga' => $dataUser['kawin'],
-                        'alamat' => $dataUser['alamat'],
-                        'nama_ayah' => $dataUser['nama_ayah'],
-                        'ttlayah' => $dataUser['ttlayah'],
-                        'agama' => $dataUser['agama'],
-                        'pekerjaan' => $dataUser['pekerjaan'],
-                        'alamatayah' => $dataUser['alamatayah'],
-                        'gaji' => $this->request->getPost('gaji'),
-                        'keperluan' => $this->request->getPost('keperluan'),
-                        'status' => $this->request->getPost('status'),
-                        'suratsktm' => null,
+                'tgl' => $this->request->getPost('tgl'),
+                'userid' => $isAdmin,
+                'nik' => $dataUser['nik'],
+                'no_kk' => $dataUser['no_kk'],
+                'nama' => $dataUser['nama'],
+                'jk' => $dataUser['jk'],
+                'ttl' => $dataUser['ttl'],
+                'stswarga' => $dataUser['kawin'],
+                'alamat' => $dataUser['alamat'],
+                'nama_ayah' => $dataUser['nama_ayah'],
+                'ttlayah' => $dataUser['ttlayah'],
+                'agama' => $dataUser['agama'],
+                'pekerjaan' => $dataUser['pekerjaan'],
+                'alamatayah' => $dataUser['alamatayah'],
+                'gaji' => $this->request->getPost('gaji'),
+                'keperluan' => $this->request->getPost('keperluan'),
+                'status' => $this->request->getPost('status'),
+                'suratsktm' => null,
             ];
             $model->save($data);
             return $this->response->setJSON([
