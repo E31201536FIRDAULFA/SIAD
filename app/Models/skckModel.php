@@ -19,13 +19,15 @@ class skckModel extends Model
         'userid',
         'nama',
         'nik',
+        'no_kk',
         'ttl',
         'jk',
         'agama',
         'kewarganegaraan',
-        'perkawinan',
+        'kawin',
         'pekerjaan',
         'alamat',
+        'scankk',
         'status',
         'surat'
     ];

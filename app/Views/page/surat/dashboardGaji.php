@@ -6,25 +6,30 @@
           <div style="color:#00b300; background:#ccffcc; border:0px dashed #006600;padding:5px;margin:10px;">
                 <b>Pengajuan Surat Keterangan Gaji/Penghasilan</b> merupakan surat yang dibuat untuk mempermudah masyarakat dalam menjelaskan bahwa perorangan tidak memiliki<b> SLIP GAJI</b>. inputkan data masyarakat yang hendak mengajukan surat keterangan penghasilan dengan detail dan benar, lalu kirimkan file surat yang telah siap kepada masyarakat.
           </div>
-          <div class="card-header pb-0 d-flex justify-content-between align-items-center mb-3">
+          <div class="card-header pb-0 justify-content-between align-items-center mb-3">
             <h6>List Pengajuan</h6>
             <button type="button" class="btn btn-lg btn-info btn-lg mt-4 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              Tambah Pengajuan Surat Ket Gaji
+            Ajukan Tanpa Data Akun
+            </button>
+            <button type="button" class="btn btn-lg btn-success btn-lg mt-4 mb-0" data-bs-toggle="modal" data-bs-target="#add">
+            Ajukan Dengan Data Akun
             </button>
           </div>
 
+
+                <!--MODAL EDIT + ADD STATIC-->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Tambah Gaji</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Tambah Data Tanpa Akun Warga</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
 
-
-                      <!--POP UP TAMBAH PENGAJUAN-->
+                                
+                      <!--POP UP EDIT PENGAJUAN-->
                         <div class="modal-body">
                             <form action="#" id="form">
                                 <div class="input-group input-group-static mb-3">
@@ -34,14 +39,39 @@
                                 </div>
                 
                                 <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Nomor KK</label>
+                                  <input id="no_kk" type="number" class="form-control" name="no_kk">
+                                </div>
+
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">NIK</label>
+                                  <input id="nik" type="number" class="form-control" name="nik">
+                                </div>
+
+                                <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">Nama</label>
-                                  <select class="form-control" id="nama" name="nama">
-                                    <option>Pilih warga</option>
-                                    <?php foreach($user as $data): ?>
-                                    <option value="<?= $data['id'] ?>"><?= $data['nama'] ?></option>
-                                    <?php endforeach ?>
+                                  <input id="nama" type="text" class="form-control" name="nama">
+                                </div>
+
+                                <div class="input-group input-group-static mb-3">
+                                <label for="exampleFormControlSelect1" class="ms-0">Jenis Kelamin</label>
+                                  <select class="form-control" id="jk" name="jk">
+                                    <option value="Perempuan">Perempuan</option>
+                                    <option value="Laki-laki">Laki-laki</option>
                                   </select>
                                 </div>
+
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Tanggal Lahir</label>
+                                  <input id="ttl" type="date" class="form-control" name="ttl">
+                                </div>
+
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Pekerjaan</label>
+                                  <input id="pekerjaan" type="text" class="form-control" name="pekerjaan">
+                                </div>
+
+            
 
                                 <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">No KIP</label>
@@ -58,7 +88,7 @@
                                   <input id="ket" type="text" class="form-control" name="ket">
                                 </div>
 
-                                <div class="input-group input-group-static mb-3" id="statusgaji" hidden>
+                                <div class="input-group input-group-static mb-3" >
                                 <label for="exampleFormControlSelect1" class="ms-0">Status Surat</label>
                                   <select class="form-control" id="status" name="status">
                                     <option value="Pengajuan Sedang Diproses">Pengajuan Sedang Diproses</option>
@@ -80,6 +110,75 @@
                   </div>
                 </div>
 
+
+             <!--MODAL UPLOAD SURAT-->
+             <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="add12" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="add12">Tambah Data Dengan Akun Warga</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                            <form action="#" id="formadd">
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Tanggal</label>
+                                  <input id="tglgaji" type="date" class="form-control" name="tglgaji">
+                                  <input id="idgaji"  name="id" hidden>
+                                </div>
+                
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Nama</label>
+                                  <select class="form-control" id="namagaji" name="namagaji">
+                                    <option>Pilih warga</option>
+                                    <?php foreach($user as $data): ?>
+                                    <option value="<?= $data['id'] ?>"><?= $data['nama'] ?></option>
+                                    <?php endforeach ?>
+                                  </select>
+                                </div>
+
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">No KIP</label>
+                                  <input id="no_kipgaji" type="text" class="form-control" name="no_kipgaji">
+                                </div>
+
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">No KIS</label>
+                                  <input id="no_kisgaji" type="text" class="form-control" name="no_kisgaji">
+                                </div>
+
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Keterangan</label>
+                                  <input id="ketgaji" type="text" class="form-control" name="ketgaji">
+                                </div>
+
+                                <div class="input-group input-group-static mb-3"  >
+                                <label for="exampleFormControlSelect1" class="ms-0">Status Surat</label>
+                                  <select class="form-control" id="statusgaji" name="statusgaji">
+                                    <option value="Pengajuan Sedang Diproses">Pengajuan Sedang Diproses</option>
+                                    <option value="Pengajuan Selesai">Pengajuan Selesai</option>
+                                    <option value="Pengajuan Ditolak, Lengkapi Persyaratan Dengan Benar">Pengajuan Ditolak, Lengkapi Persyaratan Dengan Benar</option>
+                                  </select>
+                                </div>
+
+                                <div class="mt-3">
+                                  <button type="button" class="btn bg-gradient-success btn-lg w-100 mt-4 mb-0" onclick="addgaji()">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn bg-gradient-info btn-lg w-100 mt-4 mb-0" data-bs-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                  
+                  </div>
+                </div>
+
+
+
+                <!--MODAL UPLOAD SURAT-->
                 <div class="modal fade" id="upload" tabindex="-1" role="dialog" aria-labelledby="upload12" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
@@ -120,6 +219,7 @@
                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">NIK</th>
+                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nomor KK</th>
                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">TTL</th>
                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pekerjaan</th>
                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No KIP</th>
@@ -139,6 +239,7 @@
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['tgl'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['nama'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['nik'] ?></span></td>
+                    <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['no_kk'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['ttl'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['pekerjaan'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['no_kip'] ?></span></td>
@@ -147,16 +248,16 @@
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['status'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['Surat'] ?></span></td>
                     <td class="align-middle text-center">
-                      <button onclick="buttonCetak(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-success mb-0">
+                      <button onclick="buttonCetak(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-info mb-0">
                         Cetak
                       </button>
-                      <button onclick="buttonUpload(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-info mb-0">
+                      <button onclick="buttonUpload(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-light mb-0">
                         Upload Surat
                       </button>
                       <button onclick="buttonUnduh(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-info mb-0">
                         Download Surat
                       </button>
-                      <button onclick="buttonEdit(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-warning mb-0">
+                      <button onclick="buttonEdit(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-light mb-0">
                         Edit
                       </button>
                       <button onclick="buttonDelete(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-danger mb-0">
@@ -254,20 +355,23 @@ function buttonEdit(id) {
     success: function (respond) {
       console.log(respond.data);
 
-      $('#id').val(respond.data.id);
-      $('#tgl').val(respond.data.tgl);
-      $('#nama').val(respond.data.nama);
-      $('#nik').val(respond.data.nik);
-      $('#ttl').val(respond.data.ttl);
-      $('#pekerjaan').val(respond.data.pekerjaan);
-      $('#no_kip').val(respond.data.no_kip);
-      $('#no_kis').val(respond.data.no_kis);
-      $('#ket').val(respond.data.ket);
-      $('#status').val(respond.data.status);
+      $("#id").val(respond.data.id);
+      $("#tgl").val(respond.data.tgl);
+      $("#nik").val(respond.data.nik);
+      $("#no_kk").val(respond.data.no_kk);
+      $("#nama").val(respond.data.nama);
+      $("#ttl").val(respond.data.ttl);
+      $("#pekerjaan").val(respond.data.pekerjaan);
+      $("#no_kip").val(respond.data.no_kip);
+      $("#no_kis").val(respond.data.no_kis);
+      $("#ket").val(respond.data.ket);
+      $("#status").val(respond.data.status);
 
       $("#exampleModal").modal("show");
       $(".modal-title").text("Edit");
       $("#statusgaji").removeAttr("hidden");
+      $('#akun').hide();
+    
     },
     error: function (jqXHR, textStatus, errorThrown) {
       console.log(jqXHR);

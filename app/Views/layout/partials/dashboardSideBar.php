@@ -101,10 +101,26 @@
         </li>
 
         <li class="nav-item">
+          <a id="menu-item-2" class="nav-link text-white " href="<?= base_url('dashboard/rab') ?>">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            </div>
+            <span class="nav-link-text ms-1">(RAB) <br>Rencana Anggaran Belanja</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
           <a id="menu-item-2" class="nav-link text-white " href="<?= base_url('dashboard/apbd') ?>">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             </div>
-            <span class="nav-link-text ms-1">APBDesa</span>
+            <span class="nav-link-text ms-1">(RKA) <br>Rencana Kegiatan Anggaran</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a id="menu-item-2" class="nav-link text-white " href="<?= base_url('dashboard/spp') ?>">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            </div>
+            <span class="nav-link-text ms-1">(SPP) <br>Surat Permintaan Pembayaran</span>
           </a>
         </li>
 
@@ -199,10 +215,26 @@
         </li>
 
         <li class="nav-item">
+          <a id="menu-item-2" class="nav-link text-white " href="<?= base_url('dashboard/rab') ?>">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            </div>
+            <span class="nav-link-text ms-1">(RAB) <br>Rencana Anggaran Belanja</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
           <a id="menu-item-2" class="nav-link text-white " href="<?= base_url('dashboard/apbd') ?>">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             </div>
-            <span class="nav-link-text ms-1">APBDesa</span>
+            <span class="nav-link-text ms-1">(RKA) <br>Rencana Kegiatan Anggaran</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a id="menu-item-2" class="nav-link text-white " href="<?= base_url('dashboard/spp') ?>">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            </div>
+            <span class="nav-link-text ms-1">(SPP) <br>Surat Permintaan Pembayaran</span>
           </a>
         </li>
 

@@ -6,13 +6,20 @@
           <div style="color:#00b300; background:#ccffcc; border:0px dashed #006600;padding:5px;margin:10px;">
                 <b>Pengajuan Surat Keterangan Tidak Mampu</b> merupakan surat yang dibuat untuk mempermudah masyarakat dalam menjelaskan bahwa perorangan merupakan warga<b> Tidak Mampu(Berpenghasilan dibawah 700rb/bln)</b>. inputkan data masyarakat yang hendak mengajukan surat keterangan tidak mampu dengan detail dan benar, lalu kirimkan file surat yang telah siap kepada masyarakat.
           </div>
-          <div class="card-header pb-0 d-flex justify-content-between align-items-center mb-3">
-            <h6>List Pengajuan</h6>
+         
+           
+          <div class="card-header pb-0 justify-content-between align-items-center mb-3">
+          <h6>List Pengajuan</h6>
             <button type="button" class="btn btn-lg btn-info btn-lg mt-4 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              Tambah Pengajuan Surat SKTM
+            Ajukan Tanpa Data Akun
+            </button>
+            <button type="button" class="btn btn-lg btn-success btn-lg mt-4 mb-0" data-bs-toggle="modal" data-bs-target="#add">
+            Ajukan Dengan Data Akun
             </button>
           </div>
 
+
+          <!--MODAL TAMBAH + EDIT STATIC-->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
@@ -34,41 +41,89 @@
                                 </div>
                                 
                                 <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Nomor KK</label>
+                                  <input id="no_kk" type="number" class="form-control" name="no_kk" >
+                                </div>
+
+                                <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">Nama</label>
-                                  <select class="form-control" id="nama" name="nama">
-                                    <option>Pilih warga</option>
-                                    <?php foreach($user as $data): ?>
-                                    <option value="<?= $data['id'] ?>"><?= $data['nama'] ?></option>
-                                    <?php endforeach ?>
+                                  <input id="nama" type="text" class="form-control" name="nama">
+                                </div>
+
+
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">NIK</label>
+                                  <input id="nik" type="number" class="form-control" name="nik" >
+                                </div>
+
+                                <div class="input-group input-group-static mb-3">
+                                <label for="exampleFormControlSelect1" class="ms-0">Jenis Kelamin</label>
+                                  <select class="form-control" id="jk" name="jk">
+                                    <option value="perempuan">Perempuan</option>
+                                    <option value="laki-laki">Laki-laki</option>
                                   </select>
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">Nama Ayah</label>
+                                  <label class="ms-0">TTL</label>
+                                  <input id="ttl" type="date" class="form-control" name="ttl">
+                                </div>
+
+                                <div class="input-group input-group-static mb-3">
+                                <label for="exampleFormControlSelect1" class="ms-0">Perkawinan</label>
+                                  <select class="form-control" id="stswarga" name="stswarga">
+                                <option value="menikah">Menikah</option>
+                                <option value="belum_menikah">Belum Menikah</option>
+                                  </select>
+                                </div>
+
+                              
+
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Nama Ayah</label>
                                   <input id="nama_ayah" type="text" class="form-control" name="nama_ayah">
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">Ttl Ayah</label>
+                                  <label class="ms-0">Ttl Ayah</label>
                                   <input id="ttlayah" type="date" class="form-control" name="ttlayah">
                                 </div>
 
+
                                 <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">Alamat Ayah</label>
+                                  <label class="ms-0">Agama</label>
+                                  <select id="agama" class="form-control" name="agama">
+                                    <option value="Islam">Islam</option>
+                                    <option value="Kristen">Kristen</option>
+                                    <option value="Katolik">Katolik</option>
+                                    <option value="Hindu">Hindu</option>
+                                    <option value="Buddha">Buddha</option>
+                                    <option value="Konghucu">Konghucu</option>
+                                  </select>
+                                  </div>
+
+
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Pekerjaan</label>
+                                  <input id="pekerjaan" type="text" class="form-control" name="pekerjaan">
+                                </div>
+
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Alamat Ayah</label>
                                   <input id="alamatayah" type="text" class="form-control" name="alamatayah">
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">Gaji</label>
-                                  <input id="gaji" type="text" class="form-control" name="gaji">
+                                  <label class="ms-0">Gaji</label>
+                                  <input id="gaji" type="number" class="form-control" name="gaji">
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
-                                  <label class="form-label">Keperluan</label>
+                                  <label class="ms-0">Keperluan</label>
                                   <input id="keperluan" type="text" class="form-control" name="keperluan">
                                 </div>
 
-                                <div class="input-group input-group-static mb-3" id="statussktm" hidden>
+                                <div class="input-group input-group-static mb-3">
                                 <label for="exampleFormControlSelect1" class="ms-0">Status Surat</label>
                                   <select class="form-control" id="status" name="status">
                                     <option value="diterima">Diterima</option>
@@ -88,6 +143,74 @@
                       </div>
                   </div>
                 </div>
+
+
+                 <!--MODAL TAMBAH + EDIT STATIC-->
+                 <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="add4" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="add4">Tambah SKTM</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+
+                      <!--POP UP TAMBAH PENGAJUAN-->
+                        <div class="modal-body">
+                            <form action="#" id="form">
+                            <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Tanggal</label>
+                                  <input id="tglsktm" type="date" class="form-control" name="tglsktm">
+                                  <input hidden id="idsktm" name="idsktm">
+                                </div>
+                                
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Nama</label>
+                                  <select class="form-control" id="namasktm" name="namasktm">
+                                    <option>Pilih warga</option>
+                                    <?php foreach($user as $data): ?>
+                                    <option value="<?= $data['id'] ?>"><?= $data['nama'] ?></option>
+                                    <?php endforeach ?>
+                                  </select>
+                                </div>
+
+                            
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="form-label">Gaji</label>
+                                  <input id="gajisktm" type="number" class="form-control" name="gajisktm">
+                                </div>
+
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="form-label">Keperluan</label>
+                                  <input id="keperluansktm" type="text" class="form-control" name="keperluansktm">
+                                </div>
+
+                                <div class="input-group input-group-static mb-3" >
+                                <label for="exampleFormControlSelect1" class="ms-0">Status Surat</label>
+                                  <select class="form-control" id="statussktm" name="statussktm">
+                                  <option>--Pilih Status Surat--</option>
+                                    <option value="diterima">Diterima</option>
+                                    <option value="ditolak">Ditolak</option>
+                                    <option value="diproses">Diproses</option>
+                                  </select>
+                                </div>
+
+
+                                <div class="mt-3">
+                                  <button type="button" class="btn bg-gradient-success btn-lg w-100 mt-4 mb-0" onclick="addadm()">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn bg-gradient-info btn-lg w-100 mt-4 mb-0" data-bs-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+
+
 
                 <div class="modal fade" id="uploadsktm" tabindex="-1" role="dialog" aria-labelledby="upload3" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -128,6 +251,7 @@
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">NIK</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nomor KK</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jenis Kelamin</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">TTL</th>
@@ -152,6 +276,7 @@
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $no++ ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['tgl'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['nik'] ?></span></td>
+                    <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['no_kk'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['nama'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['jk'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['ttl'] ?></span></td>
@@ -166,16 +291,16 @@
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['status'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['suratsktm'] ?></span></td>
                     <td class="align-middle text-center">
-                      <button onclick="buttonCetak(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-success mb-0">
+                      <button onclick="buttonCetak(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-info mb-0">
                         Cetak
                       </button>
-                      <button onclick="buttonUpload(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-info mb-0">
+                      <button onclick="buttonUpload(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-light mb-0">
                         Upload Surat
                       </button>
-                      <button onclick="buttonUnduh(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-warning mb-0">
+                      <button onclick="buttonUnduh(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-info mb-0">
                         Download Surat
                       </button>
-                      <button onclick="buttonEdit(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-warning mb-0">
+                      <button onclick="buttonEdit(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-light mb-0">
                         Edit
                       </button>
                       <button onclick="buttonDelete(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-danger mb-0">
@@ -273,11 +398,12 @@ function buttonEdit(id) {
       $("#id").val(respond.data.id);
       $("#tgl").val(respond.data.tgl);
       $("#nik").val(respond.data.nik);
+      $("#no_kk").val(respond.data.no_kk);
       $("#nama").val(respond.data.nama);
       $("#jk").val(respond.data.jk);
       $("#ttl").val(respond.data.ttl);
-      $("#stswarga").val(respond.data.stswarga);
-      $("#nama_ayah").val(respond.data.nama_ayah);
+      $("#stswarga").val(respond.data.stswarga); 
+      $("#nama_ayah").val(respond.data.nama_ayah);  
       $("#ttlayah").val(respond.data.ttlayah);
       $("#agama").val(respond.data.agama);
       $("#pekerjaan").val(respond.data.pekerjaan);
@@ -285,10 +411,13 @@ function buttonEdit(id) {
       $("#gaji").val(respond.data.gaji);
       $("#keperluan").val(respond.data.keperluan);
       $("#status").val(respond.data.status);
+  
 
       $("#exampleModal").modal("show");
       $(".modal-title").text("Edit");
       $("#statussktm").removeAttr("hidden");
+    
+
     },
     error: function (jqXHR, textStatus, errorThrown) {
       console.log(jqXHR);

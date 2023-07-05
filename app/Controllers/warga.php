@@ -7,7 +7,7 @@ use App\Models\UserModel;
 use App\Models\SPUModel;
 use App\Models\KehilanganModel;
 use App\Models\gajiModel;
-use App\Models\KKModel;
+
 use App\Models\KTPModel;
 use App\Models\skckModel;
 use App\Models\SKTMModel;

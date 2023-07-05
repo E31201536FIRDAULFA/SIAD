@@ -18,6 +18,7 @@ class SKTMModel extends Model
         'tgl',
         'userid',
         'nik',
+        'no_kk',
         'nama',
         'jk',
         'ttl',
@@ -29,6 +30,7 @@ class SKTMModel extends Model
         'alamatayah',
         'gaji',
         'keperluan',
+        'scankk',
         'status',
         'suratsktm'
     ];

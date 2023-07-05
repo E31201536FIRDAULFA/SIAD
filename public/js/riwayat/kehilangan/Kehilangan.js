@@ -55,6 +55,8 @@ $(document).ready(function () {
                         }
                     });
                 });
+
+
                 let buttonDelete = $('<button type="button" class="btn bg-gradient-danger mb-0"></button>').text('Delete').attr('id', respond[i].id);
                 buttonDelete.click(function () {
                     var id = $(this).attr('id');

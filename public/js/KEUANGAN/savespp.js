@@ -1,54 +1,58 @@
-function saveKK() {
+function savespp() {
     const id = $("#id").val();
     const tgl = $("#tgl").val();
-    const nama = $("#nama").val();
-    const nik = $("#nik").val();
-    const keperluan = $("#keperluan").val();
-    const keterangan = $("#keterangan").val();
+    const uraian = $("#uraian").val();
+    const anggaran = $("#anggaran").val();
+    const pencairan = $("#pencairan").val();
+    const permintaan = $("#permintaan").val();
+    const jml = $("#jml").val();
+    const sisa = $("#sisa").val();
+
 
 
     if (id) {
-        url = base_url + 'dashboard/KK/update/' + id;
+        url = base_url + 'dashboard/spp/update/' + id;
         if (tgl.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'tgl harus diisi!'
-            });
-        } else if (nama.length == "") {
             Swal.fire({
                 title: 'Oops...',
                 text: 'Nama harus diisi!'
             });
-
-        } else if (nik.length == "") {
+        } else if (uraian.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Nik harus diisi!'
+                text: 'uraian harus diisi!'
             });
-        } else if (keperluan.length == "") {
+        } else if (anggaran.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Scan KK harus diisi!'
+                text: 'anggaran harus diisi!'
             });
-        } else if (kk.length == "") {
+        } else if (pencairan.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Scan KK harus diisi!'
+                text: 'pencairan harus diisi!'
             });
-
-        } else if (keterangan.length == "") {
+        } else if (permintaan.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Keterangan harus diisi!'
+                text: 'permintaan harus diisi!'
+            });
+        } else if (jml.length == "") {
+            Swal.fire({
+                title: 'Oops...',
+                text: 'jml harus diisi!'
+            });
+        } else if (sisa.length == "") {
+            Swal.fire({
+                title: 'Oops...',
+                text: 'sisa harus diisi!'
             });
 
         } else {
-            $.ajax({
+            $.ajax({ //tembak data ke db
                 url: url,
                 type: 'POST',
-                data: new FormData($('#form')[0]), // Use FormData to include file
-                processData: false, // Prevent jQuery from automatically processing the data
-                contentType: false, // Prevent jQuery from automatically setting the content type
+                data: $('#form').serialize(),
                 dataType: "JSON",
                 success: function (respond) {
                     if (respond.status == true) {
@@ -71,52 +75,56 @@ function saveKK() {
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    Swal.fire({
+                    swal.fire({
                         icon: 'error',
                         title: 'Terjadi error!',
                         text: 'Silahkan coba lagi.'
-                    });
+                    })
                 }
             });
         }
     } else {
-        url = base_url + 'dashboard/KK';
+        url = base_url + 'dashboard/spp';
         if (tgl.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'tgl harus diisi!'
-            });
-        } else if (nama.length == "") {
             Swal.fire({
                 title: 'Oops...',
                 text: 'Nama harus diisi!'
             });
-
-        } else if (nik.length == "") {
+        } else if (uraian.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Nik harus diisi!'
-
+                text: 'uraian harus diisi!'
             });
-        } else if (keperluan.length == "") {
+        } else if (anggaran.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Scan KK harus diisi!'
+                text: 'anggaran harus diisi!'
             });
-        } else if (kk.length == "") {
+        } else if (pencairan.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Scan KK harus diisi!'
+                text: 'pencairan harus diisi!'
             });
-
-
+        } else if (permintaan.length == "") {
+            Swal.fire({
+                title: 'Oops...',
+                text: 'permintaan harus diisi!'
+            });
+        } else if (jml.length == "") {
+            Swal.fire({
+                title: 'Oops...',
+                text: 'jml harus diisi!'
+            });
+        } else if (sisa.length == "") {
+            Swal.fire({
+                title: 'Oops...',
+                text: 'sisa harus diisi!'
+            });
         } else {
             $.ajax({
                 url: url,
                 type: 'POST',
-                data: new FormData($('#form')[0]), // Use FormData to include file
-                processData: false, // Prevent jQuery from automatically processing the data
-                contentType: false, // Prevent jQuery from automatically setting the content type
+                data: $('#form').serialize(),
                 dataType: "JSON",
                 success: function (respond) {
                     if (respond.status == true) {
@@ -139,52 +147,13 @@ function saveKK() {
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    Swal.fire({
+                    swal.fire({
                         icon: 'error',
                         title: 'Terjadi error!',
                         text: 'Silahkan coba lagi.'
-                    });
+                    })
                 }
             });
         }
     }
-}
-
-function upload() {
-    const id = $("#id").val();
-    $.ajax({
-        url: base_url + 'dashboard/KK/upload/' + id,
-        type: 'POST',
-        data: new FormData($('#formuploadkk')[0]), // Use FormData to include file
-        processData: false, // Prevent jQuery from automatically processing the data
-        contentType: false, // Prevent jQuery from automatically setting the content type
-        dataType: "JSON",
-        success: function (respond) {
-            if (respond.status == true) {
-                Swal.fire({
-                    icon: respond.icon,
-                    title: respond.title,
-                    text: respond.text,
-                    timer: 3000,
-                    showCancelButton: false,
-                    showConfirmButton: false
-                }).then(function () {
-                    location.reload();
-                });
-            } else if (respond.status == false) {
-                Swal.fire({
-                    icon: respond.icon,
-                    title: respond.title,
-                    text: respond.text,
-                });
-            }
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Terjadi error!',
-                text: 'Silahkan coba lagi.'
-            });
-        }
-    });
 }

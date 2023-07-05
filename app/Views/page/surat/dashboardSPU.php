@@ -8,13 +8,18 @@
           <div style="color:#00b300; background:#ccffcc; border:0px dashed #006600;padding:5px;margin:10px;">
           <b>Pengajuan Surat Pengajuan Usaha</b> merupakan surat yang dibuat untuk mempermudah masyarakat dalam menjelaskan bahwa perorangan memiliki<b> Suatu Usaha</b>. surat ini dapat menjadi syarat penting dalam pengajuan bantuan umkm dan lain sebagainya. inputkan data masyarakat yang hendak mengajukan surat pengajuan usaha dengan detail dan benar, lalu kirimkan file surat yang telah siap kepada masyarakat.s
           </div>
-          <div class="card-header pb-0 d-flex justify-content-between align-items-center mb-3">
+    
+            <div class="card-header pb-0  justify-content-between align-items-center mb-3">
             <h6>List Pengajuan</h6>
-            <button type="button" class="btn btn-lg btn-info btn-lg mt-4 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              Tambah Pengajuan Surat SPU
+            <button type="button" class="btn btn-lg btn-info btn-lg " data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Ajukan Tanpa Data Akun
             </button>
-          </div>
-
+            <button type="button" class="btn btn-lg btn-success btn-lg " data-bs-toggle="modal" data-bs-target="#add">
+            Ajukan Dengan Data Akun
+            </button>
+            </div>
+         
+                <!--MODAL EDIT + ADD STATIC-->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
@@ -28,24 +33,49 @@
                       <!--POP UP TAMBAH PENGAJUAN-->
                         <div class="modal-body">
                             <form action="#" id="form">
-                            <div class="input-group input-group-outline mb-3">
-                                  <label class="form-label">Tanggal</label>
+                            <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Tanggal</label>
                                   <input id="tgl" type="date" class="form-control" name="tgl">
                                   <input id="id" name="id" hidden>
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Nomor KK</label>
+                                  <input id="no_kk" type="number" class="form-control" name="no_kk">
+                                </div>
+
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">NIK</label>
+                                  <input id="nik" type="number" class="form-control" name="nik">
+                                </div>
+
+                                <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">Nama</label>
-                                  <select class="form-control" id="nama" name="nama">
-                                    <option>Pilih warga</option>
-                                    <?php foreach($user as $data): ?>
-                                    <option value="<?= $data['id'] ?>"><?= $data['nama'] ?></option>
-                                    <?php endforeach ?>
+                                  <input id="nama" type="text" class="form-control" name="nama">
+                                </div>
+
+                                <div class="input-group input-group-static mb-3">
+                                <label for="exampleFormControlSelect1" class="ms-0">Jenis Kelamin</label>
+                                  <select class="form-control" id="jk" name="jk">
+                                    <option value="perempuan">Perempuan</option>
+                                    <option value="laki-laki">Laki-laki</option>
                                   </select>
                                 </div>
 
-                                <div class="input-group input-group-outline mb-3">
-                                  <label class="form-label">Usaha</label>
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Tanggal Lahir</label>
+                                  <input id="ttl" type="date" class="form-control" name="ttl">
+                                </div>
+
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Alamat</label>
+                                  <input id="alamat" type="text" class="form-control" name="alamat">
+                                </div>
+
+
+
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Usaha</label>
                                   <input id="nama_usaha" type="text" class="form-control" name="nama_usaha">
                                 </div>
 
@@ -56,14 +86,14 @@
                                     <option value="PT">PT</option>
                                   </select>
                                 </div>
-
                               
-                                <div class="input-group input-group-outline mb-3">
-                                  <label class="form-label">Alamat Usaha</label>
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Alamat Usaha</label>
                                   <input id="alamat_usaha" type="text" class="form-control" name="alamat_usaha">
                                 </div>
 
-                                <div class="input-group input-group-static mb-3" id="statusspu" hidden>
+
+                                <div class="input-group input-group-static mb-3" >
                                 <label for="exampleFormControlSelect1" class="ms-0">Status Surat</label>
                                   <select class="form-control" id="status" name="status">
                                     <option value="diproses">Diproses</option>
@@ -72,10 +102,7 @@
                                   </select>
                                 </div>
                               
-                                <div class="input-group input-group-outline mb-3" id="fileupload" hidden>
-                                  <label class="form-label">Usaha</label>
-                                  <input id="suratspu" type="file" class="form-control" name="suratspu">
-                                </div>
+                               
 
                                 <div class="mt-3">
                                   <button type="button" class="btn bg-gradient-success btn-lg w-100 mt-4 mb-0" onclick="saveSpu()">Simpan</button>
@@ -89,6 +116,78 @@
                   </div>
                 </div>
 
+                 <!--MODAL ADD OTOMATIS-->
+                <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="add5" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="add5">Tambah SPU</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                      <!--POP UP TAMBAH PENGAJUAN-->
+                        <div class="modal-body">
+                            <form action="#" id="form">
+                            <div class="input-group input-group-outline mb-3">
+                                  <label class="form-label">Tanggal</label>
+                                  <input id="tglspu" type="date" class="form-control" name="tglspu">
+                                  <input id="idspu" name="idspu" hidden>
+                                </div>
+
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Nama</label>
+                                  <select class="form-control" id="namaspu" name="namaspu">
+                                    <option>Pilih warga</option>
+                                    <?php foreach($user as $data): ?>
+                                    <option value="<?= $data['id'] ?>"><?= $data['nama'] ?></option>
+                                    <?php endforeach ?>
+                                  </select>
+                                </div>
+
+                                <div class="input-group input-group-outline mb-3">
+                                  <label class="form-label">Usaha</label>
+                                  <input id="nama_usahaspu" type="text" class="form-control" name="nama_usahaspu">
+                                </div>
+
+                                <div class="input-group input-group-static mb-3">
+                                <label for="exampleFormControlSelect1" class="ms-0">Jenis Usaha</label>
+                                  <select class="form-control" id="jenis_usahaspu" name="jenis_usahaspu">
+                                    <option value="Perorangan">Perorangan</option>
+                                    <option value="PT">PT</option>
+                                  </select>
+                                </div>
+
+                              
+                                <div class="input-group input-group-outline mb-3">
+                                  <label class="form-label">Alamat Usaha</label>
+                                  <input id="alamat_usahaspu" type="text" class="form-control" name="alamat_usahaspu">
+                                </div>
+
+                                <div class="input-group input-group-static mb-3" >
+                                <label for="exampleFormControlSelect1" class="ms-0">Status Surat</label>
+                                  <select class="form-control" id="statusspu" name="statusspu">
+                                    <option value="diproses">Diproses</option>
+                                    <option value="diterima">Diterima</option>
+                                    <option value="ditolak">Ditolak</option>
+                                  </select>
+                                </div>
+                              
+                             
+                                <div class="mt-3">
+                                  <button type="button" class="btn bg-gradient-success btn-lg w-100 mt-4 mb-0" onclick="addadm()">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn bg-gradient-info btn-lg w-100 mt-4 mb-0" data-bs-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+
+                 <!--MODAL UPLOAD-->
                 <div class="modal fade" id="uploadspu" tabindex="-1" role="dialog" aria-labelledby="upload4" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
@@ -130,6 +229,7 @@
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">NIK</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nomor KK</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jenis Kelamin</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">TTL</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Alamat</th>
@@ -150,6 +250,7 @@
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['tgl'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['nama'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['nik'] ?></span></td>
+                    <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['no_kk'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['jk'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['ttl'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['alamat'] ?></span></td>
@@ -159,16 +260,16 @@
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['status'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['suratspu'] ?></span></td>
                     <td class="align-middle text-center">
-                      <button onclick="buttonCetak(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-success mb-0">
+                      <button onclick="buttonCetak(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-info mb-0">
                         Cetak
                       </button>
-                      <button onclick="buttonUpload(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-info mb-0">
+                      <button onclick="buttonUpload(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-light mb-0">
                         Upload Surat
                       </button>
                       <button onclick="buttonUnduh(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-info mb-0">
                         Download Surat
                       </button>
-                      <button onclick="buttonEdit(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-warning mb-0">
+                      <button onclick="buttonEdit(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-light mb-0">
                         Edit
                       </button>
                       <button onclick="buttonDelete(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-danger mb-0">
@@ -198,7 +299,7 @@
    function buttonUnduh(id) {
     
     $.ajax({
-        url: base_url + 'dashboard/skck/update/' + id,
+        url: base_url + 'dashboard/SPU/update/' + id,
         type: 'GET',
         dataType: 'JSON',
         success: function (respond) {
@@ -264,21 +365,24 @@ function buttonEdit(id) {
     dataType: "JSON",
     success: function (respond) {
       console.log(respond.data);
-      $('#id').val(respond.data.id);
-       $('#tgl').val(respond.data.tgl);
-       $('#nama').val(respond.data.nama);
-       $('#nik').val(respond.data.nik);
-       $('#jk').val(respond.data.jk);
-       $('#ttl').val(respond.data.ttl);
-       $('#alamat').val(respond.data.alamat);
-       $('#nama_usaha').val(respond.data.nama_usaha);
-       $('#jenis_usaha').val(respond.data.jenis_usaha);
-       $('#alamat_usaha').val(respond.data.alamat_usaha);
-       $('#status').val(respond.data.status);
+
+      $("#id").val(respond.data.id);
+      $("#tgl").val(respond.data.tgl);
+      $("#nik").val(respond.data.nik);
+      $("#no_kk").val(respond.data.no_kk);
+      $("#nama").val(respond.data.nama);
+      $("#jk").val(respond.data.jk);
+      $("#ttl").val(respond.data.ttl);
+      $("#alamat").val(respond.data.alamat); 
+      $("#nama_usaha").val(respond.data.nama_usaha);  
+      $("#jenis_usaha").val(respond.data.jenis_usaha);
+      $("#alamat_usaha").val(respond.data.alamat_usaha);
+      $("#status").val(respond.data.status);
 
       $("#exampleModal").modal("show");
       $(".modal-title").text("Edit");
       $("#statusspu").removeAttr("hidden");
+   
     },
     error: function (jqXHR, textStatus, errorThrown) {
       console.log(jqXHR);

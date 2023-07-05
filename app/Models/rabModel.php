@@ -4,10 +4,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class KKModel extends Model
+class rabModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'kk';
+    protected $table            = 'rab';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
@@ -15,13 +15,11 @@ class KKModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
+        'id',
         'tgl',
-        'userid',
-        'nama',
-        'nik',
-        'keperluan',
-        'keterangan',
-        'surat',
+        'bidang',
+        'pelaksana',
+        'anggaran',
     ];
 
     // Dates

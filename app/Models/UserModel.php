@@ -28,6 +28,11 @@ class UserModel extends Model
         'ttl',
         'agama',
         'kewarganegaraan',
+        'no_kk',
+        'nama_ayah',
+        'ttlayah',
+        'alamatayah',
+        'scankk',
         'created_at',
         'updated_at'
     ];

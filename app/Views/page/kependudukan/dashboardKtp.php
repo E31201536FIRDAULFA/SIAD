@@ -4,13 +4,18 @@
         <div class="col-12">
           <div class="card mb-4">
          
-          <div class="card-header pb-0 d-flex justify-content-between align-items-center mb-3">
+          <div class="card-header pb-0 justify-content-between align-items-center mb-3">
             <h6>List Pengajuan</h6>
+
             <button type="button" class="btn btn-lg btn-info btn-lg mt-4 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              Tambah Pengajuan Surat KTP
+              Ajukan Tanpa Data Akun
+            </button>
+            <button type="button" class="btn btn-lg btn-success btn-lg mt-4 mb-0" data-bs-toggle="modal" data-bs-target="#add">
+              Ajukan Dengan Data Akun
             </button>
           </div>
 
+          <!--MODAL EDIT + ADD STATIC-->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
@@ -32,30 +37,29 @@
 
                             
                                 <div class="input-group input-group-static mb-3">
-                                  <label class="ms-0">Nama</label>
-                                  <select class="form-control" id="nama" name="nama">
-                                    <option>Pilih warga</option>
-                                    <?php foreach($user as $data): ?>
-                                    <option value="<?= $data['id'] ?>"><?= $data['nama'] ?></option>
-                                    <?php endforeach ?>
-                                  </select>
+                                  <label class="ms-0">NIK</label>
+                                  <input id="nik" type="text" class="form-control" name="nik">
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Nomor KK</label>
+                                  <input id="no_kk" type="number" class="form-control" name="no_kk">
+                                </div>
+
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Nama</label>
+                                  <input id="nama" type="text" class="form-control" name="nama">
+                                </div>
+                        
+                                <div class="input-group input-group-static mb-3">
                                 <label for="exampleFormControlSelect1" class="ms-0">Keperluan</label>
                                   <select class="form-control" id="keperluan" name="keperluan">
-                                 
                                     <option value="Belum Pernah Mengajukan">Belum Pernah Mengajukan</option>
                                   </select>
                                 </div>
-                                
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="ms-0">Upload Scan KK</label>
-                                  <input id="kk" type="file" class="form-control" name="kk">
-                      
-                                </div>
+
                               
-                                <div class="input-group input-group-static mb-3" id="statusktp" hidden>
+                                <div class="input-group input-group-static mb-3" >
                                 <label for="exampleFormControlSelect1" class="ms-0">Status</label>
                                   <select class="form-control" id="keterangan" name="keterangan">
                                     <option value="Pengajuan Sedang Diproses">Pengajuan Sedang Diproses</option>
@@ -78,6 +82,71 @@
                   </div>
                 </div>
 
+
+                 <!--MODAL ADD OTOMATIS-->
+                 <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="add6" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="add6">Tambah KTP</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                      <!--POP UP TAMBAH PENGAJUAN-->
+                        <div class="modal-body">
+                            <form action="#" id="form">
+                            <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Tanggal</label>
+                                  <input id="tglktp" type="date" class="form-control" name="tglktp">
+                                  <input id="idktp"  class="form-control" name="idktp" hidden>
+                                </div>
+
+                            
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Nama</label>
+                                  <select class="form-control" id="namaktp" name="namaktp">
+                                    <option>Pilih warga</option>
+                                    <?php foreach($user as $data): ?>
+                                    <option value="<?= $data['id'] ?>"><?= $data['nama'] ?></option>
+                                    <?php endforeach ?>
+                                  </select>
+                                </div>
+
+                                <div class="input-group input-group-static mb-3">
+                                <label for="exampleFormControlSelect1" class="ms-0">Keperluan</label>
+                                  <select class="form-control" id="keperluanktp" name="keperluanktp">
+                                    <option value="Belum Pernah Mengajukan">Belum Pernah Mengajukan</option>
+                                  </select>
+                                </div>
+                                
+                             
+                              
+                                <div class="input-group input-group-static mb-3" >
+                                <label for="exampleFormControlSelect1" class="ms-0">Status</label>
+                                  <select class="form-control" id="keteranganktp" name="keteranganktp">
+                                    <option value="Pengajuan Sedang Diproses">Pengajuan Sedang Diproses</option>
+                                    <option value="Pengajuan Selesai">Pengajuan Selesai</option>
+                                    <option value="Pengajuan Ditolak, Lengkapi Persyaratan Dengan Benar">Pengajuan Ditolak, Lengkapi Persyaratan Dengan Benar</option>
+                                  </select>
+                                </div>
+
+
+                                <div class="mt-3">
+                                  <button type="button" class="btn bg-gradient-success btn-lg w-100 mt-4 mb-0" onclick="addadm()">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn bg-gradient-info btn-lg w-100 mt-4 mb-0" data-bs-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+
+                
+                <!--MODAL UPLOAD-->
                 <div class="modal fade" id="uploadktp" tabindex="-1" role="dialog" aria-labelledby="upload6" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
@@ -137,8 +206,8 @@
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">NIK</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nomor KK</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Keperluan</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Upload Scan KK</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Surat</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Opsi</th>
@@ -154,24 +223,25 @@
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['tgl'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['nama'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['nik'] ?></span></td>
+                    <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['no_kk'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['keperluan'] ?></span></td>
-                    <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['kk'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['keterangan'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['surat'] ?></span></td>
                   
                     <td class="align-middle text-center">
-                    <button onclick="buttonPreviewkk(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-success mb-0">
+                    <button onclick="buttonPreviewkk(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-info mb-0">
                         Preview KK
-                      <button onclick="buttonCetak(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-success mb-0">
+                  </button>
+                      <button onclick="buttonCetak(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-light mb-0">
                         Cetak
                       </button>
                       <button onclick="buttonUpload(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-info mb-0">
                         Upload Surat
                       </button>
-                      <button onclick="buttonUnduh(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-info mb-0">
+                      <button onclick="buttonUnduh(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-light mb-0">
                         Download Surat
                       </button>
-                      <button onclick="buttonEdit(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-warning mb-0">
+                      <button onclick="buttonEdit(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-info mb-0">
                         Edit
                       </button>
                       <button onclick="buttonDelete(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-danger mb-0">
@@ -344,18 +414,30 @@ function buttonEdit(id) {
     success: function (respond) {
       console.log(respond.data);
 
-      $('#id').val(respond.data.id);
-      $('#tgl').val(respond.data.tgl);
-      $('#nama').val(respond.data.nama);
-      $('#nik').val(respond.data.nik);
-      $('#keperluan').val(respond.data.keperluan);
-      // $('#kk').val(respond.data.kk);
-      $('#keterangan').val(respond.data.keterangan);
+      $("#id").val(respond.data.id);
+      $("#tgl").val(respond.data.tgl);
+      $("#nik").val(respond.data.nik);
+      $("#no_kk").val(respond.data.no_kk);
+      $("#nama").val(respond.data.nama);
+      $("#keperluan").val(respond.data.keperluan); 
+      $("#keterangan").val(respond.data.keterangan);
       // $('[name="surat"]').val(respond.data.surat);
+
+      // // Disable input fields
+      // $('#id').prop('disabled', true);
+      // $('#tgl').prop('disabled', true);
+      // $('#nama').prop('disabled', true);
+      // $('#nik').prop('disabled', true);
+      // $('#keperluan').prop('disabled', true);
+      // // $('#kk').prop('disabled', true);
+      
+      // // $('[name="surat"]').prop('disabled', true);
 
       $("#exampleModal").modal("show");
       $(".modal-title").text("Edit");
       $("#statusktp").removeAttr("hidden");
+      $('#akun').hide();
+      $('#scan').hide();
     },
     error: function (jqXHR, textStatus, errorThrown) {
       console.log(jqXHR);

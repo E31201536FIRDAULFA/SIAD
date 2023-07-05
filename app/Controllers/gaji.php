@@ -5,7 +5,7 @@ namespace App\Controllers;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\KehilanganModel;
 use App\Models\gajiModel;
-use App\Models\KKModel;
+use App\Models\rabModel;
 use App\Models\KTPModel;
 use App\Models\skckModel;
 use App\Models\SKTMModel;
@@ -23,10 +23,124 @@ class gaji extends BaseController
     public function index()
     {
         $model = new gajiModel();
-        $modelKK = new KKModel();
+        $modelKTP = new KTPModel();
+        $modelSKCK = new skckModel();
+        $rab = new rabModel();
+        $modelSKTM = new SKTMModel();
+        $modelSPU = new SPUModel();
+        $modelKehilangan = new KehilanganModel();
+        $modelUser = new UserModel();
+        if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
+                 
+                if (session()->get('role') == 'warga'){
+                $data = [
+                    'userid' => $this->request->getPost('id'),
+                    'tgl' => $this->request->getPost('tgl'),
+                    'nama' => $this->request->getPost('nama'),
+                    'nik' => $this->request->getPost('nik'),
+                    'no_kk' => $this->request->getPost('no_kk'),
+                    'ttl' => $this->request->getPost('ttl'),
+                    'pekerjaan' => $this->request->getPost('pekerjaan'),
+                    'no_kip' => $this->request->getPost('no_kip'),
+                    'no_kis' => $this->request->getPost('no_kis'),
+                    'ket' => $this->request->getPost('ket'),
+                    'scankk' => $this->request->getPost('scankk'),
+                    'status' => 'new',
+                    'Surat' => null,
+                ];
+                } else {
+                    $isAdmin = $this->request->getVar('nama');
+                    $dataUser = $modelUser->find($isAdmin);
+                    $data =[
+                        'userid' => $isAdmin,
+                        'tgl' => $this->request->getPost('tgl'),
+                        'nama' => $dataUser['nama'],
+                        'nik' => $dataUser['nik'],
+                        'no_kk' => $dataUser['no_kk'],
+                        'ttl' => $dataUser['ttl'],
+                        'pekerjaan' => $dataUser['pekerjaan'],
+                        'no_kip' => $this->request->getPost('no_kip'),
+                        'no_kis' => $this->request->getPost('no_kis'),
+                        'ket' => $this->request->getPost('ket'),
+                        'scankk' => $dataUser['scankk'],
+                        'status' => 'new',
+                        'Surat' => null,
+                    ];
+                } 
+                $model->save($data);
+                return $this->response->setJSON([
+                    'status' => true,
+                    'icon' => 'success',
+                    'title' => 'Tambah Pengajuan Surat Ket Penghasilan Berhasil!',
+                    'text' => 'Pop up ini akan hilang dalam 3 detik.',
+                ]); 
+            }
+            $model->where('status', 'new')->set(['status' => 'Pengajuan Sedang Diproses'])->update();
+            return view('page/surat/dashboardGaji',[
+                'content' => $model->findAll(),
+                'user' => $modelUser->where('role', 'warga')->findAll(),
+                'isGajiNew' => $model->where('status', 'new')->first(),
+                'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
+                'isKTPNew' => $modelKTP->where('keterangan', 'new')->first(),
+                'isSKCKNew' => $modelSKCK->where('status', 'new')->first(),
+                'isSKTMNew' => $modelSKTM->where('status', 'new')->first(),
+                'isSPUNew' => $modelSPU->where('status', 'new')->first(),
+            ]);
+        }
+
+
+    public function addstatic()
+    {
+        $model = new gajiModel();
+        $modelKTP = new KTPModel();
+        $modelSKCK = new skckModel();
+        $rab = new rabModel();
+        $modelSKTM = new SKTMModel();
+        $modelSPU = new SPUModel();
+        $modelKehilangan = new KehilanganModel();
+        $modelUser = new UserModel();
+        if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
+            $data = [
+                'tgl' => $this->request->getPost('tgl'),
+                'nama' => $this->request->getPost('nama'),
+                'nik' => $this->request->getPost('nik'),
+                'no_kk' => $this->request->getPost('no_kk'),
+                'ttl' => $this->request->getPost('ttl'),
+                'pekerjaan' => $this->request->getPost('pekerjaan'),
+                'no_kip' => $this->request->getPost('no_kip'),
+                'no_kis' => $this->request->getPost('no_kis'),
+                'ket' => $this->request->getPost('ket'),
+                'status' => $this->request->getPost('status'),
+                'Surat' => null,
+            ];
+            $model->save($data);
+            return $this->response->setJSON([
+                'status' => true,
+                'icon' => 'success',
+                'title' => 'Tambah Pengajuan Surat Ket Penghasilan Berhasil!',
+                'text' => 'Pop up ini akan hilang dalam 3 detik.',
+            ]); 
+        }
+        $model->where('status', 'new')->set(['status' => 'Pengajuan Sedang Diproses'])->update();
+        return view('page/surat/dashboardGaji',[
+            'content' => $model->findAll(),
+            'user' => $modelUser->where('role', 'warga')->findAll(),
+            'isGajiNew' => $model->where('status', 'new')->first(),
+            'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
+            'isKTPNew' => $modelKTP->where('keterangan', 'new')->first(),
+            'isSKCKNew' => $modelSKCK->where('status', 'new')->first(),
+            'isSKTMNew' => $modelSKTM->where('status', 'new')->first(),
+            'isSPUNew' => $modelSPU->where('status', 'new')->first(),
+        ]);
+    }
+
+
+    public function addadm(){
+        $model = new gajiModel();
         $modelKTP = new KTPModel();
         $modelSKCK = new skckModel();
         $modelSKTM = new SKTMModel();
+        $rab = new rabModel();
         $modelSPU = new SPUModel();
         $modelKehilangan = new KehilanganModel();
         $modelUser = new UserModel();
@@ -34,10 +148,11 @@ class gaji extends BaseController
             $isAdmin = $this->request->getVar('nama');
             $dataUser = $modelUser->find($isAdmin ? $isAdmin : session()->get('id'));
             $data = [
-                'userid' => $dataUser['id'],
+              
                 'tgl' => $this->request->getPost('tgl'),
                 'nama' => $dataUser['nama'],
                 'nik' => $dataUser['nik'],
+                'no_kk' => $dataUser['no_kk'],
                 'ttl' => $dataUser['ttl'],
                 'pekerjaan' => $dataUser['pekerjaan'],
                 'no_kip' => $this->request->getPost('no_kip'),
@@ -60,12 +175,19 @@ class gaji extends BaseController
             'user' => $modelUser->where('role', 'warga')->findAll(),
             'isGajiNew' => $model->where('status', 'new')->first(),
             'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
-            'isKKNew' => $modelKK->where('keterangan', 'new')->first(),
             'isKTPNew' => $modelKTP->where('keterangan', 'new')->first(),
             'isSKCKNew' => $modelSKCK->where('status', 'new')->first(),
             'isSKTMNew' => $modelSKTM->where('status', 'new')->first(),
             'isSPUNew' => $modelSPU->where('status', 'new')->first(),
         ]);
+    
+    }
+
+    public function ajukan()
+    {
+        $user = new UserModel();
+        $dataUser = $user->find(session()->get('id'));
+        return $this->response->setJSON($dataUser);
     }
 
     // Data Surat gaji (read)
@@ -107,19 +229,23 @@ class gaji extends BaseController
      //Edit Surat gaji
      public function editgaji($id)
      {
+      
         $model = new gajiModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
+          
             $data = [
+                'userid' => $this->request->getPost('id'),
                 'tgl' => $this->request->getPost('tgl'),
                 'nama' => $this->request->getPost('nama'),
                 'nik' => $this->request->getPost('nik'),
+                'no_kk' => $this->request->getPost('no_kk'),
                 'ttl' => $this->request->getPost('ttl'),
                 'pekerjaan' => $this->request->getPost('pekerjaan'),
                 'no_kip' => $this->request->getPost('no_kip'),
                 'no_kis' => $this->request->getPost('no_kis'),
                 'ket' => $this->request->getPost('ket'),
                 'status' => $this->request->getPost('status'),
-              
+
             ];
           
             $model->update($id, $data);

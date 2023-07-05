@@ -142,9 +142,19 @@
   
     <table>
       <tr> <p> Dengan ini menerangkan dengan sebenarnya bahwa :</p>
+        <td>Tanggal</td>
+        <td>:</td>
+        <td><?= $content['tgl'] ?></td>
+      </tr>
+      <tr>
         <td>NIK</td>
         <td>:</td>
         <td><?= $content['nik'] ?></td>
+      </tr>
+      <tr>
+        <td>Nomor KK</td>
+        <td>:</td>
+        <td><?= $content['no_kk'] ?></td>
       </tr>
       <tr>
         <td>Nama</td>

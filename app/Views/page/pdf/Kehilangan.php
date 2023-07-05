@@ -140,6 +140,11 @@
         <td><?= $content['nik'] ?></td>
       </tr>
       <tr>
+        <td>Nomor KK</td>
+        <td>:</td>
+        <td><?= $content['no_kk'] ?></td>
+      </tr>
+      <tr>
         <td>Nama</td>
         <td>:</td>
         <td><?= $content['nama'] ?></td>

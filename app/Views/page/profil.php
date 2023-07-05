@@ -81,7 +81,7 @@
                                 <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">Agama</label>
                                   <select id="agama" class="form-control" name="agama" disabled>
-                                    <option value="">Pilih Agama</option>
+                                    
                                     <option value="Islam">Islam</option>
                                     <option value="Kristen">Kristen</option>
                                     <option value="Katolik">Katolik</option>
@@ -90,10 +90,35 @@
                                     <option value="Konghucu">Konghucu</option>
                                   </select>
                                 </div>
+
                         <div class="input-group input-group-static mb-3">
                             <label class="ms-0">Tanggal Lahir</label>
                             <input id="ttl" type="date" class="form-control" name="ttl" value="<?= $user['ttl'] ?>" disabled>
                         </div>
+
+                        <div class="input-group input-group-static mb-3">
+                            <label class="ms-0">Nomor KK</label>
+                            <input id="no_kk" type="number" class="form-control" name="no_kk" value="<?= $user['no_kk'] ?>" disabled>
+                        </div>
+
+                        <div class="input-group input-group-static mb-3">
+                            <label class="ms-0">Nama Ayah</label>
+                            <input id="nama_ayah" type="text" class="form-control" name="nama_ayah" value="<?= $user['nama_ayah'] ?>" disabled>
+                        </div>
+
+                        <div class="input-group input-group-static mb-3">
+                            <label class="ms-0">Tanggal Lahir Ayah</label>
+                            <input id="ttlayah" type="date" class="form-control" name="ttlayah" value="<?= $user['ttlayah'] ?>" disabled>
+                        </div>
+
+                        <div class="input-group input-group-static mb-3">
+                            <label class="ms-0">Alamat Ayah</label>
+                            <input id="alamat_ayah" type="text" class="form-control" name="alamatayah" value="<?= $user['alamatayah'] ?>" disabled>
+                        </div>
+
+
+
+
                         <button type="submit" class="btn btn-lg btn-info btn-lg mt-4 mb-0">Simpan</button>
                     </form>
                 </div>

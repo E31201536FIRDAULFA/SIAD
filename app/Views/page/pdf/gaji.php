@@ -121,6 +121,16 @@
   <div id="pembuka">&emsp; &emsp; &emsp; Kami PJ Kepala Desa Panduman Kecamatan Jelbuk Jember, menerangkan dengan sebenarnya bahwa :</div>
   <div id="tempat-tgl">
     <table>
+    <tr>
+        <td>Tanggal</td>
+        <td>:</td>
+        <td><?= $content['tgl'] ?></td>
+      </tr>
+    <tr>
+        <td>Nomor KK</td>
+        <td>:</td>
+        <td><?= $content['no_kk'] ?></td>
+      </tr>
       <tr>
         <td>NIK</td>
         <td>:</td>

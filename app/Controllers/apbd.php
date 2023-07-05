@@ -6,7 +6,7 @@ use CodeIgniter\API\ResponseTrait;
 use App\Models\APBDModel;
 use App\Models\KehilanganModel;
 use App\Models\gajiModel;
-use App\Models\KKModel;
+use App\Models\rabModel;
 use App\Models\KTPModel;
 use App\Models\skckModel;
 use App\Models\SKTMModel;
@@ -21,19 +21,27 @@ class apbd extends BaseController
         $model = new APBDModel();
         $modelKehilangan = new KehilanganModel();
         $modelGaji = new gajiModel();
-        $modelKK = new KKModel();
         $modelKTP = new KTPModel();
+        $rab = new rabModel();
         $modelSKCK = new skckModel();
         $modelSKTM = new SKTMModel();
         $modelSPU = new SPUModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
             $data = [
                 'tgl' => $this->request->getPost('tgl'),
+                'bidang' => $this->request->getPost('bidang'),
+                'kepentingan' => $this->request->getPost('kepentingan'),
                 'penyelenggara' => $this->request->getPost('penyelenggara'),
                 'jenis' => $this->request->getPost('jenis'),
                 'anggaran' => $this->request->getPost('anggaran'),
                 'sumberdana' => $this->request->getPost('sumberdana'),
                 'tgl_pembahasan' => $this->request->getPost('tgl_pembahasan'),
+                'uraian' => $this->request->getPost('uraian'),
+                'jml' => $this->request->getPost('jml'),
+                'satuan' => $this->request->getPost('satuan'),
+                'harga' => $this->request->getPost('harga'),
+                'anggarankeluar' => $this->request->getPost('anggarankeluar'),
+                'ket' => $this->request->getPost('ket'),
             ];
                 $model->save($data);
                 return $this->response->setJSON([
@@ -44,9 +52,9 @@ class apbd extends BaseController
                 ]); 
             }
         return view('page/keuangan/dashboardApbd',[
+            'content' => $model->findAll(),
             'isGajiNew' => $modelGaji->where('status', 'new')->first(),
             'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
-            'isKKNew' => $modelKK->where('keterangan', 'new')->first(),
             'isKTPNew' => $modelKTP->where('keterangan', 'new')->first(),
             'isSKCKNew' => $modelSKCK->where('status', 'new')->first(),
             'isSKTMNew' => $modelSKTM->where('status', 'new')->first(),
@@ -80,11 +88,19 @@ class apbd extends BaseController
             $id = $this->request->getPost('id');
                 $data = [
                     'tgl' => $this->request->getPost('tgl'),
+                    'bidang' => $this->request->getPost('bidang'),
+                    'kepentingan' => $this->request->getPost('kepentingan'),
                     'penyelenggara' => $this->request->getPost('penyelenggara'),
                     'jenis' => $this->request->getPost('jenis'),
                     'anggaran' => $this->request->getPost('anggaran'),
                     'sumberdana' => $this->request->getPost('sumberdana'),
                     'tgl_pembahasan' => $this->request->getPost('tgl_pembahasan'),
+                    'uraian' => $this->request->getPost('uraian'),
+                    'jml' => $this->request->getPost('jml'),
+                    'satuan' => $this->request->getPost('satuan'),
+                    'harga' => $this->request->getPost('harga'),
+                    'anggarankeluar' => $this->request->getPost('anggarankeluar'),
+                    'ket' => $this->request->getPost('ket'),
                 
             ];
             $model->update($id, $data);

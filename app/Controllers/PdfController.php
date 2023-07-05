@@ -4,7 +4,7 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use Dompdf\Dompdf;
 use App\Models\KTPModel;
-use App\Models\KKModel;
+use App\Models\rabModel;
 use App\Models\KehilanganModel;
 use App\Models\skckModel;
 use App\Models\SPUModel;
@@ -244,6 +244,15 @@ class PdfController extends Controller
         $dompdf->stream($filename);
         
 
+    }
+
+    public function cetak($id)
+    {
+        $model = new APBDModel();
+        $data = [
+            'content' => $model->find($id),
+        ];
+        return view('page/pdf/spp', $data);
     }
     
 }

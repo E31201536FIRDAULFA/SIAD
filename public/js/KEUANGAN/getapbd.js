@@ -15,6 +15,13 @@ $(document).ready(function () {
                 let anggaran = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].anggaran);
                 let sumberdana = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].sumberdana);
                 let tgl_pembahasan = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].tgl_pembahasan);
+                let uraian = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].uraian);
+                let jml = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].jml);
+                let satuan = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].satuan);
+                let harga = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].harga);
+                let anggarankeluar = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].anggarankeluar);
+                let ket = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].ket);
+
                 let buttonEdit = $('<button type="button" class="btn bg-gradient-success mb-0"></button>').text('Edit').attr('id', respond[i].id);
                 buttonEdit.click(function () {
                     $('#form')[0].reset();
@@ -33,6 +40,12 @@ $(document).ready(function () {
                             $('[name="anggaran"]').val(respond.data.anggaran);
                             $('[name="sumberdana"]').val(respond.data.sumberdana);
                             $('[name="tgl_pembahasan"]').val(respond.data.tgl_pembahasan);
+                            $('[name="uraian"]').val(respond.data.uraian);
+                            $('[name="jml"]').val(respond.data.jml);
+                            $('[name="satuan"]').val(respond.data.satuan);
+                            $('[name="harga"]').val(respond.data.harga);
+                            $('[name="anggarankeluar"]').val(respond.data.anggarankeluar);
+                            $('[name="ket"]').val(respond.data.ket);
 
                             $('#exampleModal').modal('show');
                             $('.modal-title').text('Edit');
@@ -95,7 +108,7 @@ $(document).ready(function () {
                     jenis,
                     anggaran,
                     sumberdana,
-                    tgl_pembahasan, buttonEdit, buttonDelete);
+                    tgl_pembahasan, uraian, jml, satuan, harga, anggaran, ket, buttonEdit, buttonDelete);
                 tableBody.append(row);
             }
         }

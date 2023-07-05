@@ -26,11 +26,16 @@ function saveUsers() {
                 text: 'Email harus diisi!'
             });
         } else {
+            var form = $('#form')[0]; // Assuming 'form' is the ID of your form element
+            var formData = new FormData(form);
+
             $.ajax({
                 url: url,
                 type: 'POST',
-                data: $('#form').serialize(),
+                data: formData,
                 dataType: "JSON",
+                processData: false, // Important: prevent jQuery from automatically transforming the data into a query string
+                contentType: false, // Important: tell jQuery not to set the Content-Type header
                 success: function (respond) {
                     if (respond.status == true) {
                         Swal.fire({
@@ -52,14 +57,15 @@ function saveUsers() {
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    swal.fire({
+                    Swal.fire({
                         icon: 'error',
                         title: 'Terjadi error!',
                         text: 'Silahkan coba lagi.'
-                    })
+                    });
                 }
             });
         }
+
     } else {
         url = base_url + 'dashboard/users';
         if (password != password_confirm) {
@@ -94,11 +100,16 @@ function saveUsers() {
                 text: 'Email harus diisi!'
             });
         } else {
+            var form = $('#form')[0]; // Assuming 'form' is the ID of your form element
+            var formData = new FormData(form);
+
             $.ajax({
                 url: url,
                 type: 'POST',
-                data: $('#form').serialize(),
+                data: formData,
                 dataType: "JSON",
+                processData: false, // Important: prevent jQuery from automatically transforming the data into a query string
+                contentType: false, // Important: tell jQuery not to set the Content-Type header
                 success: function (respond) {
                     if (respond.status == true) {
                         Swal.fire({
@@ -120,11 +131,11 @@ function saveUsers() {
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    swal.fire({
+                    Swal.fire({
                         icon: 'error',
                         title: 'Terjadi error!',
                         text: 'Silahkan coba lagi.'
-                    })
+                    });
                 }
             });
         }

@@ -19,11 +19,13 @@ class KehilanganModel extends Model
         'userid',
         'nama', 
         'nik', 
+        'no_kk',
         'jk', 
         'pekerjaan', 
         'alamat', 
         'keperluan', 
         'ket', 
+        'scankk',
         'status', 
         'suratkehilangan'
     ];

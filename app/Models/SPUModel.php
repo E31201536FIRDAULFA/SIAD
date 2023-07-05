@@ -19,12 +19,14 @@ class SPUModel extends Model
         'userid',
         'nama',
         'nik',
+        'no_kk',
         'jk',
         'ttl',
         'alamat',
         'nama_usaha',
         'jenis_usaha',
         'alamat_usaha',
+        'scankk',
         'status',
         'suratspu'
     ];
