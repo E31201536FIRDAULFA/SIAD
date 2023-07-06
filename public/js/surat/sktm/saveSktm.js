@@ -249,6 +249,8 @@ function saveSktm() {
 
 function addadm() {
     const id = $("#idsktm").val();
+    //userid biar ketauan siapa yang dipilih, blok
+    const userid = $("#idusersktm").val();
     const tgl = $("#tglsktm").val();
     const nik = $("#niksktm").val();
     const no_kk = $("#no_kksktm").val();
@@ -271,6 +273,7 @@ function addadm() {
         type: 'POST',
         data: {
             "id": id,
+            "userid": userid,
             "tgl": tgl,
             "nik": nik,
             "no_kk": no_kk,

@@ -22,7 +22,7 @@
                   </div>
                 </div>
                 <div class="card-body p-3">
-                    <form id="form" action="<?= base_url('dashboard/profile/'.session()->get('id')) ?>" method="post">
+                    <form id="form" action="<?= base_url('dashboard/profile/'.session()->get('id')) ?>" method="post" enctype="multipart/form-data">
                         <input id="id" type="text" class="form-control" name="id" value="<?= $user['id'] ?>" hidden>
                         <div class="input-group input-group-static mb-3">
                             <label class="ms-0">NIK</label>
@@ -116,8 +116,10 @@
                             <input id="alamat_ayah" type="text" class="form-control" name="alamatayah" value="<?= $user['alamatayah'] ?>" disabled>
                         </div>
 
-
-
+                        <div class="input-group input-group-static mb-3">
+                            <label class="ms-0">Scan KK</label>
+                            <input id="scankk" type="file" class="form-control" name="scankk" disabled>
+                        </div>
 
                         <button type="submit" class="btn btn-lg btn-info btn-lg mt-4 mb-0">Simpan</button>
                     </form>
