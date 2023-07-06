@@ -62,7 +62,7 @@ class Dashboard extends BaseController
                 $data = [
                     'nama' => $this->request->getPost('nama'),
                     'nik' => $this->request->getPost('nik'),
-                    'username' => $this->request->getPost('username'),
+                    'username' => $this->request->cgetPost('username'),
                     'email' => $this->request->getPost('email'),
                     'role' => $this->request->getPost('role'),
                     'jk' => $this->request->getPost('jk'),
