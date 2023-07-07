@@ -16,6 +16,10 @@ class Users extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
+            'nik' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+            ],
             'nama' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
@@ -32,15 +36,38 @@ class Users extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => '150',
             ],
-            'picture' => [
-                'type' => 'VARCHAR',
-                'constraint' => '255',
-                'null' => true,
-            ],
             'role' => [
-                'type' => 'ENUM("admin", "pegawai", "penduduk")',
-                'default' => 'penduduk',
+                'type' => 'ENUM("masterdata","warga","pelayanan","pemerintahan","keuangan")',
+                'default' => 'warga',
                 'null' => false,
+            ],
+            'jk' => [
+                'type' => 'VARCHAR',
+                'constraint' => '150',
+            ],
+            'alamat' => [
+                'type' => 'VARCHAR',
+                'constraint' => '150',
+            ],
+            'pekerjaan' => [
+                'type' => 'VARCHAR',
+                'constraint' => '150',
+            ],
+            'kawin' => [
+                'type' => 'VARCHAR',
+                'constraint' => '150',
+            ],
+            'agama' => [
+                'type' => 'VARCHAR',
+                'constraint' => '150'
+            ],
+            'kewarganegaraan' => [
+                'type' => 'VARCHAR',
+                'constraint' => '150'
+            ],
+            'ttl' => [
+                'type' => 'VARCHAR',
+                'constraint' => '150',
             ],
             'created_at' => [
                 'type'    => 'TIMESTAMP',

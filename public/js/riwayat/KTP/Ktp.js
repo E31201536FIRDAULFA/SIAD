@@ -13,6 +13,7 @@ $(document).ready(function () {
                 let tgl = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].tgl);
                 let nama = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nama);
                 let nik = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nik);
+                let no_kk = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].no_kk);
                 let keperluan = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].keperluan);
                 let keterangan = $('<td class="align-middle text-center"> <span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].keterangan);
                 let surat = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].surat);
@@ -96,6 +97,7 @@ $(document).ready(function () {
                 row.append(no, tgl,
                     nama,
                     nik,
+                    no_kk,
                     keperluan,
                     keterangan, surat, buttonUnduh);
                 tableBody.append(row);

@@ -1,34 +1,39 @@
 function saveKehilangan() {
     const id = $("#id").val();
     const tgl = $("#tgl").val();
+    const nik = $("#nik").val();
+    const no_kk = $("#no_kk").val();
     const nama = $("#nama").val();
     const jk = $("#jk").val();
-    const nik = $("#nik").val();
     const pekerjaan = $("#pekerjaan").val();
     const alamat = $("#alamat").val();
     const keperluan = $("#keperluan").val();
     const ket = $("#ket").val();
     const status = $("#status").val();
 
-
     if (id) {
         url = base_url + 'dashboard/kehilangan/update/' + id;
-        if (nama.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nama harus diisi!'
-            });
-        } else if (tgl.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nama harus diisi!'
-            });
-        } else if (jk.length == "") {
+        if (tgl.length == "") {
             Swal.fire({
                 title: 'Oops...',
                 text: 'Nama harus diisi!'
             });
         } else if (nik.length == "") {
+            Swal.fire({
+                title: 'Oops...',
+                text: 'Nama harus diisi!'
+            });
+        } else if (no_kk.length == "") {
+            Swal.fire({
+                title: 'Oops...',
+                text: 'Nama harus diisi!'
+            });
+        } else if (nama.length == "") {
+            Swal.fire({
+                title: 'Oops...',
+                text: 'Nama harus diisi!'
+            });
+        } else if (jk.length == "") {
             Swal.fire({
                 title: 'Oops...',
                 text: 'Nama harus diisi!'
@@ -41,12 +46,7 @@ function saveKehilangan() {
         } else if (alamat.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Nama harus diisi!'
-            });
-        } else if (keperluan.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nama harus diisi!'
+                text: 'alamat harus diisi!'
             });
         } else if (ket.length == "") {
             Swal.fire({
@@ -56,9 +56,8 @@ function saveKehilangan() {
         } else if (status.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Nama harus diisi!'
+                text: 'status harus diisi!'
             });
-
         } else {
             $.ajax({
                 url: url,
@@ -97,54 +96,52 @@ function saveKehilangan() {
             });
         }
     } else {
-        url = base_url + 'dashboard/kehilangan';
-        if (nama.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Nama harus diisi!'
-            });
-        } else if (tgl.length == "") {
+        url = base_url + 'dashboard/kehilangan/addstatic/';
+        if (tgl.length == "") {
             Swal.fire({
                 title: 'Oops...',
                 text: 'Tanggal harus diisi!'
             });
-
-        } else if (jk.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Jenis Kelamin harus diisi!'
-            });
         } else if (nik.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Nik harus diisi!'
+                text: 'Nama harus diisi!'
+            });
+        } else if (no_kk.length == "") {
+            Swal.fire({
+                title: 'Oops...',
+                text: 'Nama harus diisi!'
+            });
+        } else if (nama.length == "") {
+            Swal.fire({
+                title: 'Oops...',
+                text: 'Nama harus diisi!'
+            });
+        } else if (jk.length == "") {
+            Swal.fire({
+                title: 'Oops...',
+                text: 'Nama harus diisi!'
             });
         } else if (pekerjaan.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Pekerjaan harus diisi!'
+                text: 'Nama harus diisi!'
             });
         } else if (alamat.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Alamat harus diisi!'
-            });
-        } else if (keperluan.length == "") {
-            Swal.fire({
-                title: 'Oops...',
-                text: 'Keperluan harus diisi!'
+                text: 'alamat harus diisi!'
             });
         } else if (ket.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Keterangan harus diisi!'
+                text: 'Nama harus diisi!'
             });
         } else if (status.length == "") {
             Swal.fire({
                 title: 'Oops...',
-                text: 'Status harus diisi!'
+                text: 'status harus diisi!'
             });
-
         } else {
             $.ajax({
                 url: url,
@@ -183,6 +180,68 @@ function saveKehilangan() {
             });
         }
     }
+}
+
+function addadm() {
+    const id = $("#idhilang").val();
+    const tgl = $("#tglhilang").val();
+    const nik = $("#nikhilang").val();
+    const no_kk = $("#no_kkhilang").val();
+    const nama = $("#namahilang").val();
+    const jk = $("#jkhilang").val();
+    const pekerjaan = $("#pekerjaanhilang").val();
+    const alamat = $("#alamathilang").val();
+    const keperluan = $("#keperluanhilang").val();
+    const ket = $("#kethilang").val();
+    const status = $("#statushilang").val();
+
+
+    url = base_url + 'dashboard/kehilangan/addadm/';
+    $.ajax({ //tembak data ke db
+        url: url,
+        type: 'POST',
+        data: {
+            "id": id,
+            "tgl": tgl,
+            "nik": nik,
+            "no_kk": no_kk,
+            "nama": nama,
+            "jk": jk,
+            "pekerjaan": pekerjaan,
+            "alamat": alamat,
+            "keperluan": keperluan,
+            "ket": ket,
+            "status": status,
+        },
+        dataType: "JSON",
+        success: function (respond) {
+            if (respond.status == true) {
+                Swal.fire({
+                    icon: respond.icon,
+                    title: respond.title,
+                    text: respond.text,
+                    timer: 3000,
+                    showCancelButton: false,
+                    showConfirmButton: false
+                }).then(function () {
+                    location.reload();
+                });
+            } else if (respond.status == false) {
+                Swal.fire({
+                    icon: respond.icon,
+                    title: respond.title,
+                    text: respond.text,
+                });
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            swal.fire({
+                icon: 'error',
+                title: 'Terjadi error!',
+                text: 'Silahkan coba lagi.'
+            })
+        }
+    });
 }
 
 function upload() {

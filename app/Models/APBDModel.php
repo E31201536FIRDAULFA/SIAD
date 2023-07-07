@@ -16,11 +16,19 @@ class APBDModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'tgl',
+        'bidang',
+        'kepentingan',
         'penyelenggara',
         'jenis',
         'anggaran',
         'sumberdana',
         'tgl_pembahasan',
+        'uraian',
+        'jml',
+        'satuan',
+        'harga',
+        'anggarankeluar',
+        'ket',
     ];
 
     // Dates

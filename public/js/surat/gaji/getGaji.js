@@ -48,6 +48,35 @@ $(document).ready(function () {
                     });
                 });
 
+                let buttonLihat = $('<button type="button" class="btn bg-gradient-info mb-0"></button>').text('Upload Surat').attr('id', respond[i].id);
+                buttonUpload.click(function () {
+                    $('#formupload')[0].reset();
+                    var id = $(this).attr('id');
+                    $.ajax({
+                        url: base_url + 'dashboard/gaji/lihat/' + id,
+                        type: 'GET',
+                        dataType: 'JSON',
+                        success: function (respond) {
+                            console.log(respond.data);
+
+
+
+                            $('#id').val(respond.data.id);
+                            $('#upload').modal('show');
+                            $('.modal-title').text('Upload');
+
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(jqXHR);
+                            swal.fire({
+                                icon: 'error',
+                                title: errorThrown,
+                                text: 'Error get data from ajax.'
+                            })
+                        }
+                    });
+                });
+
                 let buttonEdit = $('<button type="button" class="btn bg-gradient-warning mb-0"></button>').text('Edit').attr('id', respond[i].id);
                 buttonEdit.click(function () {
                     $('#form')[0].reset();
@@ -124,6 +153,19 @@ $(document).ready(function () {
                     });
                 });
 
+                let buttonCetak = $('<button>').attr({
+                    'type': 'button',
+                    'class': 'btn bg-gradient-success mb-0',
+                    'id': respond[i].id
+                }).text('Cetak');
+
+                buttonCetak.on('click', function () {
+                    var id = $(this).attr('id');
+                    var redirectUrl = base_url + 'dashboard/pdf/pdfgaji/' + id; // Change the URL to the desired destination
+
+                    window.location.href = redirectUrl; // Redirect to the desired link
+                });
+
                 let buttonDelete = $('<button type="button" class="btn bg-gradient-danger mb-0"></button>').text('Delete').attr('id', respond[i].id);
                 buttonDelete.click(function () {
                     var id = $(this).attr('id');
@@ -175,7 +217,7 @@ $(document).ready(function () {
                     no_kis,
                     ket,
                     status,
-                    Surat, buttonUpload, buttonUnduh, buttonEdit, buttonDelete);
+                    Surat, buttonCetak, buttonUpload, buttonUnduh, buttonEdit, buttonDelete);
                 tableBody.append(row);
             }
         }

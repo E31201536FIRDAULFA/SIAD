@@ -1,43 +1,45 @@
-$(document).ready(function() {
+$(document).ready(function () {
     $.ajax({
-        url: base_url+"dashboard/users/data",
+        url: base_url + "dashboard/users/data",
         type: "GET",
         dataType: "json",
-        success: function(respond) {
+        success: function (respond) {
             let tableBody = $('#table tbody');
             let number = 1;
             for (let i = 0; i < respond.length; i++) {
                 let row = $('<tr></tr>');
                 let no = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(number++);
+
                 let nama = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nama);
+                let nik = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].nik);
                 let username = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].username);
-                let email = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].email);  
+                let email = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].email);
                 let role = $('<td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"></span></td>').text(respond[i].role);
                 let buttonEdit = $('<button type="button" class="btn bg-gradient-info mb-0"></button>').text('Edit').attr('id', respond[i].id);
-                buttonEdit.click(function() {
-                    $('#form')[0].reset(); 
+                buttonEdit.click(function () {
+                    $('#form')[0].reset();
                     var userId = $(this).attr('id');
                     $.ajax({
-                        url : base_url + 'dashboard/users/update/' + userId,
+                        url: base_url + 'dashboard/users/update/' + userId,
                         type: 'GET',
                         dataType: 'JSON',
-                        success: function(respond)
-                        {
+                        success: function (respond) {
                             console.log(respond.data);
-                
+
                             $('[name="id"]').val(respond.data.id);
+
                             $('[name="nama"]').val(respond.data.nama);
+                            $('[name="nik"]').val(respond.data.nik);
                             $('[name="username"]').val(respond.data.username);
                             $('[name="email"]').val(respond.data.email);
                             $('[name="role"]').val(respond.data.role);
-                
+
                             $('#exampleModal').modal('show');
-                            $('.modal-title').text('Edit'); 
+                            $('.modal-title').text('Edit');
                             $('#pass').hide();
                             $('#pass2').hide();
                         },
-                        error: function (jqXHR, textStatus, errorThrown)
-                        {
+                        error: function (jqXHR, textStatus, errorThrown) {
                             console.log(jqXHR);
                             swal.fire({
                                 icon: 'error',
@@ -48,7 +50,7 @@ $(document).ready(function() {
                     });
                 });
                 let buttonDelete = $('<button type="button" class="btn bg-gradient-danger mb-0"></button>').text('Delete').attr('id', respond[i].id);
-                buttonDelete.click(function() {
+                buttonDelete.click(function () {
                     var userId = $(this).attr('id');
                     Swal.fire({
                         title: 'Anda yakin?',
@@ -62,7 +64,7 @@ $(document).ready(function() {
                         if (respond.value) {
                             var base_url = 'http://localhost:8080/';
                             $.ajax({
-                                url: base_url+'dashboard/users/delete/'+userId,
+                                url: base_url + 'dashboard/users/delete/' + userId,
                                 type: 'GET',
                                 dataType: 'JSON',
                                 success: function (respond) {
@@ -73,9 +75,9 @@ $(document).ready(function() {
                                         showConfirmButton: false,
                                         timer: 2000
                                     })
-                                    .then (function() {
-                                        location.reload();
-                                    });
+                                        .then(function () {
+                                            location.reload();
+                                        });
                                 },
                                 error: function (xhr, ajaxOptions, thrownError) {
                                     swal.fire(thrownError, "Ada yang salah! coba lagi beberapa saat.", "error");
@@ -88,7 +90,7 @@ $(document).ready(function() {
                         location.reload();
                     })
                 });
-                row.append(no, nama, username, email, role, buttonEdit, buttonDelete);
+                row.append(no, nama, nik, username, email, role, buttonEdit, buttonDelete);
                 tableBody.append(row);
             }
         }

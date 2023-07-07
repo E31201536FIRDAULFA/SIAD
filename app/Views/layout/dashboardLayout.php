@@ -19,6 +19,8 @@
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
   <link id="pagestyle" href="<?= base_url('assets/css/material-dashboard.css?v=3.0.4') ?>" rel="stylesheet" />
 <style>
   .chatbot-container {
@@ -83,9 +85,13 @@
   <?= $this->include('layout/partials/dashboardPlugin') ?>
  
   <!--   Core JS Files   -->
+  <script src="<?= base_url('js/Modules.js') ?>"></script>
   <?= $this->renderSection('scripts') ?>
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.15/dist/sweetalert2.all.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
   <script src="<?= base_url('assets/js/core/popper.min.js') ?>"></script>
   <script src="<?= base_url('assets/js/core/bootstrap.min.js') ?>"></script>
   <script src="<?= base_url('assets/js/plugins/perfect-scrollbar.min.js') ?>"></script>
@@ -111,9 +117,17 @@
         });
     });
 
+  $(document).ready(function() {
+    $('#select').select2();
+  });
     
   </script>
   <!-- Github buttons -->
+  <script>
+    $(document).ready(function() {
+      $('#myTable').DataTable();
+    });
+  </script>
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="<?= base_url('assets/js/material-dashboard.min.js?v=3.0.4') ?>"></script>

@@ -15,11 +15,25 @@ class UserModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
+        'nik',
         'nama',
         'username',
         'password',
         'email',
-        'role'
+        'role',
+        'jk',
+        'alamat',
+        'pekerjaan',
+        'kawin',
+        'ttl',
+        'agama',
+        'kewarganegaraan',
+        'no_kk',
+        'nama_ayah',
+        'ttlayah',
+        'alamatayah',
+        'created_at',
+        'updated_at'
     ];
 
     // Dates

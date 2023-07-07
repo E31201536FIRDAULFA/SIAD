@@ -19,11 +19,13 @@ class gajiModel extends Model
         'userid',
         'nama',
         'nik',
+        'no_kk',
         'ttl',
         'pekerjaan',
         'no_kip',
         'no_kis',
         'ket',
+        'scankk',
         'status',
         'Surat'
     ];

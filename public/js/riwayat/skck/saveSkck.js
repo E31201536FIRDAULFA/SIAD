@@ -1,115 +1,65 @@
 function saveSkck() {
-    const id = $("#id").val();
+    const id = $("#idskck").val();
     const tgl = $("#tglskck").val();
-    const nama = $("#namaskck").val();
     const nik = $("#nikskck").val();
+    const no_kk = $("#no_kkskck").val();
+    const nama = $("#namaskck").val();
     const ttl = $("#ttlskck").val();
-    const jk = $("#jkskck").val();
+    const jk = $("#jk_skck").val();
     const agama = $("#agamaskck").val();
     const kewarganegaraan = $("#kewarganegaraanskck").val();
-    const perkawinan = $("#perkawinanskck").val();
+    const kawin = $("#kawinskck").val();
     const pekerjaan = $("#pekerjaanskck").val();
     const alamat = $("#alamatskck").val();
 
 
 
     url = base_url + 'dashboard/skck/';
-    if (tgl.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'tgl harus diisi!'
-        });
+    $.ajax({ //tembak data ke db
+        url: url,
+        type: 'POST',
+        data: {
+            "id": id,
+            "tgl": tgl,
+            "nik": nik,
+            "no_kk": no_kk,
+            "nama": nama,
+            "ttl": ttl,
+            "jk": jk,
+            "agama": agama,
+            "kewarganegaraan": kewarganegaraan,
+            "kawin": kawin,
+            "pekerjaan": pekerjaan,
+            "alamat": alamat,
 
-    } else if (nama.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nama harus diisi!'
-        });
-    } else if (nik.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'Nik harus diisi!'
-        });
-    } else if (ttl.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'ttl harus diisi!'
-        });
-    } else if (jk.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'jk harus diisi!'
-        });
-    } else if (agama.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'agama harus diisi!'
-        });
-    } else if (kewarganegaraan.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'kewarganegaraan harus diisi!'
-        });
-    } else if (perkawinan.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'perkawinan harus diisi!'
-        });
-    } else if (pekerjaan.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'pekerjaan harus diisi!'
-        });
-    } else if (alamat.length == "") {
-        Swal.fire({
-            title: 'Oops...',
-            text: 'alamat harus diisi!'
-        });
-    } else {
-        $.ajax({
-            url: url,
-            type: 'POST',
-            data: {
-                "tgl": tgl,
-                "nama": nama,
-                "nik": nik,
-                "ttl": ttl,
-                "jk": jk,
-                "agama": agama,
-                "kewarganegaraan": kewarganegaraan,
-                "perkawinan": perkawinan,
-                "pekerjaan": pekerjaan,
-                "alamat": alamat,
-
-            },
-            dataType: "JSON",
-            success: function (respond) {
-                if (respond.status == true) {
-                    Swal.fire({
-                        icon: respond.icon,
-                        title: respond.title,
-                        text: respond.text,
-                        timer: 3000,
-                        showCancelButton: false,
-                        showConfirmButton: false
-                    }).then(function () {
-                        location.reload();
-                    });
-                } else if (respond.status == false) {
-                    Swal.fire({
-                        icon: respond.icon,
-                        title: respond.title,
-                        text: respond.text,
-                    });
-                }
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                swal.fire({
-                    icon: 'error',
-                    title: 'Terjadi error!',
-                    text: 'Silahkan coba lagi.'
-                })
+        },
+        dataType: "JSON",
+        success: function (respond) {
+            if (respond.status == true) {
+                Swal.fire({
+                    icon: respond.icon,
+                    title: respond.title,
+                    text: respond.text,
+                    timer: 3000,
+                    showCancelButton: false,
+                    showConfirmButton: false
+                }).then(function () {
+                    location.reload();
+                });
+            } else if (respond.status == false) {
+                Swal.fire({
+                    icon: respond.icon,
+                    title: respond.title,
+                    text: respond.text,
+                });
             }
-        });
-    }
-}
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            swal.fire({
+                icon: 'error',
+                title: 'Terjadi error!',
+                text: 'Silahkan coba lagi.'
+            })
+        }
+    });
+} 

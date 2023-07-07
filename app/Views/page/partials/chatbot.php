@@ -171,7 +171,7 @@
 
   <div class="chatbot-container" id="chatbot-container">
     <div class="chatbot-header">
-      <h1>Welcome to ChatBot!</h1>
+      <h1>Welcome to Pesan Informasi!</h1>
       <button class="toggle-btn" onclick="toggleChatbot()"></button>
     </div>
     <div class="chatbot-options">

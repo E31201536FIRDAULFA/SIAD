@@ -12,6 +12,7 @@ class Auth extends BaseController
         session()->set([
             'LoginTrue' => TRUE,
             'id'        => $data['id'],
+            'nik'        => $data['nik'],
             'nama'      => $data['nama'],
             'username'  => $data['username'],
             'email'     => $data['email'],
@@ -24,8 +25,8 @@ class Auth extends BaseController
     {
         $model = new UserModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
-            $username = $this->request->getPost('username');
-            $password = $this->request->getPost('password');
+            $username = $this->request->getVar('username');
+            $password = $this->request->getVar('password');
             $checkpointData = $model->where('email', $username)
                                     ->orWhere('username', $username)
                                     ->first();
@@ -62,8 +63,8 @@ class Auth extends BaseController
     {
         $model = new UserModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
-            $username = $this->request->getPost('username');
-            $password = $this->request->getPost('password');
+            $username = $this->request->getVar('username');
+            $password = $this->request->getVar('password');
             $checkpointData = $model->where('email', $username)
                                     ->orWhere('username', $username)
                                     ->first();
@@ -96,45 +97,46 @@ class Auth extends BaseController
         return view('page/auth/Signadm');
     }
 
-    public function register()
-    {
-        $model = new UserModel();
-        if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
-            $data = [
-                'nama'      => $this->request->getPost('nama'),
-                'username'  => $this->request->getPost('username'),
-                'password'  => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
-                'email'     => $this->request->getPost('email'),
-                'role'      => 'masterdata',
-            ];
-            $checkpointUsername = $model->where('username', $data['username'])->first();
-            $checkpointEmail    = $model->where('email', $data['email'])->first();
-            if ($checkpointUsername) {
-                return $this->response->setJSON([
-                    'status' => false,
-                    'icon' => 'error',
-                    'title' => 'Register gagal!',
-                    'text' => 'Username telah digunakan',
-                ]);
-            } else if ($checkpointEmail) {
-                return $this->response->setJSON([
-                    'status' => false,
-                    'icon' => 'error',
-                    'title' => 'Register gagal!',
-                    'text' => 'Email telah digunakan',
-                ]);
-            } else {
-                $model->save($data);
-                return $this->response->setJSON([
-                    'status' => true,
-                    'icon' => 'success',
-                    'title' => 'Register berhasil!',
-                    'text' => 'Anda akan diarahkan dalam 3 detik.',
-                ]); 
-            };
-        }
-        return view('page/auth/SignUp');
-    }
+    // public function register()
+    // {
+    //     $model = new UserModel();
+    //     if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
+    //         $data = [
+    //             'nik'  => $this->request->getVar('nik'),
+    //             'nama'      => $this->request->getVar('nama'),
+    //             'username'  => $this->request->getVar('username'),
+    //             'password'  => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+    //             'email'     => $this->request->getVar('email'),
+    //             'role'      => 'masterdata',
+    //         ];
+    //         $checkpointUsername = $model->where('username', $data['username'])->first();
+    //         $checkpointEmail    = $model->where('email', $data['email'])->first();
+    //         if ($checkpointUsername) {
+    //             return $this->response->setJSON([
+    //                 'status' => false,
+    //                 'icon' => 'error',
+    //                 'title' => 'Register gagal!',
+    //                 'text' => 'Username telah digunakan',
+    //             ]);
+    //         } else if ($checkpointEmail) {
+    //             return $this->response->setJSON([
+    //                 'status' => false,
+    //                 'icon' => 'error',
+    //                 'title' => 'Register gagal!',
+    //                 'text' => 'Email telah digunakan',
+    //             ]);
+    //         } else {
+    //             $model->save($data);
+    //             return $this->response->setJSON([
+    //                 'status' => true,
+    //                 'icon' => 'success',
+    //                 'title' => 'Register berhasil!',
+    //                 'text' => 'Anda akan diarahkan dalam 3 detik.',
+    //             ]); 
+    //         };
+    //     }
+    //     return view('page/auth/SignUp');
+    // }
 
     public function Logout()
     {

@@ -87,6 +87,19 @@ $(document).ready(function () {
                     });
                 });
 
+                let buttonCetak = $('<button>').attr({
+                    'type': 'button',
+                    'class': 'btn bg-gradient-success mb-0',
+                    'id': respond[i].id
+                }).text('Cetak');
+
+                buttonCetak.on('click', function () {
+                    var id = $(this).attr('id');
+                    var redirectUrl = base_url + 'dashboard/pdf/pdfSPU/' + id; // Change the URL to the desired destination
+
+                    window.location.href = redirectUrl; // Redirect to the desired link
+                });
+
                 let buttonUnduh = $('<button type="button" class="btn bg-gradient-success mb-0"></button>').text('Unduh').attr('id', respond[i].id);
                 buttonUnduh.click(function () {
 
@@ -176,7 +189,7 @@ $(document).ready(function () {
                     jenis_usaha,
                     alamat_usaha,
                     status,
-                    suratspu, buttonUpload, buttonEdit, buttonUnduh, buttonDelete);
+                    suratspu, buttonCetak, buttonUpload, buttonEdit, buttonUnduh, buttonDelete);
                 tableBody.append(row);
             }
         }
