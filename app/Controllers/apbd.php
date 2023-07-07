@@ -52,7 +52,7 @@ class apbd extends BaseController
                 ]); 
             }
         return view('page/keuangan/dashboardApbd',[
-            'content' => $model->findAll(),
+            'content' => $model->orderBy('created_at', 'DESC')->findAll(),
             'isGajiNew' => $modelGaji->where('status', 'new')->first(),
             'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
             'isKTPNew' => $modelKTP->where('keterangan', 'new')->first(),

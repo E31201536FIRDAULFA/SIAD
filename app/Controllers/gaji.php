@@ -44,7 +44,6 @@ class gaji extends BaseController
                     'no_kip' => $this->request->getPost('no_kip'),
                     'no_kis' => $this->request->getPost('no_kis'),
                     'ket' => $this->request->getPost('ket'),
-                    'scankk' => $this->request->getPost('scankk'),
                     'status' => 'new',
                     'Surat' => null,
                 ];
@@ -62,7 +61,6 @@ class gaji extends BaseController
                         'no_kip' => $this->request->getPost('no_kip'),
                         'no_kis' => $this->request->getPost('no_kis'),
                         'ket' => $this->request->getPost('ket'),
-                        'scankk' => $dataUser['scankk'],
                         'status' => 'new',
                         'Surat' => null,
                     ];
@@ -77,7 +75,7 @@ class gaji extends BaseController
             }
             $model->where('status', 'new')->set(['status' => 'Pengajuan Sedang Diproses'])->update();
             return view('page/surat/dashboardGaji',[
-                'content' => $model->findAll(),
+               'content' => $model->orderBy('created_at', 'DESC')->findAll(),
                 'user' => $modelUser->where('role', 'warga')->findAll(),
                 'isGajiNew' => $model->where('status', 'new')->first(),
                 'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
@@ -123,7 +121,7 @@ class gaji extends BaseController
         }
         $model->where('status', 'new')->set(['status' => 'Pengajuan Sedang Diproses'])->update();
         return view('page/surat/dashboardGaji',[
-            'content' => $model->findAll(),
+           'content' => $model->orderBy('created_at', 'DESC')->findAll(),
             'user' => $modelUser->where('role', 'warga')->findAll(),
             'isGajiNew' => $model->where('status', 'new')->first(),
             'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
@@ -171,7 +169,7 @@ class gaji extends BaseController
         }
         $model->where('status', 'new')->set(['status' => 'Pengajuan Sedang Diproses'])->update();
         return view('page/surat/dashboardGaji',[
-            'content' => $model->findAll(),
+           'content' => $model->orderBy('created_at', 'DESC')->findAll(),
             'user' => $modelUser->where('role', 'warga')->findAll(),
             'isGajiNew' => $model->where('status', 'new')->first(),
             'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),

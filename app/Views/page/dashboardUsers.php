@@ -22,23 +22,23 @@
                         </div>
 
                         <div class="modal-body">
-                            <form action="#" id="form" enctype="multipart/form-data">
+                            <form action="#" id="form" >
                               
-                                <div class="input-group input-group-outline mb-3">
-                                  <label class="form-label">Nama Lengkap</label>
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Nama Lengkap</label>
                                   <input type="text" class="form-control" id="id" name="id" hidden>
                                   <input id="nama" type="text" class="form-control" name="nama">
                                 </div>
-                                <div class="input-group input-group-outline mb-3">
-                                  <label class="form-label">NIK</label>
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">NIK</label>
                                   <input id="nik" type="text" class="form-control" name="nik">
                                 </div>
-                                <div class="input-group input-group-outline mb-3">
-                                  <label class="form-label">Username</label>
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Username</label>
                                   <input id="username" type="text" class="form-control" name="username">
                                 </div>
-                                <div class="input-group input-group-outline mb-3">
-                                  <label class="form-label">Email</label>
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Email</label>
                                   <input id="email" type="text" class="form-control" name="email">
                                 </div>
                                 <div class="input-group input-group-static mb-3">
@@ -60,13 +60,13 @@
                                   </select>
                                 </div>
 
-                                <div class="input-group input-group-outline mb-3">
-                                  <label class="form-label">Alamat</label>
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Alamat</label>
                                   <input id="alamat" type="text" class="form-control" name="alamat">
                                 </div>
 
-                                <div class="input-group input-group-outline mb-3">
-                                  <label class="form-label">Pekerjaan</label>
+                                <div class="input-group input-group-static mb-3">
+                                  <label class="ms-0">Pekerjaan</label>
                                   <input id="pekerjaan" type="text" class="form-control" name="pekerjaan">
                                 </div>
 
@@ -89,7 +89,7 @@
                                 <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">Agama</label>
                                   <select id="agama" class="form-control" name="agama">
-                                    <option value="">-- Pilih Agama --</option>
+                                    <option>-- Pilih Agama --</option>
                                     <option value="Islam">Islam</option>
                                     <option value="Kristen">Kristen</option>
                                     <option value="Katolik">Katolik</option>
@@ -99,12 +99,12 @@
                                   </select>
                                 </div>
 
-                                <div id="ttl" class="input-group input-group-outline mb-3">
-                                  <label class="form-label">TTL</label>
+                                <div id="ttl" class="input-group input-group-static mb-3">
+                                  <label class="ms-0">TTL</label>
                                   <input id="ttl" type="date" class="form-control" name="ttl">
                                 </div>
 
-                                <div id="nokk" class="input-group input-group-outline mb-3">
+                                <div id="nokk" class="input-group input-group-static mb-3">
                                   <label class="form-label">Nomor KK</label>
                                   <input id="no_kk" type="number" class="form-control" name="no_kk">
                                 </div>
@@ -124,17 +124,13 @@
                                   <input id="alamatayah" type="text" class="form-control" name="alamatayah">
                                 </div>
 
-                                <div class="input-group input-group-static mb-3">
-                                  <label class="ms-0">Scan KK</label>
-                                  <input id="scankk" type="file" class="form-control" name="scankk">
-                                </div>
 
 
-                                <div id="pass" class="input-group input-group-outline mb-3">
+                                <div id="pass" class="input-group input-group-static mb-3">
                                   <label class="form-label">Password</label>
                                   <input id="password" type="password" class="form-control" name="password">
                                 </div>
-                                <div id="pass2" class="input-group input-group-outline mb-3">
+                                <div id="pass2" class="input-group input-group-static mb-3">
                                   <label class="form-label">Password Confirmation</label>
                                   <input id="password_confirm" type="password" class="form-control" name="password_confirm">
                                 </div>
@@ -171,7 +167,6 @@
                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Ayah</th> 
                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Lahir Ayah</th> 
                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Alamat Ayah</th>  
-                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Scan KK</th> 
                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Opsi</th>
                     </tr>
                   </thead>
@@ -196,7 +191,6 @@
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['nama_ayah'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['ttlayah'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['alamatayah'] ?></span></td>
-                    <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['scankk'] ?></span></td>
                     <td class="align-middle text-center">
                   
                       <button onclick="buttonEdit(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-warning mb-0">
@@ -256,7 +250,7 @@ function buttonEdit(id) {
       $('[name="nama_ayah"]').val(respond.data.nama_ayah);
       $('[name="ttlayah"]').val(respond.data.ttlayah);
       $('[name="alamatayah"]').val(respond.data.alamatayah);
-      $('[name="scankk"]').val(respond.data.scankk);
+   
 
       $('#exampleModal').modal('show');
       $('.modal-title').text('Edit');

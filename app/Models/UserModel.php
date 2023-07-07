@@ -32,7 +32,6 @@ class UserModel extends Model
         'nama_ayah',
         'ttlayah',
         'alamatayah',
-        'scankk',
         'created_at',
         'updated_at'
     ];

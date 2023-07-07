@@ -80,7 +80,7 @@ class skck extends BaseController
             }
         $model->where('status', 'new')->set(['status' => 'Pengajuan Sedang Diproses'])->update();
         return view('page/surat/dashboardSkck',[
-            'content' => $model->findAll(),
+          'content' => $model->orderBy('created_at', 'DESC')->findAll(),
             'user' => $user->where('role', 'warga')->findAll(),
             'isGajiNew' => $modelGaji->where('status', 'new')->first(),
             'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
@@ -126,7 +126,7 @@ class skck extends BaseController
         }
         $model->where('status', 'new')->set(['status' => 'Pengajuan Sedang Diproses'])->update();
         return view('page/surat/dashboardSkck',[
-            'content' => $model->findAll(),
+          'content' => $model->orderBy('created_at', 'DESC')->findAll(),
             'user' => $user->where('role', 'warga')->findAll(),
             'isGajiNew' => $modelGaji->where('status', 'new')->first(),
             'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
@@ -173,7 +173,7 @@ class skck extends BaseController
         }
         $model->where('status', 'new')->set(['status' => 'Pengajuan Sedang Diproses'])->update();
         return view('page/surat/dashboardSkck',[
-            'content' => $model->findAll(),
+          'content' => $model->orderBy('created_at', 'DESC')->findAll(),
             'user' => $user->where('role', 'warga')->findAll(),
             'isGajiNew' => $modelGaji->where('status', 'new')->first(),
             'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),

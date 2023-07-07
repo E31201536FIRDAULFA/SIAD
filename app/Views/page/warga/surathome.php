@@ -246,7 +246,7 @@
 
                      <!--POP UP TAMBAH PENGAJUAN-->
                      <div class="modal-body">
-                            <form action="#" id="form">
+                            <form action="#" id="form" >
                                 <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">Tanggal</label>
                                   <input id="tglsktm" type="date" class="form-control">
@@ -297,12 +297,12 @@
 
                                 <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">Nama Ayah</label>
-                                  <input id="nama_ayahsktm" type="text" class="form-control" >
+                                  <input id="nama_ayahsktm" type="text" class="form-control" readonly>
                                 </div>
 
                                 <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">Ttl Ayah</label>
-                                  <input id="ttlayahsktm" type="date" class="form-control" >
+                                  <input id="ttlayahsktm" type="date" class="form-control" readonly>
                                 </div>
 
 
@@ -554,7 +554,7 @@
                                   <button type="button" onclick="saveGaji()" class="btn bg-gradient-success btn-lg w-100 mt-4 mb-0">Simpan</button>
                                 </div>
                                 <div class="mt-3">
-                                  <button type="button" onclick="enableditGaji()" class="btn bg-gradient-success btn-lg w-100 mt-4 mb-0">Edit Data</button>
+                                  <button type="button" onclick="enableEditgaji()" class="btn bg-gradient-success btn-lg w-100 mt-4 mb-0">Edit Data</button>
                                 </div>
                               </form>
                             </div>
@@ -753,10 +753,13 @@ function enableEditsktm() {
     document.getElementById("ttlsktm").readOnly = false;
     document.getElementById("stswargasktm").readOnly = false;
     document.getElementById("alamatsktm").readOnly = false;
+    document.getElementById("nama_ayahsktm").readOnly = false;
+    document.getElementById("ttlayahsktm").readOnly = false;
     document.getElementById("agamasktm").readOnly = false;
     document.getElementById("pekerjaansktm").readOnly = false;
-   
-  
+    document.getElementById("alamatayahsktm").readOnly = false;
+ 
+
   }
 
   function ajukanSpu() {

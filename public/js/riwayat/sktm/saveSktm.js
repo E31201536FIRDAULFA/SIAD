@@ -36,6 +36,7 @@ function saveSktm() {
             "gaji": gaji,
             "keperluan": keperluan,
         },
+
         dataType: "JSON",
         success: function (respond) {
             if (respond.status == true) {

@@ -44,7 +44,7 @@ class rab extends BaseController
             }
             $rab = new rabModel();
         return view('page/keuangan/dashboardrab',[
-            'content' => $rab->findAll(),
+            'content' => $rab->orderBy('created_at', 'DESC')->findAll(),
             'isGajiNew' => $modelGaji->where('status', 'new')->first(),
             'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
             'isKTPNew' => $modelKTP->where('keterangan', 'new')->first(),

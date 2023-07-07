@@ -33,7 +33,7 @@
 
                       <!--POP UP TAMBAH PENGAJUAN-->
                         <div class="modal-body">
-                            <form action="#" id="form">
+                            <form action="#" id="form" enctype="multipart/form-data">
                             <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">Tanggal</label>
                                   <input id="tgl" type="date" class="form-control" name="tgl">
@@ -291,6 +291,7 @@
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['status'] ?></span></td>
                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><?= $data['suratsktm'] ?></span></td>
                     <td class="align-middle text-center">
+                   
                       <button onclick="buttonCetak(<?= $data['id'] ?>)" type="button" class="btn bg-gradient-info mb-0">
                         Cetak
                       </button>
@@ -325,6 +326,8 @@
 <script src="<?= base_url('js/Modules.js') ?>"></script>
 <script src="<?= base_url('js/surat/sktm/saveSktm.js') ?>"></script>
 <script>
+
+
    function buttonUnduh(id) {
     
     $.ajax({

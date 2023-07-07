@@ -190,7 +190,7 @@ function buttonDelete(id) {
 function buttonEdit(id) {
   $("#form")[0].reset();
   $.ajax({
-    url: base_url + "dashboard/apbd/update/" + id,
+    url: base_url + "dashboard/spp/update/" + id,
     type: "GET",
     dataType: "JSON",
     success: function (respond) {

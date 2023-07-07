@@ -122,7 +122,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                            <form action="#" id="formadd">
+                            <form action="#" id="formadd" >
                                 <div class="input-group input-group-static mb-3">
                                   <label class="ms-0">Tanggal</label>
                                   <input id="tglgaji" type="date" class="form-control" name="tglgaji">

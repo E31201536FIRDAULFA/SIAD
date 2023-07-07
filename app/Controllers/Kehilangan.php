@@ -77,7 +77,7 @@ class Kehilangan extends BaseController
 
         $model->where('status', 'new')->set(['status' => 'diproses'])->update();
         return view('page/surat/dashboardKehilangan',[
-            'content' => $model->findAll(),
+            'content' => $model->orderBy('created_at', 'DESC')->findAll(),
             'user' => $user->where('role', 'warga')->findAll(),
             'isGajiNew' => $modelGaji->where('status', 'new')->first(),
             'isKehilanganNew' => $model->where('status', 'new')->first(),
@@ -123,7 +123,7 @@ class Kehilangan extends BaseController
         }
         $model->where('status', 'new')->set(['status' => 'diproses'])->update();
         return view('page/surat/dashboardKehilangan',[
-            'content' => $model->findAll(),
+            'content' => $model->orderBy('created_at', 'DESC')->findAll(),
             'user' => $user->where('role', 'warga')->findAll(),
             'isGajiNew' => $modelGaji->where('status', 'new')->first(),
             'isKehilanganNew' => $model->where('status', 'new')->first(),
@@ -171,7 +171,7 @@ class Kehilangan extends BaseController
         }
         $model->where('status', 'new')->set(['status' => 'diproses'])->update();
         return view('page/surat/dashboardKehilangan',[
-            'content' => $model->findAll(),
+            'content' => $model->orderBy('created_at', 'DESC')->findAll(),
             'user' => $user->where('role', 'warga')->findAll(),
             'isGajiNew' => $modelGaji->where('status', 'new')->first(),
             'isKehilanganNew' => $model->where('status', 'new')->first(),

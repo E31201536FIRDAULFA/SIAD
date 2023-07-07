@@ -47,7 +47,7 @@ class spp extends BaseController
             }
             $spp = new sppModel();
         return view('page/keuangan/dashboardspp',[
-            'content' => $spp->findAll(),
+            'content' => $spp->orderBy('created_at', 'DESC')->findAll(),
             'isGajiNew' => $modelGaji->where('status', 'new')->first(),
             'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
             'isKTPNew' => $modelKTP->where('keterangan', 'new')->first(),

@@ -29,7 +29,10 @@ class SKTM extends BaseController
         $modelSKCK = new skckModel();
         $modelSPU = new SPUModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
+           
+
             if (session()->get('role') === 'warga') {
+              
                 $data = [
                     'userid' => session()->get('id'),
                     'tgl' => $this->request->getPost('tgl'),
@@ -51,9 +54,9 @@ class SKTM extends BaseController
                     'suratsktm' => null,
                 ];
             } else {
-                $isAdmin = $this->request->getPost('idusersktm');
+                $isAdmin = $this->request->getPost('nama');
                 $dataUser = $user->find($isAdmin);
-                dd($dataUser);
+           
                 $data =[
                     'userid' => $isAdmin,
                     'tgl' => $this->request->getPost('tgl'),
@@ -82,7 +85,7 @@ class SKTM extends BaseController
                 'title' => 'Tambah Pengajuan Surat Keterangan Tidak Mampu Berhasil!',
                 'text' => 'Pop up ini akan hilang dalam 3 detik.',
             ]); 
-        }
+        } else {
 
         $model->where('status', 'new')->set(['status' => 'diproses'])->update();
         return view('page/surat/dashboardSKTM',[
@@ -96,6 +99,8 @@ class SKTM extends BaseController
             'isSKTMNew' => $model->where('status', 'new')->first(),
             'isSPUNew' => $modelSPU->where('status', 'new')->first(),
         ]);
+    
+        }
     }
 
     public function addstatic()
@@ -137,7 +142,7 @@ class SKTM extends BaseController
         }
         $model->where('status', 'new')->set(['status' => 'diproses'])->update();
         return view('page/surat/dashboardSKTM',[
-            'content' => $model->findAll(),
+            'content' => $model->orderBy('created_at', 'DESC')->findAll(),
             'user' => $user->where('role', 'warga')->findAll(),
             'isGajiNew' => $modelGaji->where('status', 'new')->first(),
             'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
@@ -157,7 +162,6 @@ class SKTM extends BaseController
         $modelSKCK = new skckModel();
         $modelSPU = new SPUModel();
         if ($this->request->isAJAX() && $this->request->getMethod(true) === 'POST') {
-            //hayya kau ini nyontoh jangan mentah mentah lah, secara logika script sebelumnya ga masuk akal satttt
             $isAdmin = $this->request->getPost('userid');
             $dataUser = $user->where('id', $isAdmin)->first();
             //print_r($dataUser);
@@ -191,7 +195,7 @@ class SKTM extends BaseController
         }
         $model->where('status', 'new')->set(['status' => 'diproses'])->update();
         return view('page/surat/dashboardSKTM',[
-            'content' => $model->findAll(),
+            'content' => $model->orderBy('created_at', 'DESC')->findAll(),
             'user' => $user->where('role', 'warga')->findAll(),
             'isGajiNew' => $modelGaji->where('status', 'new')->first(),
             'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),

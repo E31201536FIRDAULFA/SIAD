@@ -24,6 +24,7 @@ class KTP extends BaseController
     {
         $model = new KTPModel();
         $user = new UserModel();
+        $rab = new rabModel();
         $modelKehilangan = new KehilanganModel();
         $modelGaji = new gajiModel();
         $modelSKCK = new skckModel();
@@ -65,11 +66,10 @@ class KTP extends BaseController
             }
         $model->where('keterangan', 'new')->set(['keterangan' => 'Pengajuan Sedang Diproses'])->update();
         return view('page/kependudukan/dashboardKtp',[
-            'content' => $model->findAll(),
+             'content' => $model->orderBy('created_at', 'DESC')->findAll(),
             'user' => $user->where('role', 'warga')->findAll(),
             'isGajiNew' => $modelGaji->where('status', 'new')->first(),
             'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
-         
             'isKTPNew' => $model->where('keterangan', 'new')->first(),
             'isSKCKNew' => $modelSKCK->where('status', 'new')->first(),
             'isSKTMNew' => $modelSKTM->where('status', 'new')->first(),
@@ -106,7 +106,7 @@ class KTP extends BaseController
         }
         $model->where('keterangan', 'new')->set(['keterangan' => 'Pengajuan Sedang Diproses'])->update();
         return view('page/kependudukan/dashboardKtp',[
-            'content' => $model->findAll(),
+             'content' => $model->orderBy('created_at', 'DESC')->findAll(),
             'user' => $user->where('role', 'warga')->findAll(),
             'isGajiNew' => $modelGaji->where('status', 'new')->first(),
             'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
@@ -149,7 +149,7 @@ class KTP extends BaseController
         }
         $model->where('keterangan', 'new')->set(['keterangan' => 'Pengajuan Sedang Diproses'])->update();
         return view('page/kependudukan/dashboardKtp',[
-            'content' => $model->findAll(),
+             'content' => $model->orderBy('created_at', 'DESC')->findAll(),
             'user' => $user->where('role', 'warga')->findAll(),
             'isGajiNew' => $modelGaji->where('status', 'new')->first(),
             'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),

@@ -75,11 +75,10 @@ class SPU extends BaseController
             }
         $model->where('status', 'new')->set(['status' => 'diproses'])->update();
         return view('page/surat/dashboardSPU',[
-            'content' => $model->findAll(),
+             'content' => $model->orderBy('created_at', 'DESC')->findAll(),
             'user' => $user->where('role', 'warga')->findAll(),
             'isGajiNew' => $modelGaji->where('status', 'new')->first(),
             'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
-           
             'isKTPNew' => $modelKTP->where('keterangan', 'new')->first(),
             'isSKCKNew' => $modelSKCK->where('status', 'new')->first(),
             'isSKTMNew' => $modelSKTM->where('status', 'new')->first(),
@@ -121,7 +120,7 @@ class SPU extends BaseController
         }
         $model->where('status', 'new')->set(['status' => 'diproses'])->update();
         return view('page/surat/dashboardSPU',[
-            'content' => $model->findAll(),
+             'content' => $model->orderBy('created_at', 'DESC')->findAll(),
             'user' => $user->where('role', 'warga')->findAll(),
             'isGajiNew' => $modelGaji->where('status', 'new')->first(),
             'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
@@ -167,7 +166,7 @@ class SPU extends BaseController
         }
         $model->where('status', 'new')->set(['status' => 'diproses'])->update();
         return view('page/surat/dashboardSPU',[
-            'content' => $model->findAll(),
+             'content' => $model->orderBy('created_at', 'DESC')->findAll(),
             'user' => $user->where('role', 'warga')->findAll(),
             'isGajiNew' => $modelGaji->where('status', 'new')->first(),
             'isKehilanganNew' => $modelKehilangan->where('status', 'new')->first(),
